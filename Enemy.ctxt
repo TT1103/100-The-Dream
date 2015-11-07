@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ setup()
+comment1.params=health
+comment1.target=Enemy(int)
+comment10.params=
+comment10.target=void\ moveToDefault()
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\n\ Act\ -\ do\ whatever\ the\ Player\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment3.params=
+comment3.target=void\ controlMovement()
+comment4.params=
+comment4.target=void\ controlWeapons()
+comment5.params=d
+comment5.target=void\ damage(int)
+comment6.params=speed
+comment6.target=void\ move(int)
+comment7.params=startX\ startY\ destX\ destY
+comment7.target=int[][]\ pathFind(int,\ int,\ int,\ int)
+comment8.params=
+comment8.target=boolean\ canSeePlayer()
+comment9.params=destX\ destY
+comment9.target=boolean\ canSeePoint(int,\ int)
+numComments=11

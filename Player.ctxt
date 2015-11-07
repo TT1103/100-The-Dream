@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ setup()
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ Player\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment2.params=damage
+comment2.target=void\ damage(int)
+comment3.params=str\ rotation
+comment3.target=void\ knockback(int,\ int)
+comment4.params=x\ y
+comment4.target=void\ setLocation(int,\ int)
+comment5.params=
+comment5.target=void\ controlMovement()
+comment6.params=
+comment6.target=void\ controlWeapons()
+numComments=7
