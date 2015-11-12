@@ -52,6 +52,11 @@ public class EnemyBullet extends Actor
         Player player =(Player) getOneIntersectingObject(Player.class);
         if (player != null){
             player.damage(20);
+            if(player.knockback==false){
+                player.knockback=true;
+                player.knockbackStrength=5;
+                player.knockbackRotation=getRotation();
+            }
             getWorld().removeObject(this);
             return;
         }

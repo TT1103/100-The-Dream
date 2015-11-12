@@ -83,6 +83,7 @@ public class Dog extends Enemy
             player.damage(damage);
             if(player.knockback==false){
                 player.knockback=true;
+                player.knockbackStrength=10;
                 player.knockbackRotation=getRotation();
             }
             damageDelay = maxDamageDelay;

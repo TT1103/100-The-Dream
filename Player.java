@@ -30,6 +30,10 @@ public class Player extends Actor
     P90 p90 = new P90();
     Barrett sniper = new Barrett();
     boolean shooting =false;
+    int knockbackDelay=5;
+    int knockbackStrength;
+    int knockbackRotation;
+    
     public void setup(){
         getWorld().addObject(p90,-100,-100);
         getWorld().addObject(sniper,-100,-100);
@@ -43,38 +47,30 @@ public class Player extends Actor
      */
     public void act() 
     {
-        controlMovement();
-        controlWeapons();
-        
-        
-        if (knockbackDelay > 0){
-            knockbackDelay--;
-        }
-        if(knockback && knockbackDelay ==0){
+
+        if(knockback){
             int originalRotation = getRotation();
             setRotation(knockbackRotation);
             move(knockbackStrength);
             setRotation(originalRotation);
-            knockbackDelay = 5;
-            
+
             knockbackStrength--;
             if (knockbackStrength ==0){
                 knockback = false;
             }
         }
+        controlMovement();
+        controlWeapons();
     }    
 
     public void damage(int damage){
         healthBar.damage(damage);
     }
-    
-    int knockbackDelay=5;
-    int knockbackStrength;
-    int knockbackRotation;
+
     public void knockback(int str, int rotation){
-       knockbackStrength =str;
-       int knockbackRotation = rotation;
-        
+        knockbackStrength =str;
+        int knockbackRotation = rotation;
+
     }
 
     public void setLocation(int x, int y) {
@@ -85,22 +81,24 @@ public class Player extends Actor
 
     public void controlMovement(){
         moving =false;
-        if (Greenfoot.isKeyDown("w")){
-            moving = true;
-            direction = "up";
-            setLocation(getX(), getY()-speed);
-        } if (Greenfoot.isKeyDown("a")){
-            moving = true;
-            direction = "left";
-            setLocation(getX()-speed, getY());
-        } if (Greenfoot.isKeyDown("s")){
-            moving = true;
-            direction = "down";
-            setLocation(getX(), getY()+speed);
-        } if (Greenfoot.isKeyDown("d")){
-            moving = true;
-            direction = "right";
-            setLocation(getX()+speed, getY());
+        if(knockback==false){
+            if (Greenfoot.isKeyDown("w")){
+                moving = true;
+                direction = "up";
+                setLocation(getX(), getY()-speed);
+            } if (Greenfoot.isKeyDown("a")){
+                moving = true;
+                direction = "left";
+                setLocation(getX()-speed, getY());
+            } if (Greenfoot.isKeyDown("s")){
+                moving = true;
+                direction = "down";
+                setLocation(getX(), getY()+speed);
+            } if (Greenfoot.isKeyDown("d")){
+                moving = true;
+                direction = "right";
+                setLocation(getX()+speed, getY());
+            }
         }
 
         if(moving){
@@ -140,7 +138,7 @@ public class Player extends Actor
             shooting = false;
         }
 
-        if(shooting){
+        if(shooting&&knockback==false){
             p90.use(getX(),getY());
             //sniper.use(getX(),getY());
         }

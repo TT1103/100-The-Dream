@@ -22,7 +22,7 @@ public class Map extends World
         addObject(player, 400,400);
         player.setup();
         
-        setPaintOrder(PlayerHealth.class,Player.class);
+        setPaintOrder(PlayerHealthNumber.class, PlayerHealth.class,Player.class);
         
         
         for (int i =300; i < 700; i+=30){
@@ -40,12 +40,15 @@ public class Map extends World
             }
         }
         
-        for(int i =1 ; i< 2; i++){
+        for(int i =1 ; i< 5; i++){
             Dog d = new Dog(100);
             addObject(d, i*50, 600);
             d.setup();
         }
         
+        Sentry s=new Sentry(500);
+        addObject(s, 600, 600);
+        s.setup();
     }
     
     public void generateGraph(){

@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.params=health
+comment0.target=PlayerHealthNumber(int)
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ PlayerHealthNumber\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment2.params=damage
+comment2.target=void\ healthchange(int)
+numComments=3

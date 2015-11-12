@@ -13,6 +13,7 @@ public class Sentry extends Enemy
     int speedDelay =5;
     public Sentry(int health){
         super(health);
+        
     }
     /**
      * Act - do whatever the Sentry wants to do. This method is called whenever
@@ -21,10 +22,13 @@ public class Sentry extends Enemy
     public void act() 
     {
         controlWeapons();
+        if(dead){
+            getWorld().removeObject(this);
+        }
     }    
     
     public void controlWeapons(){
-        if(speedDelay <5){
+        if(speedDelay <20){
             speedDelay++;
         }
         
@@ -34,7 +38,7 @@ public class Sentry extends Enemy
             turnTowards(p.getX(),p.getY());
             
             //shoot
-            if(speedDelay ==5){
+            if(speedDelay ==20){
                 GreenfootSound effect = new GreenfootSound("p90_shoot.wav");
                 effect.setVolume(75);
                 effect.play();
