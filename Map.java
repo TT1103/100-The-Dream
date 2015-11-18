@@ -61,6 +61,16 @@ public class Map extends World
         
 
     }
+    
+    /**
+     * Setting up mouse coordinates for design purposes 
+     */
+    public void act () {
+        MouseInfo mouse = Greenfoot.getMouseInfo ();
+        if (Greenfoot.mouseClicked(null)) {
+            StdOut.println (mouse.getX() + ", " + mouse.getY());
+        }
+    }
 
     
 }
