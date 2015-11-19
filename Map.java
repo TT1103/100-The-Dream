@@ -21,16 +21,17 @@ public class Map extends World
         Player player = new Player();
         addObject(player, 400,400);
         player.setup();
+
+        // Layering the actors 
+        setPaintOrder (PlayerHealthNumber.class, PlayerHealth.class,Player.class);
         
-        setPaintOrder(PlayerHealthNumber.class, PlayerHealth.class,Player.class);
-        
-        
+        //instructionScreen();
+
         for (int i =300; i < 700; i+=30){
-            
+
             addObject(new Rock(), i,300);
         }
-        
-        
+
         for (int i =0; i < 800;i++){
             if (i %30==0){
                 addObject(new Rock(), i,0);
@@ -39,38 +40,25 @@ public class Map extends World
                 addObject(new Rock(), 0,i);
             }
         }
-        
+
         for(int i =1 ; i< 5; i++){
             Dog d = new Dog(100);
             addObject(d, i*50, 600);
             d.setup();
         }
-        
+
         Sentry s=new Sentry(500);
         addObject(s, 600, 600);
         s.setup();
     }
-    
+
+
     public void generateGraph(){
         for (int x = 10 ; x <= 790; x+=10){
             for (int y =10 ; y <=790; y+=10){
                 Enemy.graph.put(String.valueOf(x) + " " + String.valueOf(y), new int[][] {{x+10,y-10},{x+10,y+10},{x-10,y-10},{x-10,y+10}});
             }
         }
-        
-        
-
-    }
-    
-    /**
-     * Setting up mouse coordinates for design purposes 
-     */
-    public void act () {
-        MouseInfo mouse = Greenfoot.getMouseInfo ();
-        if (Greenfoot.mouseClicked(null)) {
-            StdOut.println (mouse.getX() + ", " + mouse.getY());
-        }
     }
 
-    
 }
