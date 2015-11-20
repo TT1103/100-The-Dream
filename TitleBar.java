@@ -9,6 +9,7 @@ import greenfoot.*;
 public class TitleBar extends IntroElements
 {
     private boolean firstImageSlid = false;
+    private boolean allImagesSlid = false;
     private int speed = 2; 
 
     /**
@@ -37,8 +38,13 @@ public class TitleBar extends IntroElements
                 setLocation (getX(), getY() - speed);
                 if (getY() <= 1) {
                     getWorld().removeObject (this);
+                    allImagesSlid = true;
                 }
             }
         }
     }  
+    
+    public boolean titleBarGone () {
+        return allImagesSlid;
+    }
 }

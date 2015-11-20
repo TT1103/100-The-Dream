@@ -10,6 +10,11 @@ public class InstructionScreen extends World
 {
     private TitleBar title = new TitleBar (); 
     private StartButton start = new StartButton ();
+    private SkipButton skip = new SkipButton ();
+    private NextButton next = new NextButton ();
+    private BackButton back = new BackButton ();
+    private boolean popInstructions = false;
+    
 
     /**
      * Constructor for objects of class InstructionScreen.
@@ -36,9 +41,10 @@ public class InstructionScreen extends World
         if (Greenfoot.mouseClicked(null)) {
             StdOut.println (mouse.getX() + "," + mouse.getY());
         }
-        
-        if (start.checkObjectRemoved()) { 
-            Greenfoot.setWorld (new Map());
+            
+        if (title.titleBarGone() && start.checkObjectRemoved()) {
+            setBackground (new GreenfootImage ("InstructionOne.png"));
+            popInstructions = true;
         }
     }
 
