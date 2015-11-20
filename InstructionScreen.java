@@ -19,7 +19,7 @@ public class InstructionScreen extends World
 
     // Arrays to store instruction screen images
     // NOTE: may implement 12U methods if possible 
-    String images[] = new String [2];
+    String images[] = new String [3];
 
     /**
      * Constructor for objects of class InstructionScreen.
@@ -34,7 +34,7 @@ public class InstructionScreen extends World
         addObject (title, 400, 295);
         addObject (start, 405, 643); 
 
-        for (int i = 0 ; i < 2 ; i ++) {
+        for (int i = 0 ; i < images.length ; i ++) {
             images[i] = "Instruction" + (i) + ".png";
         }
     }
@@ -46,7 +46,7 @@ public class InstructionScreen extends World
         // NOTE: Get coordinate method is temporary!
         MouseInfo mouse = Greenfoot.getMouseInfo ();
         if (Greenfoot.mouseClicked(null)) {
-            StdOut.println (mouse.getX() + "," + mouse.getY());
+           StdOut.println (mouse.getX() + "," + mouse.getY());
         }
 
         if (title.titleBarGone() && start.checkObjectRemoved()) {
@@ -121,6 +121,7 @@ public class InstructionScreen extends World
                 back.buttonNotClicked();
                 removeObject (back);
             }
+            back.buttonNotClicked();
         }
     }
 }
