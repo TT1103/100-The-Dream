@@ -40,7 +40,7 @@ public class Map extends World
             }
         }
         
-        for(int i =1 ; i< 5; i++){
+        for(int i =1 ; i< 2; i++){
             Dog d = new Dog(100);
             addObject(d, i*50, 600);
             d.setup();
@@ -49,6 +49,9 @@ public class Map extends World
         Sentry s=new Sentry(500);
         addObject(s, 600, 600);
         s.setup();
+        MortarTower m=new MortarTower(1000);
+        addObject(m, 100,100);
+        m.setup();
     }
     
     public void generateGraph(){

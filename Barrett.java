@@ -11,9 +11,7 @@ public class Barrett extends Weapon
     int bulletSpeed =50;
     int bulletDamage=400;
     public Barrett(){
-        speed =50;
-        speedDelay =speed;
-        soundEffect = new GreenfootSound("p90_shoot.wav");
+        super("barrett");
     }
     /**
      * Act - do whatever the P90 wants to do. This method is called whenever
@@ -21,19 +19,10 @@ public class Barrett extends Weapon
      */
     public void act() 
     {
-        speedDelay++;
+        super.act();
     }    
     
     public void use(int xPos, int yPos){ //x and y: current player pos
-
-        if (speedDelay >= speed){
-            GreenfootSound effect = new GreenfootSound("p90_shoot.wav");
-            effect.setVolume(75);
-            effect.play();
-            speedDelay =0;
-            PlayerSniperBullet bullet = new PlayerSniperBullet(bulletSpeed,bulletDamage);
-            getWorld().addObject(bullet, xPos,yPos);
-            
-        }
+        super.use(xPos, yPos);
     }
 }

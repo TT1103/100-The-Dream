@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.ArrayList;
 /**
  * Write a description of class Player here.
  * 
@@ -33,12 +33,15 @@ public class Player extends Actor
     int knockbackDelay=5;
     int knockbackStrength;
     int knockbackRotation;
-    
+    ArrayList<Weapon> weapons=new ArrayList<Weapon>();
     public void setup(){
         getWorld().addObject(p90,-100,-100);
         getWorld().addObject(sniper,-100,-100);
         healthBar=new PlayerHealth(1000, this);
         getWorld().addObject(healthBar, 180, 30);
+        
+        weapons.add(p90);
+        weapons.add(sniper);
     }
 
     /**
@@ -124,12 +127,13 @@ public class Player extends Actor
             int mY = mi.getY();
             int pX= getX();
             int pY=getY();
-
+            
             turnTowards(mX,mY);
 
         }
     }
-
+    boolean weaponswitch=false;
+    int weaponindex=0;
     public void controlWeapons(){
 
         if (Greenfoot.mousePressed(null)){
@@ -137,10 +141,32 @@ public class Player extends Actor
         }else if (Greenfoot.mouseClicked(null)){
             shooting = false;
         }
-
+        
+        //for weapon switching!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Needs some editing
+        if(weaponswitch==false){
+            if(Greenfoot.isKeyDown("q")){
+                weaponswitch=true;
+                weaponindex++;
+                if(weaponindex >= weapons.size()){
+                    weaponindex = 0;
+                }
+            }else if(Greenfoot.isKeyDown("e")){
+                weaponswitch=true;
+                weaponindex--;
+                if(weaponindex <0){
+                    weaponindex = weapons.size()-1;
+                }
+            }
+        }
+        if(!Greenfoot.isKeyDown("q") && !Greenfoot.isKeyDown("e")){
+            weaponswitch=false;
+        }
+        
+        
+        
         if(shooting&&knockback==false){
-            p90.use(getX(),getY());
-            //sniper.use(getX(),getY());
+            //p90.use(getX(),getY());
+            weapons.get(weaponindex).use(getX(),getY());
         }
     }
 }

@@ -1,9 +1,9 @@
 #BlueJ class context
-comment0.params=
-comment0.target=Weapon()
+comment0.params=weapon
+comment0.target=Weapon(java.lang.String)
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ Weapon\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-comment2.params=
-comment2.target=void\ use()
+comment2.params=xPos\ yPos
+comment2.target=void\ use(int,\ int)
 numComments=3
