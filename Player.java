@@ -73,7 +73,7 @@ public class Player extends Actor
         if(particleSpeed<15){
             particleSpeed=15;
         }
-        Particle par = new Particle(particleSpeed,5,damage/2);
+        Particle par = new Particle(particleSpeed,7,damage/2);
         getWorld().addObject(par,getX(), getY());
     }
 
