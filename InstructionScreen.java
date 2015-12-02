@@ -66,7 +66,6 @@ public class InstructionScreen extends World
 
         // If skip button is clicked, game will auto-start with no instructions
         if (skip.buttonClicked()) {
-            Greenfoot.delay (50);
             Greenfoot.setWorld (new Map());
         }
 
