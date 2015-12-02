@@ -68,6 +68,13 @@ public class Player extends Actor
 
     public void damage(int damage){
         healthBar.damage(damage);
+        //generate particles
+        int particleSpeed=damage/2;
+        if(particleSpeed<15){
+            particleSpeed=15;
+        }
+        Particle par = new Particle(particleSpeed,5,damage/2);
+        getWorld().addObject(par,getX(), getY());
     }
 
     public void knockback(int str, int rotation){

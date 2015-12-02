@@ -81,6 +81,7 @@ public class Dog extends Enemy
 
             Player player = (Player) p.get(0);
             player.damage(damage);
+            
             if(player.knockback==false){
                 player.knockback=true;
                 player.knockbackStrength=10;

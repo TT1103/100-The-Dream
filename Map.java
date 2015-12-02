@@ -41,7 +41,7 @@ public class Map extends World
             }
         }
 
-        for(int i =1 ; i< 5; i++){
+        for(int i =1 ; i< 2; i++){
             Dog d = new Dog(100);
             addObject(d, i*50, 600);
             d.setup();
