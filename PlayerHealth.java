@@ -35,13 +35,13 @@ public class PlayerHealth extends Actor
         getImage().scale(350, 20);
         getImage().setColor(Color.BLACK);
         getImage().drawRect(0,0,getImage().getWidth()-1, getImage().getHeight()-1);
-        
+
     }   
-    
+
     public void damage(int damage){
         health-=damage;
         getImage().setTransparency(0);
-        
+
         GreenfootImage newbar = new GreenfootImage(getImage().getWidth(), getImage().getHeight());
         if (health <= 0.25*startHealth){
             newbar.setColor(Color.RED);
@@ -54,5 +54,9 @@ public class PlayerHealth extends Actor
         newbar.fillRect(0,0, (int)(350 * ((double)health/startHealth)), getImage().getHeight());
         phn.healthchange(damage);
 
+    }
+
+    public int getHealth () {
+        return this.health;
     }
 }

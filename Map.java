@@ -8,7 +8,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Map extends World
 {
-
+    private Player player = new Player();
+    // private boolean gameOver = false;
+    
     /**
      * Constructor for objects of class Map.
      * 
@@ -18,14 +20,11 @@ public class Map extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 800, 1,false); 
         generateGraph();
-        Player player = new Player();
         addObject(player, 400,400);
         player.setup();
 
         // Layering the actors 
         setPaintOrder (PlayerHealthNumber.class, PlayerHealth.class,Player.class);
-        
-        //instructionScreen();
 
         for (int i =300; i < 700; i+=30){
 
@@ -62,6 +61,23 @@ public class Map extends World
                 Enemy.graph.put(String.valueOf(x) + " " + String.valueOf(y), new int[][] {{x+10,y-10},{x+10,y+10},{x-10,y-10},{x-10,y+10}});
             }
         }
+    }
+    
+    /**
+     * Method used to end the game and transition to game over screen with score.
+     * Code is currently not running. More implementations soon.
+     */
+    public void endGame () {
+        //if (player.getHealth() == 0) {
+        //    addObject (new GameOverScreen(), player.getX(), player.getY());
+        //    gameOver = true;
+        //}
+    }
+
+    public void act() {
+        //if (!gameOver) {
+        //    endGame();     
+        //}
     }
 
 }

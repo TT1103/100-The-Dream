@@ -27,12 +27,11 @@ public class StartButton extends IntroElements
                 setImage (new GreenfootImage ("StartButton.png")); 
             }
         }
-        if (Greenfoot.mouseClicked (null) && (mouse.getX() >= 322 && mouse.getX() <= 487 && 
-            mouse.getY() <= 669 && mouse.getY() >= 616)) { 
+        if (Greenfoot.mouseClicked (this)) { 
+            mouseClicked = true;
             setImage (new GreenfootImage ("SBClicked.png")); 
-            mouseClicked = true; 
         }
-        if (mouseClicked) { 
+        if (mouseClicked) {
             speed += 1; 
             setLocation (getX() + speed, getY()) ; 
             if (getX() == 799) { 

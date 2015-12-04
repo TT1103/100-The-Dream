@@ -39,7 +39,7 @@ public class Player extends Actor
         getWorld().addObject(sniper,-100,-100);
         healthBar=new PlayerHealth(1000, this);
         getWorld().addObject(healthBar, 180, 30);
-        
+
         weapons.add(p90);
         weapons.add(sniper);
     }
@@ -134,7 +134,7 @@ public class Player extends Actor
             int mY = mi.getY();
             int pX= getX();
             int pY=getY();
-            
+
             turnTowards(mX,mY);
 
         }
@@ -148,7 +148,7 @@ public class Player extends Actor
         }else if (Greenfoot.mouseClicked(null)){
             shooting = false;
         }
-        
+
         //for weapon switching!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Needs some editing
         if(weaponswitch==false){
             if(Greenfoot.isKeyDown("q")){
@@ -168,12 +168,15 @@ public class Player extends Actor
         if(!Greenfoot.isKeyDown("q") && !Greenfoot.isKeyDown("e")){
             weaponswitch=false;
         }
-        
-        
+
         
         if(shooting&&knockback==false){
             //p90.use(getX(),getY());
             weapons.get(weaponindex).use(getX(),getY());
         }
+    }
+
+    public int getHealth () {
+        return healthBar.getHealth();
     }
 }
