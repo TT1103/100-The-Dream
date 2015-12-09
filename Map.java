@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Map extends World
 {
     private Player player = new Player();
-    // private boolean gameOver = false;
+    private boolean gameOver = false;
     
     /**
      * Constructor for objects of class Map.
@@ -24,7 +24,7 @@ public class Map extends World
         player.setup();
 
         // Layering the actors 
-        setPaintOrder (PlayerHealthNumber.class, PlayerHealth.class,Player.class);
+        setPaintOrder (GameOver.class, PlayerHealthNumber.class, PlayerHealth.class,Player.class);
 
         for (int i =300; i < 700; i+=30){
 
@@ -68,16 +68,20 @@ public class Map extends World
      * Code is currently not running. More implementations soon.
      */
     public void endGame () {
-        //if (player.getHealth() == 0) {
-        //    addObject (new GameOverScreen(), player.getX(), player.getY());
-        //    gameOver = true;
-        //}
+        if (player.getHealth() <= 0) {
+           //addObject (new GameOver(), player.getX(), player.getY());
+           //gameOver = true;
+        }
     }
 
     public void act() {
-        //if (!gameOver) {
-        //    endGame();     
-        //}
+        if (!gameOver) {
+            endGame();     
+        }
+    }
+    
+    public boolean getGameStatus() {
+        return gameOver;
     }
 
 }

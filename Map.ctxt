@@ -9,4 +9,6 @@ comment2.target=void\ endGame()
 comment2.text=\r\n\ Method\ used\ to\ end\ the\ game\ and\ transition\ to\ game\ over\ screen\ with\ score.\r\n\ Code\ is\ currently\ not\ running.\ More\ implementations\ soon.\r\n
 comment3.params=
 comment3.target=void\ act()
-numComments=4
+comment4.params=
+comment4.target=boolean\ getGameStatus()
+numComments=5
