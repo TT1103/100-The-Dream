@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Knife extends Weapon
 {
     public Knife(){
-        super("knife");
+        //super("knife");
     }
     /**
      * Act - do whatever the Knife wants to do. This method is called whenever

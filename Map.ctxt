@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Map()
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Map.\r\n\ \r\n
+comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Map.\n\ \n
 comment1.params=
 comment1.target=void\ generateGraph()
 comment2.params=
 comment2.target=void\ endGame()
-comment2.text=\r\n\ Method\ used\ to\ end\ the\ game\ and\ transition\ to\ game\ over\ screen\ with\ score.\r\n\ Code\ is\ currently\ not\ running.\ More\ implementations\ soon.\r\n
+comment2.text=\n\ Method\ used\ to\ end\ the\ game\ and\ transition\ to\ game\ over\ screen\ with\ score.\n\ Code\ is\ currently\ not\ running.\ More\ implementations\ soon.\n
 comment3.params=
 comment3.target=void\ act()
 comment4.params=

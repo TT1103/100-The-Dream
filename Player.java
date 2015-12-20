@@ -70,10 +70,22 @@ public class Player extends Actor
         healthBar.damage(damage);
         //generate particles
         int particleSpeed=damage/2;
+        int particleSize = damage/10;
+        int particleNumber = damage/2;
         if(particleSpeed<15){
             particleSpeed=15;
         }
-        Particle par = new Particle(particleSpeed,5,damage/2);
+        if(particleSpeed > 30){
+            particleSpeed =30;
+        }
+        if(particleSize <5){
+            particleSize = 5;
+        }
+        if(particleNumber >10){
+            particleSize = 10;
+        }
+       // if(particleNumber < 
+        Particle par = new Particle(particleSpeed,particleSize,particleNumber); //5
         getWorld().addObject(par,getX(), getY());
     }
 
