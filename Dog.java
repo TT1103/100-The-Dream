@@ -68,7 +68,7 @@ public class Dog extends Enemy
             turnTowards(p.getX(),p.getY());
             move(speed);
         }else{
-            moveToDefault();
+           // moveToDefault();
         }
 
     }

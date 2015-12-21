@@ -1,0 +1,39 @@
+This is a list of the mapping codes for generating maps
+
+
+
+
+Tree: tree
+Rock: rock
+Sandbag: sandbag
+Mortar tower: mortar
+Sentry gun: sentry
+Dog: dog
+Gunman: gunman
+Knife man: knifeman
+Background: name of back ground (grass, rock, dirt)
+
+For everything, there will be two ints after separated by space. Indicates x y pos
+
+Note that for some, there will be more than 3 inputs on a line separated by spaces. Ex: dog has start and end positions
+
+Up: n_map_x_y+1.txt
+Down: n_map_x_y-1.txt
+etc.
+
+
+first line always declares background
+
+
+
+
+Level naming convention
+
+level_n (this is a folder)
+n is an integer
+
+Map naming convention:
+
+n_map_x_y.txt
+n is integer
+x and y are coordinates

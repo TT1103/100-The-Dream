@@ -97,6 +97,9 @@ public class Player extends Actor
 
     public void setLocation(int x, int y) {
         if (getWorld().getObjectsAt(x, y, Impassable.class).isEmpty()) {
+            if(x <0 || x >800 || y <0 || y >800){
+                return;
+            }
             super.setLocation(x, y);
         }
     }

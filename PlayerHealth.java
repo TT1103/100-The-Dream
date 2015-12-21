@@ -40,6 +40,9 @@ public class PlayerHealth extends Actor
 
     public void damage(int damage){
         health-=damage;
+        if(health <0){
+            health =0;
+        }
         getImage().setTransparency(0);
 
         GreenfootImage newbar = new GreenfootImage(getImage().getWidth(), getImage().getHeight());
@@ -53,6 +56,7 @@ public class PlayerHealth extends Actor
         setImage(newbar);
         newbar.fillRect(0,0, (int)(350 * ((double)health/startHealth)), getImage().getHeight());
         phn.healthchange(damage);
+        //getWorld().showText(String.valueOf(health),getX(),getY());
 
     }
 

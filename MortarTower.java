@@ -15,15 +15,15 @@ public class MortarTower extends Enemy
     public void act() 
     {
         delay--;
-        if(canSeePlayer()){
-            List l = getWorld().getObjects(Player.class);
-            Player p = (Player) l.get(0);
-            turnTowards(p.getX(),p.getY());
-            if(delay<0){
-                getWorld().addObject(new Mortar(),getX(),getY());
-                delay=100;
-            }
+        //if(canSeePlayer()){
+        List l = getWorld().getObjects(Player.class);
+        Player p = (Player) l.get(0);
+        turnTowards(p.getX(),p.getY());
+        if(delay<0){
+            getWorld().addObject(new Mortar(),getX(),getY());
+            delay=100;
         }
+       // }
         
         
         

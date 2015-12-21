@@ -48,6 +48,8 @@ public class Particle extends Actor
             if(speed>0){
                 move(speed);
                 speed--;//particle spreads and decelerates
+                
+                
             }
             if(getImage().getTransparency()!=0){
                 getImage().setTransparency(getImage().getTransparency()-1);//fade out

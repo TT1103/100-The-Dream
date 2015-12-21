@@ -24,7 +24,7 @@ public class Map extends World
         player.setup();
 
         // Layering the actors 
-        setPaintOrder (GameOver.class, PlayerHealthNumber.class, PlayerHealth.class,Player.class);
+        setPaintOrder (GameOver.class, PlayerHealthNumber.class, PlayerHealth.class, Tree.class,Player.class);
 
         for (int i =300; i < 700; i+=30){
 
@@ -52,6 +52,14 @@ public class Map extends World
         MortarTower m=new MortarTower(1000);
         addObject(m, 100,100);
         m.setup();
+        
+        
+        Tree t = new Tree();
+        addObject(t,300,500);
+        Tree t1 = new Tree();
+        addObject(t1,350,600);
+        Tree t2 = new Tree();
+        addObject(t2,250,400);
     }
 
 
