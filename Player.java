@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Player extends Actor
+public class Player extends UnScrollable
 {
     int screenX= 800;
     int screenY= 800;
@@ -24,7 +24,7 @@ public class Player extends Actor
 
     boolean moving =false;
     String direction ="";
-    int speed =3;
+    int speed =2;
     boolean knockback=false;
     PlayerHealth healthBar;
     P90 p90 = new P90();

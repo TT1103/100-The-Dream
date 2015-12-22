@@ -12,6 +12,7 @@ public class Mortar extends Actor
     Player player;
     int x;
     int y;
+    int speed = 15;
     MortarTarget target;
     public Mortar(){
         target=new MortarTarget(this);
@@ -28,8 +29,10 @@ public class Mortar extends Actor
             getWorld().addObject(target,x,y);
             start=false;
         }
+        x=target.getX();
+        y = target.getY();
         turnTowards(x,y);
-        move(20);
+        move(15);
         if(getX()<=x+10&&getY()<=y+10&&getX()>=x-10&&getY()>=y-10){
             if(isTouching(Player.class)){
                 player.damage(100);

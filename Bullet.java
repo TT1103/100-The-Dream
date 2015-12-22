@@ -21,6 +21,7 @@ public class Bullet extends Actor
     public Bullet(int speed, int damage){
         markerX=Greenfoot.getMouseInfo().getX();
         markerY=Greenfoot.getMouseInfo().getY();
+
         this.speed=speed;
         this.damage=damage;
     }
@@ -35,15 +36,16 @@ public class Bullet extends Actor
 
             getX=(double)getX();
             getY=(double)getY();
+          
             turnTowards(markerX, markerY);
             double h=Math.sqrt(Math.pow(markerY-getY, 2)+Math.pow(markerX-getX, 2));
             x0=(markerX-getX)*speed/h;
             y0=(markerY-getY)*speed/h;
             start=false;
         }
-        getX=getX+x0;
-        getY=getY+y0;
-        setLocation((int)getX,(int)getY);
+        //getX=getX+x0;
+        //getY=getY+y0;
+        setLocation(getX()+((int)x0),getY()+((int)y0));
         detectCollision();
     }    
     
