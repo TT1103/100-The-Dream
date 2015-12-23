@@ -25,6 +25,9 @@ public class Map extends World
     int curMapX=0; //indicates which map it is on
     int curMapY=0;
     GreenfootImage background = new GreenfootImage("grass.png");
+    
+    
+    boolean fadedIn = false;
     /**
      * Constructor for objects of class Map.
      * 
@@ -51,11 +54,11 @@ public class Map extends World
         player.setup();
         curLevel = level;
         // Layering the actors 
-        setPaintOrder (GameOver.class, PlayerHealthNumber.class, PlayerHealth.class, Tree.class,Player.class);
+        setPaintOrder (Shade.class,GameOver.class, PlayerHealthNumber.class, PlayerHealth.class, Tree.class,Player.class);
         
         String mapFile = "data/level_"+level+"/"+level+"_map_0_0.txt";
         loadMap(mapFile);
-        
+        fadeIn();
     }
     
     public Map(int level, Player player)
@@ -67,10 +70,10 @@ public class Map extends World
         player.setup();
         curLevel = level;
         // Layering the actors 
-        setPaintOrder (GameOver.class, PlayerHealthNumber.class, PlayerHealth.class, Tree.class,Player.class);
+        setPaintOrder (Shade.class,GameOver.class, PlayerHealthNumber.class, PlayerHealth.class, Tree.class,Player.class);
         
         String mapFile = "data/level_"+level+"/"+level+"_map_0_0.txt";
-        
+        fadeIn();
     }
     
     public Map(int level, Player player,String mapFile, String dirFrom, int newX, int newY){    
@@ -79,11 +82,13 @@ public class Map extends World
         addObject(player, 400,400);
         player.setup();
         curLevel = level;
-        setPaintOrder (GameOver.class, PlayerHealthNumber.class, PlayerHealth.class, Tree.class,Player.class);
+        setPaintOrder (Shade.class,GameOver.class, PlayerHealthNumber.class, PlayerHealth.class, Tree.class,Player.class);
         curMapX=newX;
         curMapY=newY;
         loadMap(mapFile);
         System.out.println("Switched from: " + dirFrom);
+        
+        
         //used to set player position
         int offset =48; //off set for setting player location according to passages
         if(dirFrom.equals("down")){
@@ -103,8 +108,10 @@ public class Map extends World
             LeftPassage d = li.get(0);
             player.setLocation(d.getX()+offset, d.getY());
         }
+        
+        
     }
-
+    
     
     public void generateGraph(){
         for (int x = 10 ; x <= 790; x+=10){
@@ -130,6 +137,11 @@ public class Map extends World
         //    endGame();     
        // }
         scrollWorld();
+        
+        if(!fadedIn){
+            fadedIn=true;
+            fadeIn();
+        }
     }
     
     public void scrollWorld(){
@@ -288,8 +300,34 @@ public class Map extends World
             dirFrom = "up";
         }
         System.out.println("Switching maps: "+ newMapFile + " "+ dirFrom);
+        fadeOut();
         Greenfoot.setWorld(new Map(curLevel, player, newMapFile, dirFrom,newX,newY));
+        
+    }
     
+    public void fadeIn(){
+        
+        Shade shade = new Shade();
+        addObject(shade,getWidth()/2, getHeight()/2);
+        
+        for (int i =255; i >=0; i-=15){
+          
+            shade.getImage().setTransparency(i);
+            Greenfoot.delay(1);
+        }
+        removeObject(shade);
+        
+        
+    }
+    
+    public void fadeOut(){
+        Shade shade = new Shade();
+        addObject(shade,getWidth()/2, getHeight()/2);
+        for (int i =0; i <=255; i+=15){
+            shade.getImage().setTransparency(i);
+            Greenfoot.delay(1);
+        }
+       // removeObject(shade);
     }
 
 }
