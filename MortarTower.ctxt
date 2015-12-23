@@ -2,5 +2,7 @@
 comment0.params=health
 comment0.target=MortarTower(int)
 comment1.params=
-comment1.target=void\ act()
-numComments=2
+comment1.target=MortarTower()
+comment2.params=
+comment2.target=void\ act()
+numComments=3

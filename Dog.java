@@ -21,7 +21,27 @@ public class Dog extends Enemy
         movingSprites[2] = new GreenfootImage("dog_moving3.png");
         movingSprites[3] = new GreenfootImage("dog_moving4.png");
         idleSprite = new GreenfootImage("dog_idle.png");
-        System.out.println(health);
+
+        damageDelay = 8;
+        maxDamageDelay = damageDelay;
+        damage =10;
+
+    }
+    
+    public Dog(){
+
+        super(100);
+        idleSprite = new GreenfootImage("dog_idle.png");
+        speed =4;
+        delay=21;
+        maxDelay=15;
+        movingSprites = new GreenfootImage[4];
+        movingSprites[0] = new GreenfootImage("dog_moving1.png");
+        movingSprites[1] = new GreenfootImage("dog_moving2.png");
+        movingSprites[2] = new GreenfootImage("dog_moving3.png");
+        movingSprites[3] = new GreenfootImage("dog_moving4.png");
+        idleSprite = new GreenfootImage("dog_idle.png");
+
         damageDelay = 8;
         maxDamageDelay = damageDelay;
         damage =10;

@@ -33,11 +33,16 @@ public class Player extends UnScrollable
     int knockbackDelay=5;
     int knockbackStrength;
     int knockbackRotation;
+    
+    int maxHealth = 1000;
+    int curHealth = maxHealth;
+    
+    
     ArrayList<Weapon> weapons=new ArrayList<Weapon>();
     public void setup(){
         getWorld().addObject(p90,-100,-100);
         getWorld().addObject(sniper,-100,-100);
-        healthBar=new PlayerHealth(1000, this);
+        healthBar=new PlayerHealth(curHealth,maxHealth, this);
         getWorld().addObject(healthBar, 180, 30);
 
         weapons.add(p90);
@@ -50,7 +55,7 @@ public class Player extends UnScrollable
      */
     public void act() 
     {
-
+        curHealth = getHealth();
         if(knockback){
             int originalRotation = getRotation();
             setRotation(knockbackRotation);
@@ -97,9 +102,9 @@ public class Player extends UnScrollable
 
     public void setLocation(int x, int y) {
         if (getWorld().getObjectsAt(x, y, Impassable.class).isEmpty()) {
-            if(x <0 || x >800 || y <0 || y >800){
-                return;
-            }
+            //if(x <0 || x >800 || y <0 || y >800){
+            //    return;
+            //}
             super.setLocation(x, y);
         }
     }

@@ -12,6 +12,10 @@ public class MortarTower extends Enemy
     public MortarTower(int health){
         super(health);
     }
+    
+    public MortarTower(){
+        super(1000);
+    }
     public void act() 
     {
         delay--;

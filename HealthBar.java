@@ -6,13 +6,15 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class HealthBar extends UnScrollable
+public class HealthBar extends Actor
 {
     boolean start;
 
     int health;
     int startHealth;
     Enemy parent;
+    
+    
     
     public HealthBar(int health, Enemy parent){
         getImage().setColor(Color.GREEN);

@@ -6,7 +6,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlayerHealth extends Actor
+public class PlayerHealth extends UnScrollable
 {
     boolean start=true;
     int health;
@@ -19,6 +19,18 @@ public class PlayerHealth extends Actor
         this.parent=parent;
         this.startHealth=health;
         this.health = health;
+        phn=new PlayerHealthNumber(health);
+    }
+    
+    public PlayerHealth(int curHealth, int startHealth, Player parent){
+        
+        GreenfootImage bar = new GreenfootImage(getImage().getWidth(), getImage().getHeight());
+        bar.setColor(Color.GREEN);
+        bar.fillRect(0,0, (int)(32 * ((double)curHealth/startHealth)), getImage().getHeight());
+        setImage(bar);
+        this.parent = parent;
+        this.startHealth=startHealth;
+        this.health = curHealth;
         phn=new PlayerHealthNumber(health);
     }
 

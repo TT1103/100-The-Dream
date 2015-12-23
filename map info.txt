@@ -13,6 +13,11 @@ Gunman: gunman
 Knife man: knifeman
 Background: name of back ground (grass, rock, dirt)
 
+uppassage
+downpassage
+leftpassage
+rightpassage
+
 For everything, there will be two ints after separated by space. Indicates x y pos
 
 Note that for some, there will be more than 3 inputs on a line separated by spaces. Ex: dog has start and end positions

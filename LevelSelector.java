@@ -13,6 +13,7 @@ public class LevelSelector extends World
     String[] completedLevels;
     Player player; //Stores the player stuff
     String[] inventory;
+    StartButton sb;
     /**
      * Constructor for objects of class LevelSelector.
      * 
@@ -22,25 +23,17 @@ public class LevelSelector extends World
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 800, 1,false); 
         
-        //hard code levels here
-        
-        /*
-         *  
-         *  if level is selected.
-         *      load first map of the level
-         *      Greenfoot.set
-         *      Map m = new Map("file name of map to load", player);
-         *      Greenfoot.setWorld(m);
-         *      
-         */
+        sb = new StartButton();
+        addObject(sb, 400,400);
+       
         
     }
     
-    
-    public void parseData(){
-        //read data from file and add to game
-        /*
-         * player.inventory = inventory
-         */
+    public void act(){
+         if(sb.checkMouseClick()){
+            Greenfoot.setWorld(new Map(1));
+        }
     }
+    
+
 }
