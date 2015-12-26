@@ -66,7 +66,7 @@ public class InstructionScreen extends World
 
         // If skip button is clicked, game will auto-start with no instructions
         if (skip.buttonClicked()) {
-            Greenfoot.setWorld (new Map());
+            Greenfoot.setWorld (new LevelSelector());
         }
 
         changeInstructionScreens();
@@ -110,7 +110,7 @@ public class InstructionScreen extends World
                     addObject (back, 79, 705);
                 } 
             } else {
-                Greenfoot.setWorld (new Map());
+                Greenfoot.setWorld (new LevelSelector());
             }
             next.buttonNotClicked();
         }
