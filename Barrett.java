@@ -10,6 +10,7 @@ public class Barrett extends Weapon
 {
     int bulletSpeed =50;
     int bulletDamage=400;
+    GreenfootImage gunSprite = new GreenfootImage("gun_sprite.png");
     public Barrett(){
         //super("barrett");
         super();
@@ -25,15 +26,18 @@ public class Barrett extends Weapon
         super.act();
     }    
     
-    public void use(int xPos, int yPos){ //x and y: current player pos
-       // super.use(xPos, yPos);
+    public void use(Player player){ //x and y: current player pos
+       GreenfootImage gunImage = new GreenfootImage(player.getImage());
+       gunImage.drawImage(gunSprite, 12,0);
+       player.setImage(gunImage);
+       
        if (speedDelay >= speed){
-                GreenfootSound effect = new GreenfootSound("p90_shoot.wav");
-                effect.setVolume(75);
-                effect.play();
-                speedDelay =0;
-                PlayerSniperBullet bullet = new PlayerSniperBullet(50,400);
-                getWorld().addObject(bullet, xPos,yPos);
-            }
+            GreenfootSound effect = new GreenfootSound("p90_shoot.wav");
+            effect.setVolume(75);
+            effect.play();
+            speedDelay =0;
+            PlayerSniperBullet bullet = new PlayerSniperBullet(50,400);
+            getWorld().addObject(bullet, player.getX(), player.getY());
+        }
     }
 }

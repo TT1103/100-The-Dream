@@ -27,6 +27,8 @@ public class Map extends World
     GreenfootImage background = new GreenfootImage("grass.png");
 
     boolean fadedIn = false;
+    
+    
     /**
      * Constructor for objects of class Map.
      * 
@@ -110,7 +112,7 @@ public class Map extends World
     }
 
     public void setPaintOrder(){
-        super.setPaintOrder(Shade.class,GameOver.class, Text.class, PlayerHealthBar.class, PlayerExpBar.class, Tree.class,Player.class);
+        super.setPaintOrder(Shade.class,Text.class,GameOver.class,  PlayerHealthBar.class, PlayerExpBar.class, Tree.class,Player.class);
     }
 
     public void generateGraph(){
@@ -127,14 +129,14 @@ public class Map extends World
      */
     public void endGame () {
         if (player.curHealth <= 0) {
-            addObject (new GameOver(), player.getX(), player.getY());
+            addObject (new GameOver(), 400, 400);
             gameOver = true;
         }
     }
 
     public void act() {
-        if (!gameOver) {
-            //endGame();     
+        if (!gameOver) { //if not gameover, check to see if it is
+            endGame();     
         }
 
         scrollWorld();
@@ -160,11 +162,9 @@ public class Map extends World
 
         List<Actor> li = getObjects(null);
         for(Actor a : li){
-            if(!a.getClass().equals(Player.class) && !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerExpBar.class)){
+            if(!a.getClass().equals(Player.class) && !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerExpBar.class)&& !a.getClass().equals(Slash.class)){
                 a.setLocation(a.getX()-offX,a.getY()-offY);
-
             }
-
         }
 
         scrollBackground(-offX,-offY);

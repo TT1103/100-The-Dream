@@ -1,5 +1,5 @@
 import greenfoot.*;
-
+import java.util.Timer;
 /**
  * Write a description of class GameOver here.
  * 
@@ -10,7 +10,7 @@ public class GameOver extends Actor
 {
     private boolean displayScore = false;
     private boolean createdTimer = false;
-    Stopwatch s;
+    int time =4;
 
     /**
      * Act - do whatever the GameOver wants to do. This method is called whenever
@@ -19,18 +19,25 @@ public class GameOver extends Actor
     public void act() 
     {
         Map map = (Map) getWorld();
-        if (map.getGameStatus()){
+        if (map.getGameStatus() && time>0){
             GreenfootImage image = getImage();
             image.scale(image.getWidth() * 2, image.getHeight() * 2);
             setImage(image);
-            if (!createdTimer) {
-                s = new Stopwatch();
-                createdTimer = true;
-            }
+            
         }
-        if (createdTimer && s.elapsedTime() >= 0.05) {
-            setImage ("GameOverScreen.png");  
-            Greenfoot.stop();
+        time--;
+        if (time <0) {
+            setLocation(400,400);
+            setImage ("GameOverScreen.png"); 
+       
+            Greenfoot.delay(200);
+            Player player = (Player) getWorld().getObjects(Player.class).get(0);
+            if (player !=null){ 
+                //return to level.
+                ((Map) getWorld()).fadeOut();
+                
+                Greenfoot.setWorld(new LevelSelector());
+            }
         }
     }    
 

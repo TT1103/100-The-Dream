@@ -57,7 +57,7 @@ public class EnemyBullet extends Actor
     public void detectCollision(){
         Player player =(Player) getOneIntersectingObject(Player.class);
         if (player != null){
-            player.damage(20);
+            player.damage(damage);
             if(player.knockback==false){
                 player.knockback=true;
                 player.knockbackStrength=5;

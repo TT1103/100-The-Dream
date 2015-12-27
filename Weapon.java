@@ -14,20 +14,6 @@ public class Weapon extends Actor
 
     GreenfootSound soundEffect;
     String weapon;
-    /*public Weapon(String weapon){
-        this.weapon=weapon;
-        if(weapon.equals("p90")){
-            speed =10;
-            speedDelay =speed;
-            soundEffect = new GreenfootSound("p90_shoot.wav");
-        }else if(weapon.equals("barrett")){
-            speed =0;//50
-            speedDelay =speed;
-            soundEffect = new GreenfootSound("p90_shoot.wav");
-        }
-    }*/
-    
-    
 
     /**
      * Act - do whatever the Weapon wants to do. This method is called whenever
@@ -40,7 +26,7 @@ public class Weapon extends Actor
         }
     }    
 
-    public void use(int xPos, int yPos){
+    public void use(Player player){
         
     }
 }

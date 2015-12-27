@@ -8,8 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Knife extends Weapon
 {
+
+    int slashDamage=30;
+    
     public Knife(){
-        //super("knife");
+        super();
+        speedDelay=18;
+        speed =18;
     }
     /**
      * Act - do whatever the Knife wants to do. This method is called whenever
@@ -19,4 +24,16 @@ public class Knife extends Weapon
     {
         super.act();
     }    
+    
+    public void use(Player player){
+        
+        if(speedDelay >=speed){
+            Slash s = new Slash(slashDamage);
+            getWorld().addObject(s, player.getX(),player.getY());
+            GreenfootSound effect = new GreenfootSound("slash_effect.wav");
+            effect.setVolume(75);
+            effect.play();
+            speedDelay =0;
+        }
+    }
 }

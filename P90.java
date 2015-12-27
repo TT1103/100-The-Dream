@@ -10,6 +10,7 @@ public class P90 extends Weapon
 {
     int bulletSpeed =20;
     int bulletDamage=30;
+    GreenfootImage gunSprite = new GreenfootImage("gun_sprite.png");
     public P90(){
         //super("p90");
         super();
@@ -25,14 +26,17 @@ public class P90 extends Weapon
         super.act();
     }    
     
-    public void use(int xPos, int yPos){ //x and y: current player pos
+    public void use(Player player){ //x and y: current player pos
+       GreenfootImage gunImage = new GreenfootImage(player.getImage());
+       gunImage.drawImage(gunSprite, 12,0);
+       player.setImage(gunImage);
         if (speedDelay >= speed){
             GreenfootSound effect = new GreenfootSound("p90_shoot.wav");
             effect.setVolume(75);
             effect.play();
             speedDelay =0;
             PlayerBullet bullet = new PlayerBullet(20,30);
-            getWorld().addObject(bullet, xPos,yPos);
+            getWorld().addObject(bullet, player.getX(),player.getY());
 
         }
     }

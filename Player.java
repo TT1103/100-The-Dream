@@ -19,6 +19,8 @@ public class Player extends UnScrollable implements Serializable
             new GreenfootImage("walking5.png"),
             new GreenfootImage("walking6.png"),
         };
+        
+    
     int delay = 25;
     int maxDelay = 25;
     GreenfootImage idleSprite = new GreenfootImage("idle.png");
@@ -31,6 +33,7 @@ public class Player extends UnScrollable implements Serializable
     
     P90 p90 = new P90();
     Barrett sniper = new Barrett();
+    Knife knife = new Knife();
     boolean shooting =false;
     int knockbackDelay=5;
     int knockbackStrength;
@@ -94,6 +97,7 @@ public class Player extends UnScrollable implements Serializable
     public void setup(){
         getWorld().addObject(p90,-100,-100);
         getWorld().addObject(sniper,-100,-100);
+        getWorld().addObject(knife,-100,-100);
         //healthBar=new PlayerHealth(curHealth,maxHealth, this);
         //getWorld().addObject(healthBar, 180, 30);
         hud = new HUD(this);
@@ -101,6 +105,7 @@ public class Player extends UnScrollable implements Serializable
         
         weapons.add(p90);
         weapons.add(sniper);
+        weapons.add(knife);
     }
 
     /**
@@ -251,7 +256,7 @@ public class Player extends UnScrollable implements Serializable
 
         
         if(shooting&&knockback==false){
-            weapons.get(weaponindex).use(getX(),getY());
+            weapons.get(weaponindex).use(this);
         }
     }
     
