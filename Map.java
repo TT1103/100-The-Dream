@@ -129,15 +129,16 @@ public class Map extends World
      */
     public void endGame () {
         if (player.curHealth <= 0) {
-           //addObject (new GameOver(), player.getX(), player.getY());
-           //gameOver = true;
+           addObject (new GameOver(), player.getX(), player.getY());
+           gameOver = true;
         }
     }
 
     public void act() {
-        //if (!gameOver) {
-        //    endGame();     
-       // }
+        if (!gameOver) {
+          //endGame();     
+        }
+        
         scrollWorld();
         
         if(!fadedIn){

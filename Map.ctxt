@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Map()
-comment0.text=\n\ Constructor\ for\ objects\ of\ class\ Map.\n\ \n
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Map.\r\n\ \r\n
 comment1.params=level
 comment1.target=Map(int)
 comment10.params=
@@ -14,7 +14,7 @@ comment13.params=filename
 comment13.target=void\ loadMap(java.lang.String)
 comment14.params=changeX\ changeY
 comment14.target=void\ changeMap(int,\ int)
-comment14.text=\n\ x\ y\ indicates\ how\ much\ to\ change\n\ y\:\ +\ up\ ;\ -\ down\n\ x\:\ +\ right;\ -\ left\n\ \n
+comment14.text=\r\n\ x\ y\ indicates\ how\ much\ to\ change\r\n\ y\:\ +\ up\ ;\ -\ down\r\n\ x\:\ +\ right;\ -\ left\r\n\ \r\n
 comment15.params=
 comment15.target=void\ fadeIn()
 comment16.params=
@@ -29,7 +29,7 @@ comment5.params=
 comment5.target=void\ generateGraph()
 comment6.params=
 comment6.target=void\ endGame()
-comment6.text=\n\ Method\ used\ to\ end\ the\ game\ and\ transition\ to\ game\ over\ screen\ with\ score.\n\ Code\ is\ currently\ not\ running.\ More\ implementations\ soon.\n
+comment6.text=\r\n\ Method\ used\ to\ end\ the\ game\ and\ transition\ to\ game\ over\ screen\ with\ score.\r\n\ Code\ is\ currently\ not\ running.\ More\ implementations\ soon.\r\n
 comment7.params=
 comment7.target=void\ act()
 comment8.params=

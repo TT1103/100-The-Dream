@@ -1,6 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 import java.io.*;
+
 /**
  * Write a description of class LevelSelector here.
  * 
@@ -12,17 +13,16 @@ public class LevelSelector extends World
     //variables for game data
     String[] completedLevels;
     Player player; //Stores the player stuff
-  
 
     // Buttons for level selection
-    private Level1 one = new Level1();
-    private Level2 two = new Level2();
-    private Level3 three = new Level3();
-    private Level4 four = new Level4();
-    private Level5 five = new Level5();
-    
-    boolean newGame=false; //if it is a new game or not
-    
+    private LevelSelectorButtons one = new LevelSelectorButtons("Level1");
+    private LevelSelectorButtons two = new LevelSelectorButtons("Level2");
+    private LevelSelectorButtons three = new LevelSelectorButtons("Level3");
+    private LevelSelectorButtons four = new LevelSelectorButtons("Level4");
+    private LevelSelectorButtons five = new LevelSelectorButtons("Level5");
+
+    boolean newGame = false; //if it is a new game or not
+
     /**
      * Constructor for objects of class LevelSelector.
      * 
@@ -38,13 +38,15 @@ public class LevelSelector extends World
         addObject (three, 345, 481);
         addObject (four, 469, 481);
         addObject (five, 587, 481);
+        
+        // Creating the new game 
         newGame = !loadData();
     }
 
     public void act(){
         // Check for mouse click of each buttons to determine level selection
-        MouseInfo mouse = Greenfoot.getMouseInfo();
         int level=-1;
+        
         if (Greenfoot.mouseClicked(one)) {
             level=1;
         } else if (Greenfoot.mouseClicked(two)) {
@@ -56,30 +58,31 @@ public class LevelSelector extends World
         } else if (Greenfoot.mouseClicked(five)) {
             level=5;
         }
-        if(level >0){
+        
+        if(level > 0){
             if (newGame){
                 Greenfoot.setWorld (new Map(level));
             }else{
                 Greenfoot.setWorld (new Map(level,player));
             }
         }
+        
+        
     }
-    
-    
+
     public boolean loadData(){ //loads previous save data
         File file = new File("data/player_data.txt");
         if(!file.exists()){ //there has been no save data
-            
             return false; //load data failed
         } 
-        
+
         try{ //there is save data, now read it
             FileInputStream fileIn = new FileInputStream("data/player_data.txt");
             ObjectInputStream objIn = new ObjectInputStream (fileIn);
-            
+
             PlayerData playerData = (PlayerData)objIn.readObject();
             player = new Player(playerData);
-           
+
             fileIn.close();
             objIn.close();
         }catch (Exception ex){ //start new game if we can't read the file
