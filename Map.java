@@ -91,7 +91,7 @@ public class Map extends World
         System.out.println("Switched from: " + dirFrom);
 
         //used to set player position
-        int offset =48; //off set for setting player location according to passages
+        int offset =64; //off set for setting player location according to passages
         if(dirFrom.equals("down")){
             List<DownPassage> li = getObjects(DownPassage.class);
             DownPassage d = li.get(0);

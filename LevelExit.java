@@ -15,7 +15,7 @@ public class LevelExit extends Actor
     public void act() 
     {
         Player player = (Player)getOneIntersectingObject(Player.class);
-        if (player !=null){ //player touches
+        if (player !=null && Math.sqrt(Math.pow(getX()-player.getX(),2) + Math.pow(getY()-player.getY(),2)) <32  ){ //player touches
             //return to level.
             ((Map) getWorld()).fadeOut();
             player.saveData();

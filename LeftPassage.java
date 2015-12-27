@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class LeftPassage extends Actor
+public class LeftPassage extends Passage
 {
     /**
      * Act - do whatever the LeftPassage wants to do. This method is called whenever
@@ -14,7 +14,8 @@ public class LeftPassage extends Actor
      */
     public void act() 
     {
-        if (getOneIntersectingObject(Player.class) !=null){
+        Player p = (Player)getOneIntersectingObject(Player.class);
+        if (p!=null &&  Math.abs(getX()-p.getX()) <range){
             ((Map)getWorld()).changeMap(-1,0);
         }
     }    
