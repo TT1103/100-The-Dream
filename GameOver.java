@@ -6,10 +6,11 @@ import greenfoot.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class GameOver extends GameOverElements
+public class GameOver extends Actor
 {
     private boolean displayScore = false;
-    private boolean initializedTimer = false;
+    private boolean createdTimer = false;
+    Stopwatch s;
 
     /**
      * Act - do whatever the GameOver wants to do. This method is called whenever
@@ -20,8 +21,17 @@ public class GameOver extends GameOverElements
         Map map = (Map) getWorld();
         if (map.getGameStatus()){
             GreenfootImage image = getImage();
-            image.scale(image.getWidth() + 400, image.getHeight() + 400);
+            image.scale(image.getWidth() * 2, image.getHeight() * 2);
             setImage(image);
+            if (!createdTimer) {
+                s = new Stopwatch();
+                createdTimer = true;
+            }
+        }
+        if (createdTimer && s.elapsedTime() >= 0.05) {
+            setImage ("GameOverScreen.png");  
+            Greenfoot.stop();
         }
     }    
+
 }

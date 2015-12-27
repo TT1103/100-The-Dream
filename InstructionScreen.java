@@ -60,7 +60,6 @@ public class InstructionScreen extends World
             if (!addSkipIcon()) {
                 addSkipIcon();
             }
-            //addObject (back, 79, 720);
             popInstructions = true;
         }
 

@@ -11,22 +11,21 @@ public class Map extends World
 {
     private Player player;
     private boolean gameOver = false;
-    
+
     //absolute size of the world
     //int worldX =1200;
     //int worldY = 1200; 
-    
+
     //current position within the world
     int curX =0;
     int curY=0;
-    
+
     int curLevel;
-    
+
     int curMapX=0; //indicates which map it is on
     int curMapY=0;
     GreenfootImage background = new GreenfootImage("grass.png");
-    
-    
+
     boolean fadedIn = false;
     /**
      * Constructor for objects of class Map.
@@ -44,7 +43,7 @@ public class Map extends World
         // Layering the actors 
         setPaintOrder();
     }
-    
+
     public Map(int level)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -55,12 +54,12 @@ public class Map extends World
         curLevel = level;
         // Layering the actors 
         setPaintOrder();
-        
+
         String mapFile = "data/level_"+level+"/"+level+"_map_0_0.txt";
         loadMap(mapFile);
         fadeIn();
     }
-    
+
     public Map(int level, Player player)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -71,12 +70,12 @@ public class Map extends World
         curLevel = level;
         // Layering the actors 
         setPaintOrder();
-        
+
         String mapFile = "data/level_"+level+"/"+level+"_map_0_0.txt";
         loadMap(mapFile);
         fadeIn();
     }
-    
+
     public Map(int level, Player player,String mapFile, String dirFrom, int newX, int newY){    
         super(800, 800, 1,false); 
         this.player=player;
@@ -88,8 +87,7 @@ public class Map extends World
         curMapY=newY;
         loadMap(mapFile);
         System.out.println("Switched from: " + dirFrom);
-        
-        
+
         //used to set player position
         int offset =48; //off set for setting player location according to passages
         if(dirFrom.equals("down")){
@@ -110,11 +108,11 @@ public class Map extends World
             player.setLocation(d.getX()+offset, d.getY());
         }
     }
-    
+
     public void setPaintOrder(){
         super.setPaintOrder(Shade.class,GameOver.class, Text.class, PlayerHealthBar.class, PlayerExpBar.class, Tree.class,Player.class);
     }
-    
+
     public void generateGraph(){
         for (int x = 10 ; x <= 790; x+=10){
             for (int y =10 ; y <=790; y+=10){
@@ -122,59 +120,58 @@ public class Map extends World
             }
         }
     }
-    
+
     /**
      * Method used to end the game and transition to game over screen with score.
      * Code is currently not running. More implementations soon.
      */
     public void endGame () {
         if (player.curHealth <= 0) {
-           addObject (new GameOver(), player.getX(), player.getY());
-           gameOver = true;
+            addObject (new GameOver(), player.getX(), player.getY());
+            gameOver = true;
         }
     }
 
     public void act() {
         if (!gameOver) {
-          //endGame();     
+            //endGame();     
         }
-        
+
         scrollWorld();
-        
+
         if(!fadedIn){
             fadedIn=true;
             fadeIn();
         }
     }
-    
+
     public void scrollWorld(){
         int pX = player.getX();
         int pY=player.getY();
         int offY = pY-getHeight()/2;
         int offX = pX-getWidth()/2;
-        
+
         if (offY ==0 && offX==0){ //already in middle, no need to move
             return;
         }
-        
-      
+
         //System.out.println(curX +" " + curY);
         player.setLocation(400,400);
-        
+
         List<Actor> li = getObjects(null);
         for(Actor a : li){
             if(!a.getClass().equals(Player.class) && !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerExpBar.class)){
                 a.setLocation(a.getX()-offX,a.getY()-offY);
-                
+
             }
-            
+
         }
-        
+
         scrollBackground(-offX,-offY);
         curX+=offX;
         curY += offY;
     }
-    
+
     protected final void scrollBackground(int offX, int offY) {
         int x;
         int y;
@@ -198,25 +195,24 @@ public class Map extends World
             }
         }
     }
+
     public boolean getGameStatus() {
         return gameOver;
     }
-    
+
     public int getWorldX(){ //return absolute x
         return curX;
     }
-    
+
     public int getWorldY(){//return absolute y
         return curY;
     }
-    
-    
+
     public void loadMap(String filename){
-        
         File file = new File(filename);
         try{
             Scanner input = new Scanner(file);
-            
+
             if(input.hasNextLine()){
                 String line = input.nextLine();
                 //declare background
@@ -229,7 +225,7 @@ public class Map extends World
                 String name = temp[0];
                 int x = Integer.valueOf(temp[1]);
                 int y = Integer.valueOf(temp[2]);
-                
+
                 //if statement time....
                 if(name.equals("tree")){
                     Tree t = new Tree();
@@ -282,7 +278,7 @@ public class Map extends World
             ex.printStackTrace();
         }
     }
-    
+
     /**
      * x y indicates how much to change
      * y: + up ; - down
@@ -293,8 +289,7 @@ public class Map extends World
         int newX = curMapX+changeX;
         int newY = curMapY+changeY;
         String newMapFile = "data/level_"+curLevel+"/"+curLevel+"_map_"+newX+"_"+newY+".txt";
-        
-        
+
         String dirFrom="up";
         if (changeX >0){//going right
             dirFrom = "left";
@@ -308,24 +303,23 @@ public class Map extends World
         System.out.println("Switching maps: "+ newMapFile + " "+ dirFrom);
         fadeOut();
         Greenfoot.setWorld(new Map(curLevel, player, newMapFile, dirFrom,newX,newY));
-        
+
     }
-    
+
     public void fadeIn(){
-        
+
         Shade shade = new Shade();
         addObject(shade,getWidth()/2, getHeight()/2);
-        
+
         for (int i =255; i >=0; i-=15){
-          
+
             shade.getImage().setTransparency(i);
             Greenfoot.delay(1);
         }
         removeObject(shade);
-        
-        
+
     }
-    
+
     public void fadeOut(){
         Shade shade = new Shade();
         addObject(shade,getWidth()/2, getHeight()/2);
@@ -333,7 +327,7 @@ public class Map extends World
             shade.getImage().setTransparency(i);
             Greenfoot.delay(1);
         }
-       // removeObject(shade);
+        // removeObject(shade);
     }
 
 }
