@@ -1,0 +1,22 @@
+General format for saving player data:
+
+name
+level 
+curexp
+maxexp
+maxhealth
+maxmana
+stat points 
+precision
+intelligence
+dexterity
+defence
+endurance
+spirituality
+
+
+completed levels list
+
+Inventory list
+
+

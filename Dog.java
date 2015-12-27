@@ -56,9 +56,7 @@ public class Dog extends Enemy
     {
         controlMovement();
         controlWeapons();
-        if(dead){
-            getWorld().removeObject(this);
-        }
+        controlDeath();
 
         if(damageDelay >0){
             damageDelay--;

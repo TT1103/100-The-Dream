@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=curHealth\ maxHealth
+comment0.target=PlayerHealthBar(int,\ int)
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ HealthBar\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment2.params=newCurHealth\ newMaxHealth
+comment2.target=void\ updateHealth(int,\ int)
+comment3.params=
+comment3.target=int\ getHealth()
+numComments=4

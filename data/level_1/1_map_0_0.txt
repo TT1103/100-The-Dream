@@ -140,3 +140,4 @@ uppassage 47 -101
 rock 159 -99
 rock 139 -99
 rock 139 -99
+levelexit 188 372

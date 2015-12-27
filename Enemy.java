@@ -25,6 +25,7 @@ public class Enemy extends Actor
     int damageDelay;
     int maxDamageDelay;
     
+    int level=1; //highest level = better stats
     
     boolean dead =false;
 
@@ -55,11 +56,17 @@ public class Enemy extends Actor
         controlMovement();
         controlWeapons();
         
-        if(dead){
-            getWorld().removeObject(this);
-        }
+        
         
     }    
+    
+    public void controlDeath(){
+        if(dead){
+            Player p = (Player) getWorld().getObjects(Player.class).get(0);
+            p.gainExp(level *60);
+            getWorld().removeObject(this);
+        }
+    }
 
 
     public void controlMovement(){

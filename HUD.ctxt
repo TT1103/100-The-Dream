@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=p
+comment0.target=HUD(Player)
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\n\ Act\ -\ do\ whatever\ the\ HUD\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment2.params=
+comment2.target=void\ controlHealth()
+comment3.params=
+comment3.target=void\ controlExp()
+comment4.params=text\ cnt
+comment4.target=void\ displayText(java.lang.String,\ int)
+numComments=5

@@ -18,6 +18,9 @@ public class Bullet extends Actor
     double x0;//change in bullet coords
     double y0;//change in bullet coords
     
+    
+    int time =999;
+    
     public Bullet(int speed, int damage){
         markerX=Greenfoot.getMouseInfo().getX();
         markerY=Greenfoot.getMouseInfo().getY();
@@ -47,6 +50,11 @@ public class Bullet extends Actor
         //getY=getY+y0;
         setLocation(getX()+((int)x0),getY()+((int)y0));
         detectCollision();
+        time--;
+        if(time <0){
+            getWorld().removeObject(this);
+            return;
+        }
     }    
     
     public void detectCollision(){

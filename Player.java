@@ -1,12 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.io.*;
 /**
  * Write a description of class Player here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Player extends UnScrollable
+public class Player extends UnScrollable implements Serializable
 {
     int screenX= 800;
     int screenY= 800;
@@ -26,7 +27,8 @@ public class Player extends UnScrollable
     String direction ="";
     int speed =2;
     boolean knockback=false;
-    PlayerHealth healthBar;
+    
+    
     P90 p90 = new P90();
     Barrett sniper = new Barrett();
     boolean shooting =false;
@@ -34,17 +36,69 @@ public class Player extends UnScrollable
     int knockbackStrength;
     int knockbackRotation;
     
-    int maxHealth = 1000;
-    int curHealth = maxHealth;
+
+ 
+    int maxLevel =99;
+    int curLevel =1;
+    int curStatPoints =0;
     
+    int curExp =0;
+    int maxExp =100; //exp needed to level up
+    double expRatio =1.2; //how many more times exp needed to level up the next time
+    
+    int precision =10; //affects damage of ranged weapons like guns
+    int intelligence =10; //affects damage of mana weapons like spells
+    int dexterity =10; //affects damage melee weapons like swords
+    int defense =5; //affects damage reduction
+    int endurance =10; //affects hp
+    int spirituality =10; //affects mana
+    
+    int maxHealth = 500;
+    int curHealth =maxHealth;
+    
+    int maxMana =endurance *50;
+    int curMana =spirituality *20;
     
     ArrayList<Weapon> weapons=new ArrayList<Weapon>();
+    
+    PlayerData playerData;
+    
+    //PlayerHealth healthBar;
+    HUD hud;
+    
+    public Player(){
+        playerData=new PlayerData();
+    }
+    
+    public Player(PlayerData playerData){
+        this.playerData = playerData;
+        //load the data...
+        curLevel = playerData.curLevel;
+        curStatPoints =playerData.curStatPoints;
+        
+        curExp =playerData.curExp;
+        maxExp =playerData.maxExp; 
+        precision =playerData.precision; 
+        intelligence =playerData.intelligence; 
+        dexterity =playerData.dexterity; 
+        defense =playerData.defense; 
+        endurance =playerData.endurance; 
+        spirituality =playerData.spirituality; 
+        
+        maxHealth = playerData.maxHealth;
+        maxMana = playerData.maxMana;
+        curHealth = maxHealth;
+        curMana = maxMana;
+    }
+    
     public void setup(){
         getWorld().addObject(p90,-100,-100);
         getWorld().addObject(sniper,-100,-100);
-        healthBar=new PlayerHealth(curHealth,maxHealth, this);
-        getWorld().addObject(healthBar, 180, 30);
-
+        //healthBar=new PlayerHealth(curHealth,maxHealth, this);
+        //getWorld().addObject(healthBar, 180, 30);
+        hud = new HUD(this);
+        getWorld().addObject(hud, 0, 0);
+        
         weapons.add(p90);
         weapons.add(sniper);
     }
@@ -55,7 +109,7 @@ public class Player extends UnScrollable
      */
     public void act() 
     {
-        curHealth = getHealth();
+        
         if(knockback){
             int originalRotation = getRotation();
             setRotation(knockbackRotation);
@@ -69,10 +123,15 @@ public class Player extends UnScrollable
         }
         controlMovement();
         controlWeapons();
+        controlExp();
     }    
 
     public void damage(int damage){
-        healthBar.damage(damage);
+        //healthBar.damage(damage);
+        curHealth -= (damage - defense/3);
+        if(curHealth <0){
+            curHealth =0;
+        }
         //generate particles
         int particleSpeed=damage/2;
         int particleSize = damage/10;
@@ -97,7 +156,6 @@ public class Player extends UnScrollable
     public void knockback(int str, int rotation){
         knockbackStrength =str;
         int knockbackRotation = rotation;
-
     }
 
     public void setLocation(int x, int y) {
@@ -159,8 +217,10 @@ public class Player extends UnScrollable
 
         }
     }
+    
     boolean weaponswitch=false;
     int weaponindex=0;
+    
     public void controlWeapons(){
 
         if (Greenfoot.mousePressed(null)){
@@ -191,12 +251,33 @@ public class Player extends UnScrollable
 
         
         if(shooting&&knockback==false){
-            //p90.use(getX(),getY());
             weapons.get(weaponindex).use(getX(),getY());
         }
     }
-
-    public int getHealth () {
-        return healthBar.getHealth();
+    
+    public void controlExp(){
+        while(curExp>maxExp){
+            curExp-=maxExp;
+            maxExp*=expRatio;
+            levelUp();
+        }
+    }
+    
+    public void gainExp(int amount){
+        curExp +=amount;
+    }
+    
+  
+    public void levelUp(){
+        curStatPoints+=4;
+        //display level up stuff
+        Text t = new Text(150,"Leveled up!");
+        getWorld().addObject(t, getX(),getY()-20);
+        curHealth = maxHealth;
+        
+    }
+    
+    public void saveData(){
+        playerData.saveData(this);
     }
 }

@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.params=text
+comment0.target=Text(java.lang.String)
+comment1.params=text\ fontSize
+comment1.target=Text(java.lang.String,\ int)
+comment2.params=time\ text
+comment2.target=Text(int,\ java.lang.String)
+comment3.params=
+comment3.target=void\ act()
+comment3.text=\n\ Act\ -\ do\ whatever\ the\ Text\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment4.params=text
+comment4.target=void\ setText(java.lang.String)
+numComments=5

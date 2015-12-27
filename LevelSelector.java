@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.*;
+import java.io.*;
 /**
  * Write a description of class LevelSelector here.
  * 
@@ -11,7 +12,7 @@ public class LevelSelector extends World
     //variables for game data
     String[] completedLevels;
     Player player; //Stores the player stuff
-    String[] inventory;
+  
 
     // Buttons for level selection
     private Level1 one = new Level1();
@@ -19,7 +20,9 @@ public class LevelSelector extends World
     private Level3 three = new Level3();
     private Level4 four = new Level4();
     private Level5 five = new Level5();
-
+    
+    boolean newGame=false; //if it is a new game or not
+    
     /**
      * Constructor for objects of class LevelSelector.
      * 
@@ -35,23 +38,56 @@ public class LevelSelector extends World
         addObject (three, 345, 481);
         addObject (four, 469, 481);
         addObject (five, 587, 481);
-
+        newGame = !loadData();
     }
 
     public void act(){
         // Check for mouse click of each buttons to determine level selection
         MouseInfo mouse = Greenfoot.getMouseInfo();
+        int level=-1;
         if (Greenfoot.mouseClicked(one)) {
-            Greenfoot.setWorld (new Map(1));
+            level=1;
         } else if (Greenfoot.mouseClicked(two)) {
-            Greenfoot.setWorld (new Map(2));
+            level=2;
         } else if (Greenfoot.mouseClicked(three)) {
-            Greenfoot.setWorld (new Map(3));
+            level=3;
         } else if (Greenfoot.mouseClicked(four)) {
-            Greenfoot.setWorld (new Map(4));
+            level=4;
         } else if (Greenfoot.mouseClicked(five)) {
-            Greenfoot.setWorld (new Map(5));
+            level=5;
         }
+        if(level >0){
+            if (newGame){
+                Greenfoot.setWorld (new Map(level));
+            }else{
+                Greenfoot.setWorld (new Map(level,player));
+            }
+        }
+    }
+    
+    
+    public boolean loadData(){ //loads previous save data
+        File file = new File("data/player_data.txt");
+        if(!file.exists()){ //there has been no save data
+            
+            return false; //load data failed
+        } 
+        
+        try{ //there is save data, now read it
+            FileInputStream fileIn = new FileInputStream("data/player_data.txt");
+            ObjectInputStream objIn = new ObjectInputStream (fileIn);
+            
+            PlayerData playerData = (PlayerData)objIn.readObject();
+            player = new Player(playerData);
+           
+            fileIn.close();
+            objIn.close();
+        }catch (Exception ex){ //start new game if we can't read the file
+            ex.printStackTrace();
+            file.delete(); //remove the unreadable file
+            return false;
+        }
+        return true;
     }
 
 }

@@ -31,8 +31,6 @@ public class MortarTower extends Enemy
         
         
         
-        if(dead){
-            getWorld().removeObject(this);
-        }
+        controlDeath();
     }    
 }

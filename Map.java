@@ -42,7 +42,7 @@ public class Map extends World
         player.setup();
 
         // Layering the actors 
-        setPaintOrder (GameOver.class, PlayerHealthNumber.class, PlayerHealth.class, Tree.class,Player.class);
+        setPaintOrder();
     }
     
     public Map(int level)
@@ -54,7 +54,7 @@ public class Map extends World
         player.setup();
         curLevel = level;
         // Layering the actors 
-        setPaintOrder (Shade.class,GameOver.class, PlayerHealthNumber.class, PlayerHealth.class, Tree.class,Player.class);
+        setPaintOrder();
         
         String mapFile = "data/level_"+level+"/"+level+"_map_0_0.txt";
         loadMap(mapFile);
@@ -70,9 +70,10 @@ public class Map extends World
         player.setup();
         curLevel = level;
         // Layering the actors 
-        setPaintOrder (Shade.class,GameOver.class, PlayerHealthNumber.class, PlayerHealth.class, Tree.class,Player.class);
+        setPaintOrder();
         
         String mapFile = "data/level_"+level+"/"+level+"_map_0_0.txt";
+        loadMap(mapFile);
         fadeIn();
     }
     
@@ -82,7 +83,7 @@ public class Map extends World
         addObject(player, 400,400);
         player.setup();
         curLevel = level;
-        setPaintOrder (Shade.class,GameOver.class, PlayerHealthNumber.class, PlayerHealth.class, Tree.class,Player.class);
+        setPaintOrder();
         curMapX=newX;
         curMapY=newY;
         loadMap(mapFile);
@@ -108,10 +109,11 @@ public class Map extends World
             LeftPassage d = li.get(0);
             player.setLocation(d.getX()+offset, d.getY());
         }
-        
-        
     }
     
+    public void setPaintOrder(){
+        super.setPaintOrder(Shade.class,GameOver.class, Text.class, PlayerHealthBar.class, PlayerExpBar.class, Tree.class,Player.class);
+    }
     
     public void generateGraph(){
         for (int x = 10 ; x <= 790; x+=10){
@@ -126,7 +128,7 @@ public class Map extends World
      * Code is currently not running. More implementations soon.
      */
     public void endGame () {
-        if (player.getHealth() <= 0) {
+        if (player.curHealth <= 0) {
            //addObject (new GameOver(), player.getX(), player.getY());
            //gameOver = true;
         }
@@ -160,7 +162,7 @@ public class Map extends World
         
         List<Actor> li = getObjects(null);
         for(Actor a : li){
-            if(!a.getClass().equals(Player.class) && !a.getClass().equals(PlayerHealth.class) && !a.getClass().equals(PlayerHealthNumber.class)){
+            if(!a.getClass().equals(Player.class) && !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerExpBar.class)){
                 a.setLocation(a.getX()-offX,a.getY()-offY);
                 
             }
@@ -268,6 +270,9 @@ public class Map extends World
                     addObject(t,x,y);
                 }else if (name.equals("uppassage")){
                     UpPassage t = new UpPassage();
+                    addObject(t,x,y);
+                }else if (name.equals("levelexit")){
+                    LevelExit t = new LevelExit();
                     addObject(t,x,y);
                 }
             }

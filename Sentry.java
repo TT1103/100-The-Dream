@@ -26,9 +26,7 @@ public class Sentry extends Enemy
     public void act() 
     {
         controlWeapons();
-        if(dead){
-            getWorld().removeObject(this);
-        }
+        controlDeath();
     }    
     
     public void controlWeapons(){
