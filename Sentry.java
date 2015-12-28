@@ -10,7 +10,15 @@ public class Sentry extends Enemy
 {
     int bulletSpeed=20;
     int bulletDamage=10;
-    int speedDelay =5;
+    
+    int maxDelay =7;
+    int speedDelay =maxDelay;
+    
+    
+    int maxDelay2=80;
+    int delay2 = maxDelay2;
+    
+    int shots =0;
     public Sentry(int health){
         super(health);
         
@@ -30,24 +38,35 @@ public class Sentry extends Enemy
     }    
     
     public void controlWeapons(){
-        if(speedDelay <20){
+        if(delay2<maxDelay2){
+            delay2++;
+        }
+        
+        if(speedDelay <maxDelay){
             speedDelay++;
         }
         
-        if (canSeePlayer()){
+        if(delay2>=maxDelay2){
+            shots =3;
+            delay2 =0;
+        }
+        if (canSeePlayer() && distanceToPlayer()<=1000){
             List l = getWorld().getObjects(Player.class);
             Player p = (Player) l.get(0);
             turnTowards(p.getX(),p.getY());
             
             //shoot
-            if(speedDelay ==20){
+            if(speedDelay >=maxDelay && shots>0){
                 GreenfootSound effect = new GreenfootSound("p90_shoot.wav");
                 effect.setVolume(75);
                 effect.play();
                 speedDelay =0;
                 EnemyBullet bullet = new EnemyBullet(bulletSpeed,bulletDamage);
                 getWorld().addObject(bullet, getX(),getY());
+                shots--;
             }
+        }else{
+            shots=0;
         }
     }
 }

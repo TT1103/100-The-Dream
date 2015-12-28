@@ -154,10 +154,12 @@ public class Enemy extends Actor
         double sin = Math.sin(Math.toRadians(rotation));
         double curX = getX();
         double curY = getY();
-        while (curX >0 && curX<800 && curY>0 && curY<800){
+        int distance =0;
+        while (distance<1000){
             curX += cos*s;
             curY += sin*s;
-
+            distance+=cos*s;
+            distance+=sin*s;
             if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0){
                 return false;
             }else if (getWorld().getObjectsAt((int) curX, (int) curY, Player.class).size()>0){
@@ -235,6 +237,10 @@ public class Enemy extends Actor
         }
 
     }
-
+    
+    public double distanceToPlayer(){
+        Player p = (Player) getWorld().getObjects(Player.class).get(0);
+        return Math.sqrt(Math.pow(getX()-p.getX(),2) + Math.pow(getY()-p.getY(),2));
+    }
     
 }
