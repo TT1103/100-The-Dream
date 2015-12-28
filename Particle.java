@@ -14,6 +14,7 @@ public class Particle extends Actor
     boolean generated = false;
     boolean multiple =false;
     int number;
+    boolean paused =false;
     public Particle( int size ,int angle){ //make a simple particle
         turn(angle);
         
@@ -33,6 +34,9 @@ public class Particle extends Actor
     
     public void act() 
     {
+        if(paused){
+            return;
+        }
         if(!generated && multiple){
             generated =true;
             for(int i =0 ; i <number; i++){

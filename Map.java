@@ -28,7 +28,7 @@ public class Map extends World
 
     boolean fadedIn = false;
     
-    
+
     /**
      * Constructor for objects of class Map.
      * 
@@ -112,7 +112,7 @@ public class Map extends World
     }
 
     public void setPaintOrder(){
-        super.setPaintOrder(Shade.class,GameOver.class, Text.class, PlayerHealthBar.class, PlayerExpBar.class, Tree.class,Player.class);
+        super.setPaintOrder(Shade.class,GameOver.class, Text.class, Button.class,PlayerMenu.class,PlayerHealthBar.class, PlayerExpBar.class, Tree.class,Player.class);
     }
 
     public void generateGraph(){
@@ -162,7 +162,7 @@ public class Map extends World
 
         List<Actor> li = getObjects(null);
         for(Actor a : li){
-            if(!a.getClass().equals(Player.class) && !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerExpBar.class)&& !a.getClass().equals(Slash.class)){
+            if(!a.getClass().equals(Player.class) && !a.getClass().equals(Button.class)&& !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerExpBar.class)&& !a.getClass().equals(Slash.class)){
                 a.setLocation(a.getX()-offX,a.getY()-offY);
             }
         }
@@ -328,6 +328,94 @@ public class Map extends World
             Greenfoot.delay(1);
         }
         // removeObject(shade);
+    }
+    
+    public void pauseAll(){
+        /*
+         * objects to pause: player, bullets, enemy, enemy bullet, mortar, particle, mortar target,weapons
+         */
+        
+        List<Player> a = getObjects(Player.class);
+        for (Player p: a){
+            p.paused =true;
+        }
+        
+        List<Bullet> b = getObjects(Bullet.class);
+        for (Bullet p: b){
+            p.paused =true;
+        }
+        
+        List<Enemy> c = getObjects(Enemy.class);
+        for (Enemy p: c){
+            p.paused =true;
+        }
+        
+        List<EnemyBullet> d = getObjects(EnemyBullet.class);
+        for (EnemyBullet p: d){
+            p.paused =true;
+        }
+        
+        List<Mortar> e = getObjects(Mortar.class);
+        for (Mortar p: e){
+            p.paused =true;
+        }
+        
+        List<Particle> f = getObjects(Particle.class);
+        for (Particle p: f){
+            p.paused =true;
+        }
+        
+        List<Weapon> g = getObjects(Weapon.class);
+        for (Weapon p: g){
+            p.paused =true;
+        }
+        
+        List<MortarTarget> h = getObjects(MortarTarget.class);
+        for (MortarTarget p: h){
+            p.paused =true;
+        }
+    }
+    
+    public void unpauseAll(){
+        List<Player> a = getObjects(Player.class);
+        for (Player p: a){
+            p.paused =false;
+        }
+        
+        List<Bullet> b = getObjects(Bullet.class);
+        for (Bullet p: b){
+            p.paused =false;
+        }
+        
+        List<Enemy> c = getObjects(Enemy.class);
+        for (Enemy p: c){
+            p.paused =false;
+        }
+        
+        List<EnemyBullet> d = getObjects(EnemyBullet.class);
+        for (EnemyBullet p: d){
+            p.paused =false;
+        }
+        
+        List<Mortar> e = getObjects(Mortar.class);
+        for (Mortar p: e){
+            p.paused =false;
+        }
+        
+        List<Particle> f = getObjects(Particle.class);
+        for (Particle p: f){
+            p.paused =false;
+        }
+        
+        List<Weapon> g = getObjects(Weapon.class);
+        for (Weapon p: g){
+            p.paused =false;
+        }
+        
+        List<MortarTarget> h = getObjects(MortarTarget.class);
+        for (MortarTarget p: h){
+            p.paused =false;
+        }
     }
 
 }

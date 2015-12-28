@@ -25,6 +25,9 @@ public class Knifeman extends Enemy
      */
     public void act() 
     {
+        if(paused){
+            return;
+        }
         if(getObjectsInRange(30,Player.class)!=null){
             attack=true;
         }

@@ -39,6 +39,8 @@ public class Enemy extends Actor
     int curPath=0;
     boolean needPath =false;
     HealthBar healthBar;
+    
+    boolean paused =false;
     public void setup(){
         getWorld().addObject(healthBar, getX(),getY()+ getImage().getHeight());
     }
@@ -53,6 +55,9 @@ public class Enemy extends Actor
      */  
     public void act() 
     {
+        if(paused){
+            return;
+        }
         controlMovement();
         controlWeapons();
         

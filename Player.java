@@ -56,11 +56,11 @@ public class Player extends UnScrollable implements Serializable
     int endurance =10; //affects hp
     int spirituality =10; //affects mana
     
-    int maxHealth = 500;
+    int maxHealth = endurance*50;
     int curHealth =maxHealth;
     
-    int maxMana =endurance *50;
-    int curMana =spirituality *20;
+    int maxMana =spirituality *20;
+    int curMana =maxMana;
     
     ArrayList<Weapon> weapons=new ArrayList<Weapon>();
     
@@ -68,6 +68,8 @@ public class Player extends UnScrollable implements Serializable
     
     //PlayerHealth healthBar;
     HUD hud;
+    
+    
     
     public Player(){
         playerData=new PlayerData();
@@ -114,7 +116,9 @@ public class Player extends UnScrollable implements Serializable
      */
     public void act() 
     {
-        
+        if(paused){
+            return;
+        }
         if(knockback){
             int originalRotation = getRotation();
             setRotation(knockbackRotation);
@@ -284,5 +288,10 @@ public class Player extends UnScrollable implements Serializable
     
     public void saveData(){
         playerData.saveData(this);
+    }
+    
+    public void updateStats(){
+        maxHealth = endurance*50;
+        maxMana =spirituality *20;
     }
 }

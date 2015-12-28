@@ -54,6 +54,9 @@ public class Dog extends Enemy
      */
     public void act() 
     {
+        if(paused){
+            return;
+        }
         controlMovement();
         controlWeapons();
         controlDeath();

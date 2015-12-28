@@ -12,12 +12,21 @@ public class Text extends UnScrollable
     boolean timed = false;
     String text="";
     int fontSize=20;
+    boolean setColor =false;
+    Color color;
     public Text(String text){
         this.text = text;
     }
     public Text(String text, int fontSize){
         this.text = text;
         this.fontSize = fontSize;
+    }
+    
+    public Text(String text, int fontSize,Color color){
+        this.text = text;
+        this.fontSize = fontSize;
+        setColor = true;
+        this.color = color;
     }
     
     public Text(int time, String text){
@@ -38,8 +47,11 @@ public class Text extends UnScrollable
                 return;
             }
         }
-        
-        setImage(new GreenfootImage(text, fontSize, Color.BLACK, null));
+        if(setColor){
+            setImage(new GreenfootImage(text, fontSize, color, null));  
+        }else{
+            setImage(new GreenfootImage(text, fontSize, Color.BLACK, null));
+        }
     }    
     
     public void setText(String text){

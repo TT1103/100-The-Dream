@@ -18,6 +18,9 @@ public class Gunman extends Enemy
      */
     public void act() 
     {
+        if(paused){
+            return;
+        }
         if(canSeePlayer()){
             shoot();
         }

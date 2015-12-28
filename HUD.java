@@ -18,12 +18,20 @@ public class HUD extends UnScrollable
     //used to determine an update
     int prevHealth =0;
     int prevExp =0; 
+    
+    Button menuButton;
+    
+    PlayerMenu menu;
     public HUD(Player p){
         this.player = p;
         hpBar = new PlayerHealthBar(player.curHealth, player.maxHealth);
         expBar = new PlayerExpBar(player.curExp, player.maxExp);
         player.getWorld().addObject(hpBar, hpBar.xSize/2,hpBar.ySize/2);
         player.getWorld().addObject(expBar, expBar.xSize/2,hpBar.ySize + expBar.ySize/2);
+        
+        menuButton = new Button ("player_menu_button.png");
+        player.getWorld().addObject(menuButton, 736,14);
+       // menu = new PlayerMenu(player);
     }
     
     /**
@@ -35,7 +43,7 @@ public class HUD extends UnScrollable
         
         controlHealth();
         controlExp();
-        
+        controlMenu();
     }   
     
     public void controlHealth(){
@@ -49,6 +57,13 @@ public class HUD extends UnScrollable
         if (prevExp != player.curExp){
             prevExp = player.curExp;
             expBar.updateExp(player.curExp,player.maxExp);
+        }
+    }
+    
+    public void controlMenu(){
+        if(menuButton.pressed){
+            menu = new PlayerMenu(player);
+            getWorld().addObject(menu, 400,400);
         }
     }
     

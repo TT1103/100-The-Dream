@@ -33,6 +33,9 @@ public class Sentry extends Enemy
      */
     public void act() 
     {
+        if(paused){
+            return;
+        }
         controlWeapons();
         controlDeath();
     }    

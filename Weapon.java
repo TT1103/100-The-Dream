@@ -14,13 +14,16 @@ public class Weapon extends Actor
 
     GreenfootSound soundEffect;
     String weapon;
-
+    boolean paused =false;
     /**
      * Act - do whatever the Weapon wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
+        if(paused){
+            return;
+        }
         if(speedDelay <speed){
             speedDelay++;
         }

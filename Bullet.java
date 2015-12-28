@@ -17,7 +17,7 @@ public class Bullet extends Actor
     int damage;
     double x0;//change in bullet coords
     double y0;//change in bullet coords
-    
+    boolean paused =false;
     
     int time =999;
     
@@ -35,6 +35,9 @@ public class Bullet extends Actor
      */
     public void act() 
     {
+        if(paused){
+            return;
+        }
         if(start){
 
             getX=(double)getX();

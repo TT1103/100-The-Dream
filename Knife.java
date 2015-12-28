@@ -31,7 +31,7 @@ public class Knife extends Weapon
             Slash s = new Slash(slashDamage);
             getWorld().addObject(s, player.getX(),player.getY());
             GreenfootSound effect = new GreenfootSound("slash_effect.wav");
-            effect.setVolume(75);
+            effect.setVolume(80);
             effect.play();
             speedDelay =0;
         }

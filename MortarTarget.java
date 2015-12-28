@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MortarTarget extends Actor
 {
     Mortar mortar;
+    boolean paused =false;
     public MortarTarget(Mortar parent){
         mortar=parent;
         getImage().scale(60,60);
@@ -21,7 +22,9 @@ public class MortarTarget extends Actor
      */
     public void act() 
     {
-        
+        if(paused){
+            return;
+        }
         int distance=(Math.abs(mortar.getX()-getX())/2+Math.abs(mortar.getY()-getY())/2);
         if(255-distance<0){
             getImage().setTransparency(0);

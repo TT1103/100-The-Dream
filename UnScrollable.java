@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class UnScrollable extends Actor
 {
+    boolean paused =false;
     /**
      * Act - do whatever the UnScrollable wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

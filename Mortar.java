@@ -14,6 +14,7 @@ public class Mortar extends Actor
     int y;
     int speed = 15;
     MortarTarget target;
+    boolean paused =false;
     public Mortar(){
         target=new MortarTarget(this);
         
@@ -21,7 +22,9 @@ public class Mortar extends Actor
 
     public void act() 
     {
-
+        if(paused){
+            return;
+        }
         if(start){
             player=(Player)getWorld().getObjects(Player.class).get(0);
             x=player.getX();

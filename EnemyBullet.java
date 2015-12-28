@@ -17,7 +17,7 @@ public class EnemyBullet extends Actor
     int damage;
     double x0;//change in bullet coords
     double y0;//change in bullet coords
-
+    boolean paused =false;
     int time =999;
     public EnemyBullet(int speed, int damage){
 
@@ -31,6 +31,9 @@ public class EnemyBullet extends Actor
      */
     public void act() 
     {
+        if(paused){
+            return;
+        }
         if(start){
             Player player=(Player)getWorld().getObjects(Player.class).get(0);
             markerX=player.getX();
