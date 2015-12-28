@@ -112,7 +112,7 @@ public class Map extends World
     }
 
     public void setPaintOrder(){
-        super.setPaintOrder(Shade.class,Text.class,GameOver.class,  PlayerHealthBar.class, PlayerExpBar.class, Tree.class,Player.class);
+        super.setPaintOrder(Shade.class,GameOver.class, Text.class, PlayerHealthBar.class, PlayerExpBar.class, Tree.class,Player.class);
     }
 
     public void generateGraph(){
