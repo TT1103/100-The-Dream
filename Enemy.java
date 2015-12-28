@@ -158,8 +158,8 @@ public class Enemy extends Actor
         while (distance<1000){
             curX += cos*s;
             curY += sin*s;
-            distance+=cos*s;
-            distance+=sin*s;
+            distance+=Math.abs(cos*s);
+            distance+=Math.abs(sin*s);
             if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0){
                 return false;
             }else if (getWorld().getObjectsAt((int) curX, (int) curY, Player.class).size()>0){
