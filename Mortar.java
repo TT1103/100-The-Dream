@@ -15,6 +15,7 @@ public class Mortar extends Actor
     int speed = 10;
     MortarTarget target;
     boolean paused =false;
+    int rotation=0;
     public Mortar(){
         target=new MortarTarget(this);
         
@@ -36,6 +37,8 @@ public class Mortar extends Actor
         y = target.getY();
         turnTowards(x,y);
         move(10);
+        turn(rotation);
+        rotation+=10;
         if(getX()<=x+10&&getY()<=y+10&&getX()>=x-10&&getY()>=y-10){
             getWorld().addObject(new Explosion(player), x, y);
             getWorld().removeObject(target);
