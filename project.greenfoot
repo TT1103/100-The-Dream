@@ -28,7 +28,10 @@ class.Explosion.superclass=greenfoot.Actor
 class.GUI.superclass=greenfoot.Actor
 class.GameOver.image=GameOver.png
 class.GameOver.superclass=greenfoot.Actor
+<<<<<<< HEAD
 class.Gunman.image=gunman0.png
+=======
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 class.Gunman.superclass=Enemy
 class.HUD.superclass=UnScrollable
 class.HealthBar.image=sniper_bullet.png
@@ -50,7 +53,11 @@ class.LevelSelectorButtons.superclass=greenfoot.Actor
 class.Map.image=rock.png
 class.Map.superclass=greenfoot.World
 class.Marker.superclass=greenfoot.Actor
+<<<<<<< HEAD
 class.Mortar.image=mortar.png
+=======
+class.Mortar.image=beeper.png
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 class.Mortar.superclass=greenfoot.Actor
 class.MortarTarget.image=target.png
 class.MortarTarget.superclass=greenfoot.Actor
@@ -76,7 +83,11 @@ class.PlayerHealthBar.superclass=UnScrollable
 class.PlayerHealthNumber.superclass=UnScrollable
 class.PlayerMenu.image=player_menu.png
 class.PlayerMenu.superclass=GUI
+<<<<<<< HEAD
 class.PlayerSniperBullet.image=bullet2.png
+=======
+class.PlayerSniperBullet.image=sniper_bullet.png
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 class.PlayerSniperBullet.superclass=Bullet
 class.PlayerStatsScreen.superclass=GUI
 class.RightPassage.image=right_passage.png
@@ -159,6 +170,7 @@ dependency113.type=UsesDependency
 dependency114.from=Passage
 dependency114.to=Player
 dependency114.type=UsesDependency
+<<<<<<< HEAD
 dependency115.from=Gunman
 dependency115.to=Player
 dependency115.type=UsesDependency
@@ -168,6 +180,14 @@ dependency116.type=UsesDependency
 dependency117.from=Mortar
 dependency117.to=Explosion
 dependency117.type=UsesDependency
+=======
+dependency115.from=Explosion
+dependency115.to=Player
+dependency115.type=UsesDependency
+dependency116.from=Explosion
+dependency116.to=Map
+dependency116.type=UsesDependency
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 dependency12.from=Bullet
 dependency12.to=Impassable
 dependency12.type=UsesDependency
@@ -456,11 +476,19 @@ dependency98.type=UsesDependency
 dependency99.from=HUD
 dependency99.to=PlayerExpBar
 dependency99.type=UsesDependency
+<<<<<<< HEAD
 mainWindow.height=744
 mainWindow.width=1382
 mainWindow.x=-8
 mainWindow.y=-8
 package.numDependencies=117
+=======
+mainWindow.height=979
+mainWindow.width=1920
+mainWindow.x=0
+mainWindow.y=23
+package.numDependencies=116
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 package.numTargets=63
 project.charset=UTF-8
 readme.editor.height=700
@@ -639,8 +667,13 @@ target20.x=10
 target20.y=130
 target21.editor.height=700
 target21.editor.width=900
+<<<<<<< HEAD
 target21.editor.x=323
 target21.editor.y=1
+=======
+target21.editor.x=540
+target21.editor.y=119
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 target21.height=50
 target21.name=Mortar
 target21.naviview.expanded=true
@@ -691,8 +724,13 @@ target24.x=190
 target24.y=1330
 target25.editor.height=700
 target25.editor.width=900
+<<<<<<< HEAD
 target25.editor.x=236
 target25.editor.y=70
+=======
+target25.editor.x=407
+target25.editor.y=136
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 target25.height=50
 target25.name=Sentry
 target25.naviview.expanded=true
@@ -717,8 +755,13 @@ target26.x=10
 target26.y=730
 target27.editor.height=593
 target27.editor.width=799
+<<<<<<< HEAD
 target27.editor.x=576
 target27.editor.y=90
+=======
+target27.editor.x=452
+target27.editor.y=261
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 target27.height=50
 target27.name=Gunman
 target27.naviview.expanded=true
@@ -744,7 +787,11 @@ target28.y=730
 target29.editor.height=700
 target29.editor.width=900
 target29.editor.x=40
+<<<<<<< HEAD
 target29.editor.y=20
+=======
+target29.editor.y=43
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 target29.height=50
 target29.name=Marker
 target29.naviview.expanded=true
@@ -808,8 +855,13 @@ target32.x=190
 target32.y=250
 target33.editor.height=780
 target33.editor.width=1292
+<<<<<<< HEAD
 target33.editor.x=181
 target33.editor.y=41
+=======
+target33.editor.x=248
+target33.editor.y=102
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 target33.height=50
 target33.name=Player
 target33.naviview.expanded=true
@@ -1017,13 +1069,18 @@ target47.y=250
 target48.editor.height=700
 target48.editor.width=900
 target48.editor.x=40
+<<<<<<< HEAD
 target48.editor.y=20
+=======
+target48.editor.y=43
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 target48.height=50
 target48.name=PlayerMenu
 target48.naviview.expanded=true
 target48.showInterface=false
 target48.type=ClassTarget
 target48.typeParameters=
+<<<<<<< HEAD
 target48.width=90
 target48.x=10
 target48.y=1330
@@ -1031,6 +1088,15 @@ target49.editor.height=625
 target49.editor.width=973
 target49.editor.x=48
 target49.editor.y=15
+=======
+target48.width=100
+target48.x=10
+target48.y=1330
+target49.editor.height=780
+target49.editor.width=1292
+target49.editor.x=227
+target49.editor.y=50
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 target49.height=50
 target49.name=Enemy
 target49.naviview.expanded=false
@@ -1193,7 +1259,11 @@ target6.naviview.expanded=false
 target6.showInterface=false
 target6.type=ClassTarget
 target6.typeParameters=
+<<<<<<< HEAD
 target6.width=140
+=======
+target6.width=150
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 target6.x=100
 target6.y=610
 target60.editor.height=700
@@ -1263,15 +1333,24 @@ target64.x=190
 target64.y=370
 target7.editor.height=700
 target7.editor.width=900
+<<<<<<< HEAD
 target7.editor.x=253
 target7.editor.y=82
+=======
+target7.editor.x=623
+target7.editor.y=57
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 target7.height=50
 target7.name=Explosion
 target7.naviview.expanded=true
 target7.showInterface=false
 target7.type=ClassTarget
 target7.typeParameters=
+<<<<<<< HEAD
 target7.width=80
+=======
+target7.width=90
+>>>>>>> 6b4598f37250ad7f88292116ccf5515a125dbaa9
 target7.x=10
 target7.y=970
 target8.editor.height=744

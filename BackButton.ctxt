@@ -1,10 +1,10 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ BackButton\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment0.text=\n\ Act\ -\ do\ whatever\ the\ BackButton\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment1.params=
 comment1.target=void\ popUpAnimation()
-comment1.text=\r\n\ Animations\ required\ to\ pop\ button\ up\ and\ down\ \r\n
+comment1.text=\n\ Animations\ required\ to\ pop\ button\ up\ and\ down\ \n
 comment2.params=
 comment2.target=boolean\ backButtonHere()
 comment3.params=
