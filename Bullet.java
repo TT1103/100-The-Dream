@@ -20,7 +20,7 @@ public class Bullet extends Actor
     boolean paused =false;
     
     int time =999;
-    
+    Marker marker = new Marker(this);
     public Bullet(int speed, int damage){
         markerX=Greenfoot.getMouseInfo().getX();
         markerY=Greenfoot.getMouseInfo().getY();
@@ -40,18 +40,26 @@ public class Bullet extends Actor
         }
         if(start){
 
-            getX=(double)getX();
-            getY=(double)getY();
-          
-            turnTowards(markerX, markerY);
-            double h=Math.sqrt(Math.pow(markerY-getY, 2)+Math.pow(markerX-getX, 2));
-            x0=(markerX-getX)*speed/h;
-            y0=(markerY-getY)*speed/h;
+            if(start){
+            getWorld().addObject(marker, markerX, markerY);
+
+            // 
+            //             getX=(double)getX();
+            //             getY=(double)getY();
+            //           
+            //             turnTowards(markerX, markerY);
+            //             double h=Math.sqrt(Math.pow(markerY-getY, 2)+Math.pow(markerX-getX, 2));
+            //             x0=(markerX-getX)*speed/h;
+            //             y0=(markerY-getY)*speed/h;
             start=false;
         }
-        //getX=getX+x0;
-        //getY=getY+y0;
-        setLocation(getX()+((int)x0),getY()+((int)y0));
+        //         //getX=getX+x0;
+        //         //getY=getY+y0;
+        //         setLocation(getX()+((int)x0),getY()+((int)y0));
+        if(getWorld().getObjects(Marker.class).contains(marker)){
+            turnTowards(marker.getX(), marker.getY());
+        }
+        move(speed);
         detectCollision();
         time--;
         if(time <0){
@@ -64,12 +72,18 @@ public class Bullet extends Actor
         Enemy enemy = (Enemy) getOneIntersectingObject(Enemy.class);
         if (enemy != null){
             enemy.damage(damage);
+			if(getWorld().getObjects(Marker.class).contains(marker)){
+                getWorld().removeObject(marker);
+            }
             getWorld().removeObject(this);
             return;
         }
         
         Impassable wall = (Impassable) getOneIntersectingObject(Impassable.class);
         if (wall != null){
+			if(getWorld().getObjects(Marker.class).contains(marker)){
+                getWorld().removeObject(marker);
+            }
             getWorld().removeObject(this);
             return;
         }
