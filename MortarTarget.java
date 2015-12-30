@@ -12,7 +12,7 @@ public class MortarTarget extends Actor
     boolean paused =false;
     public MortarTarget(Mortar parent){
         mortar=parent;
-        getImage().scale(60,60);
+        getImage().scale(80,80);
         getImage().setTransparency(0);
     }
 

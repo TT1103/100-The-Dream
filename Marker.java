@@ -10,7 +10,7 @@ public class Marker extends Actor
 {
     Bullet bullet;
     public Marker(Bullet bullet){
-        //getImage().setTransparency(0);
+        getImage().setTransparency(0);
         this.bullet = bullet;
     }
     /**

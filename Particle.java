@@ -65,6 +65,11 @@ public class Particle extends Actor
         }
         
         
-        
-    }    
+    }  
+    
+    public void move(int speed){
+        if(getOneObjectAtOffset(0,0,Impassable.class)==null){
+            super.move(speed);
+        }
+    }
 }

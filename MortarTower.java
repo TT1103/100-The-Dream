@@ -12,10 +12,11 @@ public class MortarTower extends Enemy
     public MortarTower(int health){
         super(health);
     }
-    
+
     public MortarTower(){
         super(1000);
     }
+
     public void act() 
     {
         if(paused){
@@ -30,9 +31,8 @@ public class MortarTower extends Enemy
             getWorld().addObject(new Mortar(),getX(),getY());
             delay=100;
         }
-       // }
-        
-        
+        // }
+
         
         controlDeath();
     }    

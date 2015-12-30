@@ -18,13 +18,14 @@ public class Bullet extends Actor
     double x0;//change in bullet coords
     double y0;//change in bullet coords
     boolean paused =false;
-    
+
     int time =999;
     Marker marker = new Marker(this);
     public Bullet(int speed, int damage){
         markerX=Greenfoot.getMouseInfo().getX();
         markerY=Greenfoot.getMouseInfo().getY();
-
+        getImage().setTransparency(0);
+        
         this.speed=speed;
         this.damage=damage;
     }
@@ -38,9 +39,8 @@ public class Bullet extends Actor
         if(paused){
             return;
         }
-        if(start){
 
-            if(start){
+        if(start){
             getWorld().addObject(marker, markerX, markerY);
 
             // 
@@ -53,6 +53,7 @@ public class Bullet extends Actor
             //             y0=(markerY-getY)*speed/h;
             start=false;
         }
+
         //         //getX=getX+x0;
         //         //getY=getY+y0;
         //         setLocation(getX()+((int)x0),getY()+((int)y0));
@@ -66,22 +67,23 @@ public class Bullet extends Actor
             getWorld().removeObject(this);
             return;
         }
+        getImage().setTransparency(255);
     }    
-    
+
     public void detectCollision(){
         Enemy enemy = (Enemy) getOneIntersectingObject(Enemy.class);
         if (enemy != null){
             enemy.damage(damage);
-			if(getWorld().getObjects(Marker.class).contains(marker)){
+            if(getWorld().getObjects(Marker.class).contains(marker)){
                 getWorld().removeObject(marker);
             }
             getWorld().removeObject(this);
             return;
         }
-        
+
         Impassable wall = (Impassable) getOneIntersectingObject(Impassable.class);
         if (wall != null){
-			if(getWorld().getObjects(Marker.class).contains(marker)){
+            if(getWorld().getObjects(Marker.class).contains(marker)){
                 getWorld().removeObject(marker);
             }
             getWorld().removeObject(this);

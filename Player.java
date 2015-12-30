@@ -19,8 +19,7 @@ public class Player extends UnScrollable implements Serializable
             new GreenfootImage("walking5.png"),
             new GreenfootImage("walking6.png"),
         };
-        
-    
+
     int delay = 25;
     int maxDelay = 25;
     GreenfootImage idleSprite = new GreenfootImage("idle.png");
@@ -29,8 +28,7 @@ public class Player extends UnScrollable implements Serializable
     String direction ="";
     int speed =2;
     boolean knockback=false;
-    
-    
+
     P90 p90 = new P90();
     Barrett sniper = new Barrett();
     Knife knife = new Knife();
@@ -38,49 +36,47 @@ public class Player extends UnScrollable implements Serializable
     int knockbackDelay=5;
     int knockbackStrength;
     int knockbackRotation;
-    
 
  
     int maxLevel =99;
     int curLevel =1;
     int curStatPoints =0;
-    
+
     int curExp =0;
     int maxExp =100; //exp needed to level up
     double expRatio =1.2; //how many more times exp needed to level up the next time
-    
+
     int precision =10; //affects damage of ranged weapons like guns
     int intelligence =10; //affects damage of mana weapons like spells
     int dexterity =10; //affects damage melee weapons like swords
     int defense =5; //affects damage reduction
     int endurance =10; //affects hp
     int spirituality =10; //affects mana
-    
+
     int maxHealth = endurance*50;
     int curHealth =maxHealth;
-    
+
     int maxMana =spirituality *20;
     int curMana =maxMana;
-    
+
     ArrayList<Weapon> weapons=new ArrayList<Weapon>();
-    
+
     PlayerData playerData;
-    
+
     //PlayerHealth healthBar;
     HUD hud;
-    
-    
+
     
     public Player(){
         playerData=new PlayerData();
     }
-    
+
     public Player(PlayerData playerData){
         this.playerData = playerData;
         //load the data...
         curLevel = playerData.curLevel;
         curStatPoints =playerData.curStatPoints;
-        
+
         curExp =playerData.curExp;
         maxExp =playerData.maxExp; 
         precision =playerData.precision; 
@@ -89,13 +85,13 @@ public class Player extends UnScrollable implements Serializable
         defense =playerData.defense; 
         endurance =playerData.endurance; 
         spirituality =playerData.spirituality; 
-        
+
         maxHealth = playerData.maxHealth;
         maxMana = playerData.maxMana;
         curHealth = maxHealth;
         curMana = maxMana;
     }
-    
+
     public void setup(){
         getWorld().addObject(p90,-100,-100);
         getWorld().addObject(sniper,-100,-100);
@@ -104,7 +100,7 @@ public class Player extends UnScrollable implements Serializable
         //getWorld().addObject(healthBar, 180, 30);
         hud = new HUD(this);
         getWorld().addObject(hud, 0, 0);
-        
+
         weapons.add(p90);
         weapons.add(sniper);
         weapons.add(knife);
@@ -157,7 +153,7 @@ public class Player extends UnScrollable implements Serializable
         if(particleNumber >10){
             particleSize = 10;
         }
-       // if(particleNumber < 
+        // if(particleNumber < 
         Particle par = new Particle(particleSpeed,particleSize,particleNumber); //5
         getWorld().addObject(par,getX(), getY());
     }
@@ -226,10 +222,10 @@ public class Player extends UnScrollable implements Serializable
 
         }
     }
-    
+
     boolean weaponswitch=false;
     int weaponindex=0;
-    
+
     public void controlWeapons(){
 
         if (Greenfoot.mousePressed(null)){
@@ -238,7 +234,7 @@ public class Player extends UnScrollable implements Serializable
             shooting = false;
         }
 
-        //for weapon switching!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Needs some editing
+        
         if(weaponswitch==false){
             if(Greenfoot.isKeyDown("q")){
                 weaponswitch=true;
@@ -258,12 +254,11 @@ public class Player extends UnScrollable implements Serializable
             weaponswitch=false;
         }
 
-        
         if(shooting&&knockback==false){
             weapons.get(weaponindex).use(this);
         }
     }
-    
+
     public void controlExp(){
         while(curExp>maxExp){
             curExp-=maxExp;
@@ -271,25 +266,24 @@ public class Player extends UnScrollable implements Serializable
             levelUp();
         }
     }
-    
+
     public void gainExp(int amount){
         curExp +=amount;
     }
-    
-  
+
     public void levelUp(){
         curStatPoints+=4;
         //display level up stuff
         Text t = new Text(150,"Leveled up!");
         getWorld().addObject(t, getX(),getY()-20);
         curHealth = maxHealth;
-        
+
     }
-    
+
     public void saveData(){
         playerData.saveData(this);
     }
-    
+
     public void updateStats(){
         maxHealth = endurance*50;
         maxMana =spirituality *20;

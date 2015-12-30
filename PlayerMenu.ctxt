@@ -1,10 +1,10 @@
 #BlueJ class context
 comment0.params=player
 comment0.target=PlayerMenu(Player)
-comment0.text=\n\ 0\ precision\n\ 1\ intelligence\n\ 2\ dexterity\n\ 3\ defense\n\ 4\ endurance\n\ 5\ spirituality\n\ 6\ stat\ points\n
+comment0.text=\r\n\ 0\ precision\r\n\ 1\ intelligence\r\n\ 2\ dexterity\r\n\ 3\ defense\r\n\ 4\ endurance\r\n\ 5\ spirituality\r\n\ 6\ stat\ points\r\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ PlayerMenu\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ PlayerMenu\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment2.params=
 comment2.target=void\ controlStats()
 comment3.params=

@@ -12,7 +12,7 @@ public class Mortar extends Actor
     Player player;
     int x;
     int y;
-    int speed = 15;
+    int speed = 10;
     MortarTarget target;
     boolean paused =false;
     public Mortar(){
@@ -35,17 +35,9 @@ public class Mortar extends Actor
         x=target.getX();
         y = target.getY();
         turnTowards(x,y);
-        move(15);
+        move(10);
         if(getX()<=x+10&&getY()<=y+10&&getX()>=x-10&&getY()>=y-10){
-            if(isTouching(Player.class)){
-                player.damage(100);
-
-                player.knockback=true;
-                player.knockbackStrength=15;
-                turnTowards(player.getX(),player.getY());
-                player.knockbackRotation=getRotation();
-
-            }
+            getWorld().addObject(new Explosion(player), x, y);
             getWorld().removeObject(target);
             getWorld().removeObject(this);
         }
