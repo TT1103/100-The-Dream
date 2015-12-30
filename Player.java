@@ -144,7 +144,9 @@ public class Player extends UnScrollable implements Serializable
 
     public void damage(int damage){
         //healthBar.damage(damage);
-        curHealth -= (damage - defense/3);
+        damage-= defense/3;
+        if(damage<1) damage=1;
+        curHealth-=damage;
         if(curHealth <0){
             curHealth =0;
         }
