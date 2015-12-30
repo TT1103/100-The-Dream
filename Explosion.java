@@ -35,7 +35,7 @@ public class Explosion extends Actor
         }else{
             getWorld().removeObject(this);
         }
-        if(delay < 5 && isTouching(Player.class)){
+        if(delay <=1 && isTouching(Player.class)){
             player.damage(50);
             player.knockback = true;
             player.knockbackStrength = 15;
