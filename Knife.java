@@ -11,8 +11,8 @@ public class Knife extends Weapon
 
     int slashDamage=30;
     
-    public Knife(){
-        super();
+    public Knife(Player player){
+        super(player);
         speedDelay=18;
         speed =18;
     }
@@ -25,11 +25,11 @@ public class Knife extends Weapon
         super.act();
     }    
     
-    public void use(Player player){
+    public void use(){
         
         if(speedDelay >=speed){
             Slash s = new Slash(slashDamage);
-            getWorld().addObject(s, player.getX(),player.getY());
+            player.getWorld().addObject(s, player.getX(),player.getY());
             GreenfootSound effect = new GreenfootSound("slash_effect.wav");
             effect.setVolume(80);
             effect.play();

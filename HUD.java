@@ -63,13 +63,13 @@ public class HUD extends UnScrollable
     public void controlMenu(){
         if(menuButton.pressed){
             menu = new PlayerMenu(player);
-            getWorld().addObject(menu, 400,400);
+            player.getWorld().addObject(menu, 400,400);
         }
     }
     
     public void displayText(String text, int cnt){
         Text t = new Text(text);
-        getWorld().addObject(t,player.getX(),player.getY()-1);
+        player.getWorld().addObject(t,player.getX(),player.getY()-1);
     }
  
 }

@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Weapon extends Actor
+public class Weapon extends Equipment
 {
     int speed;
     int speedDelay;
@@ -15,6 +15,11 @@ public class Weapon extends Actor
     GreenfootSound soundEffect;
     String weapon;
     boolean paused =false;
+    
+    Player player;
+    public Weapon(Player player){
+        this.player = player;
+    }
     /**
      * Act - do whatever the Weapon wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -29,7 +34,7 @@ public class Weapon extends Actor
         }
     }    
 
-    public void use(Player player){
+    public void use(){
         
     }
 }

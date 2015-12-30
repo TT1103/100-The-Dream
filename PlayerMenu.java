@@ -23,6 +23,8 @@ public class PlayerMenu extends GUI
         new Text("Stat Points",statFontSize,statColor)
     };
     Text[] statValues = new Text[7];
+    
+    
     /*
      * 0 precision
      * 1 intelligence
@@ -136,6 +138,14 @@ public class PlayerMenu extends GUI
     }
     
     public void displayInventory(){
+        //draw out the inventory stuff
+        for (int y =400; y <=712; y+=48){
+            for(int x =88; x <= 712; x+=48){
+                InventoryBox ib = new InventoryBox();
+                player.getWorld().addObject(ib,x,y);
+                obj.add(ib);
+            }
+        }
     }
     
     

@@ -29,9 +29,9 @@ public class Player extends UnScrollable implements Serializable
     int speed =2;
     boolean knockback=false;
 
-    P90 p90 = new P90();
-    Barrett sniper = new Barrett();
-    Knife knife = new Knife();
+    P90 p90 = new P90(this);
+    Barrett sniper = new Barrett(this);
+    Knife knife = new Knife(this);
     boolean shooting =false;
     int knockbackDelay=5;
     int knockbackStrength;
@@ -49,7 +49,7 @@ public class Player extends UnScrollable implements Serializable
     int precision =10; //affects damage of ranged weapons like guns
     int intelligence =10; //affects damage of mana weapons like spells
     int dexterity =10; //affects damage melee weapons like swords
-    int defense =5; //affects damage reduction
+    int defense =5; //affects damage reduction and health regen
     int endurance =10; //affects hp
     int spirituality =10; //affects mana
 
@@ -65,8 +65,13 @@ public class Player extends UnScrollable implements Serializable
 
     //PlayerHealth healthBar;
     HUD hud;
-
     
+    Weapon curWeapon;
+    Equipment curHead,curChest,curLegs, curMisc ;
+    
+    
+    int maxHpRecoverDelay=75-(defense/2);
+    int hpRecoverDelay =maxHpRecoverDelay;
     public Player(){
         playerData=new PlayerData();
     }
@@ -96,8 +101,6 @@ public class Player extends UnScrollable implements Serializable
         getWorld().addObject(p90,-100,-100);
         getWorld().addObject(sniper,-100,-100);
         getWorld().addObject(knife,-100,-100);
-        //healthBar=new PlayerHealth(curHealth,maxHealth, this);
-        //getWorld().addObject(healthBar, 180, 30);
         hud = new HUD(this);
         getWorld().addObject(hud, 0, 0);
 
@@ -126,6 +129,14 @@ public class Player extends UnScrollable implements Serializable
                 knockback = false;
             }
         }
+        if(hpRecoverDelay >0){
+            hpRecoverDelay--;
+            if (hpRecoverDelay==0){
+                hpRecoverDelay = maxHpRecoverDelay;
+                if(curHealth < maxHealth) curHealth++;
+            }
+        }
+        
         controlMovement();
         controlWeapons();
         controlExp();
@@ -255,7 +266,7 @@ public class Player extends UnScrollable implements Serializable
         }
 
         if(shooting&&knockback==false){
-            weapons.get(weaponindex).use(this);
+            weapons.get(weaponindex).use();
         }
     }
 
@@ -287,5 +298,6 @@ public class Player extends UnScrollable implements Serializable
     public void updateStats(){
         maxHealth = endurance*50;
         maxMana =spirituality *20;
+        maxHpRecoverDelay=75-(defense/2);
     }
 }
