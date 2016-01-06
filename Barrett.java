@@ -11,9 +11,9 @@ public class Barrett extends Weapon
     int bulletSpeed =50;
     int bulletDamage=400;
     GreenfootImage gunSprite = new GreenfootImage("gun_sprite.png");
-    public Barrett(){
+    public Barrett(Player player){
         //super("barrett");
-        super();
+        super(player);
         speedDelay =50;
         speed=50;
     }
@@ -26,7 +26,7 @@ public class Barrett extends Weapon
         super.act();
     }    
     
-    public void use(Player player){ //x and y: current player pos
+    public void use(){ //x and y: current player pos
        GreenfootImage gunImage = new GreenfootImage(player.getImage());
        gunImage.drawImage(gunSprite, 12,0);
        player.setImage(gunImage);
@@ -37,7 +37,7 @@ public class Barrett extends Weapon
             effect.play();
             speedDelay =0;
             PlayerSniperBullet bullet = new PlayerSniperBullet(50,400);
-            getWorld().addObject(bullet, player.getX(), player.getY());
+            player.getWorld().addObject(bullet, player.getX(), player.getY());
         }
     }
 }
