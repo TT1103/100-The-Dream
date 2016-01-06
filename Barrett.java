@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Barrett extends Weapon
 {
-    int bulletSpeed =50;
+    int bulletSpeed =40;
     int bulletDamage=400;
     GreenfootImage gunSprite = new GreenfootImage("gun_sprite.png");
     public Barrett(Player player){
@@ -36,7 +36,7 @@ public class Barrett extends Weapon
             effect.setVolume(75);
             effect.play();
             speedDelay =0;
-            PlayerSniperBullet bullet = new PlayerSniperBullet(50,400);
+            PlayerSniperBullet bullet = new PlayerSniperBullet(bulletSpeed,bulletDamage);
             player.getWorld().addObject(bullet, player.getX(), player.getY());
         }
     }

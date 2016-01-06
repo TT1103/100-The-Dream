@@ -69,7 +69,7 @@ public class Player extends UnScrollable implements Serializable
     Weapon curWeapon;
     Equipment curHead,curChest,curLegs, curMisc ;
     
-    
+    boolean lvUp = false;
     int maxHpRecoverDelay=75-(defense/2);
     int hpRecoverDelay =maxHpRecoverDelay;
     public Player(){
@@ -136,7 +136,14 @@ public class Player extends UnScrollable implements Serializable
                 if(curHealth < maxHealth) curHealth++;
             }
         }
-        
+        if(lvUp){
+            if(curHealth >= maxHealth){
+                curHealth = maxHealth;
+                lvUp = false;
+            }else{
+                curHealth += 53;
+            }
+        }
         controlMovement();
         controlWeapons();
         controlExp();
@@ -289,7 +296,7 @@ public class Player extends UnScrollable implements Serializable
         //display level up stuff
         Text t = new Text(150,"Leveled up!");
         getWorld().addObject(t, getX(),getY()-20);
-        curHealth = maxHealth;
+        lvUp = true;
 
     }
 
