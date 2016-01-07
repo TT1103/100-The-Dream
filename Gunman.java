@@ -48,7 +48,7 @@ public class Gunman extends Enemy
         if(isTouching(Impassable.class)){
             turn(10);
         }
-        move(3);
+        move(2);
         controlDeath();
     }    
     

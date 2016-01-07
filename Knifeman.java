@@ -8,50 +8,65 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Knifeman extends Enemy
 {
-    private GreenfootImage[]strike=new GreenfootImage[5];
-    private int striketimer=0;
-    private boolean attack=false;
-    private GreenfootImage[]walk;
-    private int walktimer=0;
-    private boolean running=false;
-    private boolean hit=false;
+    int attackdelay=0;
+    int imageDelay = 0;
+
+    GreenfootImage[]images = {
+            new GreenfootImage("gunman0.png"),
+            new GreenfootImage("gunman1.png"),
+            new GreenfootImage("gunman2.png"),
+            new GreenfootImage("gunman1.png"),
+            new GreenfootImage("gunman0.png"),
+            new GreenfootImage("gunman3.png"),
+            new GreenfootImage("gunman4.png"),
+            new GreenfootImage("gunman3.png")
+        };
+
+    EnemySlash slash = new EnemySlash(50);
     public Knifeman(int health){
         super(health);
     }
 
     /**
-     * Act - do whatever the Knifeman wants to do. This method is called whenever
+     * Act - do whatever the Gunman wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
+
         if(paused){
             return;
         }
-        if(getObjectsInRange(30,Player.class)!=null){
-            attack=true;
-        }
-        running=(canSeePlayer())?true:false;
-        if(attack){
+        if(canSeePlayer()){
+            Player player = (Player) getWorld().getObjects(Player.class).get(0);
+            turnTowards(player.getX(), player.getY());
+
             attack();
-            walktimer=0;
-        }else{
-            walktimer++;
-            int a=(running)? 4:6;
-            setImage(walk[walktimer/a]);
+
         }
-        move((canSeePlayer())? 15:9);
-    }
-    public boolean hit(){
-        return hit;
-    }
+        if(imageDelay++ == 49){
+            imageDelay = 0;
+        }
+        if(imageDelay%7 == 0){
+            setImage(images[imageDelay/7]);
+        }
+        if(isTouching(Impassable.class)){
+            turn(10);
+        }
+        move(2);
+        if(getWorld().getObjects(EnemySlash.class).contains(slash)){
+            slash.setLocation(getX(),getY());
+        }
+        controlDeath();
+    }    
+
     public void attack(){
-        striketimer++;
-        setImage(strike[striketimer/4]);
-        hit=(striketimer>16)? true:false;//deals damage only when in 4th or 5th frame
-        if(striketimer==23){
-            attack=false;
-            striketimer=0;
+        
+        attackdelay++;
+        if(attackdelay >= 100 && getObjectsInRange(30, Player.class).size() > 0){
+            slash = new EnemySlash(50);
+            getWorld().addObject(slash,getX(),getY());
+            attackdelay=0;
         }
     }
 }
