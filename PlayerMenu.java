@@ -24,7 +24,10 @@ public class PlayerMenu extends GUI
     };
     Text[] statValues = new Text[7];
     
-    
+    InventoryBox head, chest,legs,weapon;
+    InventoryBox[] boxes = new InventoryBox[96];
+    boolean hasItem = false; //if the mouse is holding something
+    Equipment curItem;
     /*
      * 0 precision
      * 1 intelligence
@@ -94,10 +97,20 @@ public class PlayerMenu extends GUI
             }
             i++;
         }
-        
     }
     
     public void controlInventory(){
+        for (InventoryBox ib : boxes){
+            if (ib.pressed){
+                if(ib.item !=null && !hasItem){ //grabbing an item
+                    curItem = ib.item;
+                    ib.item =null;
+                    hasItem = true;
+                }else if(ib.item ==null && hasItem){ //placing an item
+                    
+                }
+            }
+        }
     }
     
     public void displayStats(){
@@ -133,20 +146,29 @@ public class PlayerMenu extends GUI
             player.getWorld().addObject(s,200,y);
             obj.add(s);
             y+=yChange;
-        }
-        
+        } 
     }
     
     public void displayInventory(){
         //draw out the inventory stuff
+        int i=0;
         for (int y =400; y <=712; y+=48){
             for(int x =88; x <= 712; x+=48){
                 InventoryBox ib = new InventoryBox();
                 player.getWorld().addObject(ib,x,y);
                 obj.add(ib);
+                boxes[i] = ib;
+                i++;
             }
         }
+        
+        head = new InventoryBox();
+        chest = new InventoryBox();
+        legs = new InventoryBox();
+        weapon = new InventoryBox();
+        obj.add(head);
+        obj.add(chest);
+        obj.add(legs);
+        obj.add(weapon);
     }
-    
-    
 }

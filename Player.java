@@ -65,10 +65,10 @@ public class Player extends UnScrollable implements Serializable
 
     //PlayerHealth healthBar;
     HUD hud;
-    
+
     Weapon curWeapon;
     Equipment curHead,curChest,curLegs, curMisc ;
-    
+
     boolean lvUp = false;
     int maxHpRecoverDelay=75-(defense/2);
     int hpRecoverDelay =maxHpRecoverDelay;

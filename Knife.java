@@ -15,6 +15,7 @@ public class Knife extends Weapon
         super(player);
         speedDelay=18;
         speed =18;
+        itemImage = new GreenfootImage("knife_item_image.png");
     }
     /**
      * Act - do whatever the Knife wants to do. This method is called whenever
