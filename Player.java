@@ -84,6 +84,7 @@ public class Player extends UnScrollable implements Serializable
         addToInventory(new Knife(this));
         addToInventory(new SniperGun(this));
         addToInventory(new MachineGun(this));
+        addToInventory(new ArcaneMissiles(this));
         addToInventory(new CopperHelmet());
         addToInventory(new CopperChest());
         addToInventory(new CopperLegs());

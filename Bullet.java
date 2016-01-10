@@ -48,20 +48,11 @@ public class Bullet extends Actor
             }else{
                 setRotation(player.getRotation());
             }
-            // 
-            //             getX=(double)getX();
-            //             getY=(double)getY();
-            //           
-            //             turnTowards(markerX, markerY);
-            //             double h=Math.sqrt(Math.pow(markerY-getY, 2)+Math.pow(markerX-getX, 2));
-            //             x0=(markerX-getX)*speed/h;
-            //             y0=(markerY-getY)*speed/h;
+           
             start=false;
         }
         
-        //         //getX=getX+x0;
-        //         //getY=getY+y0;
-        //         setLocation(getX()+((int)x0),getY()+((int)y0));
+
         if(getWorld().getObjects(Marker.class).contains(marker)){
             turnTowards(marker.getX(), marker.getY());
         }

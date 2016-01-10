@@ -109,8 +109,6 @@ public class LevelSelector extends World
                 i++;
                 continue;
             }
-          
-            
             player.inventory[i] = stringToObject(s,player);
             i++;
         }
@@ -141,6 +139,8 @@ public class LevelSelector extends World
             return new SniperGun(player);
         }else if(s.equals("machinegun")){
             return new MachineGun(player);
+        }else if(s.equals("arcanemissiles")){
+            return new ArcaneMissiles(player);
         }else if(s.equals("copperhelmet")){
             return new CopperHelmet();
         }else if(s.equals("copperchest")){
