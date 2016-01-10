@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.params=
-comment0.target=void\ setup()
-comment1.params=health
+comment0.target=Enemy()
+comment1.params=level
 comment1.target=Enemy(int)
 comment10.params=destX\ destY
 comment10.target=boolean\ canSeePoint(int,\ int)

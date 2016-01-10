@@ -41,12 +41,14 @@ public class Enemy extends Actor
     HealthBar healthBar;
     
     boolean paused =false;
-    public void setup(){
-        getWorld().addObject(healthBar, getX(),getY()+ getImage().getHeight());
+    
+    boolean start = false;
+   
+    public Enemy(){
     }
-
-    public Enemy(int health){
-        healthBar = new HealthBar(health, this);
+    public Enemy(int level){
+        start = true;
+        healthBar = new HealthBar(level*500, this);
     }
 
     /**
@@ -58,9 +60,14 @@ public class Enemy extends Actor
         if(paused){
             return;
         }
+        if(start){
+            start = false;
+            System.out.println("setting up");
+            getWorld().addObject(healthBar, getX(),getY()+ getImage().getHeight());
+        }
         controlMovement();
         controlWeapons();
-        
+        controlDeath();
         
         
     }    
@@ -154,6 +161,8 @@ public class Enemy extends Actor
         int rotation = getRotation();
         this.setRotation(originalRotation);
 
+        
+        
         int s = 10;
         double cos = Math.cos(Math.toRadians(rotation));
         double sin = Math.sin(Math.toRadians(rotation));

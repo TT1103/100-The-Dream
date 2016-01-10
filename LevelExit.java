@@ -24,4 +24,8 @@ public class LevelExit extends Actor
         
         
     }    
+    
+    public void removeBlocking(){
+        getWorld().removeObjects(getIntersectingObjects(Impassable.class));
+    }
 }

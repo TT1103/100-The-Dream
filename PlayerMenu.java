@@ -134,56 +134,81 @@ public class PlayerMenu extends GUI
         for (InventoryBox ib : boxes){
             if (ib.pressed){
                 if(ib.item !=null && !hasItem){ //grabbing an item
-                    curItem = ib.grabItem();
+                    setCurItem(ib.grabItem());
                     hasItem = true;
                 }else if(ib.item ==null && hasItem){ //placing an item
                     ib.placeItem(curItem);
                     curItem =null;
                     hasItem =false;
+                }else if(ib.item != null && hasItem){ //swapping item
+                    Equipment temp = curItem;
+                    setCurItem(ib.grabItem());
+                    ib.placeItem(temp);
                 }
             }
         }
         
         if(head.pressed){
             if(head.item != null && !hasItem){
-                curItem = head.item;
-                head.item =null;
+                setCurItem(head.grabItem());
                 hasItem = true;
             }else if(head.item ==null && hasItem && curItem.type.equals("head")){
                 head.placeItem(curItem);
                 curItem =null;
                 hasItem =false;
+            }else if (head.item !=null && hasItem && curItem.type.equals("head")){
+                Equipment temp = curItem;
+                setCurItem(head.grabItem());
+                head.placeItem(temp);
             }
         }else if(chest.pressed){
             if(chest.item != null && !hasItem){
-                curItem = chest.item;
-                chest.item =null;
+                setCurItem(chest.grabItem());
                 hasItem = true;
             }else if(chest.item ==null && hasItem && curItem.type.equals("chest")) {
                 chest.placeItem(curItem);
                 curItem =null;
                 hasItem =false;
+            }else if (chest.item !=null && hasItem && curItem.type.equals("chest")){
+                Equipment temp = curItem;
+                setCurItem(chest.grabItem());
+                chest.placeItem(temp);
             }
         }else if(legs.pressed){
             if(legs.item != null && !hasItem){
-                curItem = legs.item;
-                legs.item =null;
+                setCurItem(legs.grabItem());
                 hasItem = true;
             }else if(legs.item ==null && hasItem && curItem.type.equals("legs")){
                 legs.placeItem(curItem);
                 curItem =null;
                 hasItem =false;
+            }else if (legs.item !=null && hasItem && curItem.type.equals("legs")){
+                Equipment temp = curItem;
+                setCurItem(legs.grabItem());
+                legs.placeItem(temp);
             }
         }else if(weapon.pressed){
             if(weapon.item != null && !hasItem){
-                curItem = weapon.grabItem();
+                setCurItem(weapon.grabItem());
                 hasItem = true;
             }else if(weapon.item ==null && hasItem && curItem.type.equals("weapon")){
                 weapon.placeItem(curItem);
                 curItem =null;
                 hasItem =false;
+            }else if (weapon.item !=null && hasItem && curItem.type.equals("weapon")){
+                Equipment temp = curItem;
+                setCurItem(weapon.grabItem());
+                weapon.placeItem(temp);
             }
         }
+    }
+    
+    public void setCurItem(Equipment item){ //refresh item so it displays on top
+        int x = item.getX();
+        int y = item.getY();
+        getWorld().removeObject(item);
+        getWorld().addObject(item,x,y);
+        curItem = item;
     }
     
     public void displayStats(){

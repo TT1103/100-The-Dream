@@ -19,13 +19,14 @@ public class Sentry extends Enemy
     int delay2 = maxDelay2;
     
     int shots =0;
-    public Sentry(int health){
-        super(health);
-        
+   
+      
+    public Sentry(){
+        super(1);
     }
     
-    public Sentry(){
-        super(1000);
+    public Sentry(int level){
+        super(level);
     }
     /**
      * Act - do whatever the Sentry wants to do. This method is called whenever
@@ -33,11 +34,8 @@ public class Sentry extends Enemy
      */
     public void act() 
     {
-        if(paused){
-            return;
-        }
-        controlWeapons();
-        controlDeath();
+        super.act();
+        
     }    
     
     public void controlWeapons(){

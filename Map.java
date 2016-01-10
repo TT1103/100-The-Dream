@@ -28,6 +28,7 @@ public class Map extends World
 
     boolean fadedIn = false;
     
+    boolean bossBattle = false;
 
     /**
      * Constructor for objects of class Map.
@@ -92,6 +93,7 @@ public class Map extends World
         System.out.println("Switched from: " + dirFrom);
 
         //used to set player position
+        if(bossBattle) return; //don't set new position if it is a boss battle
         int offset =64; //off set for setting player location according to passages
         if(dirFrom.equals("down")){
             List<DownPassage> li = getObjects(DownPassage.class);
@@ -113,7 +115,7 @@ public class Map extends World
     }
 
     public void setPaintOrder(){
-        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class, PlayerExpBar.class, Tree.class, Explosion.class, Player.class);
+        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Tree.class, Explosion.class, Player.class);
     }
 
     public void generateGraph(){
@@ -163,7 +165,7 @@ public class Map extends World
 
         List<Actor> li = getObjects(null);
         for(Actor a : li){
-            if(!a.getClass().equals(Player.class) && !a.getClass().equals(Button.class)&& !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerExpBar.class)&& !a.getClass().equals(Slash.class)){
+            if(!a.getClass().equals(Player.class) && !a.getClass().equals(Button.class)&& !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerExpBar.class)&& !a.getClass().equals(Slash.class)&& !a.getClass().equals(BossHealthBar.class)){
                 a.setLocation(a.getX()-offX,a.getY()-offY);
             }
         }
@@ -240,14 +242,14 @@ public class Map extends World
                 }else if (name.equals("sentry")){
                     Sentry t = new Sentry();
                     addObject(t,x,y);
-                    t.setup();
+    
                 }else if (name.equals("dog")){
                     Dog t = new Dog();
                     addObject(t,x,y);
                 }else if (name.equals("mortar")){
                     MortarTower t = new MortarTower();
                     addObject(t,x,y);
-                    t.setup();
+  
                 }else if (name.equals("gunman")){
                     Tree t = new Tree();
                     addObject(t,x,y);
@@ -272,6 +274,18 @@ public class Map extends World
                 }else if (name.equals("levelexit")){
                     LevelExit t = new LevelExit();
                     addObject(t,x,y);
+                }else if (name.equals("boss1")){
+                    Boss1 t = new Boss1();
+                    addObject(t,x,y);
+                    bossBattle = true;
+                }else if (name.equals("boss2")){
+                    Boss2 t = new Boss2();
+                    addObject(t,x,y);
+                    bossBattle = true;
+                }else if (name.equals("boss3")){
+                    Boss3 t = new Boss3();
+                    addObject(t,x,y);
+                    bossBattle = true;
                 }
             }
             input.close();

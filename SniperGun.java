@@ -14,8 +14,8 @@ public class SniperGun extends Weapon
     public SniperGun(Player player){
         //super("barrett");
         super(player);
-        speedDelay =50;
-        speed=50;
+        speedDelay =5;//50
+        speed=5;
         itemImage = new GreenfootImage("snipergun_item_image.png");
         name = "snipergun";
     }

@@ -23,8 +23,8 @@ public class Knifeman extends Enemy
         };
 
     EnemySlash slash = new EnemySlash(50);
-    public Knifeman(int health){
-        super(health);
+    public Knifeman(int level){
+        super(level);
     }
 
     /**

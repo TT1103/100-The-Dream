@@ -63,7 +63,7 @@ public class Player extends UnScrollable implements Serializable
 
     PlayerData playerData;
 
-    //PlayerHealth healthBar;
+
     HUD hud;
 
     Weapon curWeapon;
@@ -74,6 +74,8 @@ public class Player extends UnScrollable implements Serializable
     int hpRecoverDelay =maxHpRecoverDelay;
     
     Equipment[] inventory = new Equipment[98];
+    
+    int curGameLevel =1;
     public Player(){
         playerData=new PlayerData();
     }
@@ -296,6 +298,7 @@ public class Player extends UnScrollable implements Serializable
 
     public void levelUp(){
         curStatPoints+=4;
+        curLevel++;
         //display level up stuff
         Text t = new Text(150,"Leveled up!");
         getWorld().addObject(t, getX(),getY()-20);

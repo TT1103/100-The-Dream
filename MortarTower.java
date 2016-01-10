@@ -9,19 +9,17 @@ import java.util.*;
 public class MortarTower extends Enemy
 {
     int delay=100;
-    public MortarTower(int health){
-        super(health);
+    public MortarTower(int level){
+        super(level);
     }
 
     public MortarTower(){
-        super(1000);
+        super(1);
     }
 
     public void act() 
     {
-        if(paused){
-            return;
-        }
+        
         delay--;
         //if(canSeePlayer()){
         List l = getWorld().getObjects(Player.class);
@@ -32,8 +30,8 @@ public class MortarTower extends Enemy
             delay=100;
         }
         // }
-
+        super.act();
         
-        controlDeath();
+
     }    
 }

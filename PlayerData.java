@@ -26,6 +26,7 @@ public class PlayerData implements Serializable
     int maxHealth = 500;
     int maxMana =endurance *50;
     
+    int curGameLevel =1; //which map the player is on. 
 
     String[] inventory = new String[98];
     String curWeapon, curHead, curChest, curLegs;
@@ -47,6 +48,7 @@ public class PlayerData implements Serializable
         maxHealth = player.maxHealth;
         maxMana = player.maxMana;
         
+        curGameLevel = player.curGameLevel;
         parseInventory(player);
         try{
             FileOutputStream fOut = new FileOutputStream("data/player_data.txt");

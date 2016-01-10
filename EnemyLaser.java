@@ -3,17 +3,37 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
  * Write a description of class EnemyLaser here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 10, 2016
  */
-public class EnemyLaser extends EnemeyWeapon
+public class EnemyLaser extends EnemyBullet
 {
+    public EnemyLaser(int speed, int damage){
+        super(speed, damage);
+    }
+    public EnemyLaser(int speed, int damage,int x, int y){
+        super(speed, damage,x,y);
+    }
     /**
      * Act - do whatever the EnemyLaser wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
     {
-        // Add your action code here.
+        super.act();
     }    
+    
+    public  void detectCollision(){
+        Player player =(Player) getOneIntersectingObject(Player.class);
+        if (player != null){
+            player.damage(damage);
+            if(player.knockback==false){
+                player.knockback=true;
+                player.knockbackStrength=5;
+                player.knockbackRotation=getRotation();
+            }
+            getWorld().removeObject(this);
+            return;
+        }
+    }
 }

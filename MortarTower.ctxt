@@ -1,5 +1,5 @@
 #BlueJ class context
-comment0.params=health
+comment0.params=level
 comment0.target=MortarTower(int)
 comment1.params=
 comment1.target=MortarTower()

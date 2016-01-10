@@ -8,9 +8,9 @@ import java.util.List;
  */
 public class Dog extends Enemy
 {
-    public Dog(int health){
+    public Dog(int level){
 
-        super(health);
+        super(level);
         idleSprite = new GreenfootImage("dog_idle.png");
         speed =4;
         delay=21;
@@ -30,7 +30,7 @@ public class Dog extends Enemy
     
     public Dog(){
 
-        super(100);
+        super(1);
         idleSprite = new GreenfootImage("dog_idle.png");
         speed =4;
         delay=21;
@@ -54,12 +54,8 @@ public class Dog extends Enemy
      */
     public void act() 
     {
-        if(paused){
-            return;
-        }
-        controlMovement();
-        controlWeapons();
-        controlDeath();
+        super.act();
+        
 
         if(damageDelay >0){
             damageDelay--;

@@ -21,8 +21,8 @@ public class Gunman extends Enemy
         new GreenfootImage("gunman4.png"),
         new GreenfootImage("gunman3.png")
     };
-    public Gunman(int health){
-        super(health);
+    public Gunman(int level){
+        super(level);
     }
     /**
      * Act - do whatever the Gunman wants to do. This method is called whenever
@@ -31,9 +31,7 @@ public class Gunman extends Enemy
     public void act() 
     {
         
-        if(paused){
-            return;
-        }
+        
         if(canSeePlayer()){
             Player player = (Player) getWorld().getObjects(Player.class).get(0);
             turnTowards(player.getX(), player.getY());
@@ -49,7 +47,7 @@ public class Gunman extends Enemy
             turn(10);
         }
         move(2);
-        controlDeath();
+        super.act();
     }    
     
     public void shoot(){

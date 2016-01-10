@@ -19,8 +19,18 @@ public class EnemyBullet extends Actor
     double y0;//change in bullet coords
     boolean paused =false;
     int time =999;
+    
+    boolean turnToPoint = false;
+    int pointX, pointY;
     public EnemyBullet(int speed, int damage){
-
+        this.speed=speed;
+        this.damage=damage;
+    }
+    
+    public EnemyBullet(int speed, int damage, int x, int y){
+        turnToPoint = true;
+        pointX = x;
+        pointY =y;
         this.speed=speed;
         this.damage=damage;
     }
@@ -35,9 +45,15 @@ public class EnemyBullet extends Actor
             return;
         }
         if(start){
-            Player player=(Player)getWorld().getObjects(Player.class).get(0);
-            markerX=player.getX();
-            markerY=player.getY();
+            if(!turnToPoint){
+                Player player=(Player)getWorld().getObjects(Player.class).get(0);
+                markerX=player.getX();
+                markerY=player.getY();
+            }else{
+                markerX=pointX;
+                markerY=pointY;
+                
+            }
             getX=(double)getX();
             getY=(double)getY();
             turnTowards(markerX, markerY);

@@ -2,15 +2,10 @@ grass
 bush -750 50
 bush -750 750
 bush -718 50
-bush -718 750
 bush -686 50
-bush -686 750
 bush -654 50
-bush -654 750
 bush -622 50
-bush -622 750
 bush -590 50
-bush -590 750
 bush -558 50
 bush -558 750
 bush -526 50
@@ -153,8 +148,6 @@ tree 629 623
 tree 631 173
 rock -634 214
 rock -354 301
-rock -424 659
-rock -292 641
 rock -88 376
 rock 175 146
 rock 368 593
@@ -170,3 +163,5 @@ sandbag -225 393
 sandbag -435 377
 sentry -578 240
 sentry 265 450
+downpassage -667 744
+bush -583 749

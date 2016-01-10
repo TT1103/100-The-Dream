@@ -14,9 +14,15 @@ public class UpPassage extends Passage
      */
     public void act() 
     {
+        super.act();
+        
         Player p = (Player)getOneIntersectingObject(Player.class);
-        if (p!=null && Math.abs(getY()-p.getY()) <range){
+        if (p!=null && Math.abs(getY()-p.getY()) <range && !containsBoss){
             ((Map)getWorld()).changeMap(0,1);
+        }
+        
+        if(p!=null && p.getY() <getY()-range){
+            p.setLocation(p.getX(), getY()-range);
         }
     }    
 }

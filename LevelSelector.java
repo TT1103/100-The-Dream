@@ -20,9 +20,14 @@ public class LevelSelector extends World
     private LevelSelectorButtons three = new LevelSelectorButtons("Level3");
     private LevelSelectorButtons four = new LevelSelectorButtons("Level4");
     private LevelSelectorButtons five = new LevelSelectorButtons("Level5");
-
+    
+    
     boolean newGame = false; //if it is a new game or not
 
+    int curGameLevel=1;
+    
+    Button resetButton; //button to start a new game and delete current game data
+    
     /**
      * Constructor for objects of class LevelSelector.
      * 
@@ -41,17 +46,20 @@ public class LevelSelector extends World
         
         // Creating the new game 
         newGame = !loadData();
+        
+   
+        
     }
 
     public void act(){
         // Check for mouse click of each buttons to determine level selection
         int level=-1;
         
-        if (Greenfoot.mouseClicked(one)) {
+        if (Greenfoot.mouseClicked(one) && curGameLevel >=1) {
             level=1;
-        } else if (Greenfoot.mouseClicked(two)) {
+        } else if (Greenfoot.mouseClicked(two) && curGameLevel >=2) {
             level=2;
-        } else if (Greenfoot.mouseClicked(three)) {
+        } else if (Greenfoot.mouseClicked(three) && curGameLevel >=3) {
             level=3;
         } else if (Greenfoot.mouseClicked(four)) {
             level=4;
@@ -82,6 +90,7 @@ public class LevelSelector extends World
 
             PlayerData playerData = (PlayerData)objIn.readObject();
             player = new Player(playerData);
+            curGameLevel=playerData.curGameLevel;
             parseInventory(player);
             fileIn.close();
             objIn.close();
@@ -100,20 +109,7 @@ public class LevelSelector extends World
                 i++;
                 continue;
             }
-            /*if (s.equals("knife")){
-                player.inventory[i] = new Knife(player);
-            }else if(s.equals("snipergun")){
-                player.inventory[i] = new SniperGun(player);
-            }else if(s.equals("machinegun")){
-                player.inventory[i] = new MachineGun(player);
-            }else if(s.equals("copperhelmet")){
-                player.inventory[i] = new CopperHelmet();
-            }else if(s.equals("copperchest")){
-                player.inventory[i] = new CopperChest();
-            }else if(s.equals("copperlegs")){
-                player.inventory[i] = new CopperLegs();
-            }else if(s.equals("xxxxx")){
-            }*/
+          
             
             player.inventory[i] = stringToObject(s,player);
             i++;
