@@ -1,7 +1,6 @@
 #BlueJ class context
-comment0.params=
-comment0.target=void\ act()
-comment0.text=\n\ Act\ -\ do\ whatever\ the\ PlayerData\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment0.params=player
+comment0.target=void\ saveData(Player)
 comment1.params=player
-comment1.target=void\ saveData(Player)
+comment1.target=void\ parseInventory(Player)
 numComments=2

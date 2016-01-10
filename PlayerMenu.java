@@ -24,8 +24,10 @@ public class PlayerMenu extends GUI
     };
     Text[] statValues = new Text[7];
     
+    Text defenseText;
+    
     InventoryBox head, chest,legs,weapon;
-    InventoryBox[] boxes = new InventoryBox[96];
+    InventoryBox[] boxes = new InventoryBox[98];
     boolean hasItem = false; //if the mouse is holding something
     Equipment curItem;
     /*
@@ -56,13 +58,30 @@ public class PlayerMenu extends GUI
         controlStats();
         controlInventory();
         
-        if(closeButton.pressed){
+        if(closeButton.pressed && !hasItem){
             ((Map)player.getWorld()).unpauseAll();
-            //getWorld().removeObject(closeButton);
+            
+            //cleanup equipment
+            player.curWeapon = (Weapon)weapon.item;
+            player.curHead = head.item;
+            player.curChest = chest.item;
+            player.curLegs = legs.item;
+            weapon.item = null;
+            head.item = null;
+            chest.item = null;
+            legs.item = null;
+            
+            //cleanup inventory
+            for (int i =0; i < boxes.length; i++){
+                player.inventory[i] = boxes[i].item;
+            }
+            
             getWorld().removeObjects(obj);
             getWorld().removeObject(this);
+            
             return;
         }
+        
         
     }    
     
@@ -97,18 +116,72 @@ public class PlayerMenu extends GUI
             }
             i++;
         }
+        int armorDefense =0;
+        if(head.item !=null) armorDefense+=head.item.defense;
+        if(chest.item !=null) armorDefense+=chest.item.defense;
+        if(legs.item !=null) armorDefense+=legs.item.defense;
+        defenseText.setText("Armor Defense: " +String.valueOf(armorDefense));
     }
     
     public void controlInventory(){
+        if(curItem != null){
+            MouseInfo mi = Greenfoot.getMouseInfo();
+            if(mi !=null){
+                curItem.setLocation(mi.getX(),mi.getY());
+            }
+        }
+        
         for (InventoryBox ib : boxes){
             if (ib.pressed){
                 if(ib.item !=null && !hasItem){ //grabbing an item
-                    curItem = ib.item;
-                    ib.item =null;
+                    curItem = ib.grabItem();
                     hasItem = true;
                 }else if(ib.item ==null && hasItem){ //placing an item
-                    
+                    ib.placeItem(curItem);
+                    curItem =null;
+                    hasItem =false;
                 }
+            }
+        }
+        
+        if(head.pressed){
+            if(head.item != null && !hasItem){
+                curItem = head.item;
+                head.item =null;
+                hasItem = true;
+            }else if(head.item ==null && hasItem && curItem.type.equals("head")){
+                head.placeItem(curItem);
+                curItem =null;
+                hasItem =false;
+            }
+        }else if(chest.pressed){
+            if(chest.item != null && !hasItem){
+                curItem = chest.item;
+                chest.item =null;
+                hasItem = true;
+            }else if(chest.item ==null && hasItem && curItem.type.equals("chest")) {
+                chest.placeItem(curItem);
+                curItem =null;
+                hasItem =false;
+            }
+        }else if(legs.pressed){
+            if(legs.item != null && !hasItem){
+                curItem = legs.item;
+                legs.item =null;
+                hasItem = true;
+            }else if(legs.item ==null && hasItem && curItem.type.equals("legs")){
+                legs.placeItem(curItem);
+                curItem =null;
+                hasItem =false;
+            }
+        }else if(weapon.pressed){
+            if(weapon.item != null && !hasItem){
+                curItem = weapon.grabItem();
+                hasItem = true;
+            }else if(weapon.item ==null && hasItem && curItem.type.equals("weapon")){
+                weapon.placeItem(curItem);
+                curItem =null;
+                hasItem =false;
             }
         }
     }
@@ -147,6 +220,14 @@ public class PlayerMenu extends GUI
             obj.add(s);
             y+=yChange;
         } 
+        Text t = new Text("Level: " + String.valueOf(player.curLevel),statFontSize,statColor);
+        player.getWorld().addObject(t, 115,285);
+        obj.add(t);
+        
+        
+        defenseText = new Text("Armor Defense: " , statFontSize, statColor);
+        player.getWorld().addObject(defenseText, 400,325);
+        obj.add(defenseText);
     }
     
     public void displayInventory(){
@@ -166,9 +247,41 @@ public class PlayerMenu extends GUI
         chest = new InventoryBox();
         legs = new InventoryBox();
         weapon = new InventoryBox();
+        
+        //display armor, weapon, text
+        player.getWorld().addObject(head,400,100);
+        player.getWorld().addObject(chest,400,180);
+        player.getWorld().addObject(legs,400,260);
+        player.getWorld().addObject(weapon,500,140);
         obj.add(head);
         obj.add(chest);
         obj.add(legs);
         obj.add(weapon);
+        head.placeItem(player.curHead);
+        chest.placeItem(player.curChest);
+        legs.placeItem(player.curLegs);
+        weapon.placeItem(player.curWeapon);
+        obj.add(head.item);
+        obj.add(chest.item);
+        obj.add(legs.item);
+        obj.add(weapon.item);
+        Text t1 = new Text("Head",statFontSize,statColor);
+        Text t2 = new Text("Chest",statFontSize,statColor);
+        Text t3 = new Text("Legs",statFontSize,statColor);
+        Text t4=new Text("Weapon",statFontSize,statColor);
+        player.getWorld().addObject(t1, 400,135);
+        player.getWorld().addObject(t2, 400,215);
+        player.getWorld().addObject(t3, 400,295);
+        player.getWorld().addObject(t4, 500,175);
+        obj.add(t1);
+        obj.add(t2);
+        obj.add(t3);
+        obj.add(t4);
+        
+        //add objects to inventory boxes
+        for (int x =0; x < boxes.length; x++){
+            boxes[x].placeItem(player.inventory[x]); 
+            obj.add(boxes[x].item);
+        }
     }
 }

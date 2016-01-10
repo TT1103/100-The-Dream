@@ -82,7 +82,7 @@ public class LevelSelector extends World
 
             PlayerData playerData = (PlayerData)objIn.readObject();
             player = new Player(playerData);
-
+            parseInventory(player);
             fileIn.close();
             objIn.close();
         }catch (Exception ex){ //start new game if we can't read the file
@@ -93,4 +93,67 @@ public class LevelSelector extends World
         return true;
     }
 
+    public void parseInventory(Player player){
+        int i =0;
+        for (String s : player.playerData.inventory){
+            if( s==null){
+                i++;
+                continue;
+            }
+            /*if (s.equals("knife")){
+                player.inventory[i] = new Knife(player);
+            }else if(s.equals("snipergun")){
+                player.inventory[i] = new SniperGun(player);
+            }else if(s.equals("machinegun")){
+                player.inventory[i] = new MachineGun(player);
+            }else if(s.equals("copperhelmet")){
+                player.inventory[i] = new CopperHelmet();
+            }else if(s.equals("copperchest")){
+                player.inventory[i] = new CopperChest();
+            }else if(s.equals("copperlegs")){
+                player.inventory[i] = new CopperLegs();
+            }else if(s.equals("xxxxx")){
+            }*/
+            
+            player.inventory[i] = stringToObject(s,player);
+            i++;
+        }
+        
+        String curWeapon = player.playerData.curWeapon;
+        if(curWeapon !=null){ //load the weapon stuff if neccessary
+            player.curWeapon = (Weapon)stringToObject(curWeapon,player);
+        }
+        String curHead = player.playerData.curHead;
+        if(curHead !=null){ //load the weapon stuff if neccessary
+            player.curHead = stringToObject(curHead,player);
+        }
+        String curChest = player.playerData.curChest;
+        if(curChest !=null){ //load the weapon stuff if neccessary
+            player.curChest = stringToObject(curChest,player);
+        }
+        String curLegs = player.playerData.curLegs;
+        if(curLegs !=null){ //load the weapon stuff if neccessary
+            player.curLegs = stringToObject(curLegs,player);
+        }
+    }
+    
+    public Equipment stringToObject(String s, Player player){
+        if(s==null) return null;
+        if (s.equals("knife")){
+            return new Knife(player);
+        }else if(s.equals("snipergun")){
+            return new SniperGun(player);
+        }else if(s.equals("machinegun")){
+            return new MachineGun(player);
+        }else if(s.equals("copperhelmet")){
+            return new CopperHelmet();
+        }else if(s.equals("copperchest")){
+            return new CopperChest();
+        }else if(s.equals("copperlegs")){
+            return new CopperLegs();
+        }else if(s.equals("xxxxx")){
+        }
+        
+        return null;
+    }
 }

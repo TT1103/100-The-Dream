@@ -29,8 +29,8 @@ public class Player extends UnScrollable implements Serializable
     int speed =2;
     boolean knockback=false;
 
-    P90 p90 = new P90(this);
-    Barrett sniper = new Barrett(this);
+    MachineGun machinegun = new MachineGun(this);
+    SniperGun sniper = new SniperGun(this);
     Knife knife = new Knife(this);
     boolean shooting =false;
     int knockbackDelay=5;
@@ -72,8 +72,19 @@ public class Player extends UnScrollable implements Serializable
     boolean lvUp = false;
     int maxHpRecoverDelay=75-(defense/2);
     int hpRecoverDelay =maxHpRecoverDelay;
+    
+    Equipment[] inventory = new Equipment[98];
     public Player(){
         playerData=new PlayerData();
+    }
+    
+    public void setDefaults(){
+        addToInventory(new Knife(this));
+        addToInventory(new SniperGun(this));
+        addToInventory(new MachineGun(this));
+        addToInventory(new CopperHelmet());
+        addToInventory(new CopperChest());
+        addToInventory(new CopperLegs());
     }
 
     public Player(PlayerData playerData){
@@ -98,15 +109,18 @@ public class Player extends UnScrollable implements Serializable
     }
 
     public void setup(){
-        getWorld().addObject(p90,-100,-100);
+        /*getWorld().addObject(machinegun,-100,-100);
         getWorld().addObject(sniper,-100,-100);
-        getWorld().addObject(knife,-100,-100);
+        //getWorld().addObject(knife,-100,-100);
+       
+
+        weapons.add(machinegun);
+        weapons.add(sniper);
+        weapons.add(knife);*/
         hud = new HUD(this);
         getWorld().addObject(hud, 0, 0);
-
-        weapons.add(p90);
-        weapons.add(sniper);
-        weapons.add(knife);
+        //curWeapon = knife;
+        //inventory[0] = knife;
     }
 
     /**
@@ -115,6 +129,9 @@ public class Player extends UnScrollable implements Serializable
      */
     public void act() 
     {
+        if(curWeapon !=null){
+            curWeapon.act();
+        }
         if(paused){
             return;
         }
@@ -150,8 +167,11 @@ public class Player extends UnScrollable implements Serializable
     }    
 
     public void damage(int damage){
-        //healthBar.damage(damage);
-        damage-= defense/3;
+        int totalDefense =defense;
+        if (curHead!=null) totalDefense+=curHead.defense;
+        if(curChest != null) totalDefense += curChest.defense;
+        if(curLegs !=null)totalDefense+=curLegs.defense;
+        damage-= (totalDefense)/3;
         if(damage<1) damage=1;
         curHealth-=damage;
         if(curHealth <0){
@@ -253,29 +273,12 @@ public class Player extends UnScrollable implements Serializable
         }else if (Greenfoot.mouseClicked(null)){
             shooting = false;
         }
-
         
-        if(weaponswitch==false){
-            if(Greenfoot.isKeyDown("q")){
-                weaponswitch=true;
-                weaponindex++;
-                if(weaponindex >= weapons.size()){
-                    weaponindex = 0;
-                }
-            }else if(Greenfoot.isKeyDown("e")){
-                weaponswitch=true;
-                weaponindex--;
-                if(weaponindex <0){
-                    weaponindex = weapons.size()-1;
-                }
-            }
-        }
-        if(!Greenfoot.isKeyDown("q") && !Greenfoot.isKeyDown("e")){
-            weaponswitch=false;
-        }
+       
 
-        if(shooting&&knockback==false){
-            weapons.get(weaponindex).use();
+        if(shooting&&knockback==false && curWeapon !=null){
+            //weapons.get(weaponindex).use();
+            curWeapon.use();
         }
     }
 
@@ -302,6 +305,15 @@ public class Player extends UnScrollable implements Serializable
 
     public void saveData(){
         playerData.saveData(this);
+    }
+    
+    public void addToInventory(Equipment item){
+        for (int i=0; i < inventory.length; i++){
+            if (inventory[i] == null){
+                inventory[i] = item;
+                return;
+            }
+        }
     }
 
     public void updateStats(){

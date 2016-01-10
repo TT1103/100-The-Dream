@@ -52,6 +52,7 @@ public class Map extends World
         super(800, 800, 1,false); 
         player=new Player();
         addObject(player, 400,400);
+        player.setDefaults();
         player.setup();
         curLevel = level;
         // Layering the actors 
@@ -112,7 +113,7 @@ public class Map extends World
     }
 
     public void setPaintOrder(){
-        super.setPaintOrder(Shade.class,GameOver.class, Text.class, Button.class, InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class, PlayerExpBar.class, Tree.class, Explosion.class, Player.class);
+        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class, PlayerExpBar.class, Tree.class, Explosion.class, Player.class);
     }
 
     public void generateGraph(){

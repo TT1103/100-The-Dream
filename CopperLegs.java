@@ -8,6 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CopperLegs extends Equipment
 {
+    public CopperLegs(){
+        defense =1;
+        name = "copperlegs";
+        itemImage = new GreenfootImage("copperlegs_item_image.png");
+        type="legs";
+    }
     /**
      * Act - do whatever the CopperLegs wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

@@ -8,6 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class CopperHelmet extends Equipment
 {
+   
+    public CopperHelmet(){
+        defense =2;
+        name = "copperhelmet";
+        itemImage = new GreenfootImage("copperhelmet_item_image.png");
+        type="head";
+    }
     /**
      * Act - do whatever the CopperHelmet wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

@@ -26,17 +26,10 @@ public class PlayerData implements Serializable
     int maxHealth = 500;
     int maxMana =endurance *50;
     
-    Weapon weapons;
-    
-    Equipment[] inventory = new Equipment[98];
-    /**
-     * Act - do whatever the PlayerData wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        
-    }   
+
+    String[] inventory = new String[98];
+    String curWeapon, curHead, curChest, curLegs;
+    //Equipment[] inventory = new Equipment[98];
     
     public void saveData(Player player){
         curLevel = player.curLevel;
@@ -54,6 +47,7 @@ public class PlayerData implements Serializable
         maxHealth = player.maxHealth;
         maxMana = player.maxMana;
         
+        parseInventory(player);
         try{
             FileOutputStream fOut = new FileOutputStream("data/player_data.txt");
             ObjectOutputStream objOut = new ObjectOutputStream (fOut);
@@ -65,4 +59,37 @@ public class PlayerData implements Serializable
             ex.printStackTrace();
         }
     }
+    
+    public void parseInventory(Player player){
+        int i =0;
+        for (Equipment e : player.inventory){
+            if(e!=null){
+                inventory[i]=e.name;
+            }else{
+                inventory[i] = null;
+            }
+            i++;
+        }
+        if(player.curWeapon != null){
+            curWeapon = player.curWeapon.name;
+        }else{
+            curWeapon = null;
+        }
+        if(player.curHead != null){
+            curHead = player.curHead.name;
+        }else{
+            curHead = null;
+        }
+        if(player.curChest != null){
+            curChest = player.curChest.name;
+        }else{
+            curChest = null;
+        }
+        if(player.curLegs != null){
+            curLegs = player.curLegs.name;
+        }else{
+            curLegs = null;
+        }
+    }
+  
 }

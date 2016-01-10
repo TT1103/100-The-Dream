@@ -15,9 +15,10 @@ public class Weapon extends Equipment
     GreenfootSound soundEffect;
     String weapon;
     boolean paused =false;
-    
+
     Player player;
     public Weapon(Player player){
+        type = "weapon";
         this.player = player;
     }
     /**
