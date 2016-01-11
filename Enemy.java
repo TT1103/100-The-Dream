@@ -62,7 +62,6 @@ public class Enemy extends Actor
         }
         if(start){
             start = false;
-            System.out.println("setting up");
             getWorld().addObject(healthBar, getX(),getY()+ getImage().getHeight());
         }
         controlMovement();

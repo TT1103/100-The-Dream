@@ -74,9 +74,14 @@ public class HUD extends UnScrollable
     }
     
     public void controlMenu(){
-        if(menuButton.pressed){
-            menu = new PlayerMenu(player);
-            player.getWorld().addObject(menu, 400,400);
+        if(!player.paused){
+            String recentKey = Greenfoot.getKey();
+            if(menuButton.pressed ||  (recentKey!=null && recentKey.equals("e"))){
+                
+                menu = new PlayerMenu(player);
+                player.getWorld().addObject(menu, 400,400);
+         
+            }
         }
     }
     

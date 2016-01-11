@@ -58,9 +58,10 @@ public class PlayerMenu extends GUI
         controlStats();
         controlInventory();
         
-        if(closeButton.pressed && !hasItem){
+        String recentKey = Greenfoot.getKey();
+        
+        if((closeButton.pressed || (recentKey!=null && recentKey.equals("e")))  && !hasItem){
             ((Map)player.getWorld()).unpauseAll();
-            
             //cleanup equipment
             player.curWeapon = (Weapon)weapon.item;
             player.curHead = head.item;

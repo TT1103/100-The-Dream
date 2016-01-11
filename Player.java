@@ -107,7 +107,7 @@ public class Player extends UnScrollable implements Serializable
         defense =playerData.defense; 
         endurance =playerData.endurance; 
         spirituality =playerData.spirituality; 
-
+        curGameLevel = playerData.curGameLevel;
         maxHpRecoverDelay = playerData.maxHpRecoverDelay;
         maxManaRegenDelay=playerData.maxManaRegenDelay;
         maxHealth = playerData.maxHealth;
@@ -175,15 +175,17 @@ public class Player extends UnScrollable implements Serializable
             }
         }
         if(lvUp){
-            if(curHealth >= maxHealth){
-                curHealth = maxHealth;
-            }else{
-                curHealth += 53;
+            if(curHealth < maxHealth){
+                curHealth+=53;
             }
-            if(curMana >=maxMana){
-                curMana = maxMana;
-            }else{
+            if(curHealth>maxHealth){
+                curHealth = maxHealth;
+            }
+            if(curMana < maxMana){
                 curMana+=23;
+            }
+            if(curMana>maxMana){
+                curMana = maxMana;
             }
             if(curMana >=maxMana && curHealth >=maxHealth){
                 lvUp=false;

@@ -32,7 +32,7 @@ public class PlayerArcaneMissile extends Bullet
             }
         }
         
-        List<Enemy> enemies = getObjectsInRange(100,Enemy.class);
+        List<Enemy> enemies = getObjectsInRange(200,Enemy.class);
         if(enemies.size()>0){
             Enemy e = enemies.get(0);
             if(e!=null){
