@@ -2,9 +2,11 @@
 comment0.params=
 comment0.target=void\ act()
 comment1.params=
-comment1.target=void\ controlWeapons()
-comment2.params=d
-comment2.target=void\ damage(int)
-comment3.params=
-comment3.target=void\ controlDeath()
-numComments=4
+comment1.target=void\ controlMovement()
+comment2.params=
+comment2.target=void\ controlWeapons()
+comment3.params=d
+comment3.target=void\ damage(int)
+comment4.params=
+comment4.target=void\ controlDeath()
+numComments=5

@@ -11,6 +11,7 @@ public class MortarTower extends Enemy
     int delay=100;
     public MortarTower(int level){
         super(level);
+        healthBar = new HealthBar(level*500, this);
     }
 
     public MortarTower(){

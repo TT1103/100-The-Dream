@@ -8,9 +8,7 @@ import java.util.Random;
  */
 public class Boss2 extends Boss
 {
-    int maxTurnDelay =2;
-    int turnDelay =maxTurnDelay;
-    int turnSpeed=1;
+   
     boolean attacking = false;
     
     int maxAttackDelay =150;
@@ -24,12 +22,9 @@ public class Boss2 extends Boss
 
     int maxMoveDelay =5;
     int moveDelay=maxMoveDelay;
-    
-    int bulletCnt=0;
-    int maxBulletAttackDelay =5;
-    int bulletAttackDelay = maxBulletAttackDelay;
+   
     boolean start = true;
-    Player p;
+
     BossHealthBar hpBar;
     
     public void act() 
@@ -40,31 +35,20 @@ public class Boss2 extends Boss
             start = false;
             hpBar = new BossHealthBar(50000, this);
             getWorld().addObject(hpBar, 400,775);
-            p = (Player) getWorld().getObjects(Player.class).get(0);
+
         }
-        turnTowards(p.getX(),p.getY());
-        
-        if(!attacking){ //slowly move towards player
-            if (moveDelay>0)moveDelay--;
-            if(moveDelay==0){
-                moveDelay = maxMoveDelay;
-                
-                int originalRotation = getRotation();
-                this.turnTowards(p.getX(), p.getY());
-                int rotation = getRotation();
-                this.setRotation(originalRotation);
-        
-                double s = 2;
-                double cos = Math.cos(Math.toRadians(rotation));
-                double sin = Math.sin(Math.toRadians(rotation));
-                
-                setLocation((int) (getX()+cos*s) ,(int) (getY()+sin*s));
-            }
-        }
+        controlMovement();
         controlWeapons();
         controlDeath();
         
     }   
+    
+    public void controlMovement(){
+        Player p = (Player) getWorld().getObjects(Player.class).get(0);
+        turnTowards(p.getX(),p.getY());
+        
+        
+    }
 
     public void controlWeapons(){
         Random rand = new Random();
@@ -79,28 +63,52 @@ public class Boss2 extends Boss
 
         if(attacking){
             if(curAttack ==0){
-                if(getWorld().getObjectsAt(getX(), getY(), Impassable.class).size() >0 ||getWorld().getObjectsAt(getX(), getY(), Sentry.class).size() >0 ){ //something is blocking
-                    //shoot lasers instead
-                    clusterCnt =10;
-                    attacking =false;
-                    attackDelay +=clusterCnt * clusterAttackDelay;
+                GreenfootSound effect = new GreenfootSound("spawn_effect.wav");
+                effect.setVolume(80);
+                effect.play();
+                int randX = rand.nextInt(700)-350;
+                int randY = rand.nextInt(700)-350;
+                Player p = (Player) getWorld().getObjects(Player.class).get(0);
+                
+                if(rand.nextInt(2) ==0){
+                    MortarTower tower = new MortarTower(10);
+                    getWorld().addObject(tower, p.getX()+randX, p.getY()+randY);
+                    while(!tower.canSeePlayer()){
+                        randX = rand.nextInt(700)-350;
+                        randY = rand.nextInt(700)-350;
+                        tower.setLocation(randX+p.getX(), randY+p.getY());
+                    }
                 }else{
-                    GreenfootSound effect = new GreenfootSound("spawn_effect.wav");
-                    effect.setVolume(80);
-                    effect.play();
-                    MortarTower mtower = new MortarTower(4);
-                    getWorld().addObject(mtower, getX(), getY());
-
-                    attacking =false;
+                    Sentry tower = new Sentry(10);
+                    getWorld().addObject(tower, p.getX()+randX, p.getY()+randY);
+                    while(!tower.canSeePlayer()){
+                        randX = rand.nextInt(700)-350;
+                        randY = rand.nextInt(700)-350;
+                        tower.setLocation(randX+p.getX(), randY+p.getY());
+                    }
                 }
+                
+
+                attacking =false;
+            
             }else if(curAttack ==1){
                 clusterCnt = 20;
                 attacking =false;
                 attackDelay +=clusterCnt * clusterAttackDelay;
-            }else if(curAttack ==2){ //bullet barrage
-                bulletCnt = 100;
-                attacking = false;
-                attackDelay +=bulletCnt * bulletAttackDelay;
+            }else if(curAttack ==2){ //spawn dogs
+                if(getWorld().getObjects(Dog.class).size()>12){ //too many dogs! shoot mortars instead
+                    clusterCnt = 20;
+                    attacking =false;
+                    attackDelay +=clusterCnt * clusterAttackDelay;
+                }else{
+                    for(int i =0; i <6; i++){
+                        Dog d = new Dog(10);
+                        getWorld().addObject(d, getX() -225+(i*75), getY());
+                        d.setRotation(getRotation());
+                        d.move(100);
+                    }
+                    attacking = false;
+                }
             }
         }
 
@@ -124,26 +132,7 @@ public class Boss2 extends Boss
             }
         }
 
-        if(bulletCnt>0){
-            if(bulletAttackDelay >0) bulletAttackDelay--;
-            if(bulletAttackDelay ==0){
-                bulletAttackDelay = maxBulletAttackDelay;
-                GreenfootSound effect = new GreenfootSound("p90_shoot.wav");
-                effect.setVolume(75);
-                effect.play();
-                Player p = (Player) getWorld().getObjects(Player.class).get(0);
-                bulletCnt--;
-                int targetX = p.getX() + (rand.nextInt(200)-100); 
-                int targetY= p.getY() + (rand.nextInt(200)-100); ;
-                EnemyBullet bullet = new EnemyBullet(10,20,targetX, targetY); //10,20
-                bullet.turnTowards(p.getX(),p.getY());
-                getWorld().addObject(bullet, getX(), getY()); 
-            }
-
-            if(bulletCnt ==0){
-                attacking = false;
-            }
-        }
+        
 
     }
     public void damage(int d){
@@ -156,7 +145,7 @@ public class Boss2 extends Boss
     public void controlDeath(){
         if(dead){
             Player p = (Player) getWorld().getObjects(Player.class).get(0);
-            p.gainExp(2000);
+            p.gainExp(15000);
 
             if(p.curGameLevel<3){ //increase the player's game progress
                 p.curGameLevel=3;

@@ -177,7 +177,7 @@ public class Boss1 extends Boss
     public void controlDeath(){
         if(dead){
             Player p = (Player) getWorld().getObjects(Player.class).get(0);
-            p.gainExp(1000);
+            p.gainExp(3000);
             
             if(p.curGameLevel<2){ //increase the player's game progress
                 p.curGameLevel=2;

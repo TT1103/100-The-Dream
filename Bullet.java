@@ -19,7 +19,7 @@ public class Bullet extends Actor
     double y0;//change in bullet coords
     boolean paused =false;
     
-    int time =999;
+    int time =500;
     Marker marker = new Marker(this);
     public Bullet(int speed, int damage){
 

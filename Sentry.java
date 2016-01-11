@@ -23,10 +23,12 @@ public class Sentry extends Enemy
       
     public Sentry(){
         super(1);
+       
     }
     
     public Sentry(int level){
         super(level);
+        healthBar = new HealthBar(level*500, this);
     }
     /**
      * Act - do whatever the Sentry wants to do. This method is called whenever

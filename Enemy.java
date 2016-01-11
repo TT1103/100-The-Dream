@@ -48,7 +48,7 @@ public class Enemy extends Actor
     }
     public Enemy(int level){
         start = true;
-        healthBar = new HealthBar(level*500, this);
+        //healthBar = new HealthBar(level*500, this);
     }
 
     /**
@@ -101,15 +101,24 @@ public class Enemy extends Actor
         int circleX = (int) (speed*squareX * Math.sqrt(1- 0.5* Math.pow(squareY,2)));
         int circleY = (int) (speed*squareY * Math.sqrt(1- 0.5* Math.pow(squareX,2)));
 
+        int origX=getX();
+        int origY=getY();
         /*double squareX =  speed*(Math.cos(Math.toRadians(getRotation())));
         double squareY =   speed*(Math.sin(Math.toRadians(getRotation())));
         int circleX = (int)squareX;
         int circleY = (int) squareY;*/
-
-        if (getWorld().getObjectsAt(getX() +circleX, getY()+circleY, Impassable.class).isEmpty() && getWorld().getObjectsAt(getX() +circleX, getY()+circleY, Player.class).isEmpty()) {
+        
+        if (getWorld().getObjectsAt(getX() +circleX, getY()+circleY, Impassable.class).isEmpty() && getWorld().getObjectsAt(getX() +circleX, getY()+circleY, Player.class).isEmpty() ) {
             super.setLocation(getX()+circleX, getY()+circleY);
             //super.move(speed);
+        }else if(getWorld().getObjectsAt(getX() +circleX, getY(), Impassable.class).isEmpty() && getWorld().getObjectsAt(getX() +circleX, getY(), Player.class).isEmpty()) { //what if we only move x?
+            super.setLocation(getX()+circleX, getY());
+        }else if(getWorld().getObjectsAt(getX() , getY()+circleY, Impassable.class).isEmpty() && getWorld().getObjectsAt(getX() , getY()+circleY, Player.class).isEmpty()){//what if we only move y?
+            super.setLocation(getX(), getY()+circleY);
         }
+        
+        
+        
     }
 
     public int[][] pathFind(int startX, int startY, int destX, int destY){

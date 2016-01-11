@@ -23,20 +23,13 @@ rock 566 150
 rock 566 650
 rock 598 150
 rock 598 650
-rock 630 150
 rock 630 650
 rock 150 150
-rock 650 150
 rock 150 182
-rock 650 182
 rock 150 214
-rock 650 214
 rock 150 246
-rock 650 246
 rock 150 278
-rock 650 278
 rock 150 310
-rock 650 310
 rock 150 342
 rock 650 342
 rock 150 374
@@ -61,3 +54,6 @@ uppassage 415 151
 rock 305 151
 rock 324 151
 levelexit 222 227
+rightpassage 649 252
+rock 629 146
+rock 655 163

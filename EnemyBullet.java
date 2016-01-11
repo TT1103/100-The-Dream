@@ -18,7 +18,7 @@ public class EnemyBullet extends Actor
     double x0;//change in bullet coords
     double y0;//change in bullet coords
     boolean paused =false;
-    int time =999;
+    int time =500;
     
     boolean turnToPoint = false;
     int pointX, pointY;

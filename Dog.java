@@ -25,6 +25,7 @@ public class Dog extends Enemy
         damageDelay = 8;
         maxDamageDelay = damageDelay;
         damage =10;
+        healthBar = new HealthBar(level*100, this);
 
     }
     

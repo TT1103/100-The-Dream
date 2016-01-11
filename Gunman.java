@@ -23,6 +23,7 @@ public class Gunman extends Enemy
     };
     public Gunman(int level){
         super(level);
+        healthBar = new HealthBar(level*500, this);
     }
     /**
      * Act - do whatever the Gunman wants to do. This method is called whenever
