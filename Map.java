@@ -115,7 +115,7 @@ public class Map extends World
     }
 
     public void setPaintOrder(){
-        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Tree.class, Explosion.class, Player.class);
+        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Tree.class, Explosion.class, Player.class);
     }
 
     public void generateGraph(){
@@ -165,7 +165,7 @@ public class Map extends World
 
         List<Actor> li = getObjects(null);
         for(Actor a : li){
-            if(!a.getClass().equals(Player.class) && !a.getClass().equals(Button.class)&& !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerExpBar.class)&& !a.getClass().equals(Slash.class)&& !a.getClass().equals(BossHealthBar.class)){
+            if(!a.getClass().equals(Player.class) && !a.getClass().equals(Button.class)&& !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerManaBar.class)&& !a.getClass().equals(PlayerExpBar.class)&& !a.getClass().equals(Slash.class)&& !a.getClass().equals(BossHealthBar.class)){
                 a.setLocation(a.getX()-offX,a.getY()-offY);
             }
         }

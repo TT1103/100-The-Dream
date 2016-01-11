@@ -32,7 +32,7 @@ public class Player extends UnScrollable implements Serializable
     MachineGun machinegun = new MachineGun(this);
     SniperGun sniper = new SniperGun(this);
     Knife knife = new Knife(this);
-    boolean shooting =false;
+    boolean attacking =false;
     int knockbackDelay=5;
     int knockbackStrength;
     int knockbackRotation;
@@ -73,6 +73,9 @@ public class Player extends UnScrollable implements Serializable
     int maxHpRecoverDelay=75-(defense/2);
     int hpRecoverDelay =maxHpRecoverDelay;
     
+    int maxManaRegenDelay =15;
+    int manaRegenDelay = maxManaRegenDelay;
+    
     Equipment[] inventory = new Equipment[98];
     
     int curGameLevel =1;
@@ -105,6 +108,8 @@ public class Player extends UnScrollable implements Serializable
         endurance =playerData.endurance; 
         spirituality =playerData.spirituality; 
 
+        maxHpRecoverDelay = playerData.maxHpRecoverDelay;
+        maxManaRegenDelay=playerData.maxManaRegenDelay;
         maxHealth = playerData.maxHealth;
         maxMana = playerData.maxMana;
         curHealth = maxHealth;
@@ -156,12 +161,32 @@ public class Player extends UnScrollable implements Serializable
                 if(curHealth < maxHealth) curHealth++;
             }
         }
+        if(manaRegenDelay >0){
+            manaRegenDelay--;
+            if(manaRegenDelay==0){
+                manaRegenDelay = maxManaRegenDelay;
+                if(curMana<maxMana){
+                    if(curWeapon ==null || !curWeapon.damageType.equals("magic")){
+                        curMana++;
+                    }else if(!attacking){
+                        curMana++;
+                    }
+                }
+            }
+        }
         if(lvUp){
             if(curHealth >= maxHealth){
                 curHealth = maxHealth;
-                lvUp = false;
             }else{
                 curHealth += 53;
+            }
+            if(curMana >=maxMana){
+                curMana = maxMana;
+            }else{
+                curMana+=23;
+            }
+            if(curMana >=maxMana && curHealth >=maxHealth){
+                lvUp=false;
             }
         }
         controlMovement();
@@ -272,14 +297,14 @@ public class Player extends UnScrollable implements Serializable
     public void controlWeapons(){
 
         if (Greenfoot.mousePressed(null)){
-            shooting = true;
+            attacking = true;
         }else if (Greenfoot.mouseClicked(null)){
-            shooting = false;
+            attacking = false;
         }
         
        
 
-        if(shooting&&knockback==false && curWeapon !=null){
+        if(attacking&&knockback==false && curWeapon !=null){
             //weapons.get(weaponindex).use();
             curWeapon.use();
         }
@@ -323,6 +348,14 @@ public class Player extends UnScrollable implements Serializable
     public void updateStats(){
         maxHealth = endurance*50;
         maxMana =spirituality *20;
+        maxManaRegenDelay = 15 - (spirituality/8);
         maxHpRecoverDelay=75-(defense/2);
+    }
+    
+    public void reduceMana(int amount){
+        curMana -=amount;
+        if(curMana<0){
+            curMana =0;
+        }
     }
 }

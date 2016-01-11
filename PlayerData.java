@@ -26,6 +26,8 @@ public class PlayerData implements Serializable
     int maxHealth = 500;
     int maxMana =endurance *50;
     
+    int maxHpRecoverDelay;
+    int maxManaRegenDelay;
     int curGameLevel =1; //which map the player is on. 
 
     String[] inventory = new String[98];
@@ -48,6 +50,9 @@ public class PlayerData implements Serializable
         maxHealth = player.maxHealth;
         maxMana = player.maxMana;
         
+        
+        maxManaRegenDelay = player.maxManaRegenDelay;
+        maxHpRecoverDelay = player.maxHpRecoverDelay;
         curGameLevel = player.curGameLevel;
         parseInventory(player);
         try{

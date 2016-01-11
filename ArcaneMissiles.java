@@ -8,12 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ArcaneMissiles extends Weapon
 {
+    int manaCost =5;
+    
     public ArcaneMissiles(Player player){
         super(player);
-        speed =10;
+        speed =15;
         speedDelay =speed;
         damage =35;
         name = "arcanemissiles";
+        damageType = "magic";
         itemImage = new GreenfootImage("arcanemissiles_item_image.png");
     }
     /**
@@ -26,14 +29,16 @@ public class ArcaneMissiles extends Weapon
     }    
     
     public void use(){
-        if(speedDelay>=speed){
+        if(speedDelay>=speed && player.curMana >= manaCost){
             GreenfootSound effect = new GreenfootSound("arcanemissile_effect.wav");
-            effect.setVolume(75);
+            effect.setVolume(70);
             effect.play();
             speedDelay=0;
             PlayerArcaneMissile am = new PlayerArcaneMissile(10,damage);
-            
+            player.reduceMana(manaCost);
             player.getWorld().addObject(am, player.getX(), player.getY());
+        }else if(player.curMana < manaCost){
+            player.attacking =false;
         }
     }
 }

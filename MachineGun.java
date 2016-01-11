@@ -11,12 +11,14 @@ public class MachineGun extends Weapon
     int bulletSpeed =20;
     int bulletDamage=30;
     GreenfootImage gunSprite = new GreenfootImage("gun_sprite.png");
+
     public MachineGun(Player player){
         //super("p90");
         super(player);
         speedDelay=10;
         speed =10;
         name = "machinegun";
+        damageType = "range";
         itemImage = new GreenfootImage("machinegun_item_image.png");
     }
 

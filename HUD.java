@@ -13,11 +13,14 @@ public class HUD extends UnScrollable
     
     PlayerHealthBar hpBar;
     PlayerExpBar expBar;
+    PlayerManaBar manaBar;
     boolean start = true;
     
     //used to determine an update
     int prevHealth =0;
     int prevExp =0; 
+    
+    int prevMana=0;
     
     Button menuButton;
     
@@ -26,12 +29,14 @@ public class HUD extends UnScrollable
         this.player = p;
         hpBar = new PlayerHealthBar(player.curHealth, player.maxHealth);
         expBar = new PlayerExpBar(player.curExp, player.maxExp);
+        manaBar = new PlayerManaBar(player.curMana, player.maxMana);
         player.getWorld().addObject(hpBar, hpBar.xSize/2,hpBar.ySize/2);
-        player.getWorld().addObject(expBar, expBar.xSize/2,hpBar.ySize + expBar.ySize/2);
+        player.getWorld().addObject(manaBar, manaBar.xSize/2,hpBar.ySize + manaBar.ySize/2);
+        player.getWorld().addObject(expBar, expBar.xSize/2,hpBar.ySize +manaBar.ySize+ expBar.ySize/2);
         
         menuButton = new Button ("player_menu_button.png");
         player.getWorld().addObject(menuButton, 736,14);
-       // menu = new PlayerMenu(player);
+   
     }
     
     /**
@@ -43,6 +48,7 @@ public class HUD extends UnScrollable
         
         controlHealth();
         controlExp();
+        controlMana();
         controlMenu();
     }   
     
@@ -50,6 +56,13 @@ public class HUD extends UnScrollable
         if(prevHealth != player.curHealth){
             prevHealth = player.curHealth;
             hpBar.updateHealth(player.curHealth,player.maxHealth);
+        }
+    }
+    
+    public void controlMana(){
+        if(prevMana != player.curMana){
+            prevMana = player.curMana;
+            manaBar.updateMana(player.curMana,player.maxMana);
         }
     }
     

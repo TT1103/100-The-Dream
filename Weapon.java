@@ -17,6 +17,7 @@ public class Weapon extends Equipment
     boolean paused =false;
 
     Player player;
+    String damageType;
     public Weapon(Player player){
         type = "weapon";
         this.player = player;

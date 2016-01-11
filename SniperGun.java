@@ -11,6 +11,7 @@ public class SniperGun extends Weapon
     int bulletSpeed =40;
     int bulletDamage=400;
     GreenfootImage gunSprite = new GreenfootImage("gun_sprite.png");
+    
     public SniperGun(Player player){
         //super("barrett");
         super(player);
@@ -18,6 +19,7 @@ public class SniperGun extends Weapon
         speed=5;
         itemImage = new GreenfootImage("snipergun_item_image.png");
         name = "snipergun";
+        damageType = "range";
     }
     /**
      * Act - do whatever the P90 wants to do. This method is called whenever
