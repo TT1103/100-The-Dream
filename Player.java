@@ -26,7 +26,7 @@ public class Player extends UnScrollable implements Serializable
 
     boolean moving =false;
     String direction ="";
-    int speed =2;
+    int speed =4;
     boolean knockback=false;
 
     MachineGun machinegun = new MachineGun(this);

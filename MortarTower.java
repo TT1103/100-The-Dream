@@ -16,6 +16,7 @@ public class MortarTower extends Enemy
 
     public MortarTower(){
         super(1);
+        healthBar = new HealthBar(500, this);
     }
 
     public void act() 

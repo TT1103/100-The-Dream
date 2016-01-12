@@ -23,7 +23,7 @@ public class Sentry extends Enemy
       
     public Sentry(){
         super(1);
-       
+        healthBar = new HealthBar(500, this);
     }
     
     public Sentry(int level){

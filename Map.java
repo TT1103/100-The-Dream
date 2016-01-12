@@ -16,7 +16,7 @@ public class Map extends World
     //int worldX =1200;
     //int worldY = 1200; 
 
-    //current position within the world
+    //current absolute position within the world
     int curX =0;
     int curY=0;
 
@@ -29,6 +29,7 @@ public class Map extends World
     boolean fadedIn = false;
     
     boolean bossBattle = false;
+    
 
     /**
      * Constructor for objects of class Map.
@@ -173,6 +174,9 @@ public class Map extends World
         scrollBackground(-offX,-offY);
         curX+=offX;
         curY += offY;
+        
+       
+        
     }
 
     protected final void scrollBackground(int offX, int offY) {

@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class Dog extends Enemy
 {
+    
     public Dog(int level){
 
         super(level);
@@ -42,7 +43,7 @@ public class Dog extends Enemy
         movingSprites[2] = new GreenfootImage("dog_moving3.png");
         movingSprites[3] = new GreenfootImage("dog_moving4.png");
         idleSprite = new GreenfootImage("dog_idle.png");
-
+        healthBar = new HealthBar(100, this);
         damageDelay = 8;
         maxDamageDelay = damageDelay;
         damage =10;
@@ -73,7 +74,7 @@ public class Dog extends Enemy
             }
             delay--;
         }
-
+        
         if(delay ==0){
             moving = false;
             delay = maxDelay;
@@ -81,13 +82,36 @@ public class Dog extends Enemy
         }
 
         if(seePlayer){
-            List l = getWorld().getObjects(Player.class);
-            Player p = (Player) l.get(0);
+            Player p = (Player)getWorld().getObjects(Player.class).get(0);
             turnTowards(p.getX(),p.getY());
             move(speed);
-        }else{
-           // moveToDefault();
-        }
+            hasPath = false;
+            pathToFollow=null;
+            noPath =false;
+        }/*else if(!hasPath && !noPath){//path find to player
+            Player p = (Player)getWorld().getObjects(Player.class).get(0);
+            int[][] path = pathFind(getX(), getY(), p.getX(), p.getY());
+            if(path !=null){
+                pathToFollow = path;
+                hasPath = true;
+                curPath =0;
+            }else{
+                noPath = true;
+            }
+        }else if (hasPath){
+            //follow the path
+            turnTowards(pathToFollow[curPath][0]+((Map) getWorld()).curX -400,pathToFollow[curPath][1]+ ((Map) getWorld()).curY -400);
+            move(speed);
+            moving = true;
+            //System.out.println(getX()+" " + getY());
+            if (curPath< pathToFollow.length &&Math.abs(getX() - pathToFollow[curPath][0]) <=3 && Math.abs(getY() - pathToFollow[curPath][1]) <=3){
+                curPath++;
+            }else{//path is bad, remove it
+                curPath =0;
+                hasPath = false;
+                pathToFollow = null;
+            }
+        }*/
 
     }
 
