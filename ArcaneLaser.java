@@ -15,7 +15,7 @@ public class ArcaneLaser extends Weapon
         speed =30;
         speedDelay =speed;
         damage =400;
-        name = "arcanemissiles";
+        name = "arcanelaser";
         damageType = "magic";
         itemImage = new GreenfootImage("arcanelaser_item_image.png");
         tooltip = "Arcane Laser\nA high damage, slow\nfire rate magic weapon.\nLasers target far away enemies.\nDamage: "+String.valueOf(damage)+"\nMana Cost: "+String.valueOf(manaCost);

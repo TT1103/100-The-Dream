@@ -15,7 +15,7 @@ public class ArcaneExplosion extends Weapon
         speed =20;
         speedDelay =speed;
         damage =125;
-        name = "arcanemissiles";
+        name = "arcaneexplosion";
         damageType = "magic";
         itemImage = new GreenfootImage("arcaneexplosion_item_image.png");
         tooltip = "Arcane Explosion\nAn average-high damage, medium\nfire rate magic weapon.\nRelease a deadly explosion\nof magic around you.\nDamage: "+String.valueOf(damage)+"\nMana Cost: "+String.valueOf(manaCost);
