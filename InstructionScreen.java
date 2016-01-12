@@ -8,7 +8,6 @@ import greenfoot.*;
  */
 public class InstructionScreen extends World
 {
-    private TitleBar title = new TitleBar (); 
     private StartButton start = new StartButton ();
     private SkipButton skip = new SkipButton ();
     private NextButton next = new NextButton ();
@@ -19,7 +18,7 @@ public class InstructionScreen extends World
 
     // Arrays to store instruction screen images
     // NOTE: may implement 12U methods if possible 
-    String images[] = new String [3];
+    String images[] = new String [2];
 
     /**
      * Constructor for objects of class InstructionScreen.
@@ -30,8 +29,7 @@ public class InstructionScreen extends World
         // Create a new world with 800x800 cells with a cell size of 1x1 pixels.
         super(800, 800, 1);        
 
-        // Adding the title bar and start button necessary
-        addObject (title, 400, 295);
+        // Adding the necessary start button
         addObject (start, 405, 643); 
 
         for (int i = 0 ; i < images.length ; i ++) {
@@ -49,7 +47,7 @@ public class InstructionScreen extends World
            System.out.println (mouse.getX() + "," + mouse.getY());
         }
 
-        if (title.titleBarGone() && start.checkObjectRemoved()) {
+        if (start.checkObjectRemoved()) {
             if (!delayedInstructions) {
                 setBackground (new GreenfootImage (images[0]));
                 delayedInstructions = true;
@@ -69,10 +67,6 @@ public class InstructionScreen extends World
         }
 
         changeInstructionScreens();
-    }
-
-    public TitleBar getTitleBar () { 
-        return title; 
     }
 
     public StartButton getStartButton () { 
