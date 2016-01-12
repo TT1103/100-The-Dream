@@ -8,6 +8,7 @@ import greenfoot.*;
  */
 public class InstructionScreen extends World
 {
+    private GifImage myWorldBackground = new GifImage ("MyWorld.gif");
     private StartButton start = new StartButton ();
     private SkipButton skip = new SkipButton ();
     private NextButton next = new NextButton ();
@@ -17,7 +18,6 @@ public class InstructionScreen extends World
     private int i = 0; // Used for changing instruction screens
 
     // Arrays to store instruction screen images
-    // NOTE: may implement 12U methods if possible 
     String images[] = new String [2];
 
     /**
@@ -27,13 +27,13 @@ public class InstructionScreen extends World
     public InstructionScreen()
     {    
         // Create a new world with 800x800 cells with a cell size of 1x1 pixels.
-        super(800, 800, 1);        
+        super(800, 800, 1);  
 
         // Adding the necessary start button
         addObject (start, 405, 643); 
 
         for (int i = 0 ; i < images.length ; i ++) {
-            images[i] = "Instruction" + (i) + ".png";
+            images[i] = "Instruction" + (i) + ".gif";
         }
     }
 
@@ -44,12 +44,12 @@ public class InstructionScreen extends World
         // NOTE: Get coordinate method is temporary!
         MouseInfo mouse = Greenfoot.getMouseInfo ();
         if (Greenfoot.mouseClicked(null)) {
-           System.out.println (mouse.getX() + "," + mouse.getY());
+            System.out.println (mouse.getX() + "," + mouse.getY());
         }
 
         if (start.checkObjectRemoved()) {
             if (!delayedInstructions) {
-                setBackground (new GreenfootImage (images[0]));
+                myWorldBackground = new GifImage (images[0]);
                 delayedInstructions = true;
             }
             if (!addNextIcon()) {
@@ -67,6 +67,8 @@ public class InstructionScreen extends World
         }
 
         changeInstructionScreens();
+        
+        setBackground (myWorldBackground.getCurrentImage());
     }
 
     public StartButton getStartButton () { 
@@ -98,7 +100,7 @@ public class InstructionScreen extends World
     public void changeInstructionScreens () {
         if (next.buttonClicked()) {
             if (i <= images.length-2) {
-                setBackground (new GreenfootImage (images[++i]));
+                myWorldBackground = new GifImage (images[++i]);
                 if (i == 1) {
                     addObject (back, 79, 705);
                 } 
@@ -108,7 +110,7 @@ public class InstructionScreen extends World
             next.buttonNotClicked();
         }
         if (back.buttonClicked()) {
-            setBackground (new GreenfootImage (images[--i]));
+            myWorldBackground = new GifImage (images[--i]);
             if (i == 0) {
                 back.buttonNotClicked();
                 removeObject (back);

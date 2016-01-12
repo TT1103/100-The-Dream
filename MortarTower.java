@@ -21,7 +21,9 @@ public class MortarTower extends Enemy
 
     public void act() 
     {
-        
+        if (paused) {
+            return;
+        }
         delay--;
         //if(canSeePlayer()){
         List l = getWorld().getObjects(Player.class);
