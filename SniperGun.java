@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class SniperGun extends Weapon
 {
     int bulletSpeed =40;
-    int bulletDamage=400;
+
     GreenfootImage gunSprite = new GreenfootImage("gun_sprite.png");
     
     public SniperGun(Player player){
@@ -20,6 +20,8 @@ public class SniperGun extends Weapon
         itemImage = new GreenfootImage("snipergun_item_image.png");
         name = "snipergun";
         damageType = "range";
+        damage =400;
+        tooltip="Sniper Gun\nA powerful but slow fire rate\nranged weapon.\nDamage: "+String.valueOf(damage);
     }
     /**
      * Act - do whatever the P90 wants to do. This method is called whenever
@@ -40,7 +42,7 @@ public class SniperGun extends Weapon
             effect.setVolume(75);
             effect.play();
             speedDelay =0;
-            PlayerSniperBullet bullet = new PlayerSniperBullet(bulletSpeed,bulletDamage);
+            PlayerSniperBullet bullet = new PlayerSniperBullet(bulletSpeed,damage + player.precision*damageRatio);
             player.getWorld().addObject(bullet, player.getX(), player.getY());
         }
     }

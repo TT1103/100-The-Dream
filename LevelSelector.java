@@ -135,19 +135,43 @@ public class LevelSelector extends World
         if(s==null) return null;
         if (s.equals("knife")){
             return new Knife(player);
+        }else if(s.equals("sword")){
+            return new Sword(player);
+        }else if(s.equals("deathsword")){
+            return new DeathSword(player);
         }else if(s.equals("snipergun")){
             return new SniperGun(player);
         }else if(s.equals("machinegun")){
             return new MachineGun(player);
+        }else if(s.equals("rocketlauncher")){
+            return new RocketLauncher(player);
         }else if(s.equals("arcanemissiles")){
             return new ArcaneMissiles(player);
+        }else if(s.equals("arcaneexplosion")){
+            return new ArcaneExplosion(player);
+        }else if(s.equals("arcanelaser")){
+            return new ArcaneLaser(player);
         }else if(s.equals("copperhelmet")){
             return new CopperHelmet();
         }else if(s.equals("copperchest")){
             return new CopperChest();
         }else if(s.equals("copperlegs")){
             return new CopperLegs();
-        }else if(s.equals("xxxxx")){
+        }else if(s.equals("ironhelmet")){
+            return new IronHelmet();
+        }else if(s.equals("ironchest")){
+            return new IronChest();
+        }else if(s.equals("ironlegs")){
+            return new IronLegs();
+        }else if(s.equals("carbonhelmet")){
+            return new CarbonHelmet();
+        }else if(s.equals("carbonchest")){
+            return new CarbonChest();
+        }else if(s.equals("carbonlegs")){
+            return new CarbonLegs();
+        }
+        
+        else if(s.equals("xxxxx")){
         }
         
         return null;

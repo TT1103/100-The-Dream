@@ -8,8 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Marker extends Actor
 {
-    Bullet bullet;
-    public Marker(Bullet bullet){
+    PlayerProjectile bullet;
+    public Marker(PlayerProjectile bullet){
         getImage().setTransparency(0);
         this.bullet = bullet;
     }
@@ -19,7 +19,7 @@ public class Marker extends Actor
      */
     public void act() 
     {
-        if(getObjectsInRange(bullet.speed/2, Bullet.class).contains(bullet)){
+        if(getObjectsInRange(bullet.speed/2, PlayerProjectile.class).contains(bullet)){
             getWorld().removeObject(this);
         }
     }    

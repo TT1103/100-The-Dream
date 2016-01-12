@@ -14,6 +14,7 @@ public class CopperHelmet extends Equipment
         name = "copperhelmet";
         itemImage = new GreenfootImage("copperhelmet_item_image.png");
         type="head";
+        tooltip ="Copper Helmet\nProvides low defense.\nDefense: "+String.valueOf(defense);
     }
     /**
      * Act - do whatever the CopperHelmet wants to do. This method is called whenever

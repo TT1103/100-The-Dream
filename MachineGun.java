@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MachineGun extends Weapon
 {
     int bulletSpeed =20;
-    int bulletDamage=30;
+
     GreenfootImage gunSprite = new GreenfootImage("gun_sprite.png");
 
     public MachineGun(Player player){
@@ -20,6 +20,8 @@ public class MachineGun extends Weapon
         name = "machinegun";
         damageType = "range";
         itemImage = new GreenfootImage("machinegun_item_image.png");
+        damage=30;
+        tooltip ="Machine Gun\nA low damage but high fire\nrate ranged weapon.\nDamage: "+String.valueOf(damage);
     }
 
     /**
@@ -40,7 +42,7 @@ public class MachineGun extends Weapon
             effect.setVolume(75);
             effect.play();
             speedDelay =0;
-            PlayerBullet bullet = new PlayerBullet(bulletSpeed,bulletDamage);
+            PlayerBullet bullet = new PlayerBullet(bulletSpeed,damage+ player.precision*damageRatio);
             player.getWorld().addObject(bullet, player.getX(),player.getY());
 
         }

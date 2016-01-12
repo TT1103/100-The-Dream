@@ -116,7 +116,7 @@ public class Map extends World
     }
 
     public void setPaintOrder(){
-        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Boss2.class, Tree.class, Explosion.class, Player.class);
+        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Boss2.class, Tree.class, EnemyExplosion.class, Player.class);
     }
 
     public void generateGraph(){
@@ -359,8 +359,8 @@ public class Map extends World
             p.paused =true;
         }
         
-        List<Bullet> b = getObjects(Bullet.class);
-        for (Bullet p: b){
+        List<PlayerProjectile> b = getObjects(PlayerProjectile.class);
+        for (PlayerProjectile p: b){
             p.paused =true;
         }
         
@@ -391,6 +391,16 @@ public class Map extends World
         
         List<MortarTarget> h = getObjects(MortarTarget.class);
         for (MortarTarget p: h){
+            p.paused =true;
+        }
+        
+        List<EnemyExplosion> i = getObjects(EnemyExplosion.class);
+        for (EnemyExplosion p: i){
+            p.paused =true;
+        }
+        
+        List<PlayerExplosion> j = getObjects(PlayerExplosion.class);
+        for (PlayerExplosion p: j){
             p.paused =true;
         }
     }
@@ -401,8 +411,8 @@ public class Map extends World
             p.paused =false;
         }
         
-        List<Bullet> b = getObjects(Bullet.class);
-        for (Bullet p: b){
+        List<PlayerProjectile> b = getObjects(PlayerProjectile.class);
+        for (PlayerProjectile p: b){
             p.paused =false;
         }
         
@@ -433,6 +443,16 @@ public class Map extends World
         
         List<MortarTarget> h = getObjects(MortarTarget.class);
         for (MortarTarget p: h){
+            p.paused =false;
+        }
+        
+        List<EnemyExplosion> i = getObjects(EnemyExplosion.class);
+        for (EnemyExplosion p: i){
+            p.paused =false;
+        }
+        
+        List<PlayerExplosion> j = getObjects(PlayerExplosion.class);
+        for (PlayerExplosion p: j){
             p.paused =false;
         }
     }

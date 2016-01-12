@@ -62,8 +62,7 @@ public class EnemyBullet extends Actor
             y0=(markerY-getY)*speed/h;
             start=false;
         }
-        //getX=getX+x0;
-        //getY=getY+y0;
+
         setLocation(getX()+((int)x0),getY()+((int)y0));
         detectCollision();
         time--;

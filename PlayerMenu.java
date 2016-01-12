@@ -26,10 +26,14 @@ public class PlayerMenu extends GUI
     
     Text defenseText;
     
+    Text tooltip;
+    
     InventoryBox head, chest,legs,weapon;
     InventoryBox[] boxes = new InventoryBox[98];
     boolean hasItem = false; //if the mouse is holding something
     Equipment curItem;
+    
+    
     /*
      * 0 precision
      * 1 intelligence
@@ -202,6 +206,20 @@ public class PlayerMenu extends GUI
                 weapon.placeItem(temp);
             }
         }
+        
+        //display tooltip when hovering:
+        MouseInfo mi = Greenfoot.getMouseInfo();
+        tooltip.setText("");
+        if(mi !=null){
+            List<InventoryBox> list = getWorld().getObjectsAt(mi.getX(),mi.getY(),InventoryBox.class);
+            if(list.size()>0){
+                InventoryBox ib = list.get(0);
+                if(ib.item!=null){
+                    tooltip.setText(ib.item.tooltip);
+                }
+            }
+        }
+        
     }
     
     public void setCurItem(Equipment item){ //refresh item so it displays on top
@@ -252,7 +270,7 @@ public class PlayerMenu extends GUI
         
         
         defenseText = new Text("Armor Defense: " , statFontSize, statColor);
-        player.getWorld().addObject(defenseText, 400,325);
+        player.getWorld().addObject(defenseText, 350,325);
         obj.add(defenseText);
     }
     
@@ -275,10 +293,10 @@ public class PlayerMenu extends GUI
         weapon = new InventoryBox();
         
         //display armor, weapon, text
-        player.getWorld().addObject(head,400,100);
-        player.getWorld().addObject(chest,400,180);
-        player.getWorld().addObject(legs,400,260);
-        player.getWorld().addObject(weapon,500,140);
+        player.getWorld().addObject(head,350,100);
+        player.getWorld().addObject(chest,350,180);
+        player.getWorld().addObject(legs,350,260);
+        player.getWorld().addObject(weapon,450,100);
         obj.add(head);
         obj.add(chest);
         obj.add(legs);
@@ -295,15 +313,18 @@ public class PlayerMenu extends GUI
         Text t2 = new Text("Chest",statFontSize,statColor);
         Text t3 = new Text("Legs",statFontSize,statColor);
         Text t4=new Text("Weapon",statFontSize,statColor);
-        player.getWorld().addObject(t1, 400,135);
-        player.getWorld().addObject(t2, 400,215);
-        player.getWorld().addObject(t3, 400,295);
-        player.getWorld().addObject(t4, 500,175);
+        player.getWorld().addObject(t1, 350,135);
+        player.getWorld().addObject(t2, 350,215);
+        player.getWorld().addObject(t3, 350,295);
+        player.getWorld().addObject(t4, 450,135);
         obj.add(t1);
         obj.add(t2);
         obj.add(t3);
         obj.add(t4);
         
+        tooltip = new Text("",statFontSize,statColor);
+        player.getWorld().addObject(tooltip, 575,250);
+        obj.add(tooltip);
         //add objects to inventory boxes
         for (int x =0; x < boxes.length; x++){
             boxes[x].placeItem(player.inventory[x]); 

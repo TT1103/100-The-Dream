@@ -12,6 +12,7 @@ public class Equipment  extends Actor
     String name;
     int defense;
     GreenfootImage itemImage;
+    String tooltip;
     /**
      * Act - do whatever the Armor wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #BlueJ class context
 comment0.params=
 comment0.target=Enemy()
@@ -31,34 +30,3 @@ comment8.target=int[][]\ pathFind(int,\ int,\ int,\ int)
 comment9.params=destX\ destY\ depth
 comment9.target=void\ recursivePathFind(int,\ int,\ int)
 numComments=14
-=======
-#BlueJ class context
-comment0.params=
-comment0.target=Enemy()
-comment1.params=level
-comment1.target=Enemy(int)
-comment10.params=destX\ destY
-comment10.target=boolean\ canSeePoint(int,\ int)
-comment11.params=
-comment11.target=void\ moveToDefault()
-comment12.params=
-comment12.target=double\ distanceToPlayer()
-comment2.params=
-comment2.target=void\ act()
-comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ Player\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-comment3.params=
-comment3.target=void\ controlDeath()
-comment4.params=
-comment4.target=void\ controlMovement()
-comment5.params=
-comment5.target=void\ controlWeapons()
-comment6.params=d
-comment6.target=void\ damage(int)
-comment7.params=speed
-comment7.target=void\ move(int)
-comment8.params=startX\ startY\ destX\ destY
-comment8.target=int[][]\ pathFind(int,\ int,\ int,\ int)
-comment9.params=
-comment9.target=boolean\ canSeePlayer()
-numComments=13
->>>>>>> 0454c822773e6b8a3b7d3fa4d07ef674f8f47c9a

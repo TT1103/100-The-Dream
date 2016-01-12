@@ -6,7 +6,7 @@ import java.util.Random;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlayerBullet extends Bullet
+public class PlayerBullet extends PlayerProjectile
 {
     
     public PlayerBullet(int speed, int damage){

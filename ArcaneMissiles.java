@@ -18,13 +18,14 @@ public class ArcaneMissiles extends Weapon
         name = "arcanemissiles";
         damageType = "magic";
         itemImage = new GreenfootImage("arcanemissiles_item_image.png");
+        tooltip = "Arcane Missiles\nA medium damage, medium\nfire rate magic weapon.\nMissiles target nearby enemies.\nDamage: "+String.valueOf(damage)+"\nMana Cost: "+String.valueOf(manaCost);
+
     }
     /**
      * Act - do whatever the ArcaneMissiles wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
+    public void act(){
         super.act();
     }    
     
@@ -34,7 +35,7 @@ public class ArcaneMissiles extends Weapon
             effect.setVolume(70);
             effect.play();
             speedDelay=0;
-            PlayerArcaneMissile am = new PlayerArcaneMissile(10,damage);
+            PlayerArcaneMissile am = new PlayerArcaneMissile(10,damage+ player.intelligence*damageRatio);
             player.reduceMana(manaCost);
             player.getWorld().addObject(am, player.getX(), player.getY());
         }else if(player.curMana < manaCost){
