@@ -9,10 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class CopperLegs extends Equipment
 {
     public CopperLegs(){
-        defense =1;
+        defense =3;
         name = "copperlegs";
         itemImage = new GreenfootImage("copperlegs_item_image.png");
         type="legs";
+        tooltip ="Copper Legs\nProvides low defense.\nDefense: "+String.valueOf(defense);
     }
     /**
      * Act - do whatever the CopperLegs wants to do. This method is called whenever

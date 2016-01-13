@@ -3,8 +3,8 @@ import java.util.*;
 /**
  * Write a description of class Enemy here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 11, 2016
  */
 public class Enemy extends Actor
 {
@@ -29,13 +29,11 @@ public class Enemy extends Actor
     
     boolean dead =false;
 
-    int[][] defaultPath = new int[][]{ {200,500}, {600,500}, {700,100}};
-    int curDefault =0; //index for which position
-    int defaultPathLength =defaultPath.length;
-
+ 
     static HashMap<String, int[][]> graph = new HashMap<String,int[][]>();
     boolean hasPath =false;
     int[][] pathToFollow;
+    boolean noPath = false;
     int curPath=0;
     boolean needPath =false;
     HealthBar healthBar;
@@ -48,7 +46,7 @@ public class Enemy extends Actor
     }
     public Enemy(int level){
         start = true;
-        //healthBar = new HealthBar(level*500, this);
+
     }
 
     /**
@@ -121,46 +119,83 @@ public class Enemy extends Actor
         
     }
 
+   
+    ArrayList<String> visited;
+    int[][] finalPath;
+    ArrayList<ArrayList<int[]>> queue;
     public int[][] pathFind(int startX, int startY, int destX, int destY){
-        startX = (int) (10*Math.round(startX/10.0));
-        startY = (int) (10*Math.round(startY/10.0));
-        ArrayList<int[][]> q = new ArrayList<int[][]>();
-
-        q.add(new int[][] {{startX, startY}});
-
-        ArrayList<String> visited = new ArrayList<String>();
-
-        while(q.size()>0){
-            int[][] path = q.get(0);
-            int[] cur = path[path.length-1];
-            String id = String.valueOf(cur[0]) + " " + String.valueOf(cur[1]);
-            q.remove(0);
-
-            if(getWorld().getObjectsAt(cur[0],cur[1], Impassable.class).size() >0 || getWorld().getObjectsAt(cur[0]+20,cur[1], Impassable.class).size() >0 || getWorld().getObjectsAt(cur[0]-20,cur[1], Impassable.class).size() >0||getWorld().getObjectsAt(cur[0],cur[1]+20, Impassable.class).size() >0||getWorld().getObjectsAt(cur[0],cur[1]-20, Impassable.class).size() >0){
-                if (getWorld().getObjectsAt(cur[0]+10,cur[1]+10, Impassable.class).size() >0 || getWorld().getObjectsAt(cur[0]+10,cur[1]-10, Impassable.class).size() >0 ||getWorld().getObjectsAt(cur[0]-10,cur[1]+10, Impassable.class).size() >0||getWorld().getObjectsAt(cur[0]-10,cur[1]-10, Impassable.class).size() >0){
-
-                    continue;
-                }
-            }
-            //getWorld().addObject(new Knife(), cur[0],cur[1]);
-            if(cur[0] == destX && cur[1] == destY){
-                return path;
-            }
-
-            if(visited.contains(id)){
-                continue;
-            }
-            visited.add(id);
-
-            for(int[] neighbor: Enemy.graph.get(id)){
-                int[][] newPath = Arrays.copyOf(path, path.length+1);
-                newPath[newPath.length-1] = neighbor;
-                q.add(newPath);
-            }
-        }
-        return null;
+        visited = new ArrayList<String>();
+        //get the absolute values, where 0,0, is the center of the map
+        int absStartX = startX - ((Map) getWorld()).curX +400;
+        int absStartY = startY - ((Map) getWorld()).curY+400;
+        
+        int absDestX = destX - ((Map) getWorld()).curX +400;
+        int absDestY = destY - ((Map) getWorld()).curY+400;
+        
+        finalPath = null;
+        queue = new ArrayList<ArrayList<int[]>>();
+        
+        int[] tempArray = new int[] {absStartX,absStartY};
+        ArrayList<int[]> tempArrayList = new ArrayList<int[]>();
+        tempArrayList.add(tempArray);
+        
+        queue.add(tempArrayList);
+        
+        recursivePathFind(absDestX, absDestY,0);
+        
+        return finalPath;
     }
+    
+    int nodeSize =30; //the size of the chunks that the world will be split into
+    public void recursivePathFind(int destX, int destY, int depth){
+        if(finalPath !=null) return; //path is already found, stop searchi
+        if (queue.size() ==0) return;
+        if(depth >100) return;
+        ArrayList<int[]> path = queue.get(0);
+        int[] curPoint = path.get(path.size()-1);
+        queue.remove(0);
+    
+        int curX=curPoint[0];
+        int curY=curPoint[1];
 
+        //getWorld().addObject(new InventoryBox(), curX+((Map) getWorld()).curX -400, curY+((Map) getWorld()).curX -400);
+        String id = String.valueOf(curX) + " " + String.valueOf(curY);
+        
+        if(pointsMeet(curX+((Map) getWorld()).curX -400,curY+((Map) getWorld()).curX -400, destX+((Map) getWorld()).curX -400, destY+((Map) getWorld()).curX -400)){ //the dog can now see the player and follow him easily. No need for path finding, done.
+            finalPath = new int[path.size()][2];
+            path.toArray(finalPath);  
+            return;
+        }
+        
+        if(visited.contains(id)){
+          
+            recursivePathFind( destX, destY,++depth);
+        }
+        visited.add(id);
+        
+        if(!getWorld().getObjectsAt(curX, curY, Impassable.class).isEmpty()){ 
+            recursivePathFind( destX, destY,++depth);
+        }
+       
+        //go through up, down left and right
+        ArrayList<int[]> temp1 = new ArrayList(path);
+        temp1.add(new int[]{curX + nodeSize, curY});
+        queue.add(temp1);
+        
+        ArrayList<int[]> temp2 = new ArrayList(path);
+        temp2.add(new int[]{curX - nodeSize, curY});
+        queue.add(temp2);
+        
+        ArrayList<int[]> temp3 = new ArrayList(path);
+        temp3.add(new int[]{curX, curY + nodeSize});
+        queue.add(temp3);
+        
+        ArrayList<int[]> temp4 = new ArrayList(path);
+        temp4.add(new int[]{curX, curY - nodeSize});
+        queue.add(temp4);
+        
+        recursivePathFind( destX, destY,++depth);
+    }
     
     public boolean canSeePlayer(){
         Player p = (Player) getWorld().getObjects(Player.class).get(0);
@@ -169,9 +204,7 @@ public class Enemy extends Actor
         int rotation = getRotation();
         this.setRotation(originalRotation);
 
-        
-        
-        int s = 10;
+        int s = 25;
         double cos = Math.cos(Math.toRadians(rotation));
         double sin = Math.sin(Math.toRadians(rotation));
         double curX = getX();
@@ -182,12 +215,17 @@ public class Enemy extends Actor
             curY += sin*s;
             distance+=Math.abs(cos*s);
             distance+=Math.abs(sin*s);
-            if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0){
+        
+            /*if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0){
+                return false;
+            }*/
+            if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX -10), (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX+10), (int) curY, Impassable.class).size() >0||getWorld().getObjectsAt((int) curX, (int) (curY-10), Impassable.class).size() >0 ||getWorld().getObjectsAt((int) curX, (int) (curY+10), Impassable.class).size() >0){
                 return false;
             }else if (getWorld().getObjectsAt((int) curX, (int) curY, Player.class).size()>0){
                 return true;
             }
         }
+        
         return false;
     }
 
@@ -203,20 +241,55 @@ public class Enemy extends Actor
         double sin = Math.sin(Math.toRadians(rotation));
         double curX = getX();
         double curY = getY();
-        while (curX >0 && curX<800 && curY>0 && curY<800){
+        int distance =0;
+        while (distance<1000){
             curX += cos*s;
             curY += sin*s;
-            // getWorld().addObject(new Knife(), (int)curX,(int)curY);
+            distance+=Math.abs(cos*s);
+            distance+=Math.abs(sin*s);
+
             if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX -10), (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX+10), (int) curY, Impassable.class).size() >0||getWorld().getObjectsAt((int) curX, (int) (curY-10), Impassable.class).size() >0 ||getWorld().getObjectsAt((int) curX, (int) (curY+10), Impassable.class).size() >0){
                 return false;
-            }else if (Math.abs(curX-destX) <10 && Math.abs(curY-destY)<10){
+            }else if (Math.abs(curX-destX)<10 && Math.abs(curY-destY)<10 ){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean pointsMeet(int startX, int startY, int destX, int destY){
+        int origX = getX();
+        int origY=getY();
+        setLocation(startX, startY);
+        int originalRotation = getRotation();
+        
+        this.turnTowards(destX, destY);
+        int rotation = getRotation();
+        
+        this.setRotation(originalRotation);
+        setLocation(origX, origY);
+        
+        int s = 25;
+        double cos = Math.cos(Math.toRadians(rotation));
+        double sin = Math.sin(Math.toRadians(rotation));
+        double curX = startX;
+        double curY = startY;
+        int distance =0;
+        while (distance<1000){
+            curX += cos*s;
+            curY += sin*s;
+            distance+=Math.abs(cos*s);
+            distance+=Math.abs(sin*s);
+            if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX -10), (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX+10), (int) curY, Impassable.class).size() >0||getWorld().getObjectsAt((int) curX, (int) (curY-10), Impassable.class).size() >0 ||getWorld().getObjectsAt((int) curX, (int) (curY+10), Impassable.class).size() >0){
+                return false;
+            }else if (Math.abs(curX-destX)<10 && Math.abs(curY-destY)<10){
                 return true;
             }
         }
         return false;
     }
 
-    public void moveToDefault(){
+    /*public void moveToDefault(){
         int destX=defaultPath[curDefault][0];
         int destY= defaultPath[curDefault][1];
 
@@ -258,7 +331,7 @@ public class Enemy extends Actor
             }
         }
 
-    }
+    }*/
     
     public double distanceToPlayer(){
         Player p = (Player) getWorld().getObjects(Player.class).get(0);

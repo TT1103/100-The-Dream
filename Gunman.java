@@ -23,6 +23,7 @@ public class Gunman extends Enemy
     };
     public Gunman(int level){
         super(level);
+        speed =2;
         healthBar = new HealthBar(level*500, this);
     }
     /**
@@ -47,7 +48,7 @@ public class Gunman extends Enemy
         if(isTouching(Impassable.class)){
             turn(10);
         }
-        move(2);
+        move(speed);
         super.act();
     }    
     

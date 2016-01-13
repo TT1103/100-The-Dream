@@ -19,6 +19,7 @@ public class EnemySlash extends Actor
         };
     Player p;
     boolean playerHit = false;
+    boolean paused =false;
     public EnemySlash(int damage){
         this.damage=damage;
         double ratio =2.0;
@@ -34,6 +35,9 @@ public class EnemySlash extends Actor
      */
     public void act() 
     {
+        if(paused){
+            return;
+        }
         time++;
         if(getObjectsInRange(30, Player.class).size() > 0){
             p = (Player) getObjectsInRange(30, Player.class).get(0);

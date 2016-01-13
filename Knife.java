@@ -9,7 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Knife extends Weapon
 {
 
-    int slashDamage=30;
+    
     
     public Knife(Player player){
         super(player);
@@ -18,6 +18,8 @@ public class Knife extends Weapon
         itemImage = new GreenfootImage("knife_item_image.png");
         name = "knife";
         damageType="melee";
+        damage=30;
+        tooltip = "Knife\nAn average melee weapon.\nDamage: "+String.valueOf(damage);
     }
     /**
      * Act - do whatever the Knife wants to do. This method is called whenever
@@ -31,7 +33,7 @@ public class Knife extends Weapon
     public void use(){
         
         if(speedDelay >=speed){
-            Slash s = new Slash(slashDamage);
+            Slash s = new Slash(damage + player.dexterity*damageRatio);
             player.getWorld().addObject(s, player.getX(),player.getY());
             GreenfootSound effect = new GreenfootSound("slash_effect.wav");
             effect.setVolume(80);

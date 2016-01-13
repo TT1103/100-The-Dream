@@ -18,12 +18,12 @@ public class InventoryBox extends GUI
      */
     public void act() 
     {
-       /* if(Greenfoot.mousePressed(this)){
-            pressed = true;
+        /* if(Greenfoot.mousePressed(this)){
+        pressed = true;
         }else{
-            pressed=false;
+        pressed=false;
         }*/
-        
+
         MouseInfo mi = Greenfoot.getMouseInfo();
         if(mi !=null){
             if(mi.getX() > getX()-24 && mi.getX() < getX()+24 && mi.getY() >getY()-24 && mi.getY()< getY()+24 && Greenfoot.mouseClicked(null)){
@@ -35,6 +35,7 @@ public class InventoryBox extends GUI
             pressed =false;
         }
     }
+
     public void placeItem(Equipment item){
         if(item == null) return;
         this.item =item;
@@ -44,7 +45,7 @@ public class InventoryBox extends GUI
         getWorld().addObject(item, getX(), getY());
         item.setLocation(getX(),getY());
     }
-    
+
     public Equipment grabItem(){
         Equipment temp = item;
         item = null;

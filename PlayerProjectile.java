@@ -18,13 +18,13 @@ public class PlayerProjectile extends Actor
     double x0;//change in bullet coords
     double y0;//change in bullet coords
     boolean paused =false;
-
+    
     int time =500;
     Marker marker = new Marker(this);
     public PlayerProjectile(int speed, int damage){
 
         getImage().setTransparency(0);
-
+        
         this.speed=speed;
         this.damage=damage;
     }
@@ -48,9 +48,10 @@ public class PlayerProjectile extends Actor
             }else{
                 setRotation(player.getRotation());
             }
-
+           
             start=false;
         }
+        
 
         if(getWorld().getObjects(Marker.class).contains(marker)){
             turnTowards(marker.getX(), marker.getY());
@@ -66,23 +67,18 @@ public class PlayerProjectile extends Actor
             getWorld().removeObject(this);
             return;
         }
-
+        
     }    
 
     public void detectCollision(){
         Enemy enemy = (Enemy) getOneIntersectingObject(Enemy.class);
         if (enemy != null){
-            if(isTouching(Boss3shield.class)){
-                getWorld().removeObject(this);
-                return;
-            }
             enemy.damage(damage);
             if(getWorld().getObjects(Marker.class).contains(marker)){
                 getWorld().removeObject(marker);
             }
             getWorld().removeObject(this);
             return;
-
         }
 
         Impassable wall = (Impassable) getOneIntersectingObject(Impassable.class);
@@ -93,7 +89,7 @@ public class PlayerProjectile extends Actor
             getWorld().removeObject(this);
             return;
         }
-
+        
         Passage passage = (Passage) getOneIntersectingObject(Passage.class);
         if(passage != null){
             if(getWorld().getObjects(Marker.class).contains(marker)){

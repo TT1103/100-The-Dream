@@ -3,8 +3,8 @@ import java.util.*;
 /**
  * Write a description of class PlayerArcaneMissile here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 11, 2016
  */
 public class PlayerArcaneMissile extends PlayerProjectile
 {
@@ -15,8 +15,7 @@ public class PlayerArcaneMissile extends PlayerProjectile
      * Act - do whatever the PlayerArcaneMissile wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
+    public void act(){
  
         if(paused){
             return;

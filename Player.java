@@ -25,6 +25,9 @@ public class Player extends UnScrollable implements Serializable
     int maxDelay = 25;
     GreenfootImage idleSprite = new GreenfootImage("idle.png");
 
+    
+    int maxMoveDelay =5;
+    int moveDelay =maxMoveDelay;
     boolean moving =false;
     String direction ="";
     int speed =2;
@@ -48,8 +51,8 @@ public class Player extends UnScrollable implements Serializable
     double expRatio =1.2; //how many more times exp needed to level up the next time
 
     int precision =10; //affects damage of ranged weapons like guns
-    int intelligence =10; //affects damage of mana weapons like spells
-    int dexterity =10; //affects damage melee weapons like swords
+    int intelligence =10; //affects damage of mana weapons like spells and mana regen
+    int dexterity =10; //affects damage melee weapons like swords and movement speed
     int defense =5; //affects damage reduction and health regen
     int endurance =10; //affects hp
     int spirituality =10; //affects mana
@@ -87,12 +90,28 @@ public class Player extends UnScrollable implements Serializable
     
     public void setDefaults(){
         addToInventory(new Knife(this));
+        addToInventory(new Sword(this));
+        addToInventory(new DeathSword(this));
+        
         addToInventory(new SniperGun(this));
         addToInventory(new MachineGun(this));
+        addToInventory(new RocketLauncher(this));
+        
         addToInventory(new ArcaneMissiles(this));
+        addToInventory(new ArcaneExplosion(this));
+        addToInventory(new ArcaneLaser(this));
+        
         addToInventory(new CopperHelmet());
         addToInventory(new CopperChest());
         addToInventory(new CopperLegs());
+        
+        addToInventory(new IronHelmet());
+        addToInventory(new IronChest());
+        addToInventory(new IronLegs());
+        
+        addToInventory(new CarbonHelmet());
+        addToInventory(new CarbonChest());
+        addToInventory(new CarbonLegs());
     }
 
     public Player(PlayerData playerData){
@@ -204,7 +223,7 @@ public class Player extends UnScrollable implements Serializable
         if (curHead!=null) totalDefense+=curHead.defense;
         if(curChest != null) totalDefense += curChest.defense;
         if(curLegs !=null)totalDefense+=curLegs.defense;
-        damage-= (totalDefense)/3;
+        damage-= (totalDefense)/2;
         if(damage<1) damage=1;
         curHealth-=damage;
         if(curHealth <0){
@@ -246,6 +265,8 @@ public class Player extends UnScrollable implements Serializable
     }
 
     public void controlMovement(){
+        
+        
         moving =false;
         if(knockback==false){
             if (Greenfoot.isKeyDown("w")){
@@ -306,8 +327,6 @@ public class Player extends UnScrollable implements Serializable
         }else if (Greenfoot.mouseClicked(null)){
             attacking = false;
         }
-        
-       
 
         if(attacking&&knockback==false && curWeapon !=null){
             //weapons.get(weaponindex).use();
@@ -353,8 +372,9 @@ public class Player extends UnScrollable implements Serializable
     public void updateStats(){
         maxHealth = endurance*50;
         maxMana =spirituality *20;
-        maxManaRegenDelay = 15 - (spirituality/8);
+        maxManaRegenDelay = 15 - (intelligence/8);
         maxHpRecoverDelay=75-(defense/2);
+        speed = 2+ (dexterity/49);
     }
     
     public void reduceMana(int amount){

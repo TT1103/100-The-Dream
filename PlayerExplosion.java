@@ -20,6 +20,11 @@ public class PlayerExplosion extends Actor
     int damage;
     public PlayerExplosion(int damage){
         this.damage =damage;
+
+        GreenfootSound effect = new GreenfootSound("explosion_effect.wav");
+        effect.setVolume(80);
+        effect.play();
+
     }
 
     /**

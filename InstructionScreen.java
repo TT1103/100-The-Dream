@@ -8,7 +8,7 @@ import greenfoot.*;
  */
 public class InstructionScreen extends World
 {
-    private TitleBar title = new TitleBar (); 
+    private GifImage myWorldBackground = new GifImage ("MyWorld.gif");
     private StartButton start = new StartButton ();
     private SkipButton skip = new SkipButton ();
     private NextButton next = new NextButton ();
@@ -18,9 +18,8 @@ public class InstructionScreen extends World
     private int i = 0; // Used for changing instruction screens
 
     // Arrays to store instruction screen images
-    // NOTE: may implement 12U methods if possible 
-    String images[] = new String [3];
-
+    String images[] = new String [2];
+    GreenfootSound music = new GreenfootSound("titlescreen_music.mp3");
     /**
      * Constructor for objects of class InstructionScreen.
      * 
@@ -28,29 +27,32 @@ public class InstructionScreen extends World
     public InstructionScreen()
     {    
         // Create a new world with 800x800 cells with a cell size of 1x1 pixels.
-        super(800, 800, 1);        
+        super(800, 800, 1);  
 
-        // Adding the title bar and start button necessary
-        addObject (title, 400, 295);
+        // Adding the necessary start button
         addObject (start, 405, 643); 
 
         for (int i = 0 ; i < images.length ; i ++) {
-            images[i] = "Instruction" + (i) + ".png";
+            images[i] = "Instruction" + (i) + ".gif";
         }
+
+        music.setVolume(75);
+        music.playLoop();
+
+        Greenfoot.start();
     }
 
     /**
      * Helps with the screen transitions 
      */
     public void act () {
-        // NOTE: Get coordinate method is temporary!
-        MouseInfo mouse = Greenfoot.getMouseInfo ();
-        if (Greenfoot.mouseClicked(null)) {
-           System.out.println (mouse.getX() + "," + mouse.getY());
+        if (!start.checkObjectRemoved()) {
+            setBackground (myWorldBackground.getCurrentImage());
         }
 
-        if (title.titleBarGone() && start.checkObjectRemoved()) {
+        if (start.checkObjectRemoved()) {
             if (!delayedInstructions) {
+                //myWorldBackground = new GifImage (images[0]);
                 setBackground (new GreenfootImage (images[0]));
                 delayedInstructions = true;
             }
@@ -65,14 +67,10 @@ public class InstructionScreen extends World
 
         // If skip button is clicked, game will auto-start with no instructions
         if (skip.buttonClicked()) {
-            Greenfoot.setWorld (new LevelSelector());
+            Greenfoot.setWorld (new LevelSelector(music));
         }
 
         changeInstructionScreens();
-    }
-
-    public TitleBar getTitleBar () { 
-        return title; 
     }
 
     public StartButton getStartButton () { 
@@ -104,16 +102,18 @@ public class InstructionScreen extends World
     public void changeInstructionScreens () {
         if (next.buttonClicked()) {
             if (i <= images.length-2) {
+                // myWorldBackground = new GifImage (images[++i]);
                 setBackground (new GreenfootImage (images[++i]));
                 if (i == 1) {
                     addObject (back, 79, 705);
                 } 
             } else {
-                Greenfoot.setWorld (new LevelSelector());
+                Greenfoot.setWorld (new LevelSelector(music));
             }
             next.buttonNotClicked();
         }
         if (back.buttonClicked()) {
+            //myWorldBackground = new GifImage (images[--i]);
             setBackground (new GreenfootImage (images[--i]));
             if (i == 0) {
                 back.buttonNotClicked();

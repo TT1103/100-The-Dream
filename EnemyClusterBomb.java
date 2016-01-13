@@ -33,7 +33,7 @@ public class EnemyClusterBomb extends EnemyBullet
         
     }    
     
-    public void detectCollision(){
+    /*public void detectCollision(){
         Player player =(Player) getOneIntersectingObject(Player.class);
         if (player != null){
             player.damage(damage);
@@ -45,5 +45,5 @@ public class EnemyClusterBomb extends EnemyBullet
             getWorld().removeObject(this);
             return;
         }
-    }
+    }*/
 }

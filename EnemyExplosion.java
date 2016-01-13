@@ -17,14 +17,21 @@ public class EnemyExplosion extends Actor
            
     int delay=0;
     boolean paused = false;
+
     int damage = 50;
-    public EnemyExplosion(Player p){
-        player=p;
-        
-    }
+    
     public EnemyExplosion(Player p, int damage){
         this.damage= damage;
     }
+
+    public EnemyExplosion(Player p){
+        player=p;
+        GreenfootSound effect = new GreenfootSound("explosion_effect.wav");
+        effect.setVolume(80);
+        effect.play();
+    }
+
+
     /**
      * Act - do whatever the Explosion wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -41,12 +48,13 @@ public class EnemyExplosion extends Actor
             
         }else{
             getWorld().removeObject(this);
+
             return;
         }
-        Player player = (Player)getOneIntersectingObject(Player.class);
-        if(delay <= 1 && player != null){
-            
-            player.damage(damage);
+        
+        if(delay <=1 && isTouching(Player.class)){
+            player.damage(50);
+
             player.knockback = true;
             player.knockbackStrength = 15;
             turnTowards(player.getX(),player.getY());

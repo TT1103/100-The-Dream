@@ -23,7 +23,7 @@ public class Sentry extends Enemy
       
     public Sentry(){
         super(1);
-       
+        healthBar = new HealthBar(500, this);
     }
     
     public Sentry(int level){
@@ -53,7 +53,7 @@ public class Sentry extends Enemy
             shots =3;
             delay2 =0;
         }
-        if (canSeePlayer() && distanceToPlayer()<=1000){
+        if (canSeePlayer() && distanceToPlayer()<=800){
             List l = getWorld().getObjects(Player.class);
             Player p = (Player) l.get(0);
             turnTowards(p.getX(),p.getY());
