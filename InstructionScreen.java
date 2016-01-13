@@ -31,15 +31,14 @@ public class InstructionScreen extends World
 
         // Adding the necessary start button
         addObject (start, 405, 643); 
-        
+
         for (int i = 0 ; i < images.length ; i ++) {
             images[i] = "Instruction" + (i) + ".gif";
         }
-        
-        
+
         music.setVolume(75);
         music.playLoop();
-        
+
         Greenfoot.start();
     }
 
@@ -47,15 +46,14 @@ public class InstructionScreen extends World
      * Helps with the screen transitions 
      */
     public void act () {
-        // NOTE: Get coordinate method is temporary!
-        MouseInfo mouse = Greenfoot.getMouseInfo ();
-        if (Greenfoot.mouseClicked(null)) {
-            System.out.println (mouse.getX() + "," + mouse.getY());
+        if (!start.checkObjectRemoved()) {
+            setBackground (myWorldBackground.getCurrentImage());
         }
 
         if (start.checkObjectRemoved()) {
             if (!delayedInstructions) {
-                myWorldBackground = new GifImage (images[0]);
+                //myWorldBackground = new GifImage (images[0]);
+                setBackground (new GreenfootImage (images[0]));
                 delayedInstructions = true;
             }
             if (!addNextIcon()) {
@@ -73,8 +71,6 @@ public class InstructionScreen extends World
         }
 
         changeInstructionScreens();
-        
-        setBackground (myWorldBackground.getCurrentImage());
     }
 
     public StartButton getStartButton () { 
@@ -106,7 +102,8 @@ public class InstructionScreen extends World
     public void changeInstructionScreens () {
         if (next.buttonClicked()) {
             if (i <= images.length-2) {
-                myWorldBackground = new GifImage (images[++i]);
+                // myWorldBackground = new GifImage (images[++i]);
+                setBackground (new GreenfootImage (images[++i]));
                 if (i == 1) {
                     addObject (back, 79, 705);
                 } 
@@ -116,7 +113,8 @@ public class InstructionScreen extends World
             next.buttonNotClicked();
         }
         if (back.buttonClicked()) {
-            myWorldBackground = new GifImage (images[--i]);
+            //myWorldBackground = new GifImage (images[--i]);
+            setBackground (new GreenfootImage (images[--i]));
             if (i == 0) {
                 back.buttonNotClicked();
                 removeObject (back);
