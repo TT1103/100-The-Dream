@@ -250,7 +250,7 @@ public class Enemy extends Actor
 
             if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX -10), (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX+10), (int) curY, Impassable.class).size() >0||getWorld().getObjectsAt((int) curX, (int) (curY-10), Impassable.class).size() >0 ||getWorld().getObjectsAt((int) curX, (int) (curY+10), Impassable.class).size() >0){
                 return false;
-            }else if (getWorld().getObjectsAt((int) curX, (int) curY, Player.class).size()>0){
+            }else if (Math.abs(curX-destX)<10 && Math.abs(curY-destY)<10 ){
                 return true;
             }
         }
@@ -269,7 +269,7 @@ public class Enemy extends Actor
         this.setRotation(originalRotation);
         setLocation(origX, origY);
         
-        int s = 10;
+        int s = 25;
         double cos = Math.cos(Math.toRadians(rotation));
         double sin = Math.sin(Math.toRadians(rotation));
         double curX = startX;
@@ -282,7 +282,7 @@ public class Enemy extends Actor
             distance+=Math.abs(sin*s);
             if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX -10), (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX+10), (int) curY, Impassable.class).size() >0||getWorld().getObjectsAt((int) curX, (int) (curY-10), Impassable.class).size() >0 ||getWorld().getObjectsAt((int) curX, (int) (curY+10), Impassable.class).size() >0){
                 return false;
-            }else if (getWorld().getObjectsAt((int) curX, (int) curY, Player.class).size()>0){
+            }else if (Math.abs(curX-destX)<10 && Math.abs(curY-destY)<10){
                 return true;
             }
         }

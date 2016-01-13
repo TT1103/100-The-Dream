@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class PlayerArcaneLaser extends PlayerProjectile
 {
+    Enemy target;
     public PlayerArcaneLaser(int speed, int damage){
         super(speed,damage);
     }
@@ -37,13 +38,16 @@ public class PlayerArcaneLaser extends PlayerProjectile
             turnTowards(marker.getX(), marker.getY());
         }
         List<Enemy> enemies = getObjectsInRange(400,Enemy.class);
-        if(enemies.size()>0){
+        if(enemies.size()>0 && target ==null){
             Enemy e = enemies.get(0);
             if(e!=null){
                 if(e.pointsMeet(getX(),getY(),e.getX(),e.getY())){
                     turnTowards(e.getX(), e.getY());
+                    target=e;
                 }
             }
+        }else if(target !=null){
+            turnTowards(target.getX(), target.getY());
         }
 
         move(speed);
