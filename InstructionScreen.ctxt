@@ -1,10 +1,10 @@
 #BlueJ class context
 comment0.params=
 comment0.target=InstructionScreen()
-comment0.text=\n\ Constructor\ for\ objects\ of\ class\ InstructionScreen.\n\ \n
+comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ InstructionScreen.\r\n\ \r\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\n\ Helps\ with\ the\ screen\ transitions\ \n
+comment1.text=\r\n\ Helps\ with\ the\ screen\ transitions\ \r\n
 comment2.params=
 comment2.target=StartButton\ getStartButton()
 comment3.params=

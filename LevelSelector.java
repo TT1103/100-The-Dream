@@ -20,12 +20,9 @@ public class LevelSelector extends World
     private LevelSelectorButtons three = new LevelSelectorButtons("Level3");
     private LevelSelectorButtons four = new LevelSelectorButtons("Level4");
     private LevelSelectorButtons five = new LevelSelectorButtons("Level5");
-    
-    
-    boolean newGame = false; //if it is a new game or not
 
+    boolean newGame = false; //if it is a new game or not
     int curGameLevel=1;
-    
     Button resetButton; //button to start a new game and delete current game data
     GreenfootSound music = new GreenfootSound("titlescreen_music.mp3");
     /**
@@ -41,28 +38,26 @@ public class LevelSelector extends World
         music.playLoop();
         setup();
     }
-    
+
     public LevelSelector(GreenfootSound music){ //used to make music flow 
         super(800, 800, 1,false); 
         this.music = music;
         setup();
     }
-    
+
     public void setup(){
         // Add all the level selector buttons 
-        addObject (one, 96, 481);
-        addObject (two, 222, 481);
-        addObject (three, 345, 481);
-        addObject (four, 469, 481);
-        addObject (five, 587, 481);
-        
+        addObject (one, 345, 478);
+        addObject (two, 525, 478);
+        addObject (three, 702, 478);
+
         newGame = !loadData();
     }
 
     public void act(){
         // Check for mouse click of each buttons to determine level selection
         int level=-1;
-        
+
         if (Greenfoot.mouseClicked(one) && curGameLevel >=1) {
             level=1;
         } else if (Greenfoot.mouseClicked(two) && curGameLevel >=2) {
@@ -74,7 +69,7 @@ public class LevelSelector extends World
         } else if (Greenfoot.mouseClicked(five)) {
             level=5;
         }
-        
+
         if(level > 0){
             music.stop();
             if (newGame){
@@ -83,12 +78,16 @@ public class LevelSelector extends World
                 Greenfoot.setWorld (new Map(level,player));
             }
         }
+<<<<<<< HEAD
         
         
     }
    
     
+=======
+>>>>>>> 9158a4db4c276fd46461c7023384dcd2cf22665b
 
+    }
     public boolean loadData(){ //loads previous save data
         File file = new File(System.getProperty("user.home") + "/Desktop/player_data.txt");
         
@@ -124,7 +123,7 @@ public class LevelSelector extends World
             player.inventory[i] = stringToObject(s,player);
             i++;
         }
-        
+
         String curWeapon = player.playerData.curWeapon;
         if(curWeapon !=null){ //load the weapon stuff if neccessary
             player.curWeapon = (Weapon)stringToObject(curWeapon,player);
@@ -142,7 +141,7 @@ public class LevelSelector extends World
             player.curLegs = stringToObject(curLegs,player);
         }
     }
-    
+
     public Equipment stringToObject(String s, Player player){
         if(s==null) return null;
         if (s.equals("knife")){
@@ -182,10 +181,10 @@ public class LevelSelector extends World
         }else if(s.equals("carbonlegs")){
             return new CarbonLegs();
         }
-        
+
         else if(s.equals("xxxxx")){
         }
-        
+
         return null;
     }
 }
