@@ -1,8 +1,10 @@
 #BlueJ class context
 comment0.params=
 comment0.target=Player()
+comment0.text=\n\ Default\ constructor\ for\ the\ player.\ \n\ Starts\ a\ new\ player\ with\ new\ data.\n
 comment1.params=
 comment1.target=void\ setDefaults()
+comment1.text=\n\ Loads\ the\ default\ items\ into\ the\ player's\ inventory.\n
 comment10.params=
 comment10.target=void\ controlExp()
 comment11.params=amount
@@ -19,6 +21,7 @@ comment16.params=amount
 comment16.target=void\ reduceMana(int)
 comment2.params=playerData
 comment2.target=Player(PlayerData)
+comment2.text=\n\ Constructor\ used\ for\ creating\ a\ player\ with\ existing\ player\ save\ data.\n
 comment3.params=
 comment3.target=void\ setup()
 comment4.params=

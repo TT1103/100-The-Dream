@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
+import java.awt.Color;
 /**
  * Write a description of class Boss2 here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 13, 2016
  */
 public class Boss2 extends Boss
 {
@@ -33,9 +34,9 @@ public class Boss2 extends Boss
 
         if(start){
             start = false;
-            hpBar = new BossHealthBar(50000, this);
+            hpBar = new BossHealthBar(100000, this);
             getWorld().addObject(hpBar, 400,775);
-
+            getWorld().addObject(new Text("Battle Fortress", 18,Color.BLACK),400,775);
         }
         controlMovement();
         controlWeapons();
@@ -149,12 +150,21 @@ public class Boss2 extends Boss
 
             if(p.curGameLevel<3){ //increase the player's game progress
                 p.curGameLevel=3;
+                Text text = new Text("You have defeated the second boss!\nNew weapons and armor have been added to your inventory.\nExit this level and continue the game.", 24, Color.WHITE);
+                getWorld().addObject(text,400,200);
+                p.addToInventory(new DeathSword(p));
+                p.addToInventory(new ArcaneLaser(p));
+                p.addToInventory(new RocketLauncher(p));
+                p.addToInventory(new CarbonHelmet());
+                p.addToInventory(new CarbonChest());
+                p.addToInventory(new CarbonLegs());
             }
 
             LevelExit exit = new LevelExit();
             getWorld().addObject(exit, getX(), getY());
             exit.removeBlocking();
 
+            
             getWorld().removeObject(this);
         }
     }

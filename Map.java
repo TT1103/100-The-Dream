@@ -1,20 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 import java.io.*;
+
 /**
- * Write a description of class Map here.
+ * The map class represents the world that the player is able to move around in and battle enemies.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 13, 2016
  */
 public class Map extends World
 {
     private Player player;
     private boolean gameOver = false;
-
-    //absolute size of the world
-    //int worldX =1200;
-    //int worldY = 1200; 
 
     //current absolute position within the world
     int curX =0;
@@ -32,18 +29,20 @@ public class Map extends World
     
     GreenfootSound music;
 
-    
+    /**
+     * Constructor used for starting a map without player data.
+     * 
+     * @param level An integer indicating which level to load.
+     */
+    public Map(int level) {    
 
-    public Map(int level) //absolute new game
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 800, 1,false); 
         player=new Player();
         addObject(player, 400,400);
         player.setDefaults();
         player.setup();
         curLevel = level;
-        // Layering the actors 
+
         setPaintOrder();
 
         String mapFile = "data/level_"+level+"/"+level+"_map_0_0.txt";
@@ -51,15 +50,21 @@ public class Map extends World
         fadeIn();
     }
 
-    public Map(int level, Player player) //game with data
+    /**
+     * Constructor used for starting a map with player data.
+     * 
+     * @param level An integer indicating which level to load.
+     * @param player A player object that contains all the saved data.
+     */
+    public Map(int level, Player player) 
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+ 
         super(800, 800, 1,false); 
         this.player = player;
         addObject(player, 400,400);
         player.setup();
         curLevel = level;
-        // Layering the actors 
+
         setPaintOrder();
 
         String mapFile = "data/level_"+level+"/"+level+"_map_0_0.txt";
@@ -67,6 +72,16 @@ public class Map extends World
 
     }
 
+    /**
+     * Constructor used for switching between maps in a level.
+     * 
+     * @param level An integer indicating which level to load.
+     * @param player A player object that contains all the saved data.
+     * @param mapFile A string containing the file of the new map to load.
+     * @param dirFrom A string indicating the direction that the player came from.
+     * @param newX An integer indicating the new x coordinate of the map.
+     * @param newY An integer indicating the new y coordinate of the map.
+     */
     public Map(int level, Player player,String mapFile, String dirFrom, int newX, int newY){  //switching maps  
         super(800, 800, 1,false); 
         this.player=player;
@@ -80,7 +95,7 @@ public class Map extends World
         System.out.println("Switched from: " + dirFrom);
 
         //used to set player position
-        if(bossBattle) return; //don't set new position if it is a boss battle
+        if(bossBattle) return; //don't set new position if it is a boss battle, just stay in center
         int offset =64; //off set for setting player location according to passages
         if(dirFrom.equals("down")){
             List<DownPassage> li = getObjects(DownPassage.class);
@@ -101,21 +116,23 @@ public class Map extends World
         }
     }
 
+    /**
+     * Sets the paint order.
+     */
     public void setPaintOrder(){
         super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Boss2.class, Tree.class, EnemyExplosion.class, Player.class);
     }
 
-    public void generateGraph(){
+    /*public void generateGraph(){
         for (int x = 10 ; x <= 790; x+=10){
             for (int y =10 ; y <=790; y+=10){
                 Enemy.graph.put(String.valueOf(x) + " " + String.valueOf(y), new int[][] {{x+10,y-10},{x+10,y+10},{x-10,y-10},{x-10,y+10}});
             }
         }
-    }
+    }*/
 
     /**
-     * Method used to end the game and transition to game over screen with score.
-     * Code is currently not running. More implementations soon.
+     * Method used to end the game and transition to game over screen
      */
     public void endGame () {
         if (player.curHealth <= 0) {
@@ -124,6 +141,10 @@ public class Map extends World
         }
     }
 
+    /**
+     * Act - do whatever the EnemeyWeapon wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() {
         if (!gameOver) { //if not gameover, check to see if it is
             endGame();     
@@ -131,12 +152,15 @@ public class Map extends World
 
         scrollWorld();
 
-        if(!fadedIn){
+        if(!fadedIn){ //fade in the map
             fadedIn=true;
             fadeIn();
         }
     }
-
+    
+    /**
+     * Used to make the world a scroller. 
+     */
     public void scrollWorld(){
         int pX = player.getX();
         int pY=player.getY();
@@ -147,11 +171,12 @@ public class Map extends World
             return;
         }
 
-        //System.out.println(curX +" " + curY);
         player.setLocation(400,400);
 
+        //scrolling all the objects:
         List<Actor> li = getObjects(null);
         for(Actor a : li){
+            //some objects should not scroll:
             if(!a.getClass().equals(Player.class) && !a.getClass().equals(Button.class)&& !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerManaBar.class)&& !a.getClass().equals(PlayerExpBar.class)&& !a.getClass().equals(Slash.class)&& !a.getClass().equals(BossHealthBar.class)){
                 a.setLocation(a.getX()-offX,a.getY()-offY);
             }
@@ -160,12 +185,12 @@ public class Map extends World
         scrollBackground(-offX,-offY);
         curX+=offX;
         curY += offY;
-        
-       
-        
     }
 
-    protected final void scrollBackground(int offX, int offY) {
+    /**
+     * Used to scroll the background image with the player's movement.
+     */
+    public void scrollBackground(int offX, int offY) {
         int x;
         int y;
         GreenfootImage bg = new GreenfootImage(getBackground());
@@ -189,28 +214,30 @@ public class Map extends World
         }
     }
 
+    /**
+     * @return A boolean indicating if the game is over or not.
+     */
     public boolean getGameStatus() {
         return gameOver;
     }
 
-    public int getWorldX(){ //return absolute x
-        return curX;
-    }
-
-    public int getWorldY(){//return absolute y
-        return curY;
-    }
+    /**
+     * Used to convert an input stream to a string.
+     * 
+     * @return A string containing the data from the input stream.
+     */
     public String convertStreamToString(java.io.InputStream is) {
         java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "\n";
     }
+    
+    /**
+     * Loads the map from a text file.
+     */
     public void loadMap(String filename){
-
         try{
             InputStream input = Map.class.getResourceAsStream(filename);
-            
             String data = convertStreamToString(input);
-            
             ArrayList<String> parts =new ArrayList(Arrays.asList(data.split("\n")));
             if(parts.size()>0){
                 String line = parts.get(0);
@@ -218,11 +245,12 @@ public class Map extends World
                 setBackground(line+".png");
                 //set music based on background;
                 music = new GreenfootSound(line+".mp3");
-                music.setVolume(70);
+                music.setVolume(75);
 
             }
             parts.remove(0);
             
+            //load all the objects
             for (String s : parts) {
               
                 String[] temp = s.split(" ");
@@ -230,7 +258,6 @@ public class Map extends World
                 int x = Integer.valueOf(temp[1]);
                 int y = Integer.valueOf(temp[2]);
 
-                //if statement time....
                 if(name.equals("tree")){
                     Tree t = new Tree();
                     addObject(t,x,y);
@@ -243,14 +270,12 @@ public class Map extends World
                 }else if (name.equals("sentry")){
                     Sentry t = new Sentry();
                     addObject(t,x,y);
-    
                 }else if (name.equals("dog")){
                     Dog t = new Dog();
                     addObject(t,x,y);
                 }else if (name.equals("mortar")){
                     MortarTower t = new MortarTower();
                     addObject(t,x,y);
-  
                 }else if (name.equals("gunman")){
                     Tree t = new Tree();
                     addObject(t,x,y);
@@ -299,8 +324,6 @@ public class Map extends World
         }catch (Exception ex){
             ex.printStackTrace();
         }
-        
-        
         music.playLoop();
     }
 

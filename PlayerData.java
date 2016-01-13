@@ -30,9 +30,11 @@ public class PlayerData implements Serializable
     int maxManaRegenDelay;
     int curGameLevel =1; //which map the player is on. 
 
+    int speed; 
+    
     String[] inventory = new String[98];
     String curWeapon, curHead, curChest, curLegs;
-    //Equipment[] inventory = new Equipment[98];
+    
     
     public void saveData(Player player){
         curLevel = player.curLevel;
@@ -50,6 +52,7 @@ public class PlayerData implements Serializable
         maxHealth = player.maxHealth;
         maxMana = player.maxMana;
         
+        speed = player.speed;
         
         maxManaRegenDelay = player.maxManaRegenDelay;
         maxHpRecoverDelay = player.maxHpRecoverDelay;

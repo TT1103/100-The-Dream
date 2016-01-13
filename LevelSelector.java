@@ -1,16 +1,16 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 import java.io.*;
+import java.awt.Color;
 
 /**
- * Write a description of class LevelSelector here.
+ * The level selector is a screen that lets the player choose which levels to play.
+ * This also loads player data.
  * 
- * @author (your name) 
+ * @author Tiger Zhao, Gary Yu
  * @version (a version number or a date)
  */
-public class LevelSelector extends World
-{
-    //variables for game data
+public class LevelSelector extends World {
     String[] completedLevels;
     Player player; //Stores the player stuff
 
@@ -18,15 +18,16 @@ public class LevelSelector extends World
     private LevelSelectorButtons one = new LevelSelectorButtons("Level1");
     private LevelSelectorButtons two = new LevelSelectorButtons("Level2");
     private LevelSelectorButtons three = new LevelSelectorButtons("Level3");
-    private LevelSelectorButtons four = new LevelSelectorButtons("Level4");
-    private LevelSelectorButtons five = new LevelSelectorButtons("Level5");
 
     boolean newGame = false; //if it is a new game or not
     int curGameLevel=1;
     Button resetButton; //button to start a new game and delete current game data
     GreenfootSound music = new GreenfootSound("titlescreen_music.mp3");
+    
+    Text markText =  new Text("Computer Science Mark: ",25, Color.WHITE);
+    int mark =0;
     /**
-     * Constructor for objects of class LevelSelector.
+     * Default constructor for objects of class LevelSelector.
      * 
      */
     public LevelSelector()
@@ -39,19 +40,38 @@ public class LevelSelector extends World
         setup();
     }
 
-    public LevelSelector(GreenfootSound music){ //used to make music flow 
+    /**
+     * Contructor used to allow for music to flow.
+     * Used when transitioning from the title screen.
+     */
+    public LevelSelector(GreenfootSound music){ 
         super(800, 800, 1,false); 
         this.music = music;
         setup();
     }
 
+    /**
+     * Setsup the neccessary objects.
+     */
     public void setup(){
         // Add all the level selector buttons 
         addObject (one, 345, 478);
         addObject (two, 525, 478);
         addObject (three, 702, 478);
 
-        newGame = !loadData();
+        newGame = !loadData(); //load the player data and determine if it is a new game
+        
+        addObject(markText,550,750);
+        if (curGameLevel ==1){
+            mark =0;
+        }else if(curGameLevel==2){
+            mark = 30;
+        }else if(curGameLevel==3){
+            mark = 65;
+        }else{
+            mark =100;
+        }
+        markText.setText("Your Computer Science Mark: "+String.valueOf(mark)+"%");
     }
 
     public void act(){
@@ -64,10 +84,6 @@ public class LevelSelector extends World
             level=2;
         } else if (Greenfoot.mouseClicked(three) && curGameLevel >=3) {
             level=3;
-        } else if (Greenfoot.mouseClicked(four)) {
-            level=4;
-        } else if (Greenfoot.mouseClicked(five)) {
-            level=5;
         }
 
         if(level > 0){
@@ -78,11 +94,14 @@ public class LevelSelector extends World
                 Greenfoot.setWorld (new Map(level,player));
             }
         }
-
-   
-
     }
-    public boolean loadData(){ //loads previous save data
+    
+    /**
+     * Loads the previously saved data if it exists.
+     * 
+     * @return A boolean indicating whether or not it is a new game.
+     */
+    public boolean loadData(){ 
         File file = new File(System.getProperty("user.home") + "/Desktop/player_data.txt");
         
         if(!file.exists()){ //there has been no save data
@@ -90,10 +109,8 @@ public class LevelSelector extends World
         } 
         
         try{ //there is save data, now read it
-            
             FileInputStream fileIn = new FileInputStream(file);//("data/player_data.txt");
             ObjectInputStream objIn = new ObjectInputStream (fileIn);
-
             PlayerData playerData = (PlayerData)objIn.readObject();
             player = new Player(playerData);
             curGameLevel=playerData.curGameLevel;
@@ -107,6 +124,12 @@ public class LevelSelector extends World
         }
         return true;
     }
+    
+    /**
+     * Used to parse the player's inventory into the corresponding objects.
+     * 
+     * @param The player object of which to parse the inventory of.
+     */
     public void parseInventory(Player player){
         int i =0;
         for (String s : player.playerData.inventory){
@@ -136,6 +159,14 @@ public class LevelSelector extends World
         }
     }
 
+    /**
+     * A helper method for parseInventory()
+     * 
+     * @param s A string indicating the Equipment object.
+     * @param player The player object of which to parse the inventory of.
+     * 
+     * @return An Equipment object corresponding to a string.
+     */
     public Equipment stringToObject(String s, Player player){
         if(s==null) return null;
         if (s.equals("knife")){
@@ -175,10 +206,6 @@ public class LevelSelector extends World
         }else if(s.equals("carbonlegs")){
             return new CarbonLegs();
         }
-
-        else if(s.equals("xxxxx")){
-        }
-
         return null;
     }
 }
