@@ -78,14 +78,8 @@ public class LevelSelector extends World
                 Greenfoot.setWorld (new Map(level,player));
             }
         }
-<<<<<<< HEAD
-        
-        
-    }
+
    
-    
-=======
->>>>>>> 9158a4db4c276fd46461c7023384dcd2cf22665b
 
     }
     public boolean loadData(){ //loads previous save data
