@@ -86,15 +86,19 @@ public class LevelSelector extends World
         
         
     }
+   
+    
 
     public boolean loadData(){ //loads previous save data
-        File file = new File("data/player_data.txt");
+        File file = new File(System.getProperty("user.home") + "/Desktop/player_data.txt");
+        
         if(!file.exists()){ //there has been no save data
             return false; //load data failed
         } 
-
+        
         try{ //there is save data, now read it
-            FileInputStream fileIn = new FileInputStream("data/player_data.txt");
+            
+            FileInputStream fileIn = new FileInputStream(file);//("data/player_data.txt");
             ObjectInputStream objIn = new ObjectInputStream (fileIn);
 
             PlayerData playerData = (PlayerData)objIn.readObject();
@@ -110,7 +114,6 @@ public class LevelSelector extends World
         }
         return true;
     }
-
     public void parseInventory(Player player){
         int i =0;
         for (String s : player.playerData.inventory){
