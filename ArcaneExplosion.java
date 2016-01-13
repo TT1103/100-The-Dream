@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ArcaneExplosion extends Weapon
 {
-    int manaCost =50;
+    int manaCost =20;
     
     public ArcaneExplosion(Player player){
         super(player);
@@ -18,7 +18,7 @@ public class ArcaneExplosion extends Weapon
         name = "arcaneexplosion";
         damageType = "magic";
         itemImage = new GreenfootImage("arcaneexplosion_item_image.png");
-        tooltip = "Arcane Explosion\nAn average-high damage, medium\nfire rate magic weapon.\nRelease a deadly explosion\nof magic around you.\nDamage: "+String.valueOf(damage)+"\nMana Cost: "+String.valueOf(manaCost);
+        tooltip = "Arcane Explosion\nA medium damage, slow\nfire rate magic weapon.\nRelease a deadly explosion\nof magic at where you aim.\nDamage: "+String.valueOf(damage)+"\nMana Cost: "+String.valueOf(manaCost);
 
     }
     /**
@@ -31,13 +31,14 @@ public class ArcaneExplosion extends Weapon
     
     public void use(){
         if(speedDelay>=speed && player.curMana >= manaCost){
-            GreenfootSound effect = new GreenfootSound("arcanemissile_effect.wav");
-            effect.setVolume(70);
-            effect.play();
+            
             speedDelay=0;
-            PlayerArcaneMissile am = new PlayerArcaneMissile(10,damage+player.intelligence*damageRatio);
+            PlayerArcaneExplosion am = new PlayerArcaneExplosion(damage+player.intelligence*damageRatio);
             player.reduceMana(manaCost);
-            player.getWorld().addObject(am, player.getX(), player.getY());
+            MouseInfo mi = Greenfoot.getMouseInfo();
+            if(mi !=null){
+                player.getWorld().addObject(am, mi.getX(), mi.getY());
+            }
         }else if(player.curMana < manaCost){
             player.attacking =false;
         }

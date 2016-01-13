@@ -324,8 +324,6 @@ public class Player extends UnScrollable implements Serializable
         }else if (Greenfoot.mouseClicked(null)){
             attacking = false;
         }
-        
-       
 
         if(attacking&&knockback==false && curWeapon !=null){
             //weapons.get(weaponindex).use();

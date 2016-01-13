@@ -18,6 +18,7 @@ public class LevelExit extends Actor
         if (player !=null && Math.sqrt(Math.pow(getX()-player.getX(),2) + Math.pow(getY()-player.getY(),2)) <32  ){ //player touches
             //return to level.
             ((Map) getWorld()).fadeOut();
+            ((Map)getWorld()).music.stop();
             player.saveData();
             Greenfoot.setWorld(new LevelSelector());
         }

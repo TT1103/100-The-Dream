@@ -38,7 +38,7 @@ public class RocketLauncher extends Weapon
        player.setImage(gunImage);
        
        if (speedDelay >= speed){
-            GreenfootSound effect = new GreenfootSound("p90_shoot.wav");
+            GreenfootSound effect = new GreenfootSound("rocket_shoot.wav");
             effect.setVolume(75);
             effect.play();
             speedDelay =0;

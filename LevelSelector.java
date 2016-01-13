@@ -27,7 +27,7 @@ public class LevelSelector extends World
     int curGameLevel=1;
     
     Button resetButton; //button to start a new game and delete current game data
-    
+    GreenfootSound music = new GreenfootSound("titlescreen_music.mp3");
     /**
      * Constructor for objects of class LevelSelector.
      * 
@@ -36,7 +36,19 @@ public class LevelSelector extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 800, 1,false); 
-
+        GreenfootSound effect = new GreenfootSound("titlescreen_music.mp3");
+        music.setVolume(75);
+        music.playLoop();
+        setup();
+    }
+    
+    public LevelSelector(GreenfootSound music){ //used to make music flow 
+        super(800, 800, 1,false); 
+        this.music = music;
+        setup();
+    }
+    
+    public void setup(){
         // Add all the level selector buttons 
         addObject (one, 96, 481);
         addObject (two, 222, 481);
@@ -44,11 +56,7 @@ public class LevelSelector extends World
         addObject (four, 469, 481);
         addObject (five, 587, 481);
         
-        // Creating the new game 
         newGame = !loadData();
-        
-   
-        
     }
 
     public void act(){
@@ -68,6 +76,7 @@ public class LevelSelector extends World
         }
         
         if(level > 0){
+            music.stop();
             if (newGame){
                 Greenfoot.setWorld (new Map(level));
             }else{

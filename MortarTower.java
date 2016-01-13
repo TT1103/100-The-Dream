@@ -31,6 +31,9 @@ public class MortarTower extends Enemy
         turnTowards(p.getX(),p.getY());
         if(delay<0){
             getWorld().addObject(new Mortar(),getX(),getY());
+            GreenfootSound effect = new GreenfootSound("mortar_shoot.wav");
+            effect.setVolume(85);
+            effect.play();
             delay=100;
         }
         // }

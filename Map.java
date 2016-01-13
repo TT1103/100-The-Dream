@@ -30,11 +30,12 @@ public class Map extends World
     
     boolean bossBattle = false;
     
+    GreenfootSound music;
 
-    /**
+    /* /**
      * Constructor for objects of class Map.
      * 
-     */
+     
     public Map()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -46,9 +47,9 @@ public class Map extends World
 
         // Layering the actors 
         setPaintOrder();
-    }
+    }*/
 
-    public Map(int level)
+    public Map(int level) //absolute new game
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 800, 1,false); 
@@ -65,7 +66,7 @@ public class Map extends World
         fadeIn();
     }
 
-    public Map(int level, Player player)
+    public Map(int level, Player player) //game with data
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 800, 1,false); 
@@ -78,10 +79,10 @@ public class Map extends World
 
         String mapFile = "data/level_"+level+"/"+level+"_map_0_0.txt";
         loadMap(mapFile);
-        fadeIn();
+
     }
 
-    public Map(int level, Player player,String mapFile, String dirFrom, int newX, int newY){    
+    public Map(int level, Player player,String mapFile, String dirFrom, int newX, int newY){  //switching maps  
         super(800, 800, 1,false); 
         this.player=player;
         addObject(player, 400,400);
@@ -224,7 +225,10 @@ public class Map extends World
                 String line = input.nextLine();
                 //declare background
                 setBackground(line+".png");
-                //backgroundName = line;
+                //set music based on background;
+                music = new GreenfootSound(line+".mp3");
+                music.setVolume(70);
+
             }
             while (input.hasNextLine()) {
                 String line = input.nextLine();
@@ -281,21 +285,30 @@ public class Map extends World
                 }else if (name.equals("boss1")){
                     Boss1 t = new Boss1();
                     addObject(t,x,y);
+                    music = new GreenfootSound("boss_music.mp3");
                     bossBattle = true;
+                    music.setVolume(40);
                 }else if (name.equals("boss2")){
                     Boss2 t = new Boss2();
                     addObject(t,x,y);
+                    music = new GreenfootSound("boss_music.mp3");
                     bossBattle = true;
+                    music.setVolume(40);
                 }else if (name.equals("boss3")){
                     Boss3 t = new Boss3();
                     addObject(t,x,y);
+                    music = new GreenfootSound("boss_music.mp3");
                     bossBattle = true;
+                    music.setVolume(40);
                 }
             }
             input.close();
         }catch (Exception ex){
             ex.printStackTrace();
         }
+        
+        
+        music.playLoop();
     }
 
     /**
@@ -321,6 +334,7 @@ public class Map extends World
         }
         System.out.println("Switching maps: "+ newMapFile + " "+ dirFrom);
         fadeOut();
+        music.stop();
         Greenfoot.setWorld(new Map(curLevel, player, newMapFile, dirFrom,newX,newY));
 
     }
@@ -336,7 +350,6 @@ public class Map extends World
             Greenfoot.delay(1);
         }
         removeObject(shade);
-
     }
 
     public void fadeOut(){
@@ -346,7 +359,7 @@ public class Map extends World
             shade.getImage().setTransparency(i);
             Greenfoot.delay(1);
         }
-        // removeObject(shade);
+        
     }
     
     public void pauseAll(){

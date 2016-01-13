@@ -19,7 +19,7 @@ public class InstructionScreen extends World
 
     // Arrays to store instruction screen images
     String images[] = new String [2];
-
+    GreenfootSound music = new GreenfootSound("titlescreen_music.mp3");
     /**
      * Constructor for objects of class InstructionScreen.
      * 
@@ -31,10 +31,16 @@ public class InstructionScreen extends World
 
         // Adding the necessary start button
         addObject (start, 405, 643); 
-
+        
         for (int i = 0 ; i < images.length ; i ++) {
             images[i] = "Instruction" + (i) + ".gif";
         }
+        
+        
+        music.setVolume(75);
+        music.playLoop();
+        
+        Greenfoot.start();
     }
 
     /**
@@ -63,7 +69,7 @@ public class InstructionScreen extends World
 
         // If skip button is clicked, game will auto-start with no instructions
         if (skip.buttonClicked()) {
-            Greenfoot.setWorld (new LevelSelector());
+            Greenfoot.setWorld (new LevelSelector(music));
         }
 
         changeInstructionScreens();
@@ -105,7 +111,7 @@ public class InstructionScreen extends World
                     addObject (back, 79, 705);
                 } 
             } else {
-                Greenfoot.setWorld (new LevelSelector());
+                Greenfoot.setWorld (new LevelSelector(music));
             }
             next.buttonNotClicked();
         }

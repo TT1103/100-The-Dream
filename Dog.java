@@ -84,11 +84,17 @@ public class Dog extends Enemy
         if(seePlayer){
             Player p = (Player)getWorld().getObjects(Player.class).get(0);
             turnTowards(p.getX(),p.getY());
-            move(speed);
+            //move(speed);
             hasPath = false;
             pathToFollow=null;
             noPath =false;
-        }/*else if(!hasPath && !noPath){//path find to player
+        }
+        
+        if(isTouching(Impassable.class)){
+            turn(10);
+        }
+        move(speed);
+        /*else if(!hasPath && !noPath){//path find to player
             Player p = (Player)getWorld().getObjects(Player.class).get(0);
             int[][] path = pathFind(getX(), getY(), p.getX(), p.getY());
             if(path !=null){

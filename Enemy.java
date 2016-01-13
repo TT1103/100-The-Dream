@@ -204,7 +204,7 @@ public class Enemy extends Actor
         int rotation = getRotation();
         this.setRotation(originalRotation);
 
-        int s = 10;
+        int s = 25;
         double cos = Math.cos(Math.toRadians(rotation));
         double sin = Math.sin(Math.toRadians(rotation));
         double curX = getX();
@@ -215,12 +215,17 @@ public class Enemy extends Actor
             curY += sin*s;
             distance+=Math.abs(cos*s);
             distance+=Math.abs(sin*s);
-            if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0){
+        
+            /*if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0){
+                return false;
+            }*/
+            if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX -10), (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX+10), (int) curY, Impassable.class).size() >0||getWorld().getObjectsAt((int) curX, (int) (curY-10), Impassable.class).size() >0 ||getWorld().getObjectsAt((int) curX, (int) (curY+10), Impassable.class).size() >0){
                 return false;
             }else if (getWorld().getObjectsAt((int) curX, (int) curY, Player.class).size()>0){
                 return true;
             }
         }
+        
         return false;
     }
 
@@ -236,13 +241,16 @@ public class Enemy extends Actor
         double sin = Math.sin(Math.toRadians(rotation));
         double curX = getX();
         double curY = getY();
-        while (curX >0 && curX<800 && curY>0 && curY<800){
+        int distance =0;
+        while (distance<1000){
             curX += cos*s;
             curY += sin*s;
-            // getWorld().addObject(new Knife(), (int)curX,(int)curY);
+            distance+=Math.abs(cos*s);
+            distance+=Math.abs(sin*s);
+
             if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX -10), (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX+10), (int) curY, Impassable.class).size() >0||getWorld().getObjectsAt((int) curX, (int) (curY-10), Impassable.class).size() >0 ||getWorld().getObjectsAt((int) curX, (int) (curY+10), Impassable.class).size() >0){
                 return false;
-            }else if (Math.abs(curX-destX) <10 && Math.abs(curY-destY)<10){
+            }else if (getWorld().getObjectsAt((int) curX, (int) curY, Player.class).size()>0){
                 return true;
             }
         }
@@ -266,13 +274,15 @@ public class Enemy extends Actor
         double sin = Math.sin(Math.toRadians(rotation));
         double curX = startX;
         double curY = startY;
-        while (curX >0 && curX<800 && curY>0 && curY<800){
+        int distance =0;
+        while (distance<1000){
             curX += cos*s;
             curY += sin*s;
-            // getWorld().addObject(new Knife(), (int)curX,(int)curY);
+            distance+=Math.abs(cos*s);
+            distance+=Math.abs(sin*s);
             if (getWorld().getObjectsAt((int) curX, (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX -10), (int) curY, Impassable.class).size() >0 || getWorld().getObjectsAt((int) (curX+10), (int) curY, Impassable.class).size() >0||getWorld().getObjectsAt((int) curX, (int) (curY-10), Impassable.class).size() >0 ||getWorld().getObjectsAt((int) curX, (int) (curY+10), Impassable.class).size() >0){
                 return false;
-            }else if (Math.abs(curX-destX) <10 && Math.abs(curY-destY)<10){
+            }else if (getWorld().getObjectsAt((int) curX, (int) curY, Player.class).size()>0){
                 return true;
             }
         }

@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ArcaneLaser extends Weapon
 {
-    int manaCost =40;
+    int manaCost =0;
     
     public ArcaneLaser(Player player){
         super(player);
@@ -18,7 +18,7 @@ public class ArcaneLaser extends Weapon
         name = "arcanelaser";
         damageType = "magic";
         itemImage = new GreenfootImage("arcanelaser_item_image.png");
-        tooltip = "Arcane Laser\nA high damage, slow\nfire rate magic weapon.\nLasers target far away enemies.\nDamage: "+String.valueOf(damage)+"\nMana Cost: "+String.valueOf(manaCost);
+        tooltip = "Arcane Laser\nA high damage, medium\nfire rate magic weapon.\nLasers target far away enemies.\nDamage: "+String.valueOf(damage)+"\nMana Cost: "+String.valueOf(manaCost);
 
     }
     /**

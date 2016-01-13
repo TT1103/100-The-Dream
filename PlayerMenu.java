@@ -11,7 +11,7 @@ import java.util.*;
 public class PlayerMenu extends GUI
 {
     Player player;
-    Button closeButton;
+    Button closeButton, exitButton;
     List<Object> obj = new ArrayList<Object>();
     Button[] addStatButtons = new Button[6];
     int statFontSize=20;
@@ -47,10 +47,15 @@ public class PlayerMenu extends GUI
         this.player = player;
         closeButton = new Button("close_button.png");
         player.getWorld().addObject(closeButton, 736,14);
+        
+        exitButton = new Button("levelexit_button.png");
+        player.getWorld().addObject(exitButton, 736,786);
+        
         ((Map)player.getWorld()).pauseAll();
         displayStats();
         displayInventory();
         obj.add(closeButton);
+        obj.add(exitButton);
     }
     
     /**
@@ -85,6 +90,12 @@ public class PlayerMenu extends GUI
             getWorld().removeObject(this);
             
             return;
+        }
+        
+        if(exitButton.pressed){
+            ((Map) getWorld()).fadeOut();
+            ((Map)getWorld()).music.stop();
+            Greenfoot.setWorld (new LevelSelector());
         }
         
         

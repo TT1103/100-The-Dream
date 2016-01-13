@@ -19,7 +19,9 @@ public class EnemyExplosion extends Actor
     boolean paused = false;
     public EnemyExplosion(Player p){
         player=p;
-        
+        GreenfootSound effect = new GreenfootSound("explosion_effect.wav");
+        effect.setVolume(80);
+        effect.play();
     }
 
     /**
