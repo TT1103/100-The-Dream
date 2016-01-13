@@ -6,7 +6,7 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlayerArcaneMissile extends Bullet
+public class PlayerArcaneMissile extends PlayerProjectile
 {
     public PlayerArcaneMissile(int speed, int damage){
         super(speed,damage);

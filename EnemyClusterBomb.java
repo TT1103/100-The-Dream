@@ -17,7 +17,7 @@ public class EnemyClusterBomb extends EnemyBullet
      */
     public void act() 
     {
-        if(isTouching(Bullet.class)){
+        if(isTouching(PlayerProjectile.class)){
             Random r= new Random();
             for(int a = 0; a < 10; a++){
                 int x = r.nextInt(getWorld().getWidth());

@@ -115,7 +115,7 @@ public class Map extends World
     }
 
     public void setPaintOrder(){
-        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Boss2.class, Tree.class, Explosion.class, Player.class);
+        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class, PlayerExplosion.class, Boss1.class,Boss2.class,Boss3.class, Tree.class, EnemyExplosion.class, Player.class);
     }
 
     public void generateGraph(){
@@ -355,8 +355,8 @@ public class Map extends World
             p.paused =true;
         }
         
-        List<Bullet> b = getObjects(Bullet.class);
-        for (Bullet p: b){
+        List<PlayerProjectile> b = getObjects(PlayerProjectile.class);
+        for (PlayerProjectile p: b){
             p.paused =true;
         }
         
@@ -397,8 +397,8 @@ public class Map extends World
             p.paused =false;
         }
         
-        List<Bullet> b = getObjects(Bullet.class);
-        for (Bullet p: b){
+        List<PlayerProjectile> b = getObjects(PlayerProjectile.class);
+        for (PlayerProjectile p: b){
             p.paused =false;
         }
         

@@ -40,7 +40,7 @@ public class Mortar extends Actor
         turn(rotation);
         rotation+=10;
         if(getX()<=x+speed&&getY()<=y+speed&&getX()>=x-speed&&getY()>=y-speed){
-            getWorld().addObject(new Explosion(player), x, y);
+            getWorld().addObject(new EnemyExplosion(player), x, y);
             getWorld().removeObject(target);
             getWorld().removeObject(this);
         }

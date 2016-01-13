@@ -11,6 +11,7 @@ public class Player extends UnScrollable implements Serializable
 {
     int screenX= 800;
     int screenY= 800;
+    
     GreenfootImage[] walkingSprites = {
             new GreenfootImage("walking1.png"),
             new GreenfootImage("walking2.png"),
@@ -79,6 +80,7 @@ public class Player extends UnScrollable implements Serializable
     Equipment[] inventory = new Equipment[98];
     
     int curGameLevel =1;
+    boolean curse = false;
     public Player(){
         playerData=new PlayerData();
     }
@@ -158,7 +160,8 @@ public class Player extends UnScrollable implements Serializable
             hpRecoverDelay--;
             if (hpRecoverDelay==0){
                 hpRecoverDelay = maxHpRecoverDelay;
-                if(curHealth < maxHealth) curHealth++;
+                if(curse)curHealth -= 7;
+                else if(curHealth < maxHealth) curHealth++;
             }
         }
         if(manaRegenDelay >0){

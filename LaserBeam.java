@@ -1,0 +1,37 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class LaserBeam here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class LaserBeam extends Actor
+{
+    int timer = 50;
+    public LaserBeam(){
+        getImage().scale(100, 5);
+    }
+
+    /**
+     * Act - do whatever the LaserBeam wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act() 
+    {
+        if(timer-- == 0){
+            getImage().scale(100, 30);
+            Player player = (Player)getOneIntersectingObject(Player.class);
+            if(player != null){
+                player.damage(100);
+                player.knockback=true;
+                player.knockbackStrength=20;
+                player.knockbackRotation=getRotation() + 90;
+            }
+        }
+        if(timer < 0){
+            getImage().setTransparency(getImage().getTransparency()-20);
+            if(getImage().getTransparency() < 20)getWorld().removeObject(this);
+        }
+    }    
+}
