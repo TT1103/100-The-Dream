@@ -1,17 +1,17 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\r\n\ Changes\ the\ back\ button\ to\ different\ colours\ to\ indicate\ whether\ user\ is\ \r\n\ hovering\ or\ clicking\ the\ button\ \r\n
+comment0.text=\n\ Changes\ the\ back\ button\ to\ different\ colours\ to\ indicate\ whether\ user\ is\ \n\ hovering\ or\ clicking\ the\ button\ \n
 comment1.params=
 comment1.target=void\ popUpAnimation()
-comment1.text=\r\n\ Animations\ required\ to\ pop\ button\ up\ and\ down\ \r\n
+comment1.text=\n\ Animations\ required\ to\ pop\ button\ up\ and\ down\ \n
 comment2.params=
 comment2.target=boolean\ backButtonHere()
-comment2.text=\r\n\ @return\ Whether\ the\ back\ button\ has\ appeared\ \r\n
+comment2.text=\n\ @return\ Whether\ the\ back\ button\ has\ appeared\ \n
 comment3.params=
 comment3.target=boolean\ buttonClicked()
-comment3.text=\r\n\ @return\ Whether\ the\ button\ has\ been\ clicked\ \r\n
+comment3.text=\n\ @return\ Whether\ the\ button\ has\ been\ clicked\ \n
 comment4.params=
 comment4.target=void\ buttonNotClicked()
-comment4.text=\r\n\ If\ button\ is\ not\ clicked,\ mouse\ clicked\ would\ be\ false\ \r\n
+comment4.text=\n\ If\ button\ is\ not\ clicked,\ mouse\ clicked\ would\ be\ false\ \n
 numComments=5

@@ -83,7 +83,15 @@ public class LevelSelector extends World {
             addObject(new Text("LOCKED",25, Color.WHITE),525,560);
             addObject(new Text("LOCKED",25,Color.WHITE),702,560);
         }else if(curGameLevel==2){
+            addObject(new Text("COMPLETED",25, Color.WHITE),345,560);
             addObject(new Text("LOCKED",25, Color.WHITE),702,560);
+        }else if(curGameLevel==3){
+            addObject(new Text("COMPLETED",25, Color.WHITE),345,560);
+            addObject(new Text("COMPLETED",25, Color.WHITE),525,560);
+        }else{
+            addObject(new Text("COMPLETED",25, Color.WHITE),345,560);
+            addObject(new Text("COMPLETED",25, Color.WHITE),525,560);
+            addObject(new Text("COMPLETED",25, Color.WHITE),702,560);
         }
     }
 
