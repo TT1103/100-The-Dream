@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 /**
- * Write a description of class ExplodeWarning here.
+ * Used by the Boss3 to display a warning of an explosive attack.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Enoch Poon
+ * @version January 14, 2016
  */
 public class ExplodeWarning extends Actor
 {

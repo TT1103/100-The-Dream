@@ -1,16 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 /**
- * Write a description of class EnemyClusterBomb here.
+ * A class representing an enemy projectile weapon.
+ * Cluster bombs are different from bullets.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 13, 2016
  */
 public class EnemyClusterBomb extends EnemyBullet
 {
     public EnemyClusterBomb(int speed, int damage, int x, int y){
         super(speed, damage, x, y);
     }
+    
     /**
      * Act - do whatever the EnemyClusterBomb wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

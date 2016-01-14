@@ -6,4 +6,5 @@ comment1.target=void\ act()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ Weapon\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment2.params=
 comment2.target=void\ use()
+comment2.text=\n\ Contains\ the\ code\ for\ the\ weapon's\ use.\n\ Varies\ from\ different\ weapons.\n
 numComments=3

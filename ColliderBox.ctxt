@@ -4,4 +4,5 @@ comment0.target=ColliderBox()
 comment0.text=\n\ Default\ constructor.\n\ The\ default\ size\ of\ the\ box\ is\ 32\ by\ 32\n
 comment1.params=x\ y
 comment1.target=ColliderBox(int,\ int)
+comment1.text=\n\ A\ constructor\ used\ to\ create\ a\ specific\ size\ of\ the\ box.\n\ \n\ @param\ x\ The\ width\ of\ the\ box\ to\ create.\n\ @param\ y\ The\ height\ of\ the\ box\ to\ create.\n
 numComments=2

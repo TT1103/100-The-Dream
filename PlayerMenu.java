@@ -72,8 +72,8 @@ public class PlayerMenu extends Actor
         controlInventory();
         
         String recentKey = Greenfoot.getKey();
-        
-        if((closeButton.pressed || (recentKey!=null && recentKey.equals("e")))  && !hasItem){
+
+        if((closeButton.pressed || (recentKey!=null && recentKey.toLowerCase().equals("e")))  && !hasItem){
             ((Map)player.getWorld()).unpauseAll();
             
             //cleanup equipment
@@ -245,6 +245,8 @@ public class PlayerMenu extends Actor
     
     /**
      * Used to refresh an item so it appears on top of everything.
+     * 
+     * @param item The Equipment object to refresh.
      */
     public void setCurItem(Equipment item){ 
         int x = item.getX();

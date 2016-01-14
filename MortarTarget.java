@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
+ * Used to show the user where a mortar will strike.
+ * 
  * @author Tiger Zhao
  * @version January 13, 2016
  */

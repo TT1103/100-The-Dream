@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Sword here.
+ * A melee weapon.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2016
  */
 public class Sword extends Weapon
 {
@@ -18,6 +18,7 @@ public class Sword extends Weapon
         damage=400;
         tooltip = "Sword\nA powerful melee weapon.\nGood for dismembering dogs.\nDamage: "+String.valueOf(damage);
     }
+    
     /**
      * Act - do whatever the Sword wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

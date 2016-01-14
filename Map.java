@@ -91,7 +91,6 @@ public class Map extends World
         curMapX=newX;
         curMapY=newY;
         loadMap(mapFile);
-        System.out.println("Switched from: " + dirFrom);
 
         //used to set player position
         if(bossBattle) return; //don't set new position if it is a boss battle, just stay in center

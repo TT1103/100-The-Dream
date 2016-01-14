@@ -124,6 +124,8 @@ public class LevelSelector extends World {
             music.stop();
             Greenfoot.setWorld (new InstructionScreen());
         }
+        
+        
     }
     
     /**
@@ -235,6 +237,10 @@ public class LevelSelector extends World {
             return new CarbonChest();
         }else if(s.equals("carbonlegs")){
             return new CarbonLegs();
+        }else if(s.equals("carbonlegs")){
+            return new CarbonLegs();
+        }else if(s.equals("devweapon")){
+            return new DevWeapon(player);
         }
         return null;
     }

@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
+ * A special bullet. Similar to PlayerBullet but with different image.
+ * 
  * @author Tiger Zhao
  * @version January 13, 2016
  */

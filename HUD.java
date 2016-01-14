@@ -16,7 +16,7 @@ public class HUD extends Actor
     PlayerManaBar manaBar;
     boolean start = true;
     
-    //used to determine an update
+    //used to determine an update if these change
     int prevHealth =0;
     int prevExp =0; 
     
@@ -93,7 +93,7 @@ public class HUD extends Actor
     public void controlMenu(){
         if(!player.paused){
             String recentKey = Greenfoot.getKey();
-            if(menuButton.pressed ||  (recentKey!=null && recentKey.equals("e"))){
+            if(menuButton.pressed ||  (recentKey!=null && recentKey.toLowerCase().equals("e"))){
                 
                 menu = new PlayerMenu(player);
                 player.getWorld().addObject(menu, 400,400);

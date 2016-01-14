@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.io.*;
+
 /**
- * Used to store player data as an object
+ * Used to store player data as an object for easy saving and writing.
  * 
  * @author Tiger Zhao
- * @version December 26, 2015
+ * @version January 14, 2016
  */
 public class PlayerData implements Serializable
 {
@@ -15,13 +16,12 @@ public class PlayerData implements Serializable
     int curExp =0;
     int maxExp =100; //exp needed to level up
     
-    
-    int precision =10; //affects damage of ranged weapons like guns
-    int intelligence =10; //affects damage of mana weapons like spells
-    int dexterity =10; //affects damage melee weapons like swords
-    int defense =5; //affects damage reduction
-    int endurance =10; //affects hp
-    int spirituality =10; //affects mana
+    int precision =10; 
+    int intelligence =10; 
+    int dexterity =10; 
+    int defense =5; 
+    int endurance =10; 
+    int spirituality =10; 
     
     int maxHealth = 500;
     int maxMana =endurance *50;
@@ -35,7 +35,11 @@ public class PlayerData implements Serializable
     String[] inventory = new String[98];
     String curWeapon, curHead, curChest, curLegs;
     
-    
+    /**
+     * Saves the player data into a file located on the user's desktop.
+     * 
+     * @param player The player object that contains the data that needs to be saved.
+     */
     public void saveData(Player player){
         curLevel = player.curLevel;
         curStatPoints =player.curStatPoints;
@@ -58,6 +62,8 @@ public class PlayerData implements Serializable
         maxHpRecoverDelay = player.maxHpRecoverDelay;
         curGameLevel = player.curGameLevel;
         parseInventory(player);
+        
+        //save the data:
         try{
             FileOutputStream fOut = new FileOutputStream (System.getProperty("user.home") + "/Desktop/player_data.txt");//("data/player_data.txt");
             ObjectOutputStream objOut = new ObjectOutputStream (fOut);
@@ -70,6 +76,12 @@ public class PlayerData implements Serializable
         }
     }
     
+    /**
+     * Used to convert the inventory strings into actual objects usable by
+     * the player.
+     * 
+     * @param player The player object that contains the inventory.
+     */
     public void parseInventory(Player player){
         int i =0;
         for (Equipment e : player.inventory){

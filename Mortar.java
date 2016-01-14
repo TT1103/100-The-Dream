@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 /**
+ * A mortar projectile weapon used by the enemy Mortar Tower.
+ * 
  * @author Enoch Poon 
  * @version January 13, 2016
  */

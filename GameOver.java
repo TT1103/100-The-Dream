@@ -1,6 +1,8 @@
 import greenfoot.*;
 import java.util.Timer;
 /**
+ * Screen used to display a game over.
+ * 
  * @author Gary Yu, Tiger Zhao
  * @version January 13, 2016
  */
