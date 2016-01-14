@@ -1,11 +1,11 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ InventoryBox\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment0.text=\n\ Act\ -\ do\ whatever\ the\ InventoryBox\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment1.params=item
 comment1.target=void\ placeItem(Equipment)
-comment1.text=\r\n\ Assigns\ an\ Equipment\ object\ to\ this\ inventory\ box.\r\n\ \r\n\ @param\ item\ The\ Equipment\ object\ to\ assign\ to\ this\ box.\r\n
+comment1.text=\n\ Assigns\ an\ Equipment\ object\ to\ this\ inventory\ box.\n\ \n\ @param\ item\ The\ Equipment\ object\ to\ assign\ to\ this\ box.\n
 comment2.params=
 comment2.target=Equipment\ grabItem()
-comment2.text=\r\n\ Removes\ the\ item\ and\ returns\ it.\r\n\ \r\n\ @return\ An\ Equipment\ object\ that\ was\ in\ this\ inventory\ box.\r\n
+comment2.text=\n\ Removes\ the\ item\ and\ returns\ it.\n\ \n\ @return\ An\ Equipment\ object\ that\ was\ in\ this\ inventory\ box.\n
 numComments=3

@@ -30,8 +30,7 @@ public class LevelSelector extends World {
      * Default constructor for objects of class LevelSelector.
      * 
      */
-    public LevelSelector()
-    {    
+    public LevelSelector(){    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 800, 1,false); 
         GreenfootSound effect = new GreenfootSound("titlescreen_music.mp3");
@@ -72,6 +71,9 @@ public class LevelSelector extends World {
             mark =100;
         }
         markText.setText("Your Computer Science Mark: "+String.valueOf(mark)+"%");
+        
+        resetButton = new Button("reset_button.png");
+        addObject(resetButton,64,14);
     }
 
     public void act(){
@@ -93,6 +95,18 @@ public class LevelSelector extends World {
             }else{
                 Greenfoot.setWorld (new Map(level,player));
             }
+        }
+        
+        if(resetButton.pressed){
+            File file = new File(System.getProperty("user.home") + "/Desktop/player_data.txt");
+            file.delete();
+            
+            Text t = new Text("Game Data has been deleted.",22, Color.WHITE);
+            addObject(t,400,50);
+            t.act();
+            Greenfoot.delay(100);
+            
+            Greenfoot.setWorld (new LevelSelector(music));
         }
     }
     
