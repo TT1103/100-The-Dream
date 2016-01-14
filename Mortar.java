@@ -1,10 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 /**
- * Write a description of class Laser here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Enoch Poon 
+ * @version January 13, 2016
  */
 public class Mortar extends Actor
 {
@@ -16,9 +14,10 @@ public class Mortar extends Actor
     MortarTarget target;
     boolean paused =false;
     int rotation=0;
-    public Mortar(){
+    int damage;
+    public Mortar(int damage){
         target=new MortarTarget(this);
-        
+        this.damage=damage;
     }
 
     public void act() 
@@ -40,7 +39,7 @@ public class Mortar extends Actor
         turn(rotation);
         rotation+=10;
         if(getX()<=x+speed&&getY()<=y+speed&&getX()>=x-speed&&getY()>=y-speed){
-            getWorld().addObject(new EnemyExplosion(player), x, y);
+            getWorld().addObject(new EnemyExplosion(player,damage), x, y);
             getWorld().removeObject(target);
             getWorld().removeObject(this);
         }

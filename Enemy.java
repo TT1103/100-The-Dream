@@ -53,6 +53,7 @@ public class Enemy extends Actor
      */
     public Enemy(int level){
         start = true;
+        this.level=level;
     }
 
     /**
@@ -71,7 +72,6 @@ public class Enemy extends Actor
         controlMovement();
         controlWeapons();
         controlDeath();
-        
         
     }    
     

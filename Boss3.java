@@ -2,6 +2,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 import java.util.List;
+import java.awt.Color;
 /**
  * Write a description of class Boss3 here.
  * 
@@ -29,6 +30,7 @@ public class Boss3 extends Boss
         };
     int moveDelay = 1;
     boolean chasing = false;
+    
     /**
      * Act - do whatever the Boss3 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -46,6 +48,7 @@ public class Boss3 extends Boss
         if(start){
             hpBar = new BossHealthBar(40000, this);
             getWorld().addObject(hpBar, 400, 775);
+            getWorld().addObject(new Text("Master", 18,Color.BLACK),400,775);
             start = false;
             p.curse = true;
         }
@@ -93,7 +96,7 @@ public class Boss3 extends Boss
                 case 1 ://spawn knifemen from spawners, create shield
                 List<Spawner> spawners = getWorld().getObjects(Spawner.class);
                 for(Spawner s : spawners){
-                    s.activate((int)(hpBar.startHealth/hpBar.health));//higher level if more damaged
+                    s.activate(15);
                 }
                 getWorld().addObject(new Boss3shield(), getX(), getY());
                 break;
@@ -153,6 +156,8 @@ public class Boss3 extends Boss
 
             if(p.curGameLevel<4){ //increase the player's game progress
                 p.curGameLevel=4;
+                Text text = new Text("Congratulations! You have defeated the Master!", 24, Color.WHITE);
+                getWorld().addObject(text,400,200);
             }
 
             LevelExit exit = new LevelExit();

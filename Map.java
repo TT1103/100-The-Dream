@@ -123,6 +123,7 @@ public class Map extends World
         super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Boss2.class, Tree.class, EnemyExplosion.class, Player.class);
     }
 
+
     /*public void generateGraph(){
     for (int x = 10 ; x <= 790; x+=10){
     for (int y =10 ; y <=790; y+=10){
@@ -130,6 +131,7 @@ public class Map extends World
     }
     }
     }*/
+
 
     /**
      * Method used to end the game and transition to game over screen
@@ -261,6 +263,7 @@ public class Map extends World
                 String name = temp[0].trim();
                 int x = Integer.valueOf(temp[1].trim());
                 int y = Integer.valueOf(temp[2].trim());
+                int level = player.curLevel*3;
 
                 if(name.equals("tree")){
                     Tree t = new Tree();
@@ -272,19 +275,16 @@ public class Map extends World
                     Sandbag t = new Sandbag();
                     addObject(t,x,y);
                 }else if (name.equals("sentry")){
-                    Sentry t = new Sentry();
+                    Sentry t = new Sentry(level);
                     addObject(t,x,y);
                 }else if (name.equals("dog")){
-                    Dog t = new Dog();
+                    Dog t = new Dog(level);
                     addObject(t,x,y);
                 }else if (name.equals("mortar")){
-                    MortarTower t = new MortarTower();
+                    MortarTower t = new MortarTower(level);
                     addObject(t,x,y);
                 }else if (name.equals("gunman")){
-                    Tree t = new Tree();
-                    addObject(t,x,y);
-                }else if (name.equals("knifeman")){
-                    Tree t = new Tree();
+                    Gunman t = new Gunman(level);
                     addObject(t,x,y);
                 }else if (name.equals("bush")){
                     Bush t = new Bush();

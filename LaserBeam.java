@@ -23,7 +23,7 @@ public class LaserBeam extends Actor
             GreenfootSound effect = new GreenfootSound("laser_shoot.wav");
             effect.setVolume(80);
             effect.play();
-            getImage().scale(200, 30);
+            getImage().scale(100, 50);
             Player player = (Player)getOneIntersectingObject(Player.class);
             if(player != null){
                 player.damage(100);
