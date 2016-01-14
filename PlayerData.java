@@ -56,7 +56,7 @@ public class PlayerData implements Serializable
         curGameLevel = player.curGameLevel;
         parseInventory(player);
         try{
-            FileOutputStream fOut = new FileOutputStream("data/player_data.txt");
+            FileOutputStream fOut = new FileOutputStream (System.getProperty("user.home") + "/Desktop/player_data.txt");//("data/player_data.txt");
             ObjectOutputStream objOut = new ObjectOutputStream (fOut);
             objOut.writeObject (this);
             

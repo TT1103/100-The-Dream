@@ -32,22 +32,7 @@ public class Map extends World
     
     GreenfootSound music;
 
-    /* /**
-     * Constructor for objects of class Map.
-     * 
-     
-    public Map()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(800, 800, 1,false); 
-        generateGraph();
-        player = new Player();
-        addObject(player, 400,400);
-        player.setup();
-
-        // Layering the actors 
-        setPaintOrder();
-    }*/
+    
 
     public Map(int level) //absolute new game
     {    
@@ -219,14 +204,20 @@ public class Map extends World
     public int getWorldY(){//return absolute y
         return curY;
     }
-
+    public String convertStreamToString(java.io.InputStream is) {
+        java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+        return s.hasNext() ? s.next() : "\n";
+    }
     public void loadMap(String filename){
-        File file = new File(filename);
-        try{
-            Scanner input = new Scanner(file);
 
-            if(input.hasNextLine()){
-                String line = input.nextLine();
+        try{
+            InputStream input = Map.class.getResourceAsStream(filename);
+            
+            String data = convertStreamToString(input);
+            
+            ArrayList<String> parts =new ArrayList(Arrays.asList(data.split("\n")));
+            if(parts.size()>0){
+                String line = parts.get(0);
                 //declare background
                 setBackground(line+".png");
                 //set music based on background;
@@ -234,9 +225,11 @@ public class Map extends World
                 music.setVolume(70);
 
             }
-            while (input.hasNextLine()) {
-                String line = input.nextLine();
-                String[] temp = line.split(" ");
+            parts.remove(0);
+            
+            for (String s : parts) {
+              
+                String[] temp = s.split(" ");
                 String name = temp[0];
                 int x = Integer.valueOf(temp[1]);
                 int y = Integer.valueOf(temp[2]);
