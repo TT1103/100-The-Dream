@@ -98,6 +98,7 @@ public class PlayerMenu extends Actor
         }
         
         if(exitButton.pressed){
+            player.saveData();
             ((Map) getWorld()).fadeOut();
             ((Map)getWorld()).music.stop();
             Greenfoot.setWorld (new LevelSelector());

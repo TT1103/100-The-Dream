@@ -51,6 +51,8 @@ public class Boss3 extends Boss
             getWorld().addObject(new Text("Master", 18,Color.BLACK),400,775);
             start = false;
             p.curse = true;
+            //add spawners and shrines
+            
         }
         if(imageDelay-- <=0){
             imageDelay = (chasing)? 3:5;
@@ -96,7 +98,7 @@ public class Boss3 extends Boss
                 case 1 ://spawn knifemen from spawners, create shield
                 List<Spawner> spawners = getWorld().getObjects(Spawner.class);
                 for(Spawner s : spawners){
-                    s.activate(15);
+                    s.activate(40);
                 }
                 getWorld().addObject(new Boss3shield(), getX(), getY());
                 break;

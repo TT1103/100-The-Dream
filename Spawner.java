@@ -12,6 +12,7 @@ public class Spawner extends Actor
     int x = 50;
     int level = 0;
     boolean spawning = false;
+    boolean paused = false;
     public Spawner(int spawn){
         this.spawn = spawn;//this determines what specific enemy will spawn. 0 = dogs, 1 = gunmen
         getImage().scale(100, 100);
@@ -23,6 +24,9 @@ public class Spawner extends Actor
      */
     public void act() 
     {
+        if (paused){
+            return;
+        }
         turn(-20);
         if(spawning){
             if(x-- == 0 || x == 25){

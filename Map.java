@@ -455,6 +455,15 @@ public class Map extends World
             a.get(0).curse = false;
         }
         
+        List<Spawner> m = getObjects(Spawner.class);
+        for (Spawner p: m){
+            p.paused =true;
+        }
+        
+        List<Boss3shield> n = getObjects(Boss3shield.class);
+        for (Boss3shield p: n){
+            p.paused =true;
+        }
         
     }
 
@@ -523,10 +532,20 @@ public class Map extends World
             p.paused =false;
         }
         
+        List<Spawner> m = getObjects(Spawner.class);
+        for (Spawner p: m){
+            p.paused =false;
+        }
+        
         List<Boss3> k = getObjects(Boss3.class);
         for (Boss3 p: k){
             a.get(0).paused =false;
             a.get(0).curse = true;
+        }
+        
+        List<Boss3shield> n = getObjects(Boss3shield.class);
+        for (Boss3shield p: n){
+            p.paused =false;
         }
     }
 

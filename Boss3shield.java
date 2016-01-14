@@ -1,13 +1,14 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Boss3shield here.
+ * A shield used by Boss3.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Enoch Poon
+ * @version January 14, 2016
  */
 public class Boss3shield extends Actor
 {
+    boolean paused =false;
     public Boss3shield(){
         getImage().setTransparency(0);
     }
@@ -17,7 +18,9 @@ public class Boss3shield extends Actor
      */
     public void act() 
     {
-        
+        if(paused){
+            return;
+        }
         getImage().scale(150, 150);
         getImage().setTransparency(100);
         if(getImage().getTransparency() < 100){
