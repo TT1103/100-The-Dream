@@ -18,6 +18,12 @@ public class PlayerExplosion extends Actor
     
     boolean paused = false;
     int damage;
+    
+    /**
+     * Constructor for the explosion.
+     * 
+     * @param damage The amount of damage that this explosion deals.
+     */
     public PlayerExplosion(int damage){
         this.damage =damage;
 
@@ -50,19 +56,10 @@ public class PlayerExplosion extends Actor
                 if(e!=null){
                     e.damage(damage);
                 }
-            }
-            
-            
-            
-            //player.knockback = true;
-            //player.knockbackStrength = 15;
-            //turnTowards(player.getX(),player.getY());
-            //player.knockbackRotation = getRotation();
-            
+            }         
         }
         
         getImage().setTransparency(getImage().getTransparency()-5);
         turn(1);
-        
     }    
 }

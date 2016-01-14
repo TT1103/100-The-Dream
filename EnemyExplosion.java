@@ -22,6 +22,9 @@ public class EnemyExplosion extends Actor
     
     public EnemyExplosion(Player p, int damage){
         this.damage= damage;
+        GreenfootSound effect = new GreenfootSound("explosion_effect.wav");
+        effect.setVolume(80);
+        effect.play();
     }
 
     public EnemyExplosion(Player p){
@@ -38,6 +41,7 @@ public class EnemyExplosion extends Actor
      */
     public void act() 
     {
+        Player player = (Player)getWorld().getObjects(Player.class).get(0);
         if(paused){
             return;
         }

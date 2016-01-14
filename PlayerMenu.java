@@ -8,7 +8,7 @@ import java.util.*;
  * @author Tiger Zhao
  * @version December 28, 2015
  */
-public class PlayerMenu extends GUI
+public class PlayerMenu extends Actor
 {
     Player player;
     Button closeButton, exitButton;
@@ -33,8 +33,10 @@ public class PlayerMenu extends GUI
     boolean hasItem = false; //if the mouse is holding something
     Equipment curItem;
     
-    
-    /*
+    /**
+     * A constructor to create the player menu.
+     * 
+     * Index for stats: 
      * 0 precision
      * 1 intelligence
      * 2 dexterity
@@ -42,6 +44,8 @@ public class PlayerMenu extends GUI
      * 4 endurance
      * 5 spirituality
      * 6 stat points
+     * 
+     * @param player The player object that this menu represents.
      */
     public PlayerMenu(Player player){
         this.player = player;
@@ -71,6 +75,7 @@ public class PlayerMenu extends GUI
         
         if((closeButton.pressed || (recentKey!=null && recentKey.equals("e")))  && !hasItem){
             ((Map)player.getWorld()).unpauseAll();
+            
             //cleanup equipment
             player.curWeapon = (Weapon)weapon.item;
             player.curHead = head.item;
@@ -97,10 +102,11 @@ public class PlayerMenu extends GUI
             ((Map)getWorld()).music.stop();
             Greenfoot.setWorld (new LevelSelector());
         }
-        
-        
     }    
     
+    /**
+     * A method used to manage the Player's stats.
+     */
     public void controlStats(){
         int i = 0;
         for (Button b: addStatButtons){
@@ -139,6 +145,9 @@ public class PlayerMenu extends GUI
         defenseText.setText("Armor Defense: " +String.valueOf(armorDefense));
     }
     
+    /**
+     * A method used to manage the Player's inventory.
+     */
     public void controlInventory(){
         if(curItem != null){
             MouseInfo mi = Greenfoot.getMouseInfo();
@@ -233,7 +242,10 @@ public class PlayerMenu extends GUI
         
     }
     
-    public void setCurItem(Equipment item){ //refresh item so it displays on top
+    /**
+     * Used to refresh an item so it appears on top of everything.
+     */
+    public void setCurItem(Equipment item){ 
         int x = item.getX();
         int y = item.getY();
         getWorld().removeObject(item);
@@ -241,6 +253,9 @@ public class PlayerMenu extends GUI
         curItem = item;
     }
     
+    /**
+     * Used to display all the objects needed for the stats portion.
+     */
     public void displayStats(){
         for (int i =0; i < 6;i++){
             addStatButtons[i] = new Button("add_button.png");
@@ -285,6 +300,9 @@ public class PlayerMenu extends GUI
         obj.add(defenseText);
     }
     
+    /**
+     * Used to display all the objects needed for the inventory portion.
+     */
     public void displayInventory(){
         //draw out the inventory stuff
         int i=0;

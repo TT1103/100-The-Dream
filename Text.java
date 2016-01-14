@@ -6,7 +6,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Text extends UnScrollable
+public class Text extends Actor
 {
     int time =0;
     boolean timed = false;

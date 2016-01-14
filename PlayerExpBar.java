@@ -6,7 +6,7 @@ import java.awt.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlayerExpBar extends UnScrollable
+public class PlayerExpBar extends Actor
 {
     int curExp;
     int maxExp;

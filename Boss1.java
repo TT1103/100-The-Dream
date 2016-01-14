@@ -1,11 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
+import java.awt.Color;
 /**
  * Class of the first boss. 
  * Attacks: spawn sentry, shoot laser, bullet barrage
  * 
  * @author Tiger Zhao
- * @version January 10, 2015
+ * @version January 13, 2015
  */
 public class Boss1 extends Boss
 {
@@ -32,13 +33,7 @@ public class Boss1 extends Boss
     boolean start = true;
     
     BossHealthBar hpBar;
-    
-    
-    public Boss1(){
-        
-    }
-
-    
+   
     /**
      * Act - do whatever the Boss1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -51,6 +46,7 @@ public class Boss1 extends Boss
             start = false;
             hpBar = new BossHealthBar(20000, this);
             getWorld().addObject(hpBar, 400,775);
+            getWorld().addObject(new Text("Alien Spaceship", 18,Color.BLACK),400,775);
         }
         controlMovement();
         controlWeapons();
@@ -181,12 +177,19 @@ public class Boss1 extends Boss
             
             if(p.curGameLevel<2){ //increase the player's game progress
                 p.curGameLevel=2;
+                Text text = new Text("You have defeated the first boss!\nNew weapons and armor have been added to your inventory.\nExit this level and continue the game.", 24, Color.WHITE);
+                getWorld().addObject(text, 400,200);
+                p.addToInventory(new Sword(p));
+                p.addToInventory(new SniperGun(p));
+                p.addToInventory(new ArcaneExplosion(p));
+                p.addToInventory(new IronHelmet());
+                p.addToInventory(new IronChest());
+                p.addToInventory(new IronLegs());
             }
             
             LevelExit exit = new LevelExit();
             getWorld().addObject(exit, getX(), getY());
             exit.removeBlocking();
-            
             getWorld().removeObject(this);
         }
     }

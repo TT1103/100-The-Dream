@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ArcaneMissiles extends Weapon
 {
-    int manaCost =5;
+    int manaCost =2;
     
     public ArcaneMissiles(Player player){
         super(player);

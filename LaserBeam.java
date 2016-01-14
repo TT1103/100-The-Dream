@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class LaserBeam extends Actor
 {
-    int timer = 50;
+    int timer = 20;
     public LaserBeam(){
         getImage().scale(100, 5);
     }
@@ -20,7 +20,10 @@ public class LaserBeam extends Actor
     public void act() 
     {
         if(timer-- == 0){
-            getImage().scale(100, 30);
+            GreenfootSound effect = new GreenfootSound("laser_shoot.wav");
+            effect.setVolume(80);
+            effect.play();
+            getImage().scale(200, 30);
             Player player = (Player)getOneIntersectingObject(Player.class);
             if(player != null){
                 player.damage(100);

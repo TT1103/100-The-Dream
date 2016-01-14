@@ -6,12 +6,13 @@ import java.util.*;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Slash extends UnScrollable
+public class Slash extends Actor
 {
     int damage;
     int time =0;
     int timeDivisor =4;
     int idx=0; //index of sprites
+    boolean paused = false;
     GreenfootImage[] sprites = new GreenfootImage[] {
         new GreenfootImage("slash1.png"),
         new GreenfootImage("slash2.png"),
@@ -32,6 +33,9 @@ public class Slash extends UnScrollable
      */
     public void act() 
     {
+        if(paused){
+            return;
+        }
         time++;
         MouseInfo mi = Greenfoot.getMouseInfo();
         if(mi !=null){
@@ -45,11 +49,7 @@ public class Slash extends UnScrollable
             setImage(sprites[idx]);
             detectCollision();
             idx+=1;
-        }
-        
-       
-            
-        
+        } 
     }    
     
     public void detectCollision(){
@@ -59,7 +59,5 @@ public class Slash extends UnScrollable
                 enemy.damage(damage);
             }
         }
-        
-        
     }
 }

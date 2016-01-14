@@ -1,15 +1,13 @@
 #BlueJ class context
 comment0.params=
-comment0.target=Boss1()
+comment0.target=void\ act()
+comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ Boss1\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Boss1\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.target=void\ controlMovement()
 comment2.params=
-comment2.target=void\ controlMovement()
-comment3.params=
-comment3.target=void\ controlWeapons()
-comment4.params=d
-comment4.target=void\ damage(int)
-comment5.params=
-comment5.target=void\ controlDeath()
-numComments=6
+comment2.target=void\ controlWeapons()
+comment3.params=d
+comment3.target=void\ damage(int)
+comment4.params=
+comment4.target=void\ controlDeath()
+numComments=5

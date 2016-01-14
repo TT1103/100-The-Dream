@@ -35,9 +35,14 @@ public class Boss3 extends Boss
      */
     public void act() 
     {
-        if(paused)return;
+       
         Player p = (Player)getWorld().getObjects(Player.class).get(0);
-
+        
+         if(paused){
+            p.curse = false;
+            return;
+        }
+        
         if(start){
             hpBar = new BossHealthBar(40000, this);
             getWorld().addObject(hpBar, 400, 775);
@@ -94,7 +99,11 @@ public class Boss3 extends Boss
                 break;
 
                 case 2 ://chase
-                chasing = true;
+                if(canSeePlayer()){
+                    chasing = true;
+                }else{
+                    chargeLaser(getRotation(), 50, getX(), getY());
+                }
                 break;
             }
 

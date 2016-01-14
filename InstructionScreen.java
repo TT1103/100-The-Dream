@@ -3,11 +3,10 @@ import greenfoot.*;
 /**
  * Write a description of class InstructionScreen here.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Yu
+ * @version January 13, 2016
  */
-public class InstructionScreen extends World
-{
+public class InstructionScreen extends World {
     private GifImage myWorldBackground = new GifImage ("MyWorld.gif");
     private StartButton start = new StartButton ();
     private SkipButton skip = new SkipButton ();
@@ -20,9 +19,9 @@ public class InstructionScreen extends World
     // Arrays to store instruction screen images
     String images[] = new String [2];
     GreenfootSound music = new GreenfootSound("titlescreen_music.mp3");
+    
     /**
-     * Constructor for objects of class InstructionScreen.
-     * 
+     * Default constructor for objects of class InstructionScreen.
      */
     public InstructionScreen()
     {    
@@ -74,7 +73,7 @@ public class InstructionScreen extends World
     }
 
     public StartButton getStartButton () { 
-        return start ; 
+        return start; 
     }
 
     public boolean poppedInstructions () {

@@ -1,10 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
- * Write a description of class PlayerArcaneMissile here.
- * 
  * @author Tiger Zhao
- * @version January 11, 2016
+ * @version January 13, 2016
  */
 public class PlayerArcaneMissile extends PlayerProjectile
 {
@@ -38,9 +36,7 @@ public class PlayerArcaneMissile extends PlayerProjectile
                 turnTowards(e.getX(), e.getY());
             }
         }
-        
 
-        
         move(speed);
         getImage().setTransparency(255);
         if(isTouching(Player.class)){
@@ -53,7 +49,5 @@ public class PlayerArcaneMissile extends PlayerProjectile
             getWorld().removeObject(this);
             return;
         }
-        
-     
     }    
 }

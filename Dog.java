@@ -1,10 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Write a description of class Dog here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 13, 2016
  */
 public class Dog extends Enemy
 {
@@ -56,6 +54,7 @@ public class Dog extends Enemy
      */
     public void act() 
     {
+        if(paused)return;
         super.act();
         
 
@@ -94,35 +93,9 @@ public class Dog extends Enemy
             turn(10);
         }
         move(speed);
-        /*else if(!hasPath && !noPath){//path find to player
-            Player p = (Player)getWorld().getObjects(Player.class).get(0);
-            int[][] path = pathFind(getX(), getY(), p.getX(), p.getY());
-            if(path !=null){
-                pathToFollow = path;
-                hasPath = true;
-                curPath =0;
-            }else{
-                noPath = true;
-            }
-        }else if (hasPath){
-            //follow the path
-            turnTowards(pathToFollow[curPath][0]+((Map) getWorld()).curX -400,pathToFollow[curPath][1]+ ((Map) getWorld()).curY -400);
-            move(speed);
-            moving = true;
-            //System.out.println(getX()+" " + getY());
-            if (curPath< pathToFollow.length &&Math.abs(getX() - pathToFollow[curPath][0]) <=3 && Math.abs(getY() - pathToFollow[curPath][1]) <=3){
-                curPath++;
-            }else{//path is bad, remove it
-                curPath =0;
-                hasPath = false;
-                pathToFollow = null;
-            }
-        }*/
-
+        
     }
 
-    
-    
     public void controlWeapons(){
         List<Player> p = getIntersectingObjects(Player.class);
         if (!p.isEmpty() && damageDelay ==0){

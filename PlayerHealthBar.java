@@ -6,7 +6,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlayerHealthBar extends UnScrollable
+public class PlayerHealthBar extends Actor
 {
     boolean start=true;
     int health;

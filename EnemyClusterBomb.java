@@ -15,8 +15,7 @@ public class EnemyClusterBomb extends EnemyBullet
      * Act - do whatever the EnemyClusterBomb wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
+    public void act(){
         if(isTouching(PlayerProjectile.class)){
             Random r= new Random();
             for(int a = 0; a < 10; a++){
@@ -33,7 +32,7 @@ public class EnemyClusterBomb extends EnemyBullet
         
     }    
     
-    /*public void detectCollision(){
+    public void detectCollision(){
         Player player =(Player) getOneIntersectingObject(Player.class);
         if (player != null){
             player.damage(damage);
@@ -45,5 +44,5 @@ public class EnemyClusterBomb extends EnemyBullet
             getWorld().removeObject(this);
             return;
         }
-    }*/
+    }
 }

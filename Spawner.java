@@ -26,6 +26,9 @@ public class Spawner extends Actor
         turn(-20);
         if(spawning){
             if(x-- == 0 || x == 25){
+                GreenfootSound effect = new GreenfootSound("spawn_effect.wav");
+                effect.setVolume(20);
+                effect.play();
                 switch(spawn){
                     case 0 : //spawn dogs
                     getWorld().addObject(new Dog(level), getX(), getY());
@@ -43,7 +46,11 @@ public class Spawner extends Actor
         this.level = level;
         spawning = true;
         x = 50;
+        GreenfootSound effect = new GreenfootSound("spawn_effect.wav");
+        effect.setVolume(20);
+        effect.play();
         switch(spawn){
+
             case 0 : //spawn dogs
             getWorld().addObject(new Dog(level), getX(), getY());
             break;

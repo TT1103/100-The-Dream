@@ -1,20 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 import java.io.*;
+
 /**
- * Write a description of class Map here.
+ * The map class represents the world that the player is able to move around in and battle enemies.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 13, 2016
  */
 public class Map extends World
 {
     private Player player;
     private boolean gameOver = false;
-
-    //absolute size of the world
-    //int worldX =1200;
-    //int worldY = 1200; 
 
     //current absolute position within the world
     int curX =0;
@@ -27,23 +24,25 @@ public class Map extends World
     GreenfootImage background = new GreenfootImage("grass.png");
 
     boolean fadedIn = false;
-    
+
     boolean bossBattle = false;
-    
+
     GreenfootSound music;
 
-    
+    /**
+     * Constructor used for starting a map without player data.
+     * 
+     * @param level An integer indicating which level to load.
+     */
+    public Map(int level) {    
 
-    public Map(int level) //absolute new game
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(800, 800, 1,false); 
         player=new Player();
         addObject(player, 400,400);
         player.setDefaults();
         player.setup();
         curLevel = level;
-        // Layering the actors 
+
         setPaintOrder();
 
         String mapFile = "data/level_"+level+"/"+level+"_map_0_0.txt";
@@ -51,15 +50,21 @@ public class Map extends World
         fadeIn();
     }
 
-    public Map(int level, Player player) //game with data
+    /**
+     * Constructor used for starting a map with player data.
+     * 
+     * @param level An integer indicating which level to load.
+     * @param player A player object that contains all the saved data.
+     */
+    public Map(int level, Player player) 
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+
         super(800, 800, 1,false); 
         this.player = player;
         addObject(player, 400,400);
         player.setup();
         curLevel = level;
-        // Layering the actors 
+
         setPaintOrder();
 
         String mapFile = "data/level_"+level+"/"+level+"_map_0_0.txt";
@@ -67,6 +72,16 @@ public class Map extends World
 
     }
 
+    /**
+     * Constructor used for switching between maps in a level.
+     * 
+     * @param level An integer indicating which level to load.
+     * @param player A player object that contains all the saved data.
+     * @param mapFile A string containing the file of the new map to load.
+     * @param dirFrom A string indicating the direction that the player came from.
+     * @param newX An integer indicating the new x coordinate of the map.
+     * @param newY An integer indicating the new y coordinate of the map.
+     */
     public Map(int level, Player player,String mapFile, String dirFrom, int newX, int newY){  //switching maps  
         super(800, 800, 1,false); 
         this.player=player;
@@ -80,7 +95,7 @@ public class Map extends World
         System.out.println("Switched from: " + dirFrom);
 
         //used to set player position
-        if(bossBattle) return; //don't set new position if it is a boss battle
+        if(bossBattle) return; //don't set new position if it is a boss battle, just stay in center
         int offset =64; //off set for setting player location according to passages
         if(dirFrom.equals("down")){
             List<DownPassage> li = getObjects(DownPassage.class);
@@ -101,25 +116,23 @@ public class Map extends World
         }
     }
 
+    /**
+     * Sets the paint order.
+     */
     public void setPaintOrder(){
-
-        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class, PlayerExplosion.class, Boss1.class,Boss2.class,Boss3.class, Tree.class, EnemyExplosion.class, Player.class);
-
-        
-
+        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Boss2.class, Tree.class, EnemyExplosion.class, Player.class);
     }
 
-    public void generateGraph(){
-        for (int x = 10 ; x <= 790; x+=10){
-            for (int y =10 ; y <=790; y+=10){
-                Enemy.graph.put(String.valueOf(x) + " " + String.valueOf(y), new int[][] {{x+10,y-10},{x+10,y+10},{x-10,y-10},{x-10,y+10}});
-            }
-        }
+    /*public void generateGraph(){
+    for (int x = 10 ; x <= 790; x+=10){
+    for (int y =10 ; y <=790; y+=10){
+    Enemy.graph.put(String.valueOf(x) + " " + String.valueOf(y), new int[][] {{x+10,y-10},{x+10,y+10},{x-10,y-10},{x-10,y+10}});
     }
+    }
+    }*/
 
     /**
-     * Method used to end the game and transition to game over screen with score.
-     * Code is currently not running. More implementations soon.
+     * Method used to end the game and transition to game over screen
      */
     public void endGame () {
         if (player.curHealth <= 0) {
@@ -128,6 +141,10 @@ public class Map extends World
         }
     }
 
+    /**
+     * Act - do whatever the EnemeyWeapon wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
     public void act() {
         if (!gameOver) { //if not gameover, check to see if it is
             endGame();     
@@ -135,12 +152,15 @@ public class Map extends World
 
         scrollWorld();
 
-        if(!fadedIn){
+        if(!fadedIn){ //fade in the map
             fadedIn=true;
             fadeIn();
         }
     }
 
+    /**
+     * Used to make the world a scroller. 
+     */
     public void scrollWorld(){
         int pX = player.getX();
         int pY=player.getY();
@@ -151,11 +171,12 @@ public class Map extends World
             return;
         }
 
-        //System.out.println(curX +" " + curY);
         player.setLocation(400,400);
 
+        //scrolling all the objects:
         List<Actor> li = getObjects(null);
         for(Actor a : li){
+            //some objects should not scroll:
             if(!a.getClass().equals(Player.class) && !a.getClass().equals(Button.class)&& !a.getClass().equals(HUD.class) && !a.getClass().equals(Text.class)&& !a.getClass().equals(PlayerHealthBar.class)&& !a.getClass().equals(PlayerManaBar.class)&& !a.getClass().equals(PlayerExpBar.class)&& !a.getClass().equals(Slash.class)&& !a.getClass().equals(BossHealthBar.class)){
                 a.setLocation(a.getX()-offX,a.getY()-offY);
             }
@@ -164,12 +185,12 @@ public class Map extends World
         scrollBackground(-offX,-offY);
         curX+=offX;
         curY += offY;
-        
-       
-        
     }
 
-    protected final void scrollBackground(int offX, int offY) {
+    /**
+     * Used to scroll the background image with the player's movement.
+     */
+    public void scrollBackground(int offX, int offY) {
         int x;
         int y;
         GreenfootImage bg = new GreenfootImage(getBackground());
@@ -193,48 +214,54 @@ public class Map extends World
         }
     }
 
+    /**
+     * @return A boolean indicating if the game is over or not.
+     */
     public boolean getGameStatus() {
         return gameOver;
     }
 
-    public int getWorldX(){ //return absolute x
-        return curX;
-    }
-
-    public int getWorldY(){//return absolute y
-        return curY;
-    }
+    /**
+     * Used to convert an input stream to a string.
+     * 
+     * @return A string containing the data from the input stream.
+     */
     public String convertStreamToString(java.io.InputStream is) {
         java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "\n";
     }
-    public void loadMap(String filename){
 
+    /**
+     * Loads the map from a text file.
+     */
+    public void loadMap(String filename){
         try{
             InputStream input = Map.class.getResourceAsStream(filename);
-            
             String data = convertStreamToString(input);
-            
             ArrayList<String> parts =new ArrayList(Arrays.asList(data.split("\n")));
             if(parts.size()>0){
-                String line = parts.get(0);
+                String line = parts.get(0).trim();
                 //declare background
+                System.out.println("Working Directory = " +
+                    System.getProperty("user.dir"));
                 setBackground(line+".png");
+                //setBackground("grass.png");
                 //set music based on background;
                 music = new GreenfootSound(line+".mp3");
-                music.setVolume(70);
+                //music = new GreenfootSound("grass.mp3");
+                music.setVolume(75);
 
             }
             parts.remove(0);
-            
-            for (String s : parts) {
-              
-                String[] temp = s.split(" ");
-                String name = temp[0];
-                int x = Integer.valueOf(temp[1]);
-                int y = Integer.valueOf(temp[2]);
 
-                //if statement time....
+            //load all the objects
+            for (String s : parts) {
+
+                String[] temp = s.split(" ");
+                String name = temp[0].trim();
+                int x = Integer.valueOf(temp[1].trim());
+                int y = Integer.valueOf(temp[2].trim());
+
                 if(name.equals("tree")){
                     Tree t = new Tree();
                     addObject(t,x,y);
@@ -247,14 +274,12 @@ public class Map extends World
                 }else if (name.equals("sentry")){
                     Sentry t = new Sentry();
                     addObject(t,x,y);
-    
                 }else if (name.equals("dog")){
                     Dog t = new Dog();
                     addObject(t,x,y);
                 }else if (name.equals("mortar")){
                     MortarTower t = new MortarTower();
                     addObject(t,x,y);
-  
                 }else if (name.equals("gunman")){
                     Tree t = new Tree();
                     addObject(t,x,y);
@@ -303,15 +328,17 @@ public class Map extends World
         }catch (Exception ex){
             ex.printStackTrace();
         }
-        
-        
         music.playLoop();
+        
     }
 
     /**
-     * x y indicates how much to change
+     * x y indicates how much to change.
      * y: + up ; - down
      * x: + right; - left
+     * 
+     * @param changeX The x change.
+     * @param changeY The y change.
      * 
      */
     public void changeMap(int changeX, int changeY){ 
@@ -336,6 +363,9 @@ public class Map extends World
 
     }
 
+    /**
+     * Used to fade the screen in.
+     */
     public void fadeIn(){
 
         Shade shade = new Shade();
@@ -349,6 +379,9 @@ public class Map extends World
         removeObject(shade);
     }
 
+    /**
+     * Used to fade the screen out.
+     */
     public void fadeOut(){
         Shade shade = new Shade();
         addObject(shade,getWidth()/2, getHeight()/2);
@@ -356,114 +389,152 @@ public class Map extends World
             shade.getImage().setTransparency(i);
             Greenfoot.delay(1);
         }
-        
+
     }
-    
+
+    /**
+     * Used to pause all objects.
+     */
     public void pauseAll(){
         /*
          * objects to pause: player, bullets, enemy, enemy bullet, mortar, particle, mortar target,weapons
          */
-        
+
         List<Player> a = getObjects(Player.class);
         for (Player p: a){
             p.paused =true;
+            p.curse = false;
         }
-        
+
         List<PlayerProjectile> b = getObjects(PlayerProjectile.class);
         for (PlayerProjectile p: b){
             p.paused =true;
         }
-        
+
         List<Enemy> c = getObjects(Enemy.class);
         for (Enemy p: c){
             p.paused =true;
         }
-        
+
         List<EnemyBullet> d = getObjects(EnemyBullet.class);
         for (EnemyBullet p: d){
             p.paused =true;
         }
-        
+
         List<Mortar> e = getObjects(Mortar.class);
         for (Mortar p: e){
             p.paused =true;
         }
-        
+
         List<Particle> f = getObjects(Particle.class);
         for (Particle p: f){
             p.paused =true;
         }
-        
+
         List<Weapon> g = getObjects(Weapon.class);
         for (Weapon p: g){
             p.paused =true;
         }
-        
+
         List<MortarTarget> h = getObjects(MortarTarget.class);
         for (MortarTarget p: h){
             p.paused =true;
         }
-        
+
         List<EnemyExplosion> i = getObjects(EnemyExplosion.class);
         for (EnemyExplosion p: i){
             p.paused =true;
         }
-        
+
         List<PlayerExplosion> j = getObjects(PlayerExplosion.class);
         for (PlayerExplosion p: j){
             p.paused =true;
         }
+        
+        List<Shrine> l = getObjects(Shrine.class);
+        for (Shrine p: l){
+            a.get(0).paused =true;
+            a.get(0).curse = false;
+        }
+        
+        List<Boss3> k = getObjects(Boss3.class);
+        for (Boss3 p: k){
+            a.get(0).paused =true;
+            a.get(0).curse = false;
+        }
+        
+        
     }
-    
+
+    /**
+     * Used to unpause all objects.
+     */
     public void unpauseAll(){
         List<Player> a = getObjects(Player.class);
         for (Player p: a){
             p.paused =false;
+            if(getObjects(Shrine.class).size()>0){
+                Shrine shrine = (Shrine) getObjects(Shrine.class).get(0);
+                if(shrine.offCurse == false){
+                    p.curse = true;
+                }
+            }
         }
-        
+
         List<PlayerProjectile> b = getObjects(PlayerProjectile.class);
         for (PlayerProjectile p: b){
             p.paused =false;
         }
-        
+
         List<Enemy> c = getObjects(Enemy.class);
         for (Enemy p: c){
             p.paused =false;
         }
-        
+
         List<EnemyBullet> d = getObjects(EnemyBullet.class);
         for (EnemyBullet p: d){
             p.paused =false;
         }
-        
+
         List<Mortar> e = getObjects(Mortar.class);
         for (Mortar p: e){
             p.paused =false;
         }
-        
+
         List<Particle> f = getObjects(Particle.class);
         for (Particle p: f){
             p.paused =false;
         }
-        
+
         List<Weapon> g = getObjects(Weapon.class);
         for (Weapon p: g){
             p.paused =false;
         }
-        
+
         List<MortarTarget> h = getObjects(MortarTarget.class);
         for (MortarTarget p: h){
             p.paused =false;
         }
-        
+
         List<EnemyExplosion> i = getObjects(EnemyExplosion.class);
         for (EnemyExplosion p: i){
             p.paused =false;
         }
-        
+
         List<PlayerExplosion> j = getObjects(PlayerExplosion.class);
         for (PlayerExplosion p: j){
             p.paused =false;
+        }
+        
+        List<Shrine> l = getObjects(Shrine.class);
+        for (Shrine p: l){
+            p.paused =false;
+        }
+        
+        List<Boss3> k = getObjects(Boss3.class);
+        for (Boss3 p: k){
+            a.get(0).paused =false;
+            a.get(0).curse = true;
         }
     }
 

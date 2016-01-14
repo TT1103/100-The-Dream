@@ -1,6 +1,7 @@
 #BlueJ class context
 comment0.params=damage
 comment0.target=PlayerExplosion(int)
+comment0.text=\r\n\ Constructor\ for\ the\ explosion.\r\n\ \r\n\ @param\ damage\ The\ amount\ of\ damage\ that\ this\ explosion\ deals.\r\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Explosion\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n

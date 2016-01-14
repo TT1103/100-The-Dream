@@ -2,12 +2,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.io.*;
 /**
- * Write a description of class Player here.
+ * The player class contains all the functionality of the object that the user controls in battle.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao 
+ * @version January 13, 2016
  */
-public class Player extends UnScrollable implements Serializable
+public class Player extends Actor implements Serializable
 {
     int screenX= 800;
     int screenY= 800;
@@ -25,7 +25,6 @@ public class Player extends UnScrollable implements Serializable
     int maxDelay = 25;
     GreenfootImage idleSprite = new GreenfootImage("idle.png");
 
-    
     int maxMoveDelay =5;
     int moveDelay =maxMoveDelay;
     boolean moving =false;
@@ -40,8 +39,7 @@ public class Player extends UnScrollable implements Serializable
     int knockbackDelay=5;
     int knockbackStrength;
     int knockbackRotation;
-
- 
+    
     int maxLevel =99;
     int curLevel =1;
     int curStatPoints =0;
@@ -67,7 +65,6 @@ public class Player extends UnScrollable implements Serializable
 
     PlayerData playerData;
 
-
     HUD hud;
 
     Weapon curWeapon;
@@ -83,28 +80,32 @@ public class Player extends UnScrollable implements Serializable
     Equipment[] inventory = new Equipment[98];
     
     int curGameLevel =1;
+
     boolean curse = false;
+
+    
+    boolean paused = false;
+    
+    /**
+     * Default constructor for the player. 
+     * Starts a new player with new data.
+     */
+
     public Player(){
         playerData=new PlayerData();
     }
     
+    /**
+     * Loads the default items into the player's inventory.
+     */
     public void setDefaults(){
         addToInventory(new Knife(this));
-        addToInventory(new Sword(this));
-        addToInventory(new DeathSword(this));
-        
-        addToInventory(new SniperGun(this));
         addToInventory(new MachineGun(this));
-        addToInventory(new RocketLauncher(this));
-        
         addToInventory(new ArcaneMissiles(this));
-        addToInventory(new ArcaneExplosion(this));
-        addToInventory(new ArcaneLaser(this));
-        
         addToInventory(new CopperHelmet());
         addToInventory(new CopperChest());
         addToInventory(new CopperLegs());
-        
+        /*
         addToInventory(new IronHelmet());
         addToInventory(new IronChest());
         addToInventory(new IronLegs());
@@ -112,8 +113,20 @@ public class Player extends UnScrollable implements Serializable
         addToInventory(new CarbonHelmet());
         addToInventory(new CarbonChest());
         addToInventory(new CarbonLegs());
+        
+        addToInventory(new ArcaneExplosion(this));
+        addToInventory(new ArcaneLaser(this));
+        
+        addToInventory(new RocketLauncher(this));
+        addToInventory(new Sword(this));
+        addToInventory(new DeathSword(this));
+        */
+        addToInventory(new SniperGun(this));
     }
 
+    /**
+     * Constructor used for creating a player with existing player save data.
+     */
     public Player(PlayerData playerData){
         this.playerData = playerData;
         //load the data...
@@ -135,21 +148,14 @@ public class Player extends UnScrollable implements Serializable
         maxMana = playerData.maxMana;
         curHealth = maxHealth;
         curMana = maxMana;
+        speed = playerData.speed;
     }
 
+    
     public void setup(){
-        /*getWorld().addObject(machinegun,-100,-100);
-        getWorld().addObject(sniper,-100,-100);
-        //getWorld().addObject(knife,-100,-100);
-       
-
-        weapons.add(machinegun);
-        weapons.add(sniper);
-        weapons.add(knife);*/
         hud = new HUD(this);
         getWorld().addObject(hud, 0, 0);
-        //curWeapon = knife;
-        //inventory[0] = knife;
+
     }
 
     /**
@@ -158,12 +164,13 @@ public class Player extends UnScrollable implements Serializable
      */
     public void act() 
     {
-        if(curWeapon !=null){
-            curWeapon.act();
-        }
         if(paused){
             return;
         }
+        if(curWeapon !=null){
+            curWeapon.act();
+        }
+        
         if(knockback){
             int originalRotation = getRotation();
             setRotation(knockbackRotation);
@@ -221,14 +228,19 @@ public class Player extends UnScrollable implements Serializable
     public void damage(int damage){
         int totalDefense =defense;
         if (curHead!=null) totalDefense+=curHead.defense;
+        
         if(curChest != null) totalDefense += curChest.defense;
+        
         if(curLegs !=null)totalDefense+=curLegs.defense;
+        
         damage-= (totalDefense)/2;
         if(damage<1) damage=1;
+        
         curHealth-=damage;
         if(curHealth <0){
             curHealth =0;
         }
+        
         //generate particles
         int particleSpeed=damage/2;
         int particleSize = damage/10;
@@ -245,7 +257,7 @@ public class Player extends UnScrollable implements Serializable
         if(particleNumber >10){
             particleSize = 10;
         }
-        // if(particleNumber < 
+        
         Particle par = new Particle(particleSpeed,particleSize,particleNumber); //5
         getWorld().addObject(par,getX(), getY());
     }
@@ -257,16 +269,20 @@ public class Player extends UnScrollable implements Serializable
 
     public void setLocation(int x, int y) {
         if (getWorld().getObjectsAt(x, y, Impassable.class).isEmpty()) {
-            //if(x <0 || x >800 || y <0 || y >800){
-            //    return;
-            //}
             super.setLocation(x, y);
         }
     }
+    
+    public void move(int speed){
+        double squareX =  (Math.cos(Math.toRadians(getRotation())));
+        double squareY =   (Math.sin(Math.toRadians(getRotation())));
+        int circleX = (int) (speed*squareX * Math.sqrt(1- 0.5* Math.pow(squareY,2)));
+        int circleY = (int) (speed*squareY * Math.sqrt(1- 0.5* Math.pow(squareX,2)));
+        
+        setLocation(getX()+circleX, getY()+circleY);
+    }
 
     public void controlMovement(){
-        
-        
         moving =false;
         if(knockback==false){
             if (Greenfoot.isKeyDown("w")){
@@ -317,11 +333,7 @@ public class Player extends UnScrollable implements Serializable
         }
     }
 
-    boolean weaponswitch=false;
-    int weaponindex=0;
-
     public void controlWeapons(){
-
         if (Greenfoot.mousePressed(null)){
             attacking = true;
         }else if (Greenfoot.mouseClicked(null)){
@@ -329,7 +341,6 @@ public class Player extends UnScrollable implements Serializable
         }
 
         if(attacking&&knockback==false && curWeapon !=null){
-            //weapons.get(weaponindex).use();
             curWeapon.use();
         }
     }
@@ -353,7 +364,6 @@ public class Player extends UnScrollable implements Serializable
         Text t = new Text(150,"Leveled up!");
         getWorld().addObject(t, getX(),getY()-20);
         lvUp = true;
-
     }
 
     public void saveData(){

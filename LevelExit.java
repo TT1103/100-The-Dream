@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Used to exit a level back to the level selector
+ * Used to exit a level back to the level selector.
  * 
  * @author Tiger Zhao
- * @version December 26, 2015
+ * @version January 13, 2016
  */
 public class LevelExit extends Actor
 {
@@ -22,10 +22,11 @@ public class LevelExit extends Actor
             player.saveData();
             Greenfoot.setWorld(new LevelSelector());
         }
-        
-        
     }    
     
+    /**
+     * Remove objects that are blocking this exit.
+     */
     public void removeBlocking(){
         getWorld().removeObjects(getIntersectingObjects(Impassable.class));
     }

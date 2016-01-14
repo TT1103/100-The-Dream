@@ -1,17 +1,22 @@
 #BlueJ class context
 comment0.params=
 comment0.target=LevelSelector()
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ LevelSelector.\r\n\ \r\n
+comment0.text=\r\n\ Default\ constructor\ for\ objects\ of\ class\ LevelSelector.\r\n\ \r\n
 comment1.params=music
 comment1.target=LevelSelector(greenfoot.GreenfootSound)
+comment1.text=\r\n\ Contructor\ used\ to\ allow\ for\ music\ to\ flow.\r\n\ Used\ when\ transitioning\ from\ the\ title\ screen.\r\n
 comment2.params=
 comment2.target=void\ setup()
+comment2.text=\r\n\ Setsup\ the\ neccessary\ objects.\r\n
 comment3.params=
 comment3.target=void\ act()
 comment4.params=
 comment4.target=boolean\ loadData()
+comment4.text=\r\n\ Loads\ the\ previously\ saved\ data\ if\ it\ exists.\r\n\ \r\n\ @return\ A\ boolean\ indicating\ whether\ or\ not\ it\ is\ a\ new\ game.\r\n
 comment5.params=player
 comment5.target=void\ parseInventory(Player)
+comment5.text=\r\n\ Used\ to\ parse\ the\ player's\ inventory\ into\ the\ corresponding\ objects.\r\n\ \r\n\ @param\ The\ player\ object\ of\ which\ to\ parse\ the\ inventory\ of.\r\n
 comment6.params=s\ player
 comment6.target=Equipment\ stringToObject(java.lang.String,\ Player)
+comment6.text=\r\n\ A\ helper\ method\ for\ parseInventory()\r\n\ \r\n\ @param\ s\ A\ string\ indicating\ the\ Equipment\ object.\r\n\ @param\ player\ The\ player\ object\ of\ which\ to\ parse\ the\ inventory\ of.\r\n\ \r\n\ @return\ An\ Equipment\ object\ corresponding\ to\ a\ string.\r\n
 numComments=7
