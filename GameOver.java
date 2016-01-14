@@ -28,6 +28,7 @@ public class GameOver extends Actor
         Player player = (Player) getWorld().getObjects(Player.class).get(0);
         if (player !=null){ 
             //return to level.
+            player.saveData();
             ((Map) getWorld()).fadeOut();
             ((Map) getWorld()).music.stop();
             Greenfoot.setWorld(new LevelSelector());
