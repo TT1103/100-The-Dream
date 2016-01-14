@@ -74,16 +74,16 @@ public class LevelSelector extends World {
         markText.setText("Your Computer Science Mark: "+String.valueOf(mark)+"%");
         
         resetButton = new Button("ResetGame.png");
-        addObject(resetButton,575,720);
+        addObject(resetButton,430,720);
         
         menuButton = new Button("MainMenu.png");
-        addObject(menuButton,320,720);
+        addObject(menuButton,675,720);
         
         if(curGameLevel ==1){
-            addObject(new Text("LOCKED",25, Color.WHITE),525,550);
-            addObject(new Text("LOCKED",25,Color.WHITE),702,550);
+            addObject(new Text("LOCKED",25, Color.WHITE),525,560);
+            addObject(new Text("LOCKED",25,Color.WHITE),702,560);
         }else if(curGameLevel==2){
-            addObject(new Text("LOCKED",25, Color.WHITE),702,550);
+            addObject(new Text("LOCKED",25, Color.WHITE),702,560);
         }
     }
 
