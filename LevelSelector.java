@@ -22,6 +22,7 @@ public class LevelSelector extends World {
     boolean newGame = false; //if it is a new game or not
     int curGameLevel=1;
     Button resetButton; //button to start a new game and delete current game data
+    Button menuButton; //button to return to main screen
     GreenfootSound music = new GreenfootSound("titlescreen_music.mp3");
     
     Text markText =  new Text("Computer Science Mark: ",25, Color.WHITE);
@@ -74,6 +75,9 @@ public class LevelSelector extends World {
         
         resetButton = new Button("reset_button.png");
         addObject(resetButton,64,14);
+        
+        menuButton = new Button("player_menu_button.png");
+        addObject(menuButton,736,14);
     }
 
     public void act(){
@@ -107,6 +111,11 @@ public class LevelSelector extends World {
             Greenfoot.delay(100);
             
             Greenfoot.setWorld (new LevelSelector(music));
+        }
+        
+        if(menuButton.pressed){
+            music.stop();
+            Greenfoot.setWorld (new InstructionScreen());
         }
     }
     

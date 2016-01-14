@@ -240,7 +240,7 @@ public class Map extends World
             String data = convertStreamToString(input);
             ArrayList<String> parts =new ArrayList(Arrays.asList(data.split("\n")));
             if(parts.size()>0){
-                String line = parts.get(0);
+                String line = parts.get(0).trim();
                 //declare background
                 setBackground(line+".png");
                 //set music based on background;
@@ -254,7 +254,7 @@ public class Map extends World
             for (String s : parts) {
               
                 String[] temp = s.split(" ");
-                String name = temp[0];
+                String name = temp[0].trim();
                 int x = Integer.valueOf(temp[1]);
                 int y = Integer.valueOf(temp[2]);
 
