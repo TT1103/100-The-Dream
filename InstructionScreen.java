@@ -3,6 +3,9 @@ import greenfoot.*;
 /**
  * Instruction Screen Coding 
  * 
+ * NOTE: All instruction screen images are supposed to animate; however, due to 
+ * heap space errors, they are not implemented. 
+ * 
  * @author Gary Yu
  * @version January 13, 2016
  */
