@@ -1,7 +1,8 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\n\ Act\ -\ do\ whatever\ the\ SkipButton\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment0.text=\r\n\ Changes\ the\ skip\ button\ to\ different\ colours\ to\ indicate\ whether\ user\ is\ \r\n\ hovering\ or\ clicking\ the\ button\r\n
 comment1.params=
 comment1.target=boolean\ buttonClicked()
+comment1.text=\r\n\ @return\ Whether\ this\ skip\ button\ has\ been\ clicked\r\n
 numComments=2

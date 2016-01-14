@@ -1,10 +1,10 @@
 import greenfoot.*;
 
 /**
- * Write a description of class BackButton here.
+ * In charge of changing to the previous screen 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Yu  
+ * @version January 13, 2016 
  */
 public class BackButton extends IntroElements
 {
@@ -16,8 +16,8 @@ public class BackButton extends IntroElements
     private int speed = 2;
 
     /**
-     * Act - do whatever the BackButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Changes the back button to different colours to indicate whether user is 
+     * hovering or clicking the button 
      */
     public void act() 
     {
@@ -47,7 +47,7 @@ public class BackButton extends IntroElements
      * Animations required to pop button up and down 
      */
     public void popUpAnimation() {
-        // 704, 720
+        // Set of animations when first popping up 
         if (getY() >= 705 && !firstRiseCompleted && !secondRiseCompleted) { 
             speed += 12; 
             setLocation (getX(), getY() - speed); 
@@ -55,6 +55,7 @@ public class BackButton extends IntroElements
                 firstRiseCompleted = true;
             }
         } 
+        // Slowing down of button when it has popped over equilibrium 
         if (getY() < 705 && getY() > 555 && !secondRiseCompleted) { 
             speed -= 1;
             if (speed > 0) { 
@@ -64,6 +65,7 @@ public class BackButton extends IntroElements
                 secondRiseCompleted = true;
             }
         }
+        // Button will descend after it has reached to max height 
         if (getY() >= 555 && getY() <= 715 && secondRiseCompleted) {
             speed += 1; 
             if (speed >= 0 || getY() != 715) { 
@@ -72,19 +74,30 @@ public class BackButton extends IntroElements
                 setLocation (getX(), 715) ; 
             }
         }
+        // Once button in position, the back button will be in "full function" (Able to click to go to
+        // next screen)
         if (getY() >= 718 && getY() <= 722) {
             buttonAppeared = true;
         }
     }
 
+    /**
+     * @return Whether the back button has appeared 
+     */
     public boolean backButtonHere() {
         return buttonAppeared;
     }
 
+    /**
+     * @return Whether the button has been clicked 
+     */
     public boolean buttonClicked() {
         return mouseClicked;
     }   
 
+    /**
+     * If button is not clicked, mouse clicked would be false 
+     */
     public void buttonNotClicked() {
         mouseClicked = false;
     }

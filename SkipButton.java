@@ -1,18 +1,18 @@
 import greenfoot.*;
 
 /**
- * Write a description of class SkipButton here.
+ * In charge of skipping to the level selection screen 
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Yu 
+ * @version January 13,2016
  */
 public class SkipButton extends IntroElements
 {
     private boolean mouseClicked = false;
 
     /**
-     * Act - do whatever the SkipButton wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Changes the skip button to different colours to indicate whether user is 
+     * hovering or clicking the button
      */
     public void act() 
     {
@@ -33,6 +33,9 @@ public class SkipButton extends IntroElements
         }
     }  
     
+    /**
+     * @return Whether this skip button has been clicked
+     */
     public boolean buttonClicked() {
         return mouseClicked;
     }

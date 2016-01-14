@@ -13,8 +13,8 @@ public class GameOver extends Actor
 
 
     /**
-     * Act - do whatever the GameOver wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Will animate the game over screen to indicate to users that they have depleted 
+     * all their health. Game music will stop and level selection screen music will proceed. 
      */
     public void act() 
     {
@@ -33,7 +33,7 @@ public class GameOver extends Actor
             player.saveData();
             ((Map) getWorld()).fadeOut();
             ((Map) getWorld()).music.stop();
-            Greenfoot.setWorld(new LevelSelector());
+            Greenfoot.setWorld(new LevelSelector()); // Goes back to level selection screen 
         }
         
     }    

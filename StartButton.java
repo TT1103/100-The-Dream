@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * StartButton Class. In charge of changing images for start button when hovered, clicked etc. 
+ * In charge of changing images for start button when hovered, clicked etc. 
  * 
  * @author Gary Yu 
  * @version January 13, 2016
