@@ -78,6 +78,13 @@ public class LevelSelector extends World {
         
         menuButton = new Button("MainMenu.png");
         addObject(menuButton,320,720);
+        
+        if(curGameLevel ==1){
+            addObject(new Text("LOCKED",25, Color.WHITE),525,550);
+            addObject(new Text("LOCKED",25,Color.WHITE),702,550);
+        }else if(curGameLevel==2){
+            addObject(new Text("LOCKED",25, Color.WHITE),702,550);
+        }
     }
 
     public void act(){

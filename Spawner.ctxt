@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #BlueJ class context
 comment0.params=spawn
 comment0.target=Spawner(int)
@@ -8,14 +7,3 @@ comment1.text=\n\ Act\ -\ do\ whatever\ the\ Spawner\ wants\ to\ do.\ This\ meth
 comment2.params=level
 comment2.target=void\ activate(int)
 numComments=3
-=======
-#BlueJ class context
-comment0.params=spawn
-comment0.target=Spawner(int)
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ Spawner\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-comment2.params=level
-comment2.target=void\ activate(int)
-numComments=3
->>>>>>> 37ba5f7a7d321fa8fff5fdfb12cadf1c75dc8b3f

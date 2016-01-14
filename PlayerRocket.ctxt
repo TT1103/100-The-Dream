@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #BlueJ class context
 comment0.params=speed\ damage
 comment0.target=PlayerRocket(int,\ int)
@@ -8,14 +7,3 @@ comment1.text=\n\ Act\ -\ do\ whatever\ the\ PlayerRocket\ wants\ to\ do.\ This\
 comment2.params=
 comment2.target=void\ detectCollision()
 numComments=3
-=======
-#BlueJ class context
-comment0.params=speed\ damage
-comment0.target=PlayerRocket(int,\ int)
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ PlayerRocket\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-comment2.params=
-comment2.target=void\ detectCollision()
-numComments=3
->>>>>>> 37ba5f7a7d321fa8fff5fdfb12cadf1c75dc8b3f

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #BlueJ class context
 comment0.params=player
 comment0.target=PlayerMenu(Player)
@@ -22,28 +21,3 @@ comment6.params=
 comment6.target=void\ displayInventory()
 comment6.text=\n\ Used\ to\ display\ all\ the\ objects\ needed\ for\ the\ inventory\ portion.\n
 numComments=7
-=======
-#BlueJ class context
-comment0.params=player
-comment0.target=PlayerMenu(Player)
-comment0.text=\r\n\ A\ constructor\ to\ create\ the\ player\ menu.\r\n\ \r\n\ Index\ for\ stats\:\ \r\n\ 0\ precision\r\n\ 1\ intelligence\r\n\ 2\ dexterity\r\n\ 3\ defense\r\n\ 4\ endurance\r\n\ 5\ spirituality\r\n\ 6\ stat\ points\r\n\ \r\n\ @param\ player\ The\ player\ object\ that\ this\ menu\ represents.\r\n
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ PlayerMenu\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-comment2.params=
-comment2.target=void\ controlStats()
-comment2.text=\r\n\ A\ method\ used\ to\ manage\ the\ Player's\ stats.\r\n
-comment3.params=
-comment3.target=void\ controlInventory()
-comment3.text=\r\n\ A\ method\ used\ to\ manage\ the\ Player's\ inventory.\r\n
-comment4.params=item
-comment4.target=void\ setCurItem(Equipment)
-comment4.text=\r\n\ Used\ to\ refresh\ an\ item\ so\ it\ appears\ on\ top\ of\ everything.\r\n
-comment5.params=
-comment5.target=void\ displayStats()
-comment5.text=\r\n\ Used\ to\ display\ all\ the\ objects\ needed\ for\ the\ stats\ portion.\r\n
-comment6.params=
-comment6.target=void\ displayInventory()
-comment6.text=\r\n\ Used\ to\ display\ all\ the\ objects\ needed\ for\ the\ inventory\ portion.\r\n
-numComments=7
->>>>>>> 37ba5f7a7d321fa8fff5fdfb12cadf1c75dc8b3f

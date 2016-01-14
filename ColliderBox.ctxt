@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #BlueJ class context
 comment0.params=
 comment0.target=ColliderBox()
@@ -6,12 +5,3 @@ comment0.text=\n\ Default\ constructor.\n\ The\ default\ size\ of\ the\ box\ is\
 comment1.params=x\ y
 comment1.target=ColliderBox(int,\ int)
 numComments=2
-=======
-#BlueJ class context
-comment0.params=
-comment0.target=ColliderBox()
-comment0.text=\r\n\ Default\ constructor.\r\n\ The\ default\ size\ of\ the\ box\ is\ 32\ by\ 32\r\n
-comment1.params=x\ y
-comment1.target=ColliderBox(int,\ int)
-numComments=2
->>>>>>> 37ba5f7a7d321fa8fff5fdfb12cadf1c75dc8b3f

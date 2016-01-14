@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #BlueJ class context
 comment0.params=curHealth\ maxHealth
 comment0.target=PlayerHealthBar(int,\ int)
@@ -10,16 +9,3 @@ comment2.target=void\ updateHealth(int,\ int)
 comment3.params=
 comment3.target=int\ getHealth()
 numComments=4
-=======
-#BlueJ class context
-comment0.params=curHealth\ maxHealth
-comment0.target=PlayerHealthBar(int,\ int)
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ HealthBar\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
-comment2.params=newCurHealth\ newMaxHealth
-comment2.target=void\ updateHealth(int,\ int)
-comment3.params=
-comment3.target=int\ getHealth()
-numComments=4
->>>>>>> 37ba5f7a7d321fa8fff5fdfb12cadf1c75dc8b3f
