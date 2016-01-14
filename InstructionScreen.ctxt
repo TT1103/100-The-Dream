@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-#BlueJ class context
-comment0.params=
-comment0.target=InstructionScreen()
-comment0.text=\r\n\ Default\ constructor\ for\ objects\ of\ class\ InstructionScreen.\r\n
-comment1.params=
-comment1.target=void\ act()
-comment1.text=\r\n\ Helps\ with\ the\ screen\ transitions\ \r\n
-comment2.params=
-comment2.target=StartButton\ getStartButton()
-comment2.text=\r\n\ @return\ The\ start\ button\ object\ \r\n
-comment3.params=
-comment3.target=boolean\ poppedInstructions()
-comment3.text=\r\n\ @return\ Whether\ the\ instruction\ screens\ have\ popped\ up\ or\ not\ \r\n
-comment4.params=
-comment4.target=boolean\ addNextIcon()
-comment4.text=\r\n\ @return\ Whether\ it's\ appropriate\ to\ add\ the\ next\ icon\ \r\n
-comment5.params=
-comment5.target=boolean\ addSkipIcon()
-comment5.text=\r\n\ @return\ Whether\ it's\ appropriate\ to\ add\ the\ skip\ icon\ \r\n
-comment6.params=
-comment6.target=void\ changeInstructionScreens()
-comment6.text=\r\n\ Changes\ each\ instruction\ screen\ by\ shuffling\ through\ an\ array\ of\ \r\n\ instruction\ screen\ images\r\n
-numComments=7
-=======
 #BlueJ class context
 comment0.params=
 comment0.target=InstructionScreen()
@@ -32,13 +7,17 @@ comment1.target=void\ act()
 comment1.text=\n\ Helps\ with\ the\ screen\ transitions\ \n
 comment2.params=
 comment2.target=StartButton\ getStartButton()
+comment2.text=\n\ @return\ The\ start\ button\ object\ \n
 comment3.params=
 comment3.target=boolean\ poppedInstructions()
+comment3.text=\n\ @return\ Whether\ the\ instruction\ screens\ have\ popped\ up\ or\ not\ \n
 comment4.params=
 comment4.target=boolean\ addNextIcon()
+comment4.text=\n\ @return\ Whether\ it's\ appropriate\ to\ add\ the\ next\ icon\ \n
 comment5.params=
 comment5.target=boolean\ addSkipIcon()
+comment5.text=\n\ @return\ Whether\ it's\ appropriate\ to\ add\ the\ skip\ icon\ \n
 comment6.params=
 comment6.target=void\ changeInstructionScreens()
+comment6.text=\n\ Changes\ each\ instruction\ screen\ by\ shuffling\ through\ an\ array\ of\ \n\ instruction\ screen\ images\n
 numComments=7
->>>>>>> 7a321b52fadbb3e39e0b60919a72846a89da6116

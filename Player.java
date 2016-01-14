@@ -369,7 +369,7 @@ public class Player extends Actor implements Serializable
         curStatPoints+=4;
         curLevel++;
         //display level up stuff
-        Text t = new Text(150,"Leveled up!");
+        Text t = new Text(75,"Leveled up!");
         getWorld().addObject(t, getX(),getY()-20);
         lvUp = true;
     }

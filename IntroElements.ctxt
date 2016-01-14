@@ -1,13 +1,5 @@
-<<<<<<< HEAD
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ IntroElements\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment0.text=\n\ Act\ -\ do\ whatever\ the\ IntroElements\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 numComments=1
-=======
-#BlueJ class context
-comment0.params=
-comment0.target=void\ act()
-comment0.text=\n\ Act\ -\ do\ whatever\ the\ GUI\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-numComments=1
->>>>>>> 7a321b52fadbb3e39e0b60919a72846a89da6116
