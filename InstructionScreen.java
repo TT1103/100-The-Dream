@@ -1,7 +1,7 @@
 import greenfoot.*;
 
 /**
- * Write a description of class InstructionScreen here.
+ * Instruction Screen Coding 
  * 
  * @author Gary Yu
  * @version January 13, 2016
@@ -72,14 +72,23 @@ public class InstructionScreen extends World {
         changeInstructionScreens();
     }
 
+    /**
+     * @return The start button object 
+     */
     public StartButton getStartButton () { 
         return start; 
     }
 
+    /**
+     * @return Whether the instruction screens have popped up or not 
+     */
     public boolean poppedInstructions () {
         return popInstructions;
     }
 
+    /**
+     * @return Whether it's appropriate to add the next icon 
+     */
     public boolean addNextIcon () {
         if (popInstructions) {
             addObject (next, 704, 705);
@@ -89,6 +98,10 @@ public class InstructionScreen extends World {
         }
     }
 
+    
+    /**
+     * @return Whether it's appropriate to add the skip icon 
+     */
     public boolean addSkipIcon () {
         if (next.nextButtonHere()) {
             addObject (skip, 560, 720);
@@ -98,6 +111,10 @@ public class InstructionScreen extends World {
         }
     }
 
+    /**
+     * Changes each instruction screen by shuffling through an array of 
+     * instruction screen images
+     */
     public void changeInstructionScreens () {
         if (next.buttonClicked()) {
             if (i <= images.length-2) {
