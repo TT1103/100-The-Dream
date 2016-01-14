@@ -1,29 +1,30 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * A ranged weapon.
+ * A special weapon used by the developers to test the game.
+ * This ranged weapon is essentially an over powered sniper used to clear the game quickly.
  * 
  * @author Tiger Zhao
- * @version January 14, 2016
+ * @version January 16, 2016
  */
-public class SniperGun extends Weapon
+public class DevWeapon extends Weapon
 {
     int bulletSpeed =40;
 
     GreenfootImage gunSprite = new GreenfootImage("gun_sprite.png");
     
-    public SniperGun(Player player){
+    public DevWeapon(Player player){
         super(player);
-        speedDelay =27;
-        speed=27;
+        speedDelay =7;
+        speed=7;
         itemImage = new GreenfootImage("snipergun_item_image.png");
-        name = "snipergun";
+        name = "devweapon";
         damageType = "range";
-        damage =600;
-        tooltip="Sniper Gun\nA powerful but slow fire rate\nranged weapon.\nDamage: "+String.valueOf(damage);
+        damage =5000;
+        tooltip="Developer Weapon\nA weapon used for testing purposes.\nQuickly defeat enemies and clear the game.\nDo not use this if you intend to legitimately\nplay the game.\nDamage: "+String.valueOf(damage);
     }
     /**
-     * Act - do whatever the SniperGun wants to do. This method is called whenever
+     * Act - do whatever the DevWeapon wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 

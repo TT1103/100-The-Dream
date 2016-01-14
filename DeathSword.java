@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class DeathSword here.
+ * A melee weapon.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2016
  */
 public class DeathSword extends Weapon
 {
@@ -18,8 +18,9 @@ public class DeathSword extends Weapon
         damage=900;
         tooltip = "Dead Sword\nA deadly melee weapon.\nUsed by the devel to slaughter\nonions for delicious stew.\nDamage: "+String.valueOf(damage);
     }
+    
     /**
-     * Act - do whatever the Sword wants to do. This method is called whenever
+     * Act - do whatever the DeathSword wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 

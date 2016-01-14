@@ -38,12 +38,10 @@ public class PlayerHealthBar extends Actor
             getWorld().addObject(text,getX(),getY());
             start=false;
         }
-        //getImage().scale(350, 20);
  
         getImage().setColor(Color.BLACK);
         getImage().drawRect(0,0,getImage().getWidth()-1, getImage().getHeight()-1);
 
-        
     }   
 
     public void updateHealth(int newCurHealth, int newMaxHealth){
@@ -68,7 +66,6 @@ public class PlayerHealthBar extends Actor
         }
         newbar.fillRect(0,0, (int)(xSize * ((double)health/maxHealth)), getImage().getHeight());
         text.setText(String.valueOf(health) +"/"+ String.valueOf(maxHealth));
-        //getWorld().showText(String.valueOf(health),getX(),getY());
 
     }
 

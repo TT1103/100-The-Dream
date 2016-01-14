@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 /**
+ * A health bar used by enemies.
+ * 
  * @author Tiger Zhao
  * @version January 13, 2016
  */

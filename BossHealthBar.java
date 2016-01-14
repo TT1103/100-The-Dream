@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
 /**
+ * A special health bar used by enemy bosses
+ * 
  * @author Tiger Zhao
  * @version January 13, 2016
  */
@@ -18,9 +20,7 @@ public class BossHealthBar extends HealthBar
     {
         getImage().setColor(Color.BLACK);
         getImage().drawRect(0,0,getImage().getWidth()-1,getImage().getHeight()-1);
-        if(!parent.dead){
-            //setLocation(parent.getX(), parent.getY()+parent.getImage().getHeight());
-        }else{
+        if(parent.dead){
             getWorld().removeObject(this);
         }
     }   

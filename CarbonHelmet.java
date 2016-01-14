@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class CarbonHelmet here.
+ * An armor piece.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2016
  */
 public class CarbonHelmet extends Equipment
 {
@@ -15,12 +15,4 @@ public class CarbonHelmet extends Equipment
         type="head";
         tooltip ="Carbon Helmet\nProvides high defense.\nDefense: "+String.valueOf(defense);
     }
-    /**
-     * Act - do whatever the CarbonHelmet wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
 }

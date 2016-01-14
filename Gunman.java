@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
+ * A moving enemy that shoots bullets at the player.
+ * 
  * @author Tiger Zhao
  * @version January 13, 2016
  */

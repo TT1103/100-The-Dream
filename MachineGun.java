@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class P90 here.
+ * A ranged weapon.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2016
  */
 public class MachineGun extends Weapon
 {
@@ -13,7 +13,6 @@ public class MachineGun extends Weapon
     GreenfootImage gunSprite = new GreenfootImage("gun_sprite.png");
 
     public MachineGun(Player player){
-        //super("p90");
         super(player);
         speedDelay=10;
         speed =10;
@@ -25,7 +24,7 @@ public class MachineGun extends Weapon
     }
 
     /**
-     * Act - do whatever the P90 wants to do. This method is called whenever
+     * Act - do whatever the MachineGun wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
@@ -33,7 +32,7 @@ public class MachineGun extends Weapon
         super.act();
     }    
 
-    public void use(){ //x and y: current player pos
+    public void use(){ 
         GreenfootImage gunImage = new GreenfootImage(player.getImage());
 
         if (speedDelay >= speed){

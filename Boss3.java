@@ -4,10 +4,10 @@ import java.util.Random;
 import java.util.List;
 import java.awt.Color;
 /**
- * Write a description of class Boss3 here.
+ * The third boss of the game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Enoch Poon
+ * @version January 14, 2016
  */
 public class Boss3 extends Boss
 {

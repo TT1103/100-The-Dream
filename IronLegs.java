@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class IronLegs here.
+ * An armor piece.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2016
  */
 public class IronLegs extends Equipment
 {
@@ -15,12 +15,4 @@ public class IronLegs extends Equipment
         type="legs";
         tooltip ="Iron Legs\nProvides average defense.\nDefense: "+String.valueOf(defense);
     }
-    /**
-     * Act - do whatever the IronLegs wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
 }

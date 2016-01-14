@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class CarbonChest here.
+ * An armor piece.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2016
  */
 public class CarbonChest extends Equipment
 {
@@ -14,13 +14,5 @@ public class CarbonChest extends Equipment
         itemImage = new GreenfootImage("carbonchest_item_image.png");
         type="chest";
         tooltip ="Carbon Chestplate\nProvides high defense.\nDefense: "+String.valueOf(defense);
-    }
-    /**
-     * Act - do whatever the CarbonChest wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
+    }  
 }

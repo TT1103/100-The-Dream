@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class CopperLegs here.
+ * An armor piece.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2016
  */
 public class CopperLegs extends Equipment
 {
@@ -15,12 +15,4 @@ public class CopperLegs extends Equipment
         type="legs";
         tooltip ="Copper Legs\nProvides low defense.\nDefense: "+String.valueOf(defense);
     }
-    /**
-     * Act - do whatever the CopperLegs wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
 }

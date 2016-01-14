@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
+ * A special rocket attack used by the player.
+ * 
  * @author Tiger Zhao
  * @version January 13, 2016
  */

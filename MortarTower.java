@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
+ * A mortar tower that shoots motars at the player.
+ * 
  * @author Tiger Zhao, Enoch Poon
  * @version January 13, 2016
  */

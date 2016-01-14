@@ -1,12 +1,12 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ Boss3\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment0.text=\n\ Act\ -\ do\ whatever\ the\ Boss3\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment1.params=
 comment1.target=void\ controlWeapons()
 comment2.params=rotation\ length\ x\ y
 comment2.target=void\ chargeLaser(int,\ int,\ int,\ int)
-comment2.text=\r\n\ Recursively\ trace\ a\ laser\ beam\r\n
+comment2.text=\n\ Recursively\ trace\ a\ laser\ beam\n
 comment3.params=d
 comment3.target=void\ damage(int)
 comment4.params=

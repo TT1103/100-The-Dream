@@ -1,12 +1,12 @@
 import greenfoot.*;
 
 /**
- * Write a description of class LevelSelectorButtons here.
+ * Used to model the buttons used for level selection.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Yu
+ * @version January 14, 2016
  */
-public class LevelSelectorButtons extends Actor
+public class LevelSelectorButtons extends IntroElements
 {  
     private boolean mouseOver = false;
     private String fileName ;

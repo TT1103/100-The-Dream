@@ -1,5 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 /**
+ * Class used to model tree. 
+ * Note: A tree is not completely impassable, only the trunk is.
+ * 
  * @author Tiger Zhao
  * @version January 13, 2016
  */
@@ -8,7 +11,7 @@ public class Tree extends Actor
     ColliderBox cb;
     boolean start = false;
     public Tree(){
-        cb = new ColliderBox();
+        cb = new ColliderBox(); //collider box to represent the tree trunk
     }
     
     /**
