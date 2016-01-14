@@ -35,6 +35,9 @@ public class Gunman extends Enemy
     {
         
         
+        if(paused){
+            return;
+        }
         if(canSeePlayer()){
             Player player = (Player) getWorld().getObjects(Player.class).get(0);
             turnTowards(player.getX(), player.getY());

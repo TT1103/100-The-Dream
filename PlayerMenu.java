@@ -98,6 +98,16 @@ public class PlayerMenu extends Actor
         }
         
         if(exitButton.pressed){
+            //merge equipment
+            player.curWeapon = (Weapon)weapon.item;
+            player.curHead = head.item;
+            player.curChest = chest.item;
+            player.curLegs = legs.item;
+            
+            //merge inventory
+            for (int i =0; i < boxes.length; i++){
+                player.inventory[i] = boxes[i].item;
+            }
             player.saveData();
             ((Map) getWorld()).fadeOut();
             ((Map)getWorld()).music.stop();

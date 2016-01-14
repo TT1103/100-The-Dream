@@ -197,8 +197,12 @@ public class Enemy extends Actor
      * @return A double indicating the distance from the player.
      */
     public double distanceToPlayer(){
-        Player p = (Player) getWorld().getObjects(Player.class).get(0);
-        return Math.sqrt(Math.pow(getX()-p.getX(),2) + Math.pow(getY()-p.getY(),2));
+        List<Player> temp = getWorld().getObjects(Player.class);
+        if(temp.size()>0){
+            Player p=(Player)temp.get(0);
+            return Math.sqrt(Math.pow(getX()-p.getX(),2) + Math.pow(getY()-p.getY(),2));
+        }
+        return 0;
     }
     
 }
