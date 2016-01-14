@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #BlueJ class context
 comment0.params=
 comment0.target=Player()
@@ -53,3 +54,47 @@ comment9.params=
 comment9.target=void\ controlMovement()
 comment9.text=\n\ Used\ to\ manage\ the\ user's\ control\ of\ the\ player.\n
 numComments=18
+=======
+#BlueJ class context
+comment0.params=
+comment0.target=Player()
+comment0.text=\r\n\ Default\ constructor\ for\ the\ player.\ \r\n\ Starts\ a\ new\ player\ with\ new\ data.\r\n
+comment1.params=
+comment1.target=void\ setDefaults()
+comment1.text=\r\n\ Loads\ the\ default\ items\ into\ the\ player's\ inventory.\r\n
+comment10.params=
+comment10.target=void\ controlWeapons()
+comment11.params=
+comment11.target=void\ controlExp()
+comment12.params=amount
+comment12.target=void\ gainExp(int)
+comment13.params=
+comment13.target=void\ levelUp()
+comment14.params=
+comment14.target=void\ saveData()
+comment15.params=item
+comment15.target=void\ addToInventory(Equipment)
+comment16.params=
+comment16.target=void\ updateStats()
+comment17.params=amount
+comment17.target=void\ reduceMana(int)
+comment2.params=playerData
+comment2.target=Player(PlayerData)
+comment2.text=\r\n\ Constructor\ used\ for\ creating\ a\ player\ with\ existing\ player\ save\ data.\r\n
+comment3.params=
+comment3.target=void\ setup()
+comment4.params=
+comment4.target=void\ act()
+comment4.text=\r\n\ Act\ -\ do\ whatever\ the\ Player\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment5.params=damage
+comment5.target=void\ damage(int)
+comment6.params=str\ rotation
+comment6.target=void\ knockback(int,\ int)
+comment7.params=x\ y
+comment7.target=void\ setLocation(int,\ int)
+comment8.params=speed
+comment8.target=void\ move(int)
+comment9.params=
+comment9.target=void\ controlMovement()
+numComments=18
+>>>>>>> 6beeccb3212f3cb82d8512d48e754f15f5644546

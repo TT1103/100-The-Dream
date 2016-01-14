@@ -17,7 +17,7 @@ public class InstructionScreen extends World {
     private int i = 0; // Used for changing instruction screens
 
     // Arrays to store instruction screen images
-    String images[] = new String [3];
+    String images[] = new String [4];
     GreenfootSound music = new GreenfootSound("titlescreen_music.mp3");
     
     /**
@@ -51,8 +51,8 @@ public class InstructionScreen extends World {
 
         if (start.checkObjectRemoved()) {
             if (!delayedInstructions) {
-                //myWorldBackground = new GifImage (images[0]);
-                setBackground (new GreenfootImage (images[0]));
+                myWorldBackground = new GifImage (images[0]);
+                //setBackground (new GreenfootImage (images[0]));
                 delayedInstructions = true;
             }
             if (!addNextIcon()) {
@@ -62,6 +62,7 @@ public class InstructionScreen extends World {
                 addSkipIcon();
             }
             popInstructions = true;
+            setBackground (myWorldBackground.getCurrentImage());
         }
 
         // If skip button is clicked, game will auto-start with no instructions
@@ -118,8 +119,8 @@ public class InstructionScreen extends World {
     public void changeInstructionScreens () {
         if (next.buttonClicked()) {
             if (i <= images.length-2) {
-                // myWorldBackground = new GifImage (images[++i]);
-                setBackground (new GreenfootImage (images[++i]));
+                myWorldBackground = new GifImage (images[++i]);
+                // setBackground (new GreenfootImage (images[++i]));
                 if (i == 1) {
                     addObject (back, 79, 705);
                 } 
@@ -129,8 +130,8 @@ public class InstructionScreen extends World {
             next.buttonNotClicked();
         }
         if (back.buttonClicked()) {
-            //myWorldBackground = new GifImage (images[--i]);
-            setBackground (new GreenfootImage (images[--i]));
+            myWorldBackground = new GifImage (images[--i]);
+            //setBackground (new GreenfootImage (images[--i]));
             if (i == 0) {
                 back.buttonNotClicked();
                 removeObject (back);

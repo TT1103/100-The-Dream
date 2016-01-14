@@ -1,2 +1,10 @@
+<<<<<<< HEAD
 #BlueJ class context
 numComments=0
+=======
+#BlueJ class context
+comment0.params=
+comment0.target=void\ act()
+comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ Shade\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=1
+>>>>>>> 6beeccb3212f3cb82d8512d48e754f15f5644546

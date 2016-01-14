@@ -1,4 +1,14 @@
+<<<<<<< HEAD
 #BlueJ class context
 comment0.params=
 comment0.target=CarbonLegs()
 numComments=1
+=======
+#BlueJ class context
+comment0.params=
+comment0.target=CarbonLegs()
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ CarbonLegs\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+numComments=2
+>>>>>>> 6beeccb3212f3cb82d8512d48e754f15f5644546
