@@ -37,14 +37,11 @@ public class Boss3 extends Boss
      */
     public void act() 
     {
-       
-        Player p = (Player)getWorld().getObjects(Player.class).get(0);
-        
+
         if(paused){
-            p.curse = false;
             return;
         }
-        
+        Player p = (Player)getWorld().getObjects(Player.class).get(0);
         if(start){
             hpBar = new BossHealthBar(200000, this);
             getWorld().addObject(hpBar, 400, 775);

@@ -56,14 +56,14 @@ public class Dog extends Enemy
      */
     public void act() 
     {
-        if(paused)return;
-        super.act();
         
-
+        if(paused){
+            return;
+        }
         if(damageDelay >0){
             damageDelay--;
         }
-
+        super.act();
     }    
 
     public void controlMovement(){
