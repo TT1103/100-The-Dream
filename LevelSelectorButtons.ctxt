@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=s
 comment0.target=LevelSelectorButtons(java.lang.String)
-comment0.text=\n\ Since\ there\ is\ only\ one\ class\ for\ all\ level\ selector\ buttons,\ this\ requires\ every\ \n\ new\ level\ selector\ button\ made\ to\ include\ the\ image\ name\n\ \n\ @param\ s\ Filename\ (without\ extension\ such\ as\ .png)\ of\ the\ image\n
+comment0.text=\r\n\ Since\ there\ is\ only\ one\ class\ for\ all\ level\ selector\ buttons,\ this\ requires\ every\ \r\n\ new\ level\ selector\ button\ made\ to\ include\ the\ image\ name\r\n\ \r\n\ @param\ s\ Filename\ (without\ extension\ such\ as\ .png)\ of\ the\ image\r\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\n\ If\ the\ user\ hovers\ over\ the\ button,\ the\ colour\ would\ change\ to\ indicate\ user\ is\ about\ to\ \n\ select\ that\ level\n
+comment1.text=\r\n\ If\ the\ user\ hovers\ over\ the\ button,\ the\ colour\ would\ change\ to\ indicate\ user\ is\ about\ to\ \r\n\ select\ that\ level\r\n
 numComments=2

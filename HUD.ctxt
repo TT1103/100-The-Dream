@@ -1,20 +1,20 @@
 #BlueJ class context
 comment0.params=p
 comment0.target=HUD(Player)
-comment0.text=\n\ The\ constructor\ for\ the\ HUD.\ \n\ \n\ @param\ p\ The\ player\ object\ that\ the\ HUD\ represents.\n
+comment0.text=\r\n\ The\ constructor\ for\ the\ HUD.\ \r\n\ \r\n\ @param\ p\ The\ player\ object\ that\ the\ HUD\ represents.\r\n
 comment1.params=
 comment1.target=void\ act()
-comment1.text=\n\ Act\ -\ do\ whatever\ the\ HUD\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ HUD\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
 comment2.params=
 comment2.target=void\ controlHealth()
-comment2.text=\n\ Manages\ and\ updates\ the\ health.\n
+comment2.text=\r\n\ Manages\ and\ updates\ the\ health.\r\n
 comment3.params=
 comment3.target=void\ controlMana()
-comment3.text=\n\ Manages\ and\ updates\ the\ mana.\n
+comment3.text=\r\n\ Manages\ and\ updates\ the\ mana.\r\n
 comment4.params=
 comment4.target=void\ controlExp()
-comment4.text=\n\ Manages\ and\ updates\ the\ experience.\n
+comment4.text=\r\n\ Manages\ and\ updates\ the\ experience.\r\n
 comment5.params=
 comment5.target=void\ controlMenu()
-comment5.text=\n\ Manages\ and\ updates\ the\ menu.\n
+comment5.text=\r\n\ Manages\ and\ updates\ the\ menu.\r\n
 numComments=6
