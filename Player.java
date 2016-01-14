@@ -7,7 +7,7 @@ import java.io.*;
  * @author Tiger Zhao 
  * @version January 13, 2016
  */
-public class Player extends UnScrollable implements Serializable
+public class Player extends Actor implements Serializable
 {
     int screenX= 800;
     int screenY= 800;
@@ -79,6 +79,8 @@ public class Player extends UnScrollable implements Serializable
     Equipment[] inventory = new Equipment[98];
     
     int curGameLevel =1;
+    
+    boolean paused = false;
     
     /**
      * Default constructor for the player. 
@@ -263,6 +265,15 @@ public class Player extends UnScrollable implements Serializable
         if (getWorld().getObjectsAt(x, y, Impassable.class).isEmpty()) {
             super.setLocation(x, y);
         }
+    }
+    
+    public void move(int speed){
+        double squareX =  (Math.cos(Math.toRadians(getRotation())));
+        double squareY =   (Math.sin(Math.toRadians(getRotation())));
+        int circleX = (int) (speed*squareX * Math.sqrt(1- 0.5* Math.pow(squareY,2)));
+        int circleY = (int) (speed*squareY * Math.sqrt(1- 0.5* Math.pow(squareX,2)));
+        
+        setLocation(getX()+circleX, getY()+circleY);
     }
 
     public void controlMovement(){

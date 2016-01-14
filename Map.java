@@ -328,9 +328,12 @@ public class Map extends World
     }
 
     /**
-     * x y indicates how much to change
+     * x y indicates how much to change.
      * y: + up ; - down
      * x: + right; - left
+     * 
+     * @param changeX The x change.
+     * @param changeY The y change.
      * 
      */
     public void changeMap(int changeX, int changeY){ 
@@ -355,6 +358,9 @@ public class Map extends World
 
     }
 
+    /**
+     * Used to fade the screen in.
+     */
     public void fadeIn(){
 
         Shade shade = new Shade();
@@ -368,6 +374,9 @@ public class Map extends World
         removeObject(shade);
     }
 
+    /**
+     * Used to fade the screen out.
+     */
     public void fadeOut(){
         Shade shade = new Shade();
         addObject(shade,getWidth()/2, getHeight()/2);
@@ -378,6 +387,9 @@ public class Map extends World
         
     }
     
+    /**
+     * Used to pause all objects.
+     */
     public void pauseAll(){
         /*
          * objects to pause: player, bullets, enemy, enemy bullet, mortar, particle, mortar target,weapons
@@ -434,6 +446,9 @@ public class Map extends World
         }
     }
     
+    /**
+     * Used to unpause all objects.
+     */
     public void unpauseAll(){
         List<Player> a = getObjects(Player.class);
         for (Player p: a){

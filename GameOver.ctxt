@@ -2,4 +2,7 @@
 comment0.params=
 comment0.target=void\ act()
 comment0.text=\n\ Act\ -\ do\ whatever\ the\ GameOver\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-numComments=1
+comment1.params=cnt
+comment1.target=void\ scaleImage(int)
+comment1.text=\n\ This\ is\ a\ recursive\ method\ to\ generate\ a\ visual\ effect\ of\ the\ game\ over\n\ screen\ inscreasing\ in\ size.\n\ \n\ @param\ cnt\ An\ integer\ indicating\ the\ number\ of\ times\ to\ scale\ the\ image.\n
+numComments=2

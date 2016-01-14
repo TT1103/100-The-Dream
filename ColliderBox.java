@@ -8,20 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ColliderBox extends Impassable
 {
-    
-    public ColliderBox(){ //default size is 32x32
+    /**
+     * Default constructor.
+     * The default size of the box is 32 by 32
+     */
+    public ColliderBox(){ 
     }
     
     public ColliderBox(int x, int y){
         GreenfootImage cur = getImage();
         cur.scale(x,y);
     }
-    /**
-     * Act - do whatever the HitBox wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        
-    }    
+
 }

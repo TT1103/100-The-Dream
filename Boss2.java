@@ -2,8 +2,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 import java.awt.Color;
 /**
- * Write a description of class Boss2 here.
- * 
  * @author Tiger Zhao
  * @version January 13, 2016
  */
@@ -124,7 +122,7 @@ public class Boss2 extends Boss
                 clusterCnt--;
                 int targetX = p.getX() + (rand.nextInt(200)-100); 
                 int targetY= p.getY() + (rand.nextInt(200)-100);
-                EnemyClusterBomb cluster = new EnemyClusterBomb(10,50,targetX, targetY); //10,20
+                EnemyClusterBomb cluster = new EnemyClusterBomb(10,50,targetX, targetY); 
                 cluster.turnTowards(p.getX(),p.getY());
                 getWorld().addObject(cluster, getX(), getY()); 
             }

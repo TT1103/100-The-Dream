@@ -2,12 +2,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.*;
 
 /**
- * Displays health bar, exp bar, cur level, items, menu button, etc.
+ * Displays health bar, exp bar, cur level, and other player related stats during gameplay.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 13, 2016
  */
-public class HUD extends UnScrollable 
+public class HUD extends Actor 
 {
     Player player;
     
@@ -25,6 +25,12 @@ public class HUD extends UnScrollable
     Button menuButton;
     
     PlayerMenu menu;
+    
+    /**
+     * The constructor for the HUD. 
+     * 
+     * @param p The player object that the HUD represents.
+     */
     public HUD(Player p){
         this.player = p;
         hpBar = new PlayerHealthBar(player.curHealth, player.maxHealth);
@@ -45,13 +51,15 @@ public class HUD extends UnScrollable
      */
     public void act() 
     {
-        
         controlHealth();
         controlExp();
         controlMana();
         controlMenu();
     }   
     
+    /**
+     * Manages and updates the health.
+     */
     public void controlHealth(){
         if(prevHealth != player.curHealth){
             prevHealth = player.curHealth;
@@ -59,6 +67,9 @@ public class HUD extends UnScrollable
         }
     }
     
+    /**
+     * Manages and updates the mana.
+     */
     public void controlMana(){
         if(prevMana != player.curMana){
             prevMana = player.curMana;
@@ -66,6 +77,9 @@ public class HUD extends UnScrollable
         }
     }
     
+    /**
+     * Manages and updates the experience.
+     */
     public void controlExp(){
         if (prevExp != player.curExp){
             prevExp = player.curExp;
@@ -73,6 +87,9 @@ public class HUD extends UnScrollable
         }
     }
     
+    /**
+     * Manages and updates the menu.
+     */
     public void controlMenu(){
         if(!player.paused){
             String recentKey = Greenfoot.getKey();
@@ -84,10 +101,6 @@ public class HUD extends UnScrollable
             }
         }
     }
-    
-    public void displayText(String text, int cnt){
-        Text t = new Text(text);
-        player.getWorld().addObject(t,player.getX(),player.getY()-1);
-    }
+ 
  
 }

@@ -6,7 +6,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlayerHealthNumber extends UnScrollable
+public class PlayerHealthNumber extends Actor
 {
     int health;
     public PlayerHealthNumber(int health){

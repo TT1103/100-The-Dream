@@ -1,18 +1,23 @@
 #BlueJ class context
 comment0.params=player
 comment0.target=PlayerMenu(Player)
-comment0.text=\n\ 0\ precision\n\ 1\ intelligence\n\ 2\ dexterity\n\ 3\ defense\n\ 4\ endurance\n\ 5\ spirituality\n\ 6\ stat\ points\n
+comment0.text=\n\ A\ constructor\ to\ create\ the\ player\ menu.\n\ \n\ Index\ for\ stats\:\ \n\ 0\ precision\n\ 1\ intelligence\n\ 2\ dexterity\n\ 3\ defense\n\ 4\ endurance\n\ 5\ spirituality\n\ 6\ stat\ points\n\ \n\ @param\ player\ The\ player\ object\ that\ this\ menu\ represents.\n
 comment1.params=
 comment1.target=void\ act()
 comment1.text=\n\ Act\ -\ do\ whatever\ the\ PlayerMenu\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
 comment2.params=
 comment2.target=void\ controlStats()
+comment2.text=\n\ A\ method\ used\ to\ manage\ the\ Player's\ stats.\n
 comment3.params=
 comment3.target=void\ controlInventory()
+comment3.text=\n\ A\ method\ used\ to\ manage\ the\ Player's\ inventory.\n
 comment4.params=item
 comment4.target=void\ setCurItem(Equipment)
+comment4.text=\n\ Used\ to\ refresh\ an\ item\ so\ it\ appears\ on\ top\ of\ everything.\n
 comment5.params=
 comment5.target=void\ displayStats()
+comment5.text=\n\ Used\ to\ display\ all\ the\ objects\ needed\ for\ the\ stats\ portion.\n
 comment6.params=
 comment6.target=void\ displayInventory()
+comment6.text=\n\ Used\ to\ display\ all\ the\ objects\ needed\ for\ the\ inventory\ portion.\n
 numComments=7

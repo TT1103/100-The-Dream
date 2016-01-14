@@ -6,7 +6,7 @@ import java.awt.Color;
  * Attacks: spawn sentry, shoot laser, bullet barrage
  * 
  * @author Tiger Zhao
- * @version January 10, 2015
+ * @version January 13, 2015
  */
 public class Boss1 extends Boss
 {
@@ -33,13 +33,7 @@ public class Boss1 extends Boss
     boolean start = true;
     
     BossHealthBar hpBar;
-    
-    
-    public Boss1(){
-        
-    }
-
-    
+   
     /**
      * Act - do whatever the Boss1 wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

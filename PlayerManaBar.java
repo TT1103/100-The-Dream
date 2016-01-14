@@ -6,7 +6,7 @@ import java.awt.Color;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PlayerManaBar extends UnScrollable
+public class PlayerManaBar extends Actor
 {
     int curMana;
     int maxMana;

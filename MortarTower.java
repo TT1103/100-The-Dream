@@ -1,10 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
- * Write a description of class MissileTurret here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 13, 2016
  */
 public class MortarTower extends Enemy
 {
@@ -25,7 +23,7 @@ public class MortarTower extends Enemy
             return;
         }
         delay--;
-        //if(canSeePlayer()){
+
         List l = getWorld().getObjects(Player.class);
         Player p = (Player) l.get(0);
         turnTowards(p.getX(),p.getY());
@@ -36,9 +34,6 @@ public class MortarTower extends Enemy
             effect.play();
             delay=100;
         }
-        // }
         super.act();
-        
-
     }    
 }
