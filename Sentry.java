@@ -7,7 +7,7 @@ import java.util.*;
 public class Sentry extends Enemy
 {
     int bulletSpeed=20;
-    int bulletDamage=10;
+
     
     int maxDelay =7;
     int speedDelay =maxDelay;
@@ -22,11 +22,13 @@ public class Sentry extends Enemy
     public Sentry(){
         super(1);
         healthBar = new HealthBar(500, this);
+        damage =12;
     }
     
     public Sentry(int level){
         super(level);
-        healthBar = new HealthBar(level*500, this);
+        healthBar = new HealthBar(500 *+(level*200), this);
+        damage =10 + (level*3);
     }
     /**
      * Act - do whatever the Sentry wants to do. This method is called whenever
@@ -62,7 +64,7 @@ public class Sentry extends Enemy
                 effect.setVolume(75);
                 effect.play();
                 speedDelay =0;
-                EnemyBullet bullet = new EnemyBullet(bulletSpeed,bulletDamage);
+                EnemyBullet bullet = new EnemyBullet(bulletSpeed,damage);
                 getWorld().addObject(bullet, getX(),getY());
                 shots--;
             }

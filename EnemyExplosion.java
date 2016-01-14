@@ -17,11 +17,13 @@ public class EnemyExplosion extends Actor
            
     int delay=0;
     boolean paused = false;
-    public EnemyExplosion(Player p){
+    int damage;
+    public EnemyExplosion(Player p, int damage){
         player=p;
         GreenfootSound effect = new GreenfootSound("explosion_effect.wav");
         effect.setVolume(80);
         effect.play();
+        this.damage = damage;
     }
 
     /**
@@ -42,7 +44,7 @@ public class EnemyExplosion extends Actor
             getWorld().removeObject(this);
         }
         if(delay <=1 && isTouching(Player.class)){
-            player.damage(50);
+            player.damage(damage);
             player.knockback = true;
             player.knockbackStrength = 15;
             turnTowards(player.getX(),player.getY());

@@ -22,7 +22,8 @@ public class Gunman extends Enemy
     public Gunman(int level){
         super(level);
         speed =2;
-        healthBar = new HealthBar(level*500, this);
+        healthBar = new HealthBar(500+(level*100), this);
+        damage = 12+(level*2);
     }
     /**
      * Act - do whatever the Gunman wants to do. This method is called whenever
@@ -53,7 +54,7 @@ public class Gunman extends Enemy
     public void shoot(){
         shootdelay++;
         if(shootdelay==100){
-            getWorld().addObject(new EnemyBullet(15,10),getX(),getY());
+            getWorld().addObject(new EnemyBullet(15,damage),getX(),getY());
             shootdelay=0;
         }
     }
