@@ -17,7 +17,7 @@ public class InstructionScreen extends World {
     private int i = 0; // Used for changing instruction screens
 
     // Arrays to store instruction screen images
-    String images[] = new String [2];
+    String images[] = new String [3];
     GreenfootSound music = new GreenfootSound("titlescreen_music.mp3");
     
     /**
