@@ -15,7 +15,7 @@ public class DeathSword extends Weapon
         itemImage = new GreenfootImage("deathsword_item_image.png");
         name = "deathsword";
         damageType="melee";
-        damage=250;
+        damage=900;
         tooltip = "Dead Sword\nA deadly melee weapon.\nUsed by the devel to slaughter\nonions for delicious stew.\nDamage: "+String.valueOf(damage);
     }
     /**

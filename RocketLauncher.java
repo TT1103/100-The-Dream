@@ -20,7 +20,7 @@ public class RocketLauncher extends Weapon
         itemImage = new GreenfootImage("rocketlauncher_item_image.png");
         name = "rocketlauncher";
         damageType = "range";
-        damage =1000;
+        damage =1500;
         tooltip="Rocket Launcher\nA powerful but slow fire rate\nranged weapon. Explodes on impact.\nDamage: "+String.valueOf(damage);
     }
     /**

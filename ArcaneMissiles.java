@@ -14,7 +14,7 @@ public class ArcaneMissiles extends Weapon
         super(player);
         speed =15;
         speedDelay =speed;
-        damage =35;
+        damage =60;
         name = "arcanemissiles";
         damageType = "magic";
         itemImage = new GreenfootImage("arcanemissiles_item_image.png");

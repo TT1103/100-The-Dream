@@ -8,13 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ArcaneLaser extends Weapon
 {
-    int manaCost =0;
+    int manaCost =6;
     
     public ArcaneLaser(Player player){
         super(player);
         speed =30;
         speedDelay =speed;
-        damage =400;
+        damage =800;
         name = "arcanelaser";
         damageType = "magic";
         itemImage = new GreenfootImage("arcanelaser_item_image.png");

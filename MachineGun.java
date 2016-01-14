@@ -20,7 +20,7 @@ public class MachineGun extends Weapon
         name = "machinegun";
         damageType = "range";
         itemImage = new GreenfootImage("machinegun_item_image.png");
-        damage=30;
+        damage=50;
         tooltip ="Machine Gun\nA low damage but high fire\nrate ranged weapon.\nDamage: "+String.valueOf(damage);
     }
 

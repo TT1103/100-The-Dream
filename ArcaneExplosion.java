@@ -8,13 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class ArcaneExplosion extends Weapon
 {
-    int manaCost =20;
+    int manaCost =5;
     
     public ArcaneExplosion(Player player){
         super(player);
         speed =20;
         speedDelay =speed;
-        damage =125;
+        damage =350;
         name = "arcaneexplosion";
         damageType = "magic";
         itemImage = new GreenfootImage("arcaneexplosion_item_image.png");

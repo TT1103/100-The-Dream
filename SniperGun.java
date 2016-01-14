@@ -20,7 +20,7 @@ public class SniperGun extends Weapon
         itemImage = new GreenfootImage("snipergun_item_image.png");
         name = "snipergun";
         damageType = "range";
-        damage =400;
+        damage =600;
         tooltip="Sniper Gun\nA powerful but slow fire rate\nranged weapon.\nDamage: "+String.valueOf(damage);
     }
     /**

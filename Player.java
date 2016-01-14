@@ -40,7 +40,7 @@ public class Player extends Actor implements Serializable
     int knockbackStrength;
     int knockbackRotation;
     
-    int maxLevel =99;
+    int maxLevel =100;
     int curLevel =1;
     int curStatPoints =0;
 
@@ -186,8 +186,11 @@ public class Player extends Actor implements Serializable
             hpRecoverDelay--;
             if (hpRecoverDelay==0){
                 hpRecoverDelay = maxHpRecoverDelay;
-                if(curse)curHealth -= 7;
+                
+                if(curse)curHealth -= 4;
                 else if(curHealth < maxHealth) curHealth++;
+                
+                if(curHealth<0) curHealth =0;
             }
         }
         if(manaRegenDelay >0){
@@ -347,9 +350,14 @@ public class Player extends Actor implements Serializable
 
     public void controlExp(){
         while(curExp>maxExp){
-            curExp-=maxExp;
-            maxExp*=expRatio;
-            levelUp();
+            if(curLevel<maxLevel){
+                curExp-=maxExp;
+                maxExp*=expRatio;
+                levelUp();
+            }else{
+                curExp = maxExp;
+                break;
+            }
         }
     }
 
@@ -385,6 +393,16 @@ public class Player extends Actor implements Serializable
         maxManaRegenDelay = 15 - (intelligence/8);
         maxHpRecoverDelay=75-(defense/2);
         speed = 2+ (dexterity/49);
+        
+        if(speed>4){
+            speed =4;
+        }
+        if(maxManaRegenDelay <1){
+            maxManaRegenDelay=1;
+        }
+        if(maxHpRecoverDelay <1){
+            maxHpRecoverDelay =1;
+        }
     }
     
     public void reduceMana(int amount){

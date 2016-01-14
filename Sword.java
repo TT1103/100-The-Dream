@@ -15,7 +15,7 @@ public class Sword extends Weapon
         itemImage = new GreenfootImage("sword_item_image.png");
         name = "sword";
         damageType="melee";
-        damage=100;
+        damage=400;
         tooltip = "Sword\nA powerful melee weapon.\nGood for dismembering dogs.\nDamage: "+String.valueOf(damage);
     }
     /**

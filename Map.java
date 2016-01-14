@@ -58,7 +58,6 @@ public class Map extends World
      */
     public Map(int level, Player player) 
     {    
-
         super(800, 800, 1,false); 
         this.player = player;
         addObject(player, 400,400);
@@ -122,16 +121,6 @@ public class Map extends World
     public void setPaintOrder(){
         super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Boss2.class, Tree.class, EnemyExplosion.class, Player.class);
     }
-
-
-    /*public void generateGraph(){
-    for (int x = 10 ; x <= 790; x+=10){
-    for (int y =10 ; y <=790; y+=10){
-    Enemy.graph.put(String.valueOf(x) + " " + String.valueOf(y), new int[][] {{x+10,y-10},{x+10,y+10},{x-10,y-10},{x-10,y+10}});
-    }
-    }
-    }*/
-
 
     /**
      * Method used to end the game and transition to game over screen
@@ -244,10 +233,7 @@ public class Map extends World
             if(parts.size()>0){
                 String line = parts.get(0).trim();
                 //declare background
-                System.out.println("Working Directory = " +
-                    System.getProperty("user.dir"));
                 setBackground(line+".png");
-                //setBackground("grass.png");
                 //set music based on background;
                 music = new GreenfootSound(line+".mp3");
                 //music = new GreenfootSound("grass.mp3");
@@ -263,7 +249,16 @@ public class Map extends World
                 String name = temp[0].trim();
                 int x = Integer.valueOf(temp[1].trim());
                 int y = Integer.valueOf(temp[2].trim());
-                int level = player.curLevel*3;
+                
+                Random rand = new Random();
+                int level=1;
+                if(curLevel ==1){
+                    level = rand.nextInt(9)+1;
+                }else if(curLevel==2){
+                    level = rand.nextInt(20)+10;
+                }else if(curLevel ==3){
+                    level = rand.nextInt(40)+30;
+                }
 
                 if(name.equals("tree")){
                     Tree t = new Tree();
@@ -356,7 +351,7 @@ public class Map extends World
         }if (changeY <0){//going down
             dirFrom = "up";
         }
-        System.out.println("Switching maps: "+ newMapFile + " "+ dirFrom);
+
         fadeOut();
         music.stop();
         Greenfoot.setWorld(new Map(curLevel, player, newMapFile, dirFrom,newX,newY));
@@ -367,12 +362,9 @@ public class Map extends World
      * Used to fade the screen in.
      */
     public void fadeIn(){
-
         Shade shade = new Shade();
         addObject(shade,getWidth()/2, getHeight()/2);
-
         for (int i =255; i >=0; i-=15){
-
             shade.getImage().setTransparency(i);
             Greenfoot.delay(1);
         }

@@ -19,7 +19,7 @@ public class Weapon extends Equipment
     Player player;
     String damageType;
     
-    int damageRatio =3; //how much a stat point affects damage
+    int damageRatio =4; //how much a stat point affects damage
     public Weapon(Player player){
         type = "weapon";
         this.player = player;

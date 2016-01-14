@@ -18,7 +18,7 @@ public class Knife extends Weapon
         itemImage = new GreenfootImage("knife_item_image.png");
         name = "knife";
         damageType="melee";
-        damage=30;
+        damage=40;
         tooltip = "Knife\nAn average melee weapon.\nDamage: "+String.valueOf(damage);
     }
     /**

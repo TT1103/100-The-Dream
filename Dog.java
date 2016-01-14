@@ -21,7 +21,7 @@ public class Dog extends Enemy
         movingSprites[3] = new GreenfootImage("dog_moving4.png");
         idleSprite = new GreenfootImage("dog_idle.png");
 
-        damageDelay = 16;
+        damageDelay = 27;
         maxDamageDelay = damageDelay;
         damage =10+ (level*2);
         healthBar = new HealthBar(500+ (level*150), this);

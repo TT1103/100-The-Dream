@@ -87,7 +87,6 @@ public class Boss2 extends Boss
                     }
                 }
                 
-
                 attacking =false;
             
             }else if(curAttack ==1){
@@ -123,7 +122,7 @@ public class Boss2 extends Boss
                 int targetX = p.getX() + (rand.nextInt(200)-100); 
                 int targetY= p.getY() + (rand.nextInt(200)-100);
                 EnemyClusterBomb cluster = new EnemyClusterBomb(10,50,targetX, targetY); 
-                cluster.turnTowards(p.getX(),p.getY());
+                cluster.turnTowards(targetX,targetY);
                 getWorld().addObject(cluster, getX(), getY()); 
             }
             if(clusterCnt ==0){

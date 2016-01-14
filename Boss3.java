@@ -40,13 +40,13 @@ public class Boss3 extends Boss
        
         Player p = (Player)getWorld().getObjects(Player.class).get(0);
         
-         if(paused){
+        if(paused){
             p.curse = false;
             return;
         }
         
         if(start){
-            hpBar = new BossHealthBar(40000, this);
+            hpBar = new BossHealthBar(200000, this);
             getWorld().addObject(hpBar, 400, 775);
             getWorld().addObject(new Text("Master", 18,Color.BLACK),400,775);
             start = false;
@@ -152,7 +152,7 @@ public class Boss3 extends Boss
     public void controlDeath(){
         if(dead){
             Player p = (Player) getWorld().getObjects(Player.class).get(0);
-            p.gainExp(5000);
+            p.gainExp(30000);
 
             if(p.curGameLevel<4){ //increase the player's game progress
                 p.curGameLevel=4;

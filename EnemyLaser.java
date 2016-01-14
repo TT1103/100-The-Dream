@@ -23,7 +23,7 @@ public class EnemyLaser extends EnemyBullet
         super.act();
     }    
     
-    /*public  void detectCollision(){
+    public  void detectCollision(){
         Player player =(Player) getOneIntersectingObject(Player.class);
         if (player != null){
             player.damage(damage);
@@ -36,5 +36,5 @@ public class EnemyLaser extends EnemyBullet
             return;
         }
     }
-    */
+    
 }
