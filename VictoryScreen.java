@@ -1,31 +1,33 @@
 import greenfoot.*;
 import java.util.Timer;
+
 /**
- * Screen used to display a game over.
+ * Screen used to display end of game storyline, as well as transition
+ * back to level selection screen 
  * 
- * @author Gary Yu, Tiger Zhao
- * @version January 13, 2016
+ * @author Gary Yu, Tiger Zhao 
+ * @version January 13, 2016 
  */
-public class GameOver extends Actor
+public class VictoryScreen extends Actor
 {
     /**
-     * Will animate the game over screen to indicate to users that they have depleted 
-     * all their health. Game music will stop and level selection screen music will proceed. 
+     * Will animate the victory screen to indicate to users that the game has ended and completed.
+     * Users will then be returned to the level selection screen. 
      */
     public void act() 
     {
         Map map = (Map) getWorld();
-        if (map.getGameStatus()){
+        if (map.getGameCompletionStatus()){
             scaleImage(4);
         }
 
         setLocation(400,400);
-        setImage ("GameOverScreen.png"); 
+        setImage ("VictoryScreen.png"); 
    
-        Greenfoot.delay(200);
+        Greenfoot.delay(400);
         Player player = (Player) getWorld().getObjects(Player.class).get(0);
         if (player !=null){ 
-            //return to level.
+            //return to level selection
             player.saveData();
             ((Map) getWorld()).fadeOut();
             ((Map) getWorld()).music.stop();
@@ -51,5 +53,4 @@ public class GameOver extends Actor
         cnt--;
         scaleImage(cnt);
     }
-
 }
