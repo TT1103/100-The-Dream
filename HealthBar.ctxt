@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #BlueJ class context
 comment0.params=health\ parent
 comment0.target=HealthBar(int,\ Enemy)
@@ -11,3 +12,18 @@ comment3.target=int\ width()
 comment4.params=damage
 comment4.target=void\ damage(int)
 numComments=5
+=======
+#BlueJ class context
+comment0.params=health\ parent
+comment0.target=HealthBar(int,\ Enemy)
+comment1.params=health\ parent\ xSize\ ySize
+comment1.target=HealthBar(int,\ Enemy,\ int,\ int)
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\r\n\ Act\ -\ do\ whatever\ the\ HealthBar\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment3.params=
+comment3.target=int\ width()
+comment4.params=damage
+comment4.target=void\ damage(int)
+numComments=5
+>>>>>>> 37ba5f7a7d321fa8fff5fdfb12cadf1c75dc8b3f

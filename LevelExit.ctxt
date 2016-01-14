@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
@@ -6,3 +7,13 @@ comment1.params=
 comment1.target=void\ removeBlocking()
 comment1.text=\n\ Remove\ objects\ that\ are\ blocking\ this\ exit.\n
 numComments=2
+=======
+#BlueJ class context
+comment0.params=
+comment0.target=void\ act()
+comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ LevelExit\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.params=
+comment1.target=void\ removeBlocking()
+comment1.text=\r\n\ Remove\ objects\ that\ are\ blocking\ this\ exit.\r\n
+numComments=2
+>>>>>>> 37ba5f7a7d321fa8fff5fdfb12cadf1c75dc8b3f

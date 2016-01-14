@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #BlueJ class context
 comment0.params=
 comment0.target=InstructionScreen()
@@ -16,3 +17,23 @@ comment5.target=boolean\ addSkipIcon()
 comment6.params=
 comment6.target=void\ changeInstructionScreens()
 numComments=7
+=======
+#BlueJ class context
+comment0.params=
+comment0.target=InstructionScreen()
+comment0.text=\r\n\ Default\ constructor\ for\ objects\ of\ class\ InstructionScreen.\r\n
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Helps\ with\ the\ screen\ transitions\ \r\n
+comment2.params=
+comment2.target=StartButton\ getStartButton()
+comment3.params=
+comment3.target=boolean\ poppedInstructions()
+comment4.params=
+comment4.target=boolean\ addNextIcon()
+comment5.params=
+comment5.target=boolean\ addSkipIcon()
+comment6.params=
+comment6.target=void\ changeInstructionScreens()
+numComments=7
+>>>>>>> 37ba5f7a7d321fa8fff5fdfb12cadf1c75dc8b3f

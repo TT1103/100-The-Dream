@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #BlueJ class context
 comment0.params=curExp\ maxExp
 comment0.target=PlayerExpBar(int,\ int)
@@ -7,3 +8,14 @@ comment1.text=\n\ Act\ -\ do\ whatever\ the\ PlayerExpBar\ wants\ to\ do.\ This\
 comment2.params=newCurExp\ newMaxExp
 comment2.target=void\ updateExp(int,\ int)
 numComments=3
+=======
+#BlueJ class context
+comment0.params=curExp\ maxExp
+comment0.target=PlayerExpBar(int,\ int)
+comment1.params=
+comment1.target=void\ act()
+comment1.text=\r\n\ Act\ -\ do\ whatever\ the\ PlayerExpBar\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment2.params=newCurExp\ newMaxExp
+comment2.target=void\ updateExp(int,\ int)
+numComments=3
+>>>>>>> 37ba5f7a7d321fa8fff5fdfb12cadf1c75dc8b3f

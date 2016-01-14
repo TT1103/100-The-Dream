@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
@@ -11,3 +12,18 @@ comment3.target=void\ damage(int)
 comment4.params=
 comment4.target=void\ controlDeath()
 numComments=5
+=======
+#BlueJ class context
+comment0.params=
+comment0.target=void\ act()
+comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ Boss1\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment1.params=
+comment1.target=void\ controlMovement()
+comment2.params=
+comment2.target=void\ controlWeapons()
+comment3.params=d
+comment3.target=void\ damage(int)
+comment4.params=
+comment4.target=void\ controlDeath()
+numComments=5
+>>>>>>> 37ba5f7a7d321fa8fff5fdfb12cadf1c75dc8b3f

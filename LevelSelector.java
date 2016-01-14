@@ -55,13 +55,13 @@ public class LevelSelector extends World {
      */
     public void setup(){
         // Add all the level selector buttons 
-        addObject (one, 345, 478);
-        addObject (two, 525, 478);
-        addObject (three, 702, 478);
+        addObject (one, 345, 508);
+        addObject (two, 525, 508);
+        addObject (three, 702, 508);
 
         newGame = !loadData(); //load the player data and determine if it is a new game
         
-        addObject(markText,550,750);
+        addObject(markText,400,425);
         if (curGameLevel ==1){
             mark =0;
         }else if(curGameLevel==2){
@@ -73,11 +73,11 @@ public class LevelSelector extends World {
         }
         markText.setText("Your Computer Science Mark: "+String.valueOf(mark)+"%");
         
-        resetButton = new Button("reset_button.png");
-        addObject(resetButton,64,14);
+        resetButton = new Button("ResetGame.png");
+        addObject(resetButton,575,720);
         
-        menuButton = new Button("player_menu_button.png");
-        addObject(menuButton,736,14);
+        menuButton = new Button("MainMenu.png");
+        addObject(menuButton,320,720);
     }
 
     public void act(){
