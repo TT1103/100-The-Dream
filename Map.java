@@ -12,7 +12,6 @@ public class Map extends World
 {
     private Player player;
     private boolean gameOver = false;
-    private boolean gameCompleted = false;
 
     //current absolute position within the world
     int curX =0;
@@ -120,7 +119,7 @@ public class Map extends World
      * Sets the paint order.
      */
     public void setPaintOrder(){
-        super.setPaintOrder(Shade.class,GameOver.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Boss2.class, Boss3.class, Tree.class, EnemyExplosion.class, Player.class);
+        super.setPaintOrder(Shade.class,GameOver.class, VictoryScreen.class, Equipment.class,Text.class, Button.class,InventoryBox.class,PlayerMenu.class,PlayerHealthBar.class,PlayerManaBar.class, PlayerExpBar.class, BossHealthBar.class,Boss1.class,Boss2.class, Boss3.class, Tree.class, EnemyExplosion.class, Player.class);
     }
 
     /**
@@ -132,16 +131,6 @@ public class Map extends World
             gameOver = true;
         }
     }
-    
-    /**
-     * Method used to end the game and transition to victory screen 
-     */
-    public void displayGameCompletion () {
-        if (player.curLevel == 4) {
-            addObject (new VictoryScreen(), 400, 400);
-            gameCompleted = true;
-        }
-    }
 
     /**
      * Act - do whatever the EnemeyWeapon wants to do. This method is called whenever
@@ -150,10 +139,6 @@ public class Map extends World
     public void act() {
         if (!gameOver) { //if not gameover, check to see if it is
             endGame();     
-        }
-        
-        if (!gameCompleted) { // Check to see if game has been completed 
-            displayGameCompletion();
         }
 
         scrollWorld();
@@ -225,13 +210,6 @@ public class Map extends World
      */
     public boolean getGameStatus() {
         return gameOver;
-    }
-    
-    /**
-     * @return A boolean indicating if the game has been completed or not. 
-     */
-    public boolean getGameCompletionStatus() {
-        return gameCompleted;
     }
 
     /**
@@ -487,6 +465,10 @@ public class Map extends World
             p.paused =true;
         }
         
+        List<LaserBeam> o = getObjects(LaserBeam.class);
+        for (LaserBeam p: o){
+            p.paused =true;
+        }
     }
 
     /**
@@ -567,6 +549,11 @@ public class Map extends World
         
         List<Boss3shield> n = getObjects(Boss3shield.class);
         for (Boss3shield p: n){
+            p.paused =false;
+        }
+        
+        List<LaserBeam> o = getObjects(LaserBeam.class);
+        for (LaserBeam p: o){
             p.paused =false;
         }
     }

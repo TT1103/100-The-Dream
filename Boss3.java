@@ -160,15 +160,9 @@ public class Boss3 extends Boss
 
             if(p.curGameLevel<4){ //increase the player's game progress
                 p.curGameLevel=4;
-                //Text text = new Text("Congratulations! You have defeated the Master!", 24, Color.WHITE);
-                //getWorld().addObject(text,400,200);
             }
 
-            LevelExit exit = new LevelExit();
-            getWorld().addObject(exit, getX(), getY());
-            exit.removeBlocking();
-            p.curse = false;
-            getWorld().removeObject(this);
+            getWorld().addObject(new VictoryScreen(),900,900);
         }
     }
 

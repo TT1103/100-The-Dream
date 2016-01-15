@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class LaserBeam extends Actor
 {
     int timer = 20;
+    boolean paused = false;
     public LaserBeam(){
         getImage().scale(100, 5);
     }
@@ -19,6 +20,9 @@ public class LaserBeam extends Actor
      */
     public void act() 
     {
+        if(paused){
+            return;
+        }
         if(timer-- == 0){
             
             getImage().scale(100, 50);
