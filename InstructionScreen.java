@@ -1,7 +1,10 @@
 import greenfoot.*;
 
 /**
- * Write a description of class InstructionScreen here.
+ * Instruction Screen Coding 
+ * 
+ * NOTE: All instruction screen images are supposed to animate; however, due to 
+ * heap space errors, they are not implemented. 
  * 
  * @author Gary Yu
  * @version January 13, 2016
@@ -17,7 +20,7 @@ public class InstructionScreen extends World {
     private int i = 0; // Used for changing instruction screens
 
     // Arrays to store instruction screen images
-    String images[] = new String [3];
+    String images[] = new String [4];
     GreenfootSound music = new GreenfootSound("titlescreen_music.mp3");
     
     /**
@@ -61,7 +64,8 @@ public class InstructionScreen extends World {
             if (!addSkipIcon()) {
                 addSkipIcon();
             }
-            popInstructions = true;
+            popInstructions = true; // Apppropriate to pop up instructions
+            // setBackground (myWorldBackground.getCurrentImage());
         }
 
         // If skip button is clicked, game will auto-start with no instructions
@@ -72,14 +76,23 @@ public class InstructionScreen extends World {
         changeInstructionScreens();
     }
 
+    /**
+     * @return The start button object 
+     */
     public StartButton getStartButton () { 
         return start; 
     }
 
+    /**
+     * @return Whether the instruction screens have popped up or not 
+     */
     public boolean poppedInstructions () {
         return popInstructions;
     }
 
+    /**
+     * @return Whether it's appropriate to add the next icon 
+     */
     public boolean addNextIcon () {
         if (popInstructions) {
             addObject (next, 704, 705);
@@ -89,6 +102,10 @@ public class InstructionScreen extends World {
         }
     }
 
+    
+    /**
+     * @return Whether it's appropriate to add the skip icon 
+     */
     public boolean addSkipIcon () {
         if (next.nextButtonHere()) {
             addObject (skip, 560, 720);
@@ -98,6 +115,10 @@ public class InstructionScreen extends World {
         }
     }
 
+    /**
+     * Changes each instruction screen by shuffling through an array of 
+     * instruction screen images
+     */
     public void changeInstructionScreens () {
         if (next.buttonClicked()) {
             if (i <= images.length-2) {
@@ -112,7 +133,7 @@ public class InstructionScreen extends World {
             next.buttonNotClicked();
         }
         if (back.buttonClicked()) {
-            //myWorldBackground = new GifImage (images[--i]);
+            // myWorldBackground = new GifImage (images[--i]);
             setBackground (new GreenfootImage (images[--i]));
             if (i == 0) {
                 back.buttonNotClicked();

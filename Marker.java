@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Marker here.
+ * A marker is used to help accurately guide the player's bullets.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Enoch Poon
+ * @version January 14, 2016
  */
 public class Marker extends Actor
 {

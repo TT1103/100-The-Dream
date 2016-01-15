@@ -4,10 +4,10 @@ import java.util.Random;
 import java.util.List;
 import java.awt.Color;
 /**
- * Write a description of class Boss3 here.
+ * The third and final boss of the game.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Enoch Poon
+ * @version January 14, 2016
  */
 public class Boss3 extends Boss
 {
@@ -37,20 +37,21 @@ public class Boss3 extends Boss
      */
     public void act() 
     {
-       
-        Player p = (Player)getWorld().getObjects(Player.class).get(0);
-        
+
         if(paused){
-            p.curse = false;
             return;
         }
-        
+        Player p = (Player)getWorld().getObjects(Player.class).get(0);
         if(start){
             hpBar = new BossHealthBar(200000, this);
             getWorld().addObject(hpBar, 400, 775);
             getWorld().addObject(new Text("Master", 18,Color.BLACK),400,775);
             start = false;
             p.curse = true;
+            //add spawners and shrines
+            getWorld().addObject(new Spawner(0), 0, 0);
+            getWorld().addObject(new Spawner(1), 0, getWorld().getWidth());
+            getWorld().addObject(new Shrine(), getX(), getY());
         }
         if(imageDelay-- <=0){
             imageDelay = (chasing)? 3:5;
@@ -96,7 +97,7 @@ public class Boss3 extends Boss
                 case 1 ://spawn knifemen from spawners, create shield
                 List<Spawner> spawners = getWorld().getObjects(Spawner.class);
                 for(Spawner s : spawners){
-                    s.activate(15);
+                    s.activate(40);
                 }
                 getWorld().addObject(new Boss3shield(), getX(), getY());
                 break;
@@ -115,8 +116,8 @@ public class Boss3 extends Boss
 
         if(isTouching(Boss3shield.class)){
             hpBar.damage(-10);
-            if(hpBar.health >= 40000){
-                hpBar.health = 40000;
+            if(hpBar.health >= 100000){
+                hpBar.health = 100000;
             }
 
         }
@@ -156,8 +157,8 @@ public class Boss3 extends Boss
 
             if(p.curGameLevel<4){ //increase the player's game progress
                 p.curGameLevel=4;
-                Text text = new Text("Congratulations! You have defeated the Master!", 24, Color.WHITE);
-                getWorld().addObject(text,400,200);
+                //Text text = new Text("Congratulations! You have defeated the Master!", 24, Color.WHITE);
+                //getWorld().addObject(text,400,200);
             }
 
             LevelExit exit = new LevelExit();

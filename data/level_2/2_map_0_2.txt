@@ -140,15 +140,13 @@ dog 470 246
 gunman 478 728
 gunman 668 757
 gunman 603 599
-sandbag 283 392
-sandbag 412 389
-sandbag 541 390
 sandbag 767 387
 sandbag 655 391
 tree 329 716
 tree 276 640
 tree 318 525
-tree 365 452
 tree 430 537
 tree 402 650
 tree 415 785
+sandbag 267 399
+sandbag 132 403

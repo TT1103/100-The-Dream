@@ -72,8 +72,8 @@ public class PlayerMenu extends Actor
         controlInventory();
         
         String recentKey = Greenfoot.getKey();
-        
-        if((closeButton.pressed || (recentKey!=null && recentKey.equals("e")))  && !hasItem){
+
+        if((closeButton.pressed || (recentKey!=null && recentKey.toLowerCase().equals("e")))  && !hasItem){
             ((Map)player.getWorld()).unpauseAll();
             
             //cleanup equipment
@@ -98,6 +98,17 @@ public class PlayerMenu extends Actor
         }
         
         if(exitButton.pressed){
+            //merge equipment
+            player.curWeapon = (Weapon)weapon.item;
+            player.curHead = head.item;
+            player.curChest = chest.item;
+            player.curLegs = legs.item;
+            
+            //merge inventory
+            for (int i =0; i < boxes.length; i++){
+                player.inventory[i] = boxes[i].item;
+            }
+            player.saveData();
             ((Map) getWorld()).fadeOut();
             ((Map)getWorld()).music.stop();
             Greenfoot.setWorld (new LevelSelector());
@@ -244,6 +255,8 @@ public class PlayerMenu extends Actor
     
     /**
      * Used to refresh an item so it appears on top of everything.
+     * 
+     * @param item The Equipment object to refresh.
      */
     public void setCurItem(Equipment item){ 
         int x = item.getX();

@@ -1,7 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class EnemyLaser here.
+ * Used to model an enemy laser attack.
  * 
  * @author Tiger Zhao
  * @version January 10, 2016

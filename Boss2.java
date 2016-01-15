@@ -2,6 +2,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 import java.awt.Color;
 /**
+ * The second boss of the game.
+ * 
  * @author Tiger Zhao
  * @version January 13, 2016
  */

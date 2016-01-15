@@ -1,19 +1,12 @@
 import greenfoot.*;
 
 /**
- * Write a description of class GUI here.
+ * Class used to organize elements used in the introduction.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Gary Yu
+ * @version January 13, 2016
  */
 public class IntroElements extends Actor
 {
-    /**
-     * Act - do whatever the GUI wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
+
 }

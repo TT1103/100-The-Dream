@@ -1,18 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Write a description of class PlayerArcaneExplosion here.
+ * A class to model a specific weapon's explosion that damages enemies. 
+ * This class is slightly different from PlayerExplosion.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2015
  */
 public class PlayerArcaneExplosion extends PlayerExplosion
 {
     
     public PlayerArcaneExplosion(int damage){
         super(damage);
-      
-        
         images= new GreenfootImage[]{
             new GreenfootImage("arcaneexplosion1.png"), 
             new GreenfootImage("arcaneexplosion2.png"), 

@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class RocketLauncher here.
+ * A ranged weapon.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2016
  */
 public class RocketLauncher extends Weapon
 {
@@ -23,8 +23,9 @@ public class RocketLauncher extends Weapon
         damage =1500;
         tooltip="Rocket Launcher\nA powerful but slow fire rate\nranged weapon. Explodes on impact.\nDamage: "+String.valueOf(damage);
     }
+    
     /**
-     * Act - do whatever the P90 wants to do. This method is called whenever
+     * Act - do whatever the RocketLauncher wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
@@ -32,7 +33,7 @@ public class RocketLauncher extends Weapon
         super.act();
     }    
     
-    public void use(){ //x and y: current player pos
+    public void use(){ 
        GreenfootImage gunImage = new GreenfootImage(player.getImage());
        gunImage.drawImage(gunSprite, 12,0);
        player.setImage(gunImage);

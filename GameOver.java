@@ -1,18 +1,16 @@
 import greenfoot.*;
 import java.util.Timer;
 /**
+ * Screen used to display a game over.
+ * 
  * @author Gary Yu, Tiger Zhao
  * @version January 13, 2016
  */
 public class GameOver extends Actor
 {
-    private boolean displayScore = false;
-    private boolean createdTimer = false;
-
-
     /**
-     * Act - do whatever the GameOver wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
+     * Will animate the game over screen to indicate to users that they have depleted 
+     * all their health. Game music will stop and level selection screen music will proceed. 
      */
     public void act() 
     {
@@ -28,9 +26,10 @@ public class GameOver extends Actor
         Player player = (Player) getWorld().getObjects(Player.class).get(0);
         if (player !=null){ 
             //return to level.
+            player.saveData();
             ((Map) getWorld()).fadeOut();
             ((Map) getWorld()).music.stop();
-            Greenfoot.setWorld(new LevelSelector());
+            Greenfoot.setWorld(new LevelSelector()); // Goes back to level selection screen 
         }
         
     }    

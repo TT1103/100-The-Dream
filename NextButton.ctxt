@@ -1,14 +1,17 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\r\n\ Act\ -\ do\ whatever\ the\ NextButton\ wants\ to\ do.\ This\ method\ is\ called\ whenever\r\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\r\n
+comment0.text=\r\n\ Changes\ the\ next\ button\ image\ to\ grey,\ dark\ grey\ etc.\ depending\ on\ when\ the\ mouse\ hovers\ over\ it\r\n
 comment1.params=
 comment1.target=void\ popUpAnimation()
 comment1.text=\r\n\ Animations\ required\ to\ pop\ button\ up\ and\ down\ \r\n
 comment2.params=
 comment2.target=boolean\ nextButtonHere()
+comment2.text=\r\n\ @return\ Whether\ the\ next\ button\ has\ appeared\ \r\n
 comment3.params=
 comment3.target=boolean\ buttonClicked()
+comment3.text=\r\n\ @return\ Whether\ the\ button\ has\ been\ clicked\ \r\n
 comment4.params=
 comment4.target=void\ buttonNotClicked()
+comment4.text=\r\n\ If\ button\ is\ not\ clicked,\ mouse\ clicked\ would\ be\ false\ \r\n
 numComments=5

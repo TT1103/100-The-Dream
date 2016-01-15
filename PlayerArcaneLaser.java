@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
+ * A special laser used by the player. 
+ * 
  * @author Tiger Zhao
  * @version January 13, 2016
  */

@@ -1,6 +1,8 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
+ * A moving enemy that deals melee damage to the player.
+ * 
  * @author Tiger Zhao
  * @version January 13, 2016
  */
@@ -54,14 +56,14 @@ public class Dog extends Enemy
      */
     public void act() 
     {
-        if(paused)return;
-        super.act();
         
-
+        if(paused){
+            return;
+        }
         if(damageDelay >0){
             damageDelay--;
         }
-
+        super.act();
     }    
 
     public void controlMovement(){

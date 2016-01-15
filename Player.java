@@ -1,11 +1,13 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.io.*;
+import java.awt.Color;
+
 /**
  * The player class contains all the functionality of the object that the user controls in battle.
  * 
  * @author Tiger Zhao 
- * @version January 13, 2016
+ * @version January 14, 2016
  */
 public class Player extends Actor implements Serializable
 {
@@ -68,7 +70,7 @@ public class Player extends Actor implements Serializable
     HUD hud;
 
     Weapon curWeapon;
-    Equipment curHead,curChest,curLegs, curMisc ;
+    Equipment curHead,curChest,curLegs;
 
     boolean lvUp = false;
     int maxHpRecoverDelay=75-(defense/2);
@@ -79,7 +81,7 @@ public class Player extends Actor implements Serializable
     
     Equipment[] inventory = new Equipment[98];
     
-    int curGameLevel =1;
+    int curGameLevel =1; //the game progress
 
     boolean curse = false;
 
@@ -105,23 +107,6 @@ public class Player extends Actor implements Serializable
         addToInventory(new CopperHelmet());
         addToInventory(new CopperChest());
         addToInventory(new CopperLegs());
-        /*
-        addToInventory(new IronHelmet());
-        addToInventory(new IronChest());
-        addToInventory(new IronLegs());
-        
-        addToInventory(new CarbonHelmet());
-        addToInventory(new CarbonChest());
-        addToInventory(new CarbonLegs());
-        
-        addToInventory(new ArcaneExplosion(this));
-        addToInventory(new ArcaneLaser(this));
-        
-        addToInventory(new RocketLauncher(this));
-        addToInventory(new Sword(this));
-        addToInventory(new DeathSword(this));
-        */
-        addToInventory(new SniperGun(this));
     }
 
     /**
@@ -129,7 +114,7 @@ public class Player extends Actor implements Serializable
      */
     public Player(PlayerData playerData){
         this.playerData = playerData;
-        //load the data...
+        //load the data:
         curLevel = playerData.curLevel;
         curStatPoints =playerData.curStatPoints;
 
@@ -151,11 +136,12 @@ public class Player extends Actor implements Serializable
         speed = playerData.speed;
     }
 
-    
+    /**
+     * Used to add neccessary objects.
+     */
     public void setup(){
         hud = new HUD(this);
         getWorld().addObject(hud, 0, 0);
-
     }
 
     /**
@@ -167,11 +153,10 @@ public class Player extends Actor implements Serializable
         if(paused){
             return;
         }
-        if(curWeapon !=null){
-            curWeapon.act();
-        }
         
-        if(knockback){
+        
+        
+        if(knockback){ //manage knockback
             int originalRotation = getRotation();
             setRotation(knockbackRotation);
             move(knockbackStrength);
@@ -182,17 +167,25 @@ public class Player extends Actor implements Serializable
                 knockback = false;
             }
         }
+        
+        //regenerate health over time
         if(hpRecoverDelay >0){
             hpRecoverDelay--;
             if (hpRecoverDelay==0){
                 hpRecoverDelay = maxHpRecoverDelay;
-                
-                if(curse)curHealth -= 4;
-                else if(curHealth < maxHealth) curHealth++;
-                
-                if(curHealth<0) curHealth =0;
+                if(curse){
+                    curHealth -= 4;
+                }
+                else if(curHealth < maxHealth){ 
+                    curHealth++;
+                }
+                if(curHealth<0){
+                    curHealth =0;
+                }
             }
         }
+        
+        //regenerate mana over time
         if(manaRegenDelay >0){
             manaRegenDelay--;
             if(manaRegenDelay==0){
@@ -206,6 +199,8 @@ public class Player extends Actor implements Serializable
                 }
             }
         }
+        
+        //used to create a regeneration effect after leveling up:
         if(lvUp){
             if(curHealth < maxHealth){
                 curHealth+=53;
@@ -226,8 +221,31 @@ public class Player extends Actor implements Serializable
         controlMovement();
         controlWeapons();
         controlExp();
+        
+        //cheat to get a powerful weapon to beat the game for testing purposes
+        if(Greenfoot.isKeyDown("i") && Greenfoot.isKeyDown("o") && Greenfoot.isKeyDown("p")){
+            boolean added = false; //see if the dev weapon already exists
+            for (Equipment e : inventory){
+                if(e!=null &&e.name.equals("devweapon")){
+                    added = true;
+                }
+            }
+            if(curWeapon != null && curWeapon.name.equals("devweapon")){
+                added=true;
+            }
+            if(!added) {
+                addToInventory(new DevWeapon(this));
+                getWorld().addObject(new Text("You have cheated!\nA powerful weapon has been added to your inventory.",25,Color.WHITE),400,600);
+            }
+            
+        }
     }    
 
+    /**
+     * Used to deal damage to the player and spawn blood particles.
+     * 
+     * @param damage An integer indicating the amount of damage to deal.
+     */
     public void damage(int damage){
         int totalDefense =defense;
         if (curHead!=null) totalDefense+=curHead.defense;
@@ -265,11 +283,24 @@ public class Player extends Actor implements Serializable
         getWorld().addObject(par,getX(), getY());
     }
 
+    /**
+     * Used to cause knockback on the player.
+     * 
+     * @param str An integer indicating the strength of the knockback.
+     * @param rotation An integer indicating the direction of the knockback as a rotation.
+     */
     public void knockback(int str, int rotation){
         knockbackStrength =str;
         int knockbackRotation = rotation;
     }
 
+    /**
+     * Used to set the location of the player. Makes sure to prevent the player from moving through
+     * impassable objects.
+     * 
+     * @param x An integer indicating the x position to move to.
+     * @param y An integer indicating the y position to move to.
+     */
     public void setLocation(int x, int y) {
         if (getWorld().getObjectsAt(x, y, Impassable.class).isEmpty()) {
             super.setLocation(x, y);
@@ -285,6 +316,9 @@ public class Player extends Actor implements Serializable
         setLocation(getX()+circleX, getY()+circleY);
     }
 
+    /**
+     * Used to manage the user's control of the player.
+     */
     public void controlMovement(){
         moving =false;
         if(knockback==false){
@@ -330,13 +364,17 @@ public class Player extends Actor implements Serializable
             int mY = mi.getY();
             int pX= getX();
             int pY=getY();
-
             turnTowards(mX,mY);
-
         }
     }
 
+    /**
+     * Used to manage the user's control of the weapon and attacks.
+     */
     public void controlWeapons(){
+        if(curWeapon !=null){ 
+            curWeapon.act();
+        }
         if (Greenfoot.mousePressed(null)){
             attacking = true;
         }else if (Greenfoot.mouseClicked(null)){
@@ -348,6 +386,10 @@ public class Player extends Actor implements Serializable
         }
     }
 
+    /**
+     * Used to manage the player's experience and determine if 
+     * the player has leveled up.
+     */
     public void controlExp(){
         while(curExp>maxExp){
             if(curLevel<maxLevel){
@@ -361,23 +403,39 @@ public class Player extends Actor implements Serializable
         }
     }
 
+    /**
+     * Used to add experience to the player.
+     * 
+     * @param amount An integer indicating the amount of experience to give to the player.
+     */
     public void gainExp(int amount){
         curExp +=amount;
     }
 
+    /**
+     * Levels up the player.
+     */
     public void levelUp(){
         curStatPoints+=4;
         curLevel++;
         //display level up stuff
-        Text t = new Text(150,"Leveled up!");
+        Text t = new Text(50,"Leveled up!");
         getWorld().addObject(t, getX(),getY()-20);
         lvUp = true;
     }
 
+    /**
+     * Used to save the player object's data.
+     */
     public void saveData(){
         playerData.saveData(this);
     }
     
+    /**
+     * Used to add an Equipment object to the player's inventory.
+     * 
+     * @param item The Equipment object to add.
+     */
     public void addToInventory(Equipment item){
         for (int i=0; i < inventory.length; i++){
             if (inventory[i] == null){
@@ -387,6 +445,9 @@ public class Player extends Actor implements Serializable
         }
     }
 
+    /**
+     * Used to update the player's stats based on the allocated stat points.
+     */
     public void updateStats(){
         maxHealth = endurance*50;
         maxMana =spirituality *20;
@@ -405,6 +466,11 @@ public class Player extends Actor implements Serializable
         }
     }
     
+    /**
+     * Used to subtract mana from the mana bar.
+     * 
+     * @param amount An integer indicating the amount of mana to reduce.
+     */
     public void reduceMana(int amount){
         curMana -=amount;
         if(curMana<0){

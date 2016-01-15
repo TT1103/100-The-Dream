@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Barrett here.
+ * A ranged weapon.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2016
  */
 public class SniperGun extends Weapon
 {
@@ -13,10 +13,9 @@ public class SniperGun extends Weapon
     GreenfootImage gunSprite = new GreenfootImage("gun_sprite.png");
     
     public SniperGun(Player player){
-        //super("barrett");
         super(player);
-        speedDelay =5;//50
-        speed=5;
+        speedDelay =27;
+        speed=27;
         itemImage = new GreenfootImage("snipergun_item_image.png");
         name = "snipergun";
         damageType = "range";
@@ -24,7 +23,7 @@ public class SniperGun extends Weapon
         tooltip="Sniper Gun\nA powerful but slow fire rate\nranged weapon.\nDamage: "+String.valueOf(damage);
     }
     /**
-     * Act - do whatever the P90 wants to do. This method is called whenever
+     * Act - do whatever the SniperGun wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() 
@@ -32,7 +31,7 @@ public class SniperGun extends Weapon
         super.act();
     }    
     
-    public void use(){ //x and y: current player pos
+    public void use(){ 
        GreenfootImage gunImage = new GreenfootImage(player.getImage());
        gunImage.drawImage(gunSprite, 12,0);
        player.setImage(gunImage);

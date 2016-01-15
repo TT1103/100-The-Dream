@@ -2,11 +2,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.Random;
 import java.awt.Color;
 /**
- * Class of the first boss. 
- * Attacks: spawn sentry, shoot laser, bullet barrage
+ * The first boss of the game.
  * 
  * @author Tiger Zhao
- * @version January 13, 2015
+ * @version January 13, 2016
  */
 public class Boss1 extends Boss
 {

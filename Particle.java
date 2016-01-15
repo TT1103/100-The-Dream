@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Particle here.
+ * A class used to model a blood particle for the player.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2016
  */
 public class Particle extends Actor
 {

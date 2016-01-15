@@ -1,10 +1,11 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 /**
- * Write a description of class PlayerExplosion here.
+ * A class to model a weapon explosion that damages enemies. 
+ * It is used by the Player
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2015
  */
 public class PlayerExplosion extends Actor
 {

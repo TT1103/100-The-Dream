@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class LaserBeam here.
+ * Used to model a special laser attack by Boss 3.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Enoch Poon
+ * @version January 14, 2016
  */
 public class LaserBeam extends Actor
 {
@@ -24,12 +24,14 @@ public class LaserBeam extends Actor
             effect.setVolume(80);
             effect.play();
             getImage().scale(100, 50);
-            Player player = (Player)getOneIntersectingObject(Player.class);
-            if(player != null){
-                player.damage(100);
-                player.knockback=true;
-                player.knockbackStrength=20;
-                player.knockbackRotation=getRotation() + 90;
+            if(isTouching(Player.class)){
+                Player player = (Player)getWorld().getObjects(Player.class).get(0);
+                if(player != null){
+                    player.damage(500);
+                    player.knockback=true;
+                    player.knockbackStrength=20;
+                    player.knockbackRotation=player.getRotation();
+                }
             }
         }
         if(timer < 0){

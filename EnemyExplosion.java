@@ -1,10 +1,10 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Explosion here.
+ * Used to model an explsion used by the enemy. Deals damage to the player.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Tiger Zhao
+ * @version January 14, 2016
  */
 public class EnemyExplosion extends Actor
 {
