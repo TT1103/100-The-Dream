@@ -92,6 +92,9 @@ public class Boss3 extends Boss
             switch(curAttack){
                 case 0 ://charge laser
                 chargeLaser(getRotation(), 50, getX(), getY());
+                GreenfootSound effect = new GreenfootSound("laser_shoot.wav");
+                effect.setVolume(100);
+                effect.play();
                 break;
 
                 case 1 ://spawn knifemen from spawners, create shield
@@ -116,8 +119,8 @@ public class Boss3 extends Boss
 
         if(isTouching(Boss3shield.class)){
             hpBar.damage(-10);
-            if(hpBar.health >= 100000){
-                hpBar.health = 100000;
+            if(hpBar.health >= hpBar.startHealth){
+                hpBar.health = hpBar.startHealth;
             }
 
         }
