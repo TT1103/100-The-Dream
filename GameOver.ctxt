@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\r\n\ Will\ animate\ the\ game\ over\ screen\ to\ indicate\ to\ users\ that\ they\ have\ depleted\ \r\n\ all\ their\ health.\ Game\ music\ will\ stop\ and\ level\ selection\ screen\ music\ will\ proceed.\ \r\n
+comment0.text=\n\ Will\ animate\ the\ game\ over\ screen\ to\ indicate\ to\ users\ that\ they\ have\ depleted\ \n\ all\ their\ health.\ Game\ music\ will\ stop\ and\ level\ selection\ screen\ music\ will\ proceed.\ \n
 comment1.params=cnt
 comment1.target=void\ scaleImage(int)
-comment1.text=\r\n\ This\ is\ a\ recursive\ method\ to\ generate\ a\ visual\ effect\ of\ the\ game\ over\r\n\ screen\ inscreasing\ in\ size.\r\n\ \r\n\ @param\ cnt\ An\ integer\ indicating\ the\ number\ of\ times\ to\ scale\ the\ image.\r\n
+comment1.text=\n\ This\ is\ a\ recursive\ method\ to\ generate\ a\ visual\ effect\ of\ the\ game\ over\n\ screen\ inscreasing\ in\ size.\n\ \n\ @param\ cnt\ An\ integer\ indicating\ the\ number\ of\ times\ to\ scale\ the\ image.\n
 numComments=2

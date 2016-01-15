@@ -43,7 +43,7 @@ public class Boss3 extends Boss
         }
         Player p = (Player)getWorld().getObjects(Player.class).get(0);
         if(start){
-            hpBar = new BossHealthBar(200000, this);
+            hpBar = new BossHealthBar(250000, this);
             getWorld().addObject(hpBar, 400, 775);
             getWorld().addObject(new Text("Master", 18,Color.BLACK),400,775);
             start = false;

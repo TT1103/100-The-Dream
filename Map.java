@@ -85,14 +85,15 @@ public class Map extends World
     public Map(int level, Player player,String mapFile, String dirFrom, int newX, int newY){  //switching maps  
         super(800, 800, 1,false); 
         this.player=player;
-        addObject(player, 400,400);
-        player.setup();
+        
+        
         curLevel = level;
         setPaintOrder();
         curMapX=newX;
         curMapY=newY;
         loadMap(mapFile);
-
+        addObject(player, 400,400);
+        player.setup();
         //used to set player position
         if(bossBattle) return; //don't set new position if it is a boss battle, just stay in center
         int offset =64; //off set for setting player location according to passages
@@ -274,11 +275,11 @@ public class Map extends World
                 Random rand = new Random();
                 int level=1;
                 if(curLevel ==1){
-                    level = rand.nextInt(9)+1;
+                    level = rand.nextInt(7)+1;
                 }else if(curLevel==2){
-                    level = rand.nextInt(20)+10;
+                    level = rand.nextInt(10)+10;
                 }else if(curLevel ==3){
-                    level = rand.nextInt(40)+30;
+                    level = rand.nextInt(20)+20;
                 }
 
                 if(name.equals("tree")){
