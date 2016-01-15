@@ -9,9 +9,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class LaserBeam extends Actor
 {
     int timer = 20;
+    int length;
     boolean paused = false;
-    public LaserBeam(){
+    public LaserBeam(int length){
         getImage().scale(100, 5);
+        this.length = length;
     }
 
     /**
@@ -24,7 +26,11 @@ public class LaserBeam extends Actor
             return;
         }
         if(timer-- == 0){
-            
+            if(length == 49){
+            GreenfootSound effect = new GreenfootSound("laser_shoot.wav");
+                effect.setVolume(100);
+                effect.play();
+                }
             getImage().scale(100, 50);
             if(isTouching(Player.class)){
                 Player player = (Player)getWorld().getObjects(Player.class).get(0);
