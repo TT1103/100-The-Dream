@@ -30,6 +30,7 @@ public class Boss3 extends Boss
         };
     int moveDelay = 1;
     boolean chasing = false;
+    Player p = new Player;
     
     /**
      * Act - do whatever the Boss3 wants to do. This method is called whenever
@@ -41,7 +42,7 @@ public class Boss3 extends Boss
         if(paused){
             return;
         }
-        Player p = (Player)getWorld().getObjects(Player.class).get(0);
+        p = (Player)getWorld().getObjects(Player.class).get(0);
         if(start){
             hpBar = new BossHealthBar(250000, this);
             getWorld().addObject(hpBar, 400, 775);
@@ -60,7 +61,9 @@ public class Boss3 extends Boss
         if(getWorld().getObjects(Boss3shield.class).size() == 0 && 
         getWorld().getObjects(LaserBeam.class).size() == 0 && 
         getWorld().getObjects(ExplodeWarning.class).size() == 0){
-            turnTowards(p.getX(), p.getY());
+            if(canSeePlayer()){
+                turnTowards(p.getX(), p.getY());
+            }
         }else{
             image = 3;
             attackTimer = maxAttackTimer;
@@ -91,6 +94,7 @@ public class Boss3 extends Boss
 
             switch(curAttack){
                 case 0 ://charge laser
+                turnTowards(p.getX(), p.getY());
                 chargeLaser(getRotation(), 50, getX(), getY());
                 
                 break;
@@ -171,6 +175,9 @@ public class Boss3 extends Boss
         getWorld().getObjects(ExplodeWarning.class).size() == 0){
             move((chasing)?7:3);
             moveDelay = (chasing)?0:1;
+            if(isTouching(Impassable.class)){
+                turn(10);
+            }
         }
     }
 }
