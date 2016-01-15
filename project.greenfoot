@@ -1,5 +1,5 @@
 #Greenfoot properties
-#Thu Jan 14 21:01:51 EST 2016
+#Thu Jan 14 22:17:32 EST 2016
 class.Passage.image=brick.jpg
 dependency211.to=CarbonLegs
 target33.typeParameters=
@@ -1798,8 +1798,8 @@ target6.editor.height=780
 dependency276.to=BossHealthBar
 dependency51.from=GameOver
 class.NextButton.superclass=IntroElements
-target10.editor.y=23
-target10.editor.x=317
+target10.editor.y=45
+target10.editor.x=436
 class.Boss3.image=boss3_idle.png
 target101.type=ClassTarget
 class.ArcaneLaser.image=arcane_laser.png
@@ -2265,7 +2265,7 @@ target18.typeParameters=
 dependency202.from=LevelSelector
 target7.typeParameters=
 target78.editor.y=116
-target78.editor.x=265
+target78.editor.x=264
 target37.width=80
 target84.height=50
 target40.name=SniperGun
