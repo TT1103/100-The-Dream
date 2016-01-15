@@ -1,11 +1,11 @@
 #BlueJ class context
 comment0.params=
 comment0.target=void\ act()
-comment0.text=\n\ Changes\ the\ images\ for\ start\ button\ when\ hovered,\ clicked\ etc.\ \n
+comment0.text=\r\n\ Changes\ the\ images\ for\ start\ button\ when\ hovered,\ clicked\ etc.\ \r\n
 comment1.params=
 comment1.target=boolean\ checkMouseClick()
-comment1.text=\n\ @return\ Whether\ the\ mouse\ has\ clicked\ or\ not\ \n
+comment1.text=\r\n\ @return\ Whether\ the\ mouse\ has\ clicked\ or\ not\ \r\n
 comment2.params=
 comment2.target=boolean\ checkObjectRemoved()
-comment2.text=\n\ @return\ Whether\ the\ start\ button\ has\ been\ removed\ or\ not\ \n
+comment2.text=\r\n\ @return\ Whether\ the\ start\ button\ has\ been\ removed\ or\ not\ \r\n
 numComments=3

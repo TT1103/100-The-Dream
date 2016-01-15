@@ -1,8 +1,8 @@
 #BlueJ class context
 comment0.params=player
 comment0.target=void\ saveData(Player)
-comment0.text=\n\ Saves\ the\ player\ data\ into\ a\ file\ located\ on\ the\ user's\ desktop.\n\ \n\ @param\ player\ The\ player\ object\ that\ contains\ the\ data\ that\ needs\ to\ be\ saved.\n
+comment0.text=\r\n\ Saves\ the\ player\ data\ into\ a\ file\ located\ on\ the\ user's\ desktop.\r\n\ \r\n\ @param\ player\ The\ player\ object\ that\ contains\ the\ data\ that\ needs\ to\ be\ saved.\r\n
 comment1.params=player
 comment1.target=void\ parseInventory(Player)
-comment1.text=\n\ Used\ to\ convert\ the\ inventory\ strings\ into\ actual\ objects\ usable\ by\n\ the\ player.\n\ \n\ @param\ player\ The\ player\ object\ that\ contains\ the\ inventory.\n
+comment1.text=\r\n\ Used\ to\ convert\ the\ inventory\ strings\ into\ actual\ objects\ usable\ by\r\n\ the\ player.\r\n\ \r\n\ @param\ player\ The\ player\ object\ that\ contains\ the\ inventory.\r\n
 numComments=2
