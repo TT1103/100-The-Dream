@@ -51,7 +51,7 @@ public class Boss3 extends Boss
             //add spawners and shrines
             getWorld().addObject(new Spawner(0), 0, 0);
             getWorld().addObject(new Spawner(1), 0, getWorld().getWidth());
-            getWorld().addObject(new Shrine(), getX(), getY());
+            getWorld().addObject(new Shrine(), 100, 100);
         }
         if(imageDelay-- <=0){
             imageDelay = (chasing)? 3:5;
