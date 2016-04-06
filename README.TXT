@@ -10,3 +10,5 @@ VERSION or DATE: Final Version
 HOW TO START THIS PROJECT: Open in Greenfoot or Run the .jar file
 AUTHORS: Tiger Zhao, Enoch Poon, Gary Yu
 USER INSTRUCTIONS:
+
+The jar file can be found here: https://www.dropbox.com/s/57oi7ykzs7cul1f/100-The-Dream.jar?dl=0
