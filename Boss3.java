@@ -30,7 +30,7 @@ public class Boss3 extends Boss
         };
     int moveDelay = 1;
     boolean chasing = false;
-    Player p = new Player;
+    Player p = new Player();
     
     /**
      * Act - do whatever the Boss3 wants to do. This method is called whenever
